@@ -239,6 +239,7 @@ uv run pytest -q                # the pipeline's tests</code></pre>
     <div class="card"><h3>Repairs and review flags</h3><div id="v-repairs"></div></div>
     <div class="card"><h3>Cost</h3><div id="v-cost"></div></div>
   </div>
+  <div class="card" style="margin-top:12px"><h3>Accuracy progression</h3><div id="v-progress"></div></div>
   <div class="card" style="margin-top:12px"><h3>Human audit</h3><div id="v-audit"></div></div>
 </section>
 
@@ -647,6 +648,34 @@ uv run pytest -q                # the pipeline's tests</code></pre>
   const credit = sum(R, (r) => usageOf(r).composio_usd);
   $("v-cost").append(simpleTable(["Composio tool", "Calls", "Charged"], tally(logs.map((call) => call.tool)).map(([tool, n]) => [tool, String(n), usd(sum(logs.filter((call) => call.tool === tool), (call) => call.charged_usd))]), [1, 2]),
     h("p", { class: "small muted", style: "margin-top:8px", text: "Composio credit used by these records: " + usd(credit) + " over " + sum(R, (r) => usageOf(r).composio_calls) + " paid calls (" + usd(N ? credit / N : 0) + " per app). Model tokens: " + num(tokens) + ", of which " + num(sum(R, (r) => usageOf(r).cached_input_tokens)) + " were cached input. Runs that failed before producing a record are not counted here; see What went wrong." }));
+
+  /* ---------- accuracy progression: first attempt -> final records -> human audit ---------- */
+  {
+    const share = (n, d) => num(n) + " of " + num(d) + " (" + pct(n, d) + ")";
+    const rows = [];
+    const firsts = D.pass1 && Array.isArray(D.pass1.apps) ? D.pass1.apps : null;
+    if (firsts) {
+      const quotes = firsts.flatMap((app) => Object.entries(app.quote_checks));
+      const found = sum(quotes.filter(([key]) => key === "exact" || key === "exact_rendered"), ([, n]) => n);
+      const fields = firsts.flatMap((app) => Object.values(app.fields));
+      rows.push(["1. First research attempt", share(found, sum(quotes, ([, n]) => n)), share(count(fields, (r) => r === "supported"), fields.length),
+        count(firsts, (app) => Object.values(app.fields).every((r) => r === "supported")) + " of " + firsts.length]);
+    }
+    const allQuotes = D.records.flatMap((r) => r.evidence || []);
+    const allFields = D.records.flatMap((r) => r.verification || []);
+    rows.push(["2. Final records, after one repair attempt and the re-read of stored quotes",
+      share(count(allQuotes, (e) => e.check === "exact" || e.check === "exact_rendered"), allQuotes.length),
+      share(count(allFields, (v) => v.result === "supported"), allFields.length),
+      count(D.records, (r) => (r.verification || []).every((v) => v.result === "supported")) + " of " + D.records.length]);
+    if (D.audit && Array.isArray(D.audit.items)) {
+      const scored = D.audit.items;
+      rows.push(["3. Human audit of " + new Set(scored.map((item) => item.app)).size + " apps", "not applicable",
+        share(count(scored, (item) => item.match), scored.length) + " values matched the live docs", "not applicable"]);
+    }
+    $("v-progress").append(
+      simpleTable(["Stage", "Quotes found on the cited page", "Field values confirmed", "Apps with every field confirmed"], rows),
+      h("p", { class: "small muted", style: "margin-top:8px", text: "Stages 1 and 2 are the pipeline checking itself: a program matching quotes and a second model judging them. Stage 3 is a person checking against the live docs, on a sample. " + (D.pass1 && D.pass1.note ? D.pass1.note : "") }));
+  }
 
   const audit = D.audit;
   if (!audit || !Array.isArray(audit.items)) {

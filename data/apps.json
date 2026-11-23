@@ -466,7 +466,7 @@
     },
     "verdict": {
       "status": "buildable_with_caveats",
-      "main_blocker": "other",
+      "main_blocker": "trial_only",
       "rationale": "A developer can obtain an API token during a 14-day trial and use the documented REST API. A developer sandbox is offered, but its price and approval requirements are not established, so the evidenced credential path is trial-limited."
     },
     "evidence": [
@@ -590,6 +590,14 @@
     "composio_catalog_source": "docs_page",
     "composio_toolkit_url": "https://docs.composio.dev/toolkits/pipedrive",
     "access_basis": "",
+    "human_corrections": [
+      {
+        "field": "verdict.main_blocker",
+        "before": "other",
+        "after": "trial_only",
+        "note": "Human audit 2026-11-24: credentials come through a 14-day trial, the same situation as Close, so the blocker is trial_only, not other."
+      }
+    ],
     "verification": [
       {
         "field": "auth",
@@ -619,13 +627,13 @@
       {
         "field": "verdict",
         "result": "supported",
-        "note": "Trial-based self-serve credentials and a documented, broad REST API support buildable_with_caveats. The trial limit is a notable constraint; because there is no trial-specific main_blocker value, other is appropriate."
+        "note": "Set by the human audit."
       }
     ],
     "needs_human_review": false,
     "review_reasons": [],
     "attempts": 2,
-    "researched_at": "2026-11-23T20:45:17+00:00",
+    "researched_at": "2026-11-23T21:20:14+00:00",
     "model": "gpt-6-sol",
     "critic_model": "gpt-6-sol",
     "usage": {
@@ -1895,7 +1903,7 @@
     },
     "verdict": {
       "status": "buildable_with_caveats",
-      "main_blocker": "other",
+      "main_blocker": "trial_only",
       "rationale": "The documented API is available during Copper’s free trial, but that path is time-limited and only Admin users can generate API keys. Registering an OAuth application requires contacting Copper."
     },
     "evidence": [
@@ -2012,6 +2020,7 @@
     "composio_catalog_source": "docs_page",
     "composio_toolkit_url": "https://docs.composio.dev/toolkits/copper",
     "access_basis": "",
+    "human_corrections": [],
     "verification": [
       {
         "field": "auth",
@@ -2047,7 +2056,7 @@
     "needs_human_review": false,
     "review_reasons": [],
     "attempts": 1,
-    "researched_at": "2026-11-23T20:45:28+00:00",
+    "researched_at": "2026-11-23T21:20:15+00:00",
     "model": "gpt-6-sol",
     "critic_model": "gpt-6-sol",
     "usage": {
@@ -17095,7 +17104,7 @@
       "notes": "Smartsheet recommends OAuth 2.0 for integrations that involve user consent. Unattended integrations can use a user-generated access token as an HTTP Bearer credential."
     },
     "access": {
-      "level": "unknown",
+      "level": "paid_plan",
       "notes": "API token generation is self-service on Business, Enterprise, and Advanced Work Management plans. OAuth app registration requires an existing licensed Business-or-higher user. It is not verified whether the public trial includes API credentials or whether a free developer sandbox is available."
     },
     "api": {
@@ -17118,8 +17127,8 @@
       "url": "https://docs.composio.dev/toolkits/smartsheet"
     },
     "verdict": {
-      "status": "unknown",
-      "main_blocker": "other",
+      "status": "buildable_with_caveats",
+      "main_blocker": "paid_plan",
       "rationale": "The documented read/write REST API is broad enough to build a useful integration on a qualifying plan. It remains unverified whether a new developer can obtain working credentials through the public trial or a free sandbox."
     },
     "evidence": [
@@ -17208,6 +17217,26 @@
     "composio_catalog_source": "docs_page",
     "composio_toolkit_url": "https://docs.composio.dev/toolkits/smartsheet",
     "access_basis": "",
+    "human_corrections": [
+      {
+        "field": "access.level",
+        "before": "unknown",
+        "after": "paid_plan",
+        "note": "Human audit 2026-11-24: the record's own quotes say the required plan is Business, Enterprise or Advanced Work Management, and app registration needs a licensed Business-or-higher user."
+      },
+      {
+        "field": "verdict.status",
+        "before": "unknown",
+        "after": "buildable_with_caveats",
+        "note": "Human audit 2026-11-24: follows from access being paid_plan."
+      },
+      {
+        "field": "verdict.main_blocker",
+        "before": "other",
+        "after": "paid_plan",
+        "note": "Human audit 2026-11-24: follows from access being paid_plan."
+      }
+    ],
     "verification": [
       {
         "field": "auth",
@@ -17217,7 +17246,7 @@
       {
         "field": "access",
         "result": "supported",
-        "note": "No claim was made, so there is nothing to check."
+        "note": "Set by the human audit."
       },
       {
         "field": "api",
@@ -17237,15 +17266,13 @@
       {
         "field": "verdict",
         "result": "supported",
-        "note": "No verdict was given."
+        "note": "Set by the human audit."
       }
     ],
-    "needs_human_review": true,
-    "review_reasons": [
-      "access is unknown"
-    ],
+    "needs_human_review": false,
+    "review_reasons": [],
     "attempts": 1,
-    "researched_at": "2026-11-23T20:59:40+00:00",
+    "researched_at": "2026-11-23T21:20:18+00:00",
     "model": "gpt-6.2-sol",
     "critic_model": "gpt-6-sol",
     "usage": {
@@ -17464,7 +17491,7 @@
         "basic",
         "oauth2"
       ],
-      "primary": "oauth2",
+      "primary": "api_key",
       "notes": "Use OAuth 2.0 when a third-party app needs users to authorize access to their Stripe accounts. For an integration operating on its own account, use a restricted API key. HTTP Basic is a way to send the API key, not a separate username-and-password credential. Sending the same key in a Bearer header does not make it a separate credential type."
     },
     "access": {
@@ -17581,11 +17608,19 @@
     "composio_catalog_source": "docs_page",
     "composio_toolkit_url": "https://docs.composio.dev/toolkits/stripe",
     "access_basis": "",
+    "human_corrections": [
+      {
+        "field": "auth.primary",
+        "before": "oauth2",
+        "after": "api_key",
+        "note": "Human audit 2026-11-24: Stripe's primary API authentication is the secret API key; OAuth 2.0 applies only to Stripe Connect and Stripe Apps acting on connected accounts."
+      }
+    ],
     "verification": [
       {
         "field": "auth",
         "result": "supported",
-        "note": "The quotes document API-key authentication via HTTP Basic and OAuth 2.0. The OAuth and consent-screen quotes support its use for third-party access. The claimed recommendation to use restricted keys for own-account integrations is not shown."
+        "note": "Set by the human audit."
       },
       {
         "field": "access",
@@ -17616,7 +17651,7 @@
     "needs_human_review": false,
     "review_reasons": [],
     "attempts": 1,
-    "researched_at": "2026-11-23T20:59:42+00:00",
+    "researched_at": "2026-11-23T21:20:21+00:00",
     "model": "gpt-6.2-sol",
     "critic_model": "gpt-6-sol",
     "usage": {
@@ -20974,8 +21009,8 @@
       "url": ""
     },
     "verdict": {
-      "status": "buildable_with_caveats",
-      "main_blocker": "narrow_api",
+      "status": "blocked",
+      "main_blocker": "no_public_api",
       "rationale": "Credentials are self-serve, but the API is narrow."
     },
     "evidence": [
@@ -21045,6 +21080,20 @@
     "composio_catalog_source": "none",
     "composio_toolkit_url": "",
     "access_basis": "inferred",
+    "human_corrections": [
+      {
+        "field": "verdict.status",
+        "before": "buildable_with_caveats",
+        "after": "blocked",
+        "note": "Human audit 2026-11-24: Mermaid CLI is a local command-line tool and Node.js library with no hosted REST or GraphQL API."
+      },
+      {
+        "field": "verdict.main_blocker",
+        "before": "narrow_api",
+        "after": "no_public_api",
+        "note": "Human audit 2026-11-24: local-only tool, so the blocker is no_public_api rather than narrow_api."
+      }
+    ],
     "verification": [
       {
         "field": "auth",
@@ -21074,13 +21123,13 @@
       {
         "field": "verdict",
         "result": "supported",
-        "note": "With auth none, access self_serve_free, and a documented but narrow local Node/CLI API, buildable_with_caveats and main_blocker narrow_api follow. The rationale matches those facts; the unsupported composio value is not an input to the verdict."
+        "note": "Set by the human audit."
       }
     ],
     "needs_human_review": false,
     "review_reasons": [],
     "attempts": 2,
-    "researched_at": "2026-11-23T20:55:22+00:00",
+    "researched_at": "2026-11-23T21:20:23+00:00",
     "model": "gpt-6-sol",
     "critic_model": "grok-4.7",
     "usage": {

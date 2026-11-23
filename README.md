@@ -12,16 +12,26 @@ A 100-app study of how ready each app is to become an agent toolkit: its auth me
 |---|---|
 | Buildable now | 48 |
 | Buildable with caveats (trial-only, admin approval, paid plan, narrow API) | 35 |
-| Blocked (sales or partner gate, or no public API) | 6 |
-| Verdict unknown | 11 |
+| Blocked (sales or partner gate, or no public API) | 7 |
+| Verdict unknown | 10 |
 | Already in Composio's catalog | 77 |
 | Not in Composio's catalog | 23 |
 
-- OAuth2 is the primary auth method for 66 apps; an API key for 17.
-- 74 apps are self-serve (59 free, 15 trial-only), 14 are gated, and 12 could not be settled from quoted evidence.
+- OAuth2 is the primary auth method for 65 apps; an API key for 18.
+- 74 apps are self-serve (59 free, 15 trial-only), 15 are gated, and 11 could not be settled from quoted evidence.
 - Seven apps are buildable now and not in Composio's catalog: Binance, Magento (Adobe Commerce), Netlify, Reducto, Vonage, WooCommerce and systeme.io.
 - Five need outreach because an account takes a sales or partner contact: Gladly, Otter AI, PitchBook, Pylon and Salesforce Commerce Cloud.
-- 1,251 of 1,287 quotes (97%) were found on the page they cite. 22 records are flagged for human review.
+- 1,251 of 1,287 quotes (97%) were found on the page they cite. 21 records are flagged for human review.
+
+Accuracy, in three stages:
+
+| Stage | Field values confirmed |
+|---|---|
+| First research attempt (the pipeline's own check) | 505 of 600 (84%) |
+| Final records, after one repair attempt and a re-read of stored quotes | 576 of 600 (96%) |
+| Human audit of 20 randomly drawn apps against the live docs | 95 of 100 values (95%) |
+
+The five audit misses (Pipedrive's blocker, Smartsheet's access and verdict, Stripe's primary auth, Mermaid CLI's verdict) are listed on the page and corrected in the records; each corrected record keeps what the agent originally said in `human_corrections`.
 
 These numbers are a snapshot. The page computes its own from the data, so it stays correct when records change. The page's "What went wrong" section lists the mistakes made along the way and what each one cost.
 
@@ -36,7 +46,9 @@ These numbers are a snapshot. The page computes its own from the data, so it sta
 | `data/apps.json`, `data/apps_flat.csv` | Exports written by the page builder: full records, and one flat row per app. |
 | `data/process_notes.json` | Hand-maintained log of mistakes and changes, rendered on the page. |
 | `data/audit_sheet.md` | The human audit sheet: 20 apps, 2 drawn at random per category, with the evidence to check. |
-| `data/audit.json` | The human audit results. Until this file exists, the page says the audit has not been done. |
+| `data/audit.json` | The human audit results: 100 values, each a hit or a miss with the auditor's finding. |
+| `data/corrections.json` | Values a person corrected after the audit. Applied whenever a record is rebuilt. |
+| `data/pass1_results.json` | What each app's first research attempt looked like, for the page's accuracy progression. Written by `uv run python -m appscout.pass1`. |
 | `data/state/` | Per-app checkpoints (git-ignored). A rerun resumes from them. |
 
 ## Setup

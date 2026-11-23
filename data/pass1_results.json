@@ -1,0 +1,1836 @@
+{
+  "note": "First research attempt of each app. For records whose only attempt was later re-judged with the recalibrated checker, the field results here are the re-judged ones, so this stage is slightly flattered.",
+  "apps": [
+    {
+      "id": "salesforce",
+      "name": "Salesforce",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 15
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "hubspot",
+      "name": "HubSpot",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "pipedrive",
+      "name": "Pipedrive",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "attio",
+      "name": "Attio",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "twenty",
+      "name": "Twenty",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 13,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "podio",
+      "name": "Podio",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 13,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "zoho-crm",
+      "name": "Zoho CRM",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 7,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "close",
+      "name": "Close",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "copper",
+      "name": "Copper",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10,
+        "not_found": 4
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "dealcloud",
+      "name": "DealCloud",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 14
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "zendesk",
+      "name": "Zendesk",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "freshdesk",
+      "name": "Freshdesk",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 10,
+        "too_short": 2
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "front",
+      "name": "Front",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 12,
+        "not_found": 2
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "pylon",
+      "name": "Pylon",
+      "attempts": 2,
+      "quote_checks": {
+        "not_found": 1,
+        "exact": 10,
+        "too_short": 1
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "partner_or_sales",
+      "verdict": "blocked"
+    },
+    {
+      "id": "liveagent",
+      "name": "LiveAgent",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "plain",
+      "name": "Plain",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 12,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "help-scout",
+      "name": "Help Scout",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 8,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "gorgias",
+      "name": "Gorgias",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 7,
+        "not_found": 4
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "gladly",
+      "name": "Gladly",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 9,
+        "too_short": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "partner_or_sales",
+      "verdict": "blocked"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "twilio",
+      "name": "Twilio",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 21
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "zoho-cliq",
+      "name": "Zoho Cliq",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "lark",
+      "name": "Lark (Larksuite)",
+      "attempts": 2,
+      "quote_checks": {
+        "unreachable": 10,
+        "exact": 4
+      },
+      "fields": {
+        "auth": "unreachable",
+        "access": "unreachable",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "pumble",
+      "name": "Pumble",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 21,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "attempts": 2,
+      "quote_checks": {
+        "not_found": 1,
+        "exact": 10
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "unsupported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 17
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "whatsapp-business",
+      "name": "WhatsApp Business",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "aircall",
+      "name": "Aircall",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 12,
+        "not_found": 2
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "paid_plan",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "vonage",
+      "name": "Vonage",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "google-ads",
+      "name": "Google Ads",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "meta-ads",
+      "name": "Meta Ads",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "linkedin-ads",
+      "name": "LinkedIn Ads",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 7,
+        "not_found": 3
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "gohighlevel",
+      "name": "GoHighLevel",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "mailchimp",
+      "name": "Mailchimp",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "klaviyo",
+      "name": "Klaviyo",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "systeme-io",
+      "name": "systeme.io",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 15
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "threads",
+      "name": "Threads (Meta)",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 15
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "sendgrid",
+      "name": "SendGrid",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 14
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "woocommerce",
+      "name": "WooCommerce",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 13,
+        "too_short": 1
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "bigcommerce",
+      "name": "BigCommerce",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 19,
+        "not_found": 2
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "salesforce-commerce-cloud",
+      "name": "Salesforce Commerce Cloud",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 14,
+        "too_short": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "partner_or_sales",
+      "verdict": "blocked"
+    },
+    {
+      "id": "magento",
+      "name": "Magento (Adobe Commerce)",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 17
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "squarespace",
+      "name": "Squarespace",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "ecwid",
+      "name": "Ecwid",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 17
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "gumroad",
+      "name": "Gumroad",
+      "attempts": 2,
+      "quote_checks": {
+        "unreachable": 7,
+        "exact": 6
+      },
+      "fields": {
+        "auth": "unreachable",
+        "access": "unsupported",
+        "api": "unreachable",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "amazon-selling-partner",
+      "name": "Amazon Selling Partner",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11,
+        "too_short": 1
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "unsupported",
+        "api": "unsupported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "fanbasis",
+      "name": "fanbasis",
+      "attempts": 2,
+      "quote_checks": {
+        "unreachable": 4,
+        "exact": 2
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unreachable",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "dataforseo",
+      "name": "DataForSEO",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "se-ranking",
+      "name": "SE Ranking",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "ahrefs",
+      "name": "Ahrefs",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "mrscraper",
+      "name": "MrScraper",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "apify",
+      "name": "Apify",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "bright-data",
+      "name": "Bright Data",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "sherlock",
+      "name": "Sherlock",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 6
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "unknown",
+      "verdict": "blocked"
+    },
+    {
+      "id": "waterfall-io",
+      "name": "Waterfall.io",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 17
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 9
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 14
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "neo4j",
+      "name": "Neo4j",
+      "attempts": 2,
+      "quote_checks": {
+        "not_found": 1,
+        "exact": 19
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_trial",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "mongodb-atlas",
+      "name": "MongoDB Atlas",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 8,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "datadog",
+      "name": "Datadog",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 9
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 21
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 8,
+        "exact_rendered": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "jira",
+      "name": "Jira",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 17,
+        "not_found": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "asana",
+      "name": "Asana",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "monday-com",
+      "name": "Monday.com",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "clickup",
+      "name": "ClickUp",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "coda",
+      "name": "Coda",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "smartsheet",
+      "name": "Smartsheet",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "harvest",
+      "name": "Harvest",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "plaid",
+      "name": "Plaid",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "binance",
+      "name": "Binance",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 9,
+        "exact_rendered": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "paygent-connect",
+      "name": "Paygent Connect",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 1
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "ipayx",
+      "name": "iPayX",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 8
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "quickbooks",
+      "name": "QuickBooks",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 9
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "xero",
+      "name": "Xero",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12,
+        "exact_rendered": 2
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "brex",
+      "name": "Brex",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 16
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "unsupported",
+        "api": "supported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "admin_approval",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "ramp",
+      "name": "Ramp",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "pitchbook",
+      "name": "PitchBook",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "partner_or_sales",
+      "verdict": "blocked"
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "otter-ai",
+      "name": "Otter AI",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 11
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "unsupported",
+        "mcp": "unsupported",
+        "composio": "supported",
+        "verdict": "unsupported"
+      },
+      "access": "partner_or_sales",
+      "verdict": "blocked"
+    },
+    {
+      "id": "fathom",
+      "name": "Fathom",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "consensus",
+      "name": "Consensus",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 13
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "reducto",
+      "name": "Reducto",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    },
+    {
+      "id": "devin",
+      "name": "Devin",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "higgsfield",
+      "name": "higgsfield",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "paid_plan",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "mermaid-cli",
+      "name": "Mermaid CLI",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 7
+      },
+      "fields": {
+        "auth": "unsupported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "unknown",
+      "verdict": "unknown"
+    },
+    {
+      "id": "youtube-transcript",
+      "name": "YouTube Transcript",
+      "attempts": 2,
+      "quote_checks": {
+        "exact": 10
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "unsupported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_with_caveats"
+    },
+    {
+      "id": "grain",
+      "name": "Grain",
+      "attempts": 1,
+      "quote_checks": {
+        "exact": 12
+      },
+      "fields": {
+        "auth": "supported",
+        "access": "supported",
+        "api": "supported",
+        "mcp": "supported",
+        "composio": "supported",
+        "verdict": "supported"
+      },
+      "access": "self_serve_free",
+      "verdict": "buildable_now"
+    }
+  ]
+}

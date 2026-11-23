@@ -10,7 +10,7 @@
     "notes": "Smartsheet recommends OAuth 2.0 for integrations that involve user consent. Unattended integrations can use a user-generated access token as an HTTP Bearer credential."
   },
   "access": {
-    "level": "unknown",
+    "level": "paid_plan",
     "notes": "API token generation is self-service on Business, Enterprise, and Advanced Work Management plans. OAuth app registration requires an existing licensed Business-or-higher user. It is not verified whether the public trial includes API credentials or whether a free developer sandbox is available."
   },
   "api": {
@@ -33,8 +33,8 @@
     "url": "https://docs.composio.dev/toolkits/smartsheet"
   },
   "verdict": {
-    "status": "unknown",
-    "main_blocker": "other",
+    "status": "buildable_with_caveats",
+    "main_blocker": "paid_plan",
     "rationale": "The documented read/write REST API is broad enough to build a useful integration on a qualifying plan. It remains unverified whether a new developer can obtain working credentials through the public trial or a free sandbox."
   },
   "evidence": [
@@ -123,6 +123,26 @@
   "composio_catalog_source": "docs_page",
   "composio_toolkit_url": "https://docs.composio.dev/toolkits/smartsheet",
   "access_basis": "",
+  "human_corrections": [
+    {
+      "field": "access.level",
+      "before": "unknown",
+      "after": "paid_plan",
+      "note": "Human audit 2026-11-24: the record's own quotes say the required plan is Business, Enterprise or Advanced Work Management, and app registration needs a licensed Business-or-higher user."
+    },
+    {
+      "field": "verdict.status",
+      "before": "unknown",
+      "after": "buildable_with_caveats",
+      "note": "Human audit 2026-11-24: follows from access being paid_plan."
+    },
+    {
+      "field": "verdict.main_blocker",
+      "before": "other",
+      "after": "paid_plan",
+      "note": "Human audit 2026-11-24: follows from access being paid_plan."
+    }
+  ],
   "verification": [
     {
       "field": "auth",
@@ -132,7 +152,7 @@
     {
       "field": "access",
       "result": "supported",
-      "note": "No claim was made, so there is nothing to check."
+      "note": "Set by the human audit."
     },
     {
       "field": "api",
@@ -152,15 +172,13 @@
     {
       "field": "verdict",
       "result": "supported",
-      "note": "No verdict was given."
+      "note": "Set by the human audit."
     }
   ],
-  "needs_human_review": true,
-  "review_reasons": [
-    "access is unknown"
-  ],
+  "needs_human_review": false,
+  "review_reasons": [],
   "attempts": 1,
-  "researched_at": "2026-11-23T20:59:40+00:00",
+  "researched_at": "2026-11-23T21:20:18+00:00",
   "model": "gpt-6.2-sol",
   "critic_model": "gpt-6-sol",
   "usage": {

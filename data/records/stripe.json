@@ -7,7 +7,7 @@
       "basic",
       "oauth2"
     ],
-    "primary": "oauth2",
+    "primary": "api_key",
     "notes": "Use OAuth 2.0 when a third-party app needs users to authorize access to their Stripe accounts. For an integration operating on its own account, use a restricted API key. HTTP Basic is a way to send the API key, not a separate username-and-password credential. Sending the same key in a Bearer header does not make it a separate credential type."
   },
   "access": {
@@ -124,11 +124,19 @@
   "composio_catalog_source": "docs_page",
   "composio_toolkit_url": "https://docs.composio.dev/toolkits/stripe",
   "access_basis": "",
+  "human_corrections": [
+    {
+      "field": "auth.primary",
+      "before": "oauth2",
+      "after": "api_key",
+      "note": "Human audit 2026-11-24: Stripe's primary API authentication is the secret API key; OAuth 2.0 applies only to Stripe Connect and Stripe Apps acting on connected accounts."
+    }
+  ],
   "verification": [
     {
       "field": "auth",
       "result": "supported",
-      "note": "The quotes document API-key authentication via HTTP Basic and OAuth 2.0. The OAuth and consent-screen quotes support its use for third-party access. The claimed recommendation to use restricted keys for own-account integrations is not shown."
+      "note": "Set by the human audit."
     },
     {
       "field": "access",
@@ -159,7 +167,7 @@
   "needs_human_review": false,
   "review_reasons": [],
   "attempts": 1,
-  "researched_at": "2026-11-23T20:59:42+00:00",
+  "researched_at": "2026-11-23T21:20:21+00:00",
   "model": "gpt-6.2-sol",
   "critic_model": "gpt-6-sol",
   "usage": {

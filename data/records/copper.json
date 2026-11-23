@@ -34,7 +34,7 @@
   },
   "verdict": {
     "status": "buildable_with_caveats",
-    "main_blocker": "other",
+    "main_blocker": "trial_only",
     "rationale": "The documented API is available during Copper’s free trial, but that path is time-limited and only Admin users can generate API keys. Registering an OAuth application requires contacting Copper."
   },
   "evidence": [
@@ -151,6 +151,7 @@
   "composio_catalog_source": "docs_page",
   "composio_toolkit_url": "https://docs.composio.dev/toolkits/copper",
   "access_basis": "",
+  "human_corrections": [],
   "verification": [
     {
       "field": "auth",
@@ -186,7 +187,7 @@
   "needs_human_review": false,
   "review_reasons": [],
   "attempts": 1,
-  "researched_at": "2026-11-23T20:45:28+00:00",
+  "researched_at": "2026-11-23T21:20:15+00:00",
   "model": "gpt-6-sol",
   "critic_model": "gpt-6-sol",
   "usage": {

@@ -1,0 +1,45 @@
+{
+  "pipedrive": [
+    {
+      "path": "verdict.main_blocker",
+      "value": "trial_only",
+      "note": "Human audit 2026-11-24: credentials come through a 14-day trial, the same situation as Close, so the blocker is trial_only, not other."
+    }
+  ],
+  "smartsheet": [
+    {
+      "path": "access.level",
+      "value": "paid_plan",
+      "note": "Human audit 2026-11-24: the record's own quotes say the required plan is Business, Enterprise or Advanced Work Management, and app registration needs a licensed Business-or-higher user."
+    },
+    {
+      "path": "verdict.status",
+      "value": "buildable_with_caveats",
+      "note": "Human audit 2026-11-24: follows from access being paid_plan."
+    },
+    {
+      "path": "verdict.main_blocker",
+      "value": "paid_plan",
+      "note": "Human audit 2026-11-24: follows from access being paid_plan."
+    }
+  ],
+  "stripe": [
+    {
+      "path": "auth.primary",
+      "value": "api_key",
+      "note": "Human audit 2026-11-24: Stripe's primary API authentication is the secret API key; OAuth 2.0 applies only to Stripe Connect and Stripe Apps acting on connected accounts."
+    }
+  ],
+  "mermaid-cli": [
+    {
+      "path": "verdict.status",
+      "value": "blocked",
+      "note": "Human audit 2026-11-24: Mermaid CLI is a local command-line tool and Node.js library with no hosted REST or GraphQL API."
+    },
+    {
+      "path": "verdict.main_blocker",
+      "value": "no_public_api",
+      "note": "Human audit 2026-11-24: local-only tool, so the blocker is no_public_api rather than narrow_api."
+    }
+  ]
+}

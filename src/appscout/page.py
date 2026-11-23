@@ -120,6 +120,7 @@ def build_dataset(data_dir: Path, repo_url: str | None, generated_at: str) -> di
         "flat_fields": FLAT_FIELDS,
         "process_notes": _load_optional(data_dir / "process_notes.json"),
         "audit": _load_optional(data_dir / "audit.json"),
+        "pass1": _load_optional(data_dir / "pass1_results.json"),
     }
 
 

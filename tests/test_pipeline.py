@@ -393,3 +393,29 @@ def test_verdict_rule_covers_every_access_level():
     assert verdict("partner_or_sales") == ("blocked", "partner_gate")
     assert verdict("unknown") is None
     assert verdict("unknown", "none") == ("blocked", "no_public_api")
+
+
+async def test_human_corrections_overwrite_the_value_keep_what_the_agent_said_and_clear_the_flag(tmp_path):
+    deps = deps_for(tmp_path, FakeLlm([finding_with_access_left_unknown()]))
+    (tmp_path / "corrections.json").write_text(
+        '{"acme": [{"path": "access.level", "value": "paid_plan", "note": "Audit: needs the Business plan."},'
+        ' {"path": "verdict.status", "value": "buildable_with_caveats", "note": "Follows from access."}]}',
+        encoding="utf-8",
+    )
+    record = await run_app(APP, deps)
+    assert (record.access.level, record.verdict.status, record.verdict.main_blocker) == ("paid_plan", "buildable_with_caveats", "paid_plan")
+    assert [(c.field, c.before, c.after) for c in record.human_corrections] == [
+        ("access.level", "unknown", "paid_plan"),
+        ("verdict.status", "unknown", "buildable_with_caveats"),
+    ]
+    assert not record.needs_human_review
+    assert deps.store.load_state("acme").attempts[0].finding.access.level == "unknown"
+
+
+async def test_catch_all_blocker_is_replaced_by_the_specific_one_for_the_same_verdict(tmp_path):
+    trial = make_finding(
+        access={"level": "self_serve_trial", "notes": ""},
+        verdict={"status": "buildable_with_caveats", "main_blocker": "other", "rationale": "Trial only."},
+    )
+    record = await run_app(APP, deps_for(tmp_path, FakeLlm([trial])))
+    assert record.verdict.main_blocker == "trial_only"

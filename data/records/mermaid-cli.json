@@ -32,8 +32,8 @@
     "url": ""
   },
   "verdict": {
-    "status": "buildable_with_caveats",
-    "main_blocker": "narrow_api",
+    "status": "blocked",
+    "main_blocker": "no_public_api",
     "rationale": "Credentials are self-serve, but the API is narrow."
   },
   "evidence": [
@@ -103,6 +103,20 @@
   "composio_catalog_source": "none",
   "composio_toolkit_url": "",
   "access_basis": "inferred",
+  "human_corrections": [
+    {
+      "field": "verdict.status",
+      "before": "buildable_with_caveats",
+      "after": "blocked",
+      "note": "Human audit 2026-11-24: Mermaid CLI is a local command-line tool and Node.js library with no hosted REST or GraphQL API."
+    },
+    {
+      "field": "verdict.main_blocker",
+      "before": "narrow_api",
+      "after": "no_public_api",
+      "note": "Human audit 2026-11-24: local-only tool, so the blocker is no_public_api rather than narrow_api."
+    }
+  ],
   "verification": [
     {
       "field": "auth",
@@ -132,13 +146,13 @@
     {
       "field": "verdict",
       "result": "supported",
-      "note": "With auth none, access self_serve_free, and a documented but narrow local Node/CLI API, buildable_with_caveats and main_blocker narrow_api follow. The rationale matches those facts; the unsupported composio value is not an input to the verdict."
+      "note": "Set by the human audit."
     }
   ],
   "needs_human_review": false,
   "review_reasons": [],
   "attempts": 2,
-  "researched_at": "2026-11-23T20:55:22+00:00",
+  "researched_at": "2026-11-23T21:20:23+00:00",
   "model": "gpt-6-sol",
   "critic_model": "grok-4.7",
   "usage": {

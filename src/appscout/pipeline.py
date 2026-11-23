@@ -35,13 +35,16 @@ from .schema import (
     AccessReassessment,
     App,
     Attempt,
+    Blocker,
     CatalogLookup,
     CatalogSource,
     CatalogStatus,
     ComposioCall,
+    Correction,
     Discovery,
     Evidence,
     EvidenceField,
+    FieldResult,
     Finding,
     Judgement,
     QuoteCheck,
@@ -49,6 +52,7 @@ from .schema import (
     RunState,
     ToolOutcome,
     VerdictStatus,
+    Verification,
 )
 from .store import Store
 
@@ -215,19 +219,48 @@ def _best(state: RunState) -> Attempt:
     return min(reversed(state.attempts), key=lambda attempt: len(failed_fields(attempt.verification)))
 
 
+def _apply_corrections(
+    finding: Finding, verification: list[Verification], corrections: list[dict]
+) -> tuple[Finding, list[Correction]]:
+    """Overwrite the values a person corrected, and mark those fields as settled by the audit."""
+    data = finding.model_dump(mode="json")
+    applied = []
+    for item in corrections:
+        section, _, key = item["path"].partition(".")
+        applied.append(
+            Correction(field=item["path"], before=str(data[section][key]), after=str(item["value"]), note=item["note"])
+        )
+        data[section][key] = item["value"]
+    settled = {item["path"].partition(".")[0] for item in corrections}
+    for entry in verification:
+        if entry.field in settled:
+            entry.result, entry.note = FieldResult.SUPPORTED, "Set by the human audit."
+    return Finding.model_validate(data), applied
+
+
+def _settle_blocker(finding: Finding) -> None:
+    """Replace the catch-all blocker "other" with the specific one the fixed rule gives for the same verdict."""
+    derived = derive_verdict(finding)
+    if finding.verdict.main_blocker == Blocker.OTHER and derived and derived.status == finding.verdict.status:
+        finding.verdict.main_blocker = derived.main_blocker
+
+
 def _build_record(app: App, state: RunState, deps: Deps) -> Record:
     best = _best(state)
+    verification = [entry.model_copy() for entry in best.verification]
+    finding, corrections = _apply_corrections(best.finding, verification, deps.store.corrections(app.id))
+    _settle_blocker(finding)
     evidence = [
         Evidence(**item.model_dump(), check=check) for item, check in zip(best.finding.evidence, best.checks)
     ]
-    reasons = review_reasons(best.finding, best.verification)
+    reasons = review_reasons(finding, verification)
     if state.catalog is None:
         reasons.append("Composio catalog lookup did not run")
     if state.discovery is None:
         reasons.append("the mandatory Composio web search did not run")
     in_catalog, toolkit_slug, catalog_source, toolkit_url = _catalog_status(best, state)
     return Record(
-        **best.finding.model_dump(exclude={"evidence"}),
+        **finding.model_dump(exclude={"evidence"}),
         **app.model_dump(),
         in_composio_catalog=in_catalog,
         composio_toolkit_slug=toolkit_slug,
@@ -235,7 +268,8 @@ def _build_record(app: App, state: RunState, deps: Deps) -> Record:
         composio_toolkit_url=toolkit_url,
         access_basis=state.access_basis,
         evidence=evidence,
-        verification=best.verification,
+        verification=verification,
+        human_corrections=corrections,
         needs_human_review=bool(reasons),
         review_reasons=reasons,
         attempts=len(state.attempts),

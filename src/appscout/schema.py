@@ -263,6 +263,15 @@ class Discovery(BaseModel):
     results: str
 
 
+class Correction(BaseModel):
+    """A value a person changed after checking the live docs. The record keeps what the agent had said."""
+
+    field: str
+    before: str
+    after: str
+    note: str
+
+
 class Record(Finding):
     id: str
     name: str
@@ -275,6 +284,7 @@ class Record(Finding):
     composio_toolkit_url: str = ""
     # Set when the access level was re-read from the verified quotes: "explicit" or "inferred".
     access_basis: str = ""
+    human_corrections: list[Correction] = []
     evidence: list[Evidence]
     verification: list[Verification]
     needs_human_review: bool

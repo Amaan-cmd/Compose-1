@@ -29,6 +29,7 @@ class Store:
     def __init__(self, root: Path):
         self.apps_file = root / "apps.csv"
         self.results_file = root / "results.jsonl"
+        self.corrections_file = root / "corrections.json"
         self.state_dir = root / "state"
         self.records_dir = root / "records"
 
@@ -36,6 +37,12 @@ class Store:
         with self.apps_file.open(newline="", encoding="utf-8") as handle:
             apps = [App(**row) for row in csv.DictReader(handle)]
         return [app for app in apps if batch is None or app.batch == batch]
+
+    def corrections(self, app_id: str) -> list[dict]:
+        """Human corrections for one app: [{"path": "access.level", "value": ..., "note": ...}]."""
+        if not self.corrections_file.exists():
+            return []
+        return json.loads(self.corrections_file.read_text(encoding="utf-8")).get(app_id, [])
 
     def load_state(self, app_id: str) -> RunState | None:
         path = self.state_dir / f"{app_id}.json"
