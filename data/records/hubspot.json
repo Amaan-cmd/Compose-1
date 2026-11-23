@@ -1,0 +1,195 @@
+{
+  "one_liner": "HubSpot is ready for an agent toolkit, with a publicly documented CRM API, free development access, and a vendor-operated MCP server.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is required for apps installed across multiple accounts. Static access tokens support single-account installation; some app features require a developer API key."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free account provides a route to app credentials and API use. Installation depends on the installing user's permissions; marketplace listing involves review, and free accounts have API rate limits."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.hubspot.com/docs/api-reference/overview",
+    "notes": "The memo describes a public REST reference covering CRM, marketing, conversations, files, and other areas, plus an HTTP GraphQL endpoint."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://developers.hubspot.com/ai-tools/mcp",
+    "notes": "HubSpot documents a CRM MCP server and a developer-platform MCP server. The memo does not assign a specific MCP tool breadth."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/hubspot"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free CRM access, obtainable app credentials, and documented API use provide a development path. The contacts API supports creating and managing records, and OAuth supports apps installed across accounts."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+      "quote": "“There are two authentication types available based on how you plan to distribute your app: OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+      "quote": "“Some app features and settings require a developer API key, which is available in the developer overview of your HubSpot account.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.hubspot.com/products/crm/free",
+      "quote": "“And unlike a free trial, it's 100% free with no expiration date. Get free CRM No credit card required.”",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/create-an-app",
+      "quote": "“Under Client credentials , copy the Client ID and Client secret from your new app and paste them into the corresponding locations in your OAuth server’s configuration, then restart your OAuth server.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.hubspot.com/docs/api/usage-details",
+      "quote": "“Privately distributed apps (Any Hub) Free and Starter 100 / app 250,000 / account”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.hubspot.com/docs/api-reference/overview",
+      "quote": "“All APIs, whether legacy, new, or beta, use the same root path as before: https://api.hubapi.com/ .”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.hubspot.com/docs/api-reference/crm-contacts-v3/guide",
+      "quote": "“The contacts endpoints allow you to create and manage contact records in your HubSpot account, as well as sync contact data between HubSpot and other systems.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.hubspot.com/docs/cms/start-building/features/data-driven-content/graphql/query-hubspot-data-using-graphql",
+      "quote": "“In addition to using GraphQL in your website pages , you can also use a GraphQL query in your integration, a Jamstack site , or in a custom code action in the workflows tool to specify the data you need from HubSpot without having to make separate requests to multiple API endpoints.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.hubspot.com/ai-tools/mcp",
+      "quote": "“HubSpot offers two distinct MCP (Model Context Protocol) servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/hubspot",
+      "quote": "“HubSpot MCP Server for Claude and Cursor Hosted HubSpot MCP for Claude, Cursor, and ChatGPT. Manage contacts, deals, and tickets in bulk, with managed OAuth or a direct API key.”",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "A few attempted documentation and pricing URLs did not load directly; accessible official pages supplied the evidence above.",
+    "The MCP overview contains differing descriptions of its current read/write capabilities, so this memo does not assign a specific MCP tool breadth."
+  ],
+  "id": "hubspot",
+  "name": "HubSpot",
+  "website": "hubspot.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "hubspot",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/hubspot",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish OAuth, static access tokens, and a developer API key. OAuth is required for apps distributed across multiple accounts."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show a free account, instructions for obtaining app credentials, and API limits for apps on the Free tier. The notes about installation permissions and marketplace review are not evidenced."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The API root and contacts endpoints support the REST claim, and the GraphQL quote explicitly describes integration use. The quotes do not establish the notes' list of additional API areas."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "HubSpot's own page says it offers two MCP servers."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio page for a HubSpot toolkit."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free access and a documented API with contact creation and management support buildable_now with no identified blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:15+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 203610,
+    "output_tokens": 4359,
+    "cached_input_tokens": 143756,
+    "critic_tokens": 0,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for HubSpot",
+      "charged_usd": 0.0,
+      "log_id": "log_M2VcKX9dJdy8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "HubSpot MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_sY4UGdbCc-gf"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developers.hubspot.com/docs \"GraphQL API\" \"query\" HubSpot 2026 site:developers.hubspot.com/docs",
+      "charged_usd": 0.004,
+      "log_id": "log_PNjaNi0rx8CM"
+    }
+  ]
+}

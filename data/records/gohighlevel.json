@@ -1,0 +1,235 @@
+{
+  "one_liner": "GoHighLevel has a broad, publicly documented cloud API and an official MCP server. Developers can build and test API-backed tools in a self-service sandbox; production use requires separate credentials.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is recommended for public third-party integrations; Private Integration Tokens are the static-token option."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The self-service developer-account and sandbox path yields API tokens for development and testing, not production use. Production requires a separate PIT. The docs do not explicitly state the sandbox’s price in a single sentence."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://marketplace.gohighlevel.com/docs/",
+    "notes": "The public documentation describes read/write CRM operations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://marketplace.gohighlevel.com/docs/other/mcp",
+    "notes": "HighLevel documents a connection users can sign into and use now; a community server also exists."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/highlevel"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "other",
+    "rationale": "Developers can generate sandbox tokens and test against the documented API, but the sandbox cannot serve production workflows. Production requires a separate PIT."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://marketplace.gohighlevel.com/docs/Authorization/OAuth2.0",
+      "quote": "OAuth 2.0 is a standard protocol that authorizes a client application (like a third-party app) to access specific resources on behalf of a user, without sharing the user’s password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://marketplace.gohighlevel.com/docs/Authorization/PrivateIntegrationsToken",
+      "quote": "Private Integration tokens are used in the Authorization header, just like other Access Tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+      "quote": "You should use OAuth 2.0 Flow if: You're developing a full-scale integration intended for public use.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/CreateDeveloperAccount",
+      "quote": "Click Sign Up to create a developer account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxAccount",
+      "quote": "The Sandbox account is provisioned immediately .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "Sandbox accounts can now generate PITs .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "This enables full integration testing in Sandbox without switching to a live account early.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "Sandbox environments are not meant for production workflows or real customer data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "When moving to production, you should create a separate PIT in the production account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://marketplace.gohighlevel.com/docs/",
+      "quote": "Complete REST API documentation for the HighLevel CRM platform. Build powerful integrations with our comprehensive developer resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://marketplace.gohighlevel.com/docs/",
+      "quote": "Manage contacts, leads, and customer data with full CRUD operations, tagging, and custom fields.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://marketplace.gohighlevel.com/docs/other/mcp",
+      "quote": "Connect HighLevel to your AI assistant, then ask it to find a contact, book an appointment, send a message, update a deal, or schedule a social post.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://marketplace.gohighlevel.com/docs/other/mcp",
+      "quote": "Sign in with your HighLevel login , and choose the sub-account (or sub-accounts) to connect.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/highlevel",
+      "quote": "HighLevel provides a marketing automation and CRM platform for agencies, featuring funnels, appointment scheduling, two-way texting, and other tools to drive client success",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "This enables full integration testing in Sandbox without switching to a live account early.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxPIT",
+      "quote": "When moving to production, you should create a separate PIT in the production account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The docs establish self-service sandbox creation and API-token generation but do not expressly say, in one sentence, that the sandbox is free.",
+    "The website-hint URL did not load directly; HighLevel’s Marketplace documentation was readable instead."
+  ],
+  "id": "gohighlevel",
+  "name": "GoHighLevel",
+  "website": "highlevel.stoplight.io",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "toolkit_page",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth 2.0 is documented for a third-party app acting for a user, and the docs say to use the OAuth 2.0 flow for a public integration. Private Integration tokens sent in the Authorization header support bearer_token."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Anyone can sign up for a developer account, a sandbox is provisioned immediately, and sandbox accounts can generate PITs with no quoted payment, trial, or approval. Quotes also show the sandbox is not for production and production needs a separate PIT; they do not state a price."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public docs page calls it a complete REST API and describes full CRUD for contacts, leads, and customer data, which supports rest, broad, and public_docs. Nothing quoted contradicts breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "HighLevel's own docs page tells users to connect HighLevel to an AI assistant and sign in with a HighLevel login, so the server is official and usable now. No quote supports the note that a community server also exists."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is from the Composio toolkit docs page for HighLevel and describes that product."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve sandbox credentials plus a broad public REST API make it buildable, and the quoted rule that the sandbox cannot serve production workflows is a real constraint that is not trial-only, paid, partner, or admin approval, so buildable_with_caveats with main_blocker other follows."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:43+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 26,
+    "input_tokens": 620103,
+    "output_tokens": 11900,
+    "cached_input_tokens": 463057,
+    "critic_tokens": 7090,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for GoHighLevel",
+      "charged_usd": 0.0,
+      "log_id": "log_DIYqN-OC1n8c"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "GoHighLevel MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_dbKMwbnOL0Lw"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:marketplace.gohighlevel.com OR site:help.gohighlevel.com \"sandbox\" \"free\" \"API\" developer account marketplace",
+      "charged_usd": 0.004,
+      "log_id": "log_COWzfhLdYgtR"
+    }
+  ]
+}

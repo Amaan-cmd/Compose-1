@@ -1,0 +1,207 @@
+{
+  "one_liner": "Klaviyo offers a broad REST API, API-key and OAuth authentication, and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "Klaviyo recommends OAuth for tech partners making authorized API calls."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "New test accounts start on the free plan, and the quickstart instructs account holders to create a private API key. The memo notes that no cited sentence explicitly confirms API-key creation on free plans. An OAuth app can be shared without a Marketplace listing, but Marketplace publication requires review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.klaviyo.com/en/reference",
+    "notes": "The public reference documents endpoints for reading and changing marketing data."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server",
+    "notes": "Klaviyo documents remote-hosted and local MCP servers; the remote-hosted server is recommended."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/klaviyo"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "New test accounts start on the free plan, and the API-key quickstart creates a list. The documented REST API covers read and write operations across several core resources; OAuth apps can be shared without a Marketplace listing."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+      "quote": "Klaviyo provides 3 methods of authentication including private key authentication and OAuth (used to call server-side APIs) and public key authentication (used to call client-side APIs).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+      "quote": "If you are a tech partner integrating with Klaviyo, we recommend using OAuth to make authorized API calls.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.klaviyo.com/en/docs/create_a_test_account",
+      "quote": "Like any new Klaviyo account, a new account you create for testing starts on the free plan, with the free plan's usage limits and features.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.klaviyo.com/en/docs/get_started",
+      "quote": "In this quickstart, you'll create a private API key, use it to create a list, and check that the list appears in Klaviyo.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+      "quote": "Your app does not have to be listed to share and use your installation URL with customers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.klaviyo.com/en/docs/build_your_integration",
+      "quote": "To be published on Klaviyo’s App Marketplace, all public apps must undergo an app review.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.klaviyo.com/en/docs/create_a_test_account",
+      "quote": "A test account is a regular Klaviyo account with a test label. It runs in the same production environment as any other Klaviyo account, and plans and billing work the same way.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.klaviyo.com/en/reference",
+      "quote": "Every endpoint in the Klaviyo REST API, with its authentication, parameters, request and response bodies, and an example request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.klaviyo.com/en/docs/get_started",
+      "quote": "The Klaviyo API lets your code read and change that data: profiles, events, lists, catalogs, campaigns and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server",
+      "quote": "This page walks you through configuring various MCP clients for both the remote-hosted MCP server (recommended) and the local MCP server, and how to control server behavior with query parameters and environment variables.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.klaviyo.com/blog/introducing-mcp-server",
+      "quote": "That’s why we built Klaviyo’s Model Context Protocol (MCP) server, available to all Klaviyo customers.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/klaviyo",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Klaviyo MCP or direct API to send campaigns, segment contacts, automate messaging, and analyze marketing performance through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No cited sentence explicitly states that free-plan accounts can create API credentials; the access finding combines the free-test-account documentation with the API-key quickstart.",
+    "Account sign-up and credential creation were not tested."
+  ],
+  "id": "klaviyo",
+  "name": "Klaviyo",
+  "website": "developers.klaviyo.com",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "klaviyo",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/klaviyo",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes document OAuth plus private- and public-key authentication, and recommend OAuth for tech-partner integrations. Listing both key types as api_key and primary as oauth2 follows."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A new test account starts on the free plan, and the quickstart has the account holder create a private API key and a list, with no payment, sales, or approval step shown. Marketplace review applies only to publication, and apps can be shared without a listing. No single sentence says free plans include key creation, but the two quotes together support self_serve_free."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference describes every Klaviyo REST API endpoint, and the quickstart says the API reads and changes profiles, events, lists, catalogs, campaigns and more. That supports rest, public docs, and does not contradict breadth broad."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Klaviyo's own docs describe configuring its remote-hosted and local MCP servers now, and Klaviyo says it built the server and it is available to all customers. That supports official and generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Klaviyo for connecting agents via Klaviyo MCP or the direct API."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials and a documented read/write REST API support buildable_now with main_blocker none."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:46:29+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 170855,
+    "output_tokens": 3746,
+    "cached_input_tokens": 117206,
+    "critic_tokens": 3244,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Klaviyo",
+      "charged_usd": 0.0,
+      "log_id": "log_fYPoVErgZy0r"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Klaviyo MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_vHwWsakGhiG7"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:help.klaviyo.com OR site:developers.klaviyo.com \"free plan\" \"API keys\" OR \"API access\" Klaviyo",
+      "charged_usd": 0.004,
+      "log_id": "log_sYVWSeV-ko2d"
+    }
+  ]
+}

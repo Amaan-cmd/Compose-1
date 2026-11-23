@@ -1,0 +1,195 @@
+{
+  "one_liner": "Mailchimp has a broad, publicly documented Marketing API, but the evidence reviewed does not establish whether its Free plan yields working API credentials.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "basic",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Mailchimp directs integrations installed by other users to OAuth 2. API keys and OAuth tokens can be sent using Basic or Bearer authentication."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Mailchimp lists a Free Marketing plan, and its getting-started page says that once you have an account and are logged in, you can get an API key and begin making calls. This supports a free self-serve path, though the quotes say API capabilities depend on the plan and some tools require Essentials."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://mailchimp.com/developer/marketing/api/root/list",
+    "notes": "The public reference covers audiences, campaigns, contacts, e-commerce objects, and other Marketing API operations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp",
+    "notes": "The official account-acting server is for Transactional Messaging, not Marketing. The official Marketing MCP searches documentation rather than acting on an account; a third-party read-only Marketing API server is also available."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/mailchimp"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Credentials are self-serve and free, and the documented API is broad enough to be useful."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://mailchimp.com/developer/marketing/api-concepts/authentication",
+      "quote": "OAuth 2 authenticates against an account belonging to someone else. Any integration a third party installs needs it.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://mailchimp.com/developer/marketing/api-concepts/authentication",
+      "quote": "API keys and OAuth 2 access tokens are sent the same way. We’ll refer to both as tokens. You can use either HTTP Basic Authentication or Bearer Authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://mailchimp.com/developer/marketing/build/get-started/create-an-account",
+      "quote": "To use the Marketing API, you need a Mailchimp account. What you can do with the API depends on what level of Mailchimp plan you have. Once you have an account and are logged in, you can get an API key and begin making calls to the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://mailchimp.com/help/about-mailchimp-pricing-plans/",
+      "quote": "We offer 4 types of Marketing plans: Free, Essentials, Standard, and Premium.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://mailchimp.com/developer/marketing/api-concepts/api-structure",
+      "quote": "The Marketing API generally follows REST conventions, with some deviations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://mailchimp.com/developer/marketing/build/get-started/create-an-account",
+      "quote": "The Mailchimp Marketing API provides programmatic access to Mailchimp data and functionality, allowing developers to build custom features to do things like sync email activity and campaign analytics with their database, manage audiences and campaigns, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp",
+      "quote": "Our MCP specifically allows you to interact with the Transactional Messaging API, give onboarding help regarding Transactional Messaging, and submit feedback.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server",
+      "quote": "This searches documentation, not your Mailchimp account. The server answers questions using this site’s published content, so it works without a Mailchimp credential. To let an agent act on your account, call the API directly or use Agent skills.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/AgentX-ai/mailchimp-mcp",
+      "quote": "A Model Context Protocol (MCP) server that provides read-only access to Mailchimp's Marketing API for comprehensive email marketing data retrieval.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/mailchimp",
+      "quote": "Some Mailchimp API/tool capabilities require at least the Mailchimp Essentials plan. A free Mailchimp account may not be enough for the requested tool flow.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Free-plan help URL tried did not load.",
+    "The available pricing and getting-started statements did not explicitly connect Free-plan membership to working API credentials; Composio additionally flags plan-dependent tools."
+  ],
+  "id": "mailchimp",
+  "name": "Mailchimp",
+  "website": "mailchimp.com/developer",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "mailchimp",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/mailchimp",
+  "access_basis": "inferred",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show OAuth 2 is required for a third-party integration, API keys exist, and both may be sent with HTTP Basic or Bearer authentication. Primary oauth2 follows from the third-party requirement."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred self_serve_free: a Free Marketing plan is listed, and an account holder who is logged in can create an API key and call the API. Plan level changes what the API can do, but nothing quoted limits credential creation to payment, a trial, approval, or sales. The Essentials restriction is only on the Composio page."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The Marketing API is described as generally following REST and covering audiences, campaigns, analytics, and more. Breadth broad is not contradicted; the cited developer pages are public."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Mailchimp publishes a Transactional Messaging MCP that can act on that API now, with no beta, pilot, or unlaunched wording. The Marketing server is documentation-only, and the GitHub server is a separate third-party read-only server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on the Composio Mailchimp toolkit page and discusses Mailchimp tool capabilities."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "self_serve_free credentials plus a documented, broad REST API yield buildable_now with main_blocker none."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:46:28+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 338174,
+    "output_tokens": 5787,
+    "cached_input_tokens": 215392,
+    "critic_tokens": 6789,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Mailchimp",
+      "charged_usd": 0.0,
+      "log_id": "log_Yah3kpWOxilc"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Mailchimp MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ulT6nYeAqCLk"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Mailchimp Marketing API \"free\" \"API key\" Mailchimp free account API access free plan API Mailchimp help developer",
+      "charged_usd": 0.004,
+      "log_id": "log_nF5yun4dI_Z5"
+    }
+  ]
+}

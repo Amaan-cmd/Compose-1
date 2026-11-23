@@ -1,0 +1,194 @@
+{
+  "one_liner": "Coda, now branded Superhuman Docs, is a hosted productivity service with a public read/write REST API and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "bearer_token",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth2 with PKCE is documented for MCP integrations acting on a user's behalf. The documented REST API uses personal API tokens; the memo found no evidence that REST accepts OAuth2."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The REST API is available in free workspaces, and account holders can create a token in account settings. Workspace roles can restrict operations. Official MCP use on the free plan is read-only and rate-limited."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://coda.io/developers",
+    "notes": "The public reference covers document creation, sharing and publishing, and reading and writing rows."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://coda.io/apis/mcp",
+    "notes": "Coda publishes a hosted MCP endpoint usable now. Free-plan MCP access is read-only and rate-limited."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/coda"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "The API is available in free workspaces, account holders can create tokens, and the public REST reference covers substantial read and write operations. The official MCP is an additional route, though its free-plan use is limited."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://help.coda.io/hc/en-us/articles/44722769665549-Security-recommendations-for-the-Coda-MCP",
+      "quote": "The primary way to connect is via OAuth2 with PKCE, a three-legged authorization flow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://help.coda.io/hc/en-us/articles/44722769665549-Security-recommendations-for-the-Coda-MCP",
+      "quote": "Personal API tokens remain available for specific use cases:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.superhuman.com/@oleg/getting-started-guide-coda-api/start-here-5",
+      "quote": "To connect with the API, head over to your account settings ⁠ and create a new API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://coda.io/developers",
+      "quote": "We make the Superhuman Docs API available to all of our users free of charge, in both free and paid workspaces.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://help.coda.io/en/articles/9633323-manage-your-coda-account-settings",
+      "quote": "You can create an API token in your account settings.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://superhuman.com/docs/features/docs-mcp",
+      "quote": "Free plan users can try it out with read-only access for up to 30 requests per week (with a max of 60 requests per month).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://coda.io/developers",
+      "quote": "The Superhuman Docs API is a RESTful API that lets you programmatically interact with data in Superhuman Docs (formerly Coda): List and search documents Create new docs and copy existing ones Share and publish docs Discover pages, tables, formulas, and controls Read, insert, upsert, update, and delete rows",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.coda.io/hc/en-us/articles/44722769665549-Security-recommendations-for-the-Coda-MCP",
+      "quote": "Coda’s MCP server is officially published and available at:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.coda.io/hc/en-us/articles/44722769665549-Security-recommendations-for-the-Coda-MCP",
+      "quote": "There are many 3rd party MCPs available on the web, but our MCP is hosted on coda.io at https://coda.io/apis/mcp .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/coda",
+      "quote": "Collaborative workspace platform that transforms documents into powerful tools for team productivity and project management",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Coda’s former branding now redirects or appears as Superhuman Docs, and two pricing/help URLs did not load directly.",
+    "The Composio toolkit page was readable, but offered no complete descriptive sentence to quote for its catalog listing.",
+    "OAuth2 documentation was found for MCP, not evidence that the REST API accepts OAuth2."
+  ],
+  "id": "coda",
+  "name": "Coda",
+  "website": "coda.io/developers",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "coda",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/coda",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "MCP docs call OAuth2 with PKCE the primary connection method and still list personal API tokens; the REST getting-started quote shows creating an API key. Personal tokens fit bearer_token, so both methods and primary oauth2 are evidenced. The note correctly limits OAuth2 to MCP."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The API is free of charge in free and paid workspaces, and account holders can create a token in settings, which is self_serve_free. The read-only, rate-limited quote applies to free-plan MCP, not to getting REST credentials. Nothing quoted shows that workspace roles restrict operations."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public developers page explicitly calls it a RESTful API and lists document create/share/publish plus row read, insert, upsert, update, and delete, which is consistent with broad breadth and public docs at the cited URL."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Coda says its MCP server is officially published, available, and hosted at https://coda.io/apis/mcp, so official and generally_available are proven. No quote calls it a pilot or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is on https://docs.composio.dev/toolkits/coda, a Composio toolkit page for this app. The sentence itself is only a product description and does not name Coda."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented read/write REST API meet buildable_now with main_blocker none. The official MCP free-plan limit is a caveat on that extra route, not a blocker for the API."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:08+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 123995,
+    "output_tokens": 3815,
+    "cached_input_tokens": 93271,
+    "critic_tokens": 3290,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Coda",
+      "charged_usd": 0.0,
+      "log_id": "log_DkrfsmsuPW0d"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Coda MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_OvBGsA1PalKe"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:coda.io/developers OR site:help.coda.io Coda API OAuth authentication third party app user OAuth 2 tokens personal API key",
+      "charged_usd": 0.004,
+      "log_id": "log_jO8F30UqwX48"
+    }
+  ]
+}

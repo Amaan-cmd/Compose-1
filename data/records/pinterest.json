@@ -1,0 +1,229 @@
+{
+  "one_liner": "Pinterest is a broad API-backed toolkit candidate, but API credentials require Pinterest’s approval. Trial access supports development; publishing Pins and Boards for other users requires a further upgrade.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "Basic authentication exchanges app credentials for an OAuth token; approved apps can also generate limited test tokens."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "A developer can create a business account, but Pinterest reviews the app before granting Trial access. Trial-created Pins and Boards are visible only to their creator; broader use requires a reviewed Standard-access upgrade. The memo does not establish a time limit or cost for Trial access."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.pinterest.com/docs/developer-tools/sandbox/",
+    "notes": "Public guides describe endpoints for Pins, Boards, ads, audiences, and catalogs. Some API-reference pages did not load during research."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/collactivelabs/pinterest-mcp-server/blob/main/README.md",
+    "notes": "A third-party server provides setup and usage instructions. Pinterest describes its own server as forthcoming."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/pinterest"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "Pinterest documents a REST API with read/write capabilities, but app requests are reviewed before access is approved. Trial-created Pins and Boards are visible only to their creator, and Standard upgrades are also reviewed."
+  },
+  "evidence": [
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "quote": "If approved for API use, your app receives Trial access, which is best for exploring our API features.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/",
+      "quote": "Make sure your API requests on a user\"s behalf include a current access token that identifies the user and defines your permissions, or scopes, for using the API on their behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/",
+      "quote": "Use HTTP Basic Authentication: Username: client_id Password: client_secret",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.pinterest.com/docs/developer-tools/quickstart-tools/",
+      "quote": "Test Access tokens are special tokens that allow you to test certain endpoints without needing to go through the full OAuth flow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+      "quote": "Application requests are reviewed by Pinterest. You will receive an email notification after your app has been reviewed, letting you know whether it was approved or denied access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+      "quote": "If your app is approved for Trial access, you can log into your account and manage your app details on your My apps page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "quote": "That's why all Pins and Boards created with Trial access are only visible to their creator as Sandbox entities.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/developer-tools/sandbox/",
+      "quote": "After successful testing, you can update your code to point your API calls to the production environment.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/",
+      "quote": "On the collection site, select OAuth under Pinterest REST API (latest) in the left navigation panel.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.pinterest.com/docs/developer-tools/sandbox/",
+      "quote": "You can make API calls in Sandbox to the following endpoints with a Trial or Standard access tier.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.pinterest.com/usecase/ads/",
+      "quote": "These publicly available API features allow any approved developer to directly integrate with Pinterest to setup, run, edit, and manage Pinterest ad campaigns on external platforms — all with automation and scale.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/collactivelabs/pinterest-mcp-server/blob/main/README.md",
+      "quote": "After successful authentication, the MCP server will be ready to accept connections from AI agents.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.pinterest.com/about-pinterest-mcp",
+      "quote": "Be the first to know when it launches.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/pinterest",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Pinterest MCP or direct API to search Pins, create Pins, manage boards, and organize visual ideas through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+      "quote": "Standard upgrade requests are reviewed regularly. You will receive an email notification once a decision has been made on your app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The API-reference introduction would not load through either direct fetching or extraction.",
+    "The accessible guides establish endpoint coverage, but this research did not establish the cost of API access or confirm a time limit on Pinterest’s named “Trial access” tier."
+  ],
+  "id": "pinterest",
+  "name": "Pinterest",
+  "website": "developers.pinterest.com",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "pinterest",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/pinterest",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show user-scoped access tokens via an OAuth flow (primary), HTTP Basic with client_id/client_secret, and test access tokens that skip OAuth. The note that Basic specifically exchanges credentials for an OAuth token is not stated in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Pinterest reviews application requests before Trial access and again for Standard upgrades, which is vendor approval (admin_approval), not sales. Trial Pins and Boards are sandbox-only and visible only to their creator. Quotes do not show self-serve business-account creation, a time limit, or a price."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "A public Pinterest REST API is documented, including sandbox calls and approved-developer ad campaign setup, run, edit, and management; creating Pins and Boards is also evidenced. Breadth broad is an estimate the quotes do not contradict. Audiences and catalogs are not in the quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The collactivelabs GitHub server is a third-party server described as ready for agent connections after auth (community, generally available). Pinterest's own page only says to be notified when it launches, so the vendor server is not GA."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Pinterest for agent connections via MCP or direct API."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Reviewed Trial access is a vendor approval step, not a sales gate, and a documented REST API with write capability is evidenced, so buildable_with_caveats with main_blocker admin_approval follows."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:47:13+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 131709,
+    "output_tokens": 4559,
+    "cached_input_tokens": 82258,
+    "critic_tokens": 3465,
+    "composio_calls": 2,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Pinterest",
+      "charged_usd": 0.0,
+      "log_id": "log_DeYP20EP8rLB"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Pinterest MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_aC8ZUZ79xV_L"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Pinterest API v5 REST endpoints Pins boards ads catalogs public API reference",
+      "charged_usd": 0.0,
+      "log_id": "log_LP-7E8qrLSY6"
+    }
+  ]
+}

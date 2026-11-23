@@ -1,0 +1,237 @@
+{
+  "one_liner": "MrScraper is a managed web scraping platform for one-off page extraction, web search, and recurring data collection workflows.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "bearer_token"
+    ],
+    "primary": "api_key",
+    "notes": "The direct API uses a dashboard-issued token in the x-api-token header. Marketplace endpoints use a static Bearer token. OAuth 2.1 is documented for MCP, not for the direct API."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The cloud service offers a free account with credits for real API requests, including AI extraction, without requiring a credit card. Published free-token allowances conflict; check the dashboard before sizing a pilot. Running MCP locally still requires a MrScraper account and cloud service access."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.mrscraper.com/docs/api/overview",
+    "notes": "The public reference covers web search, direct extraction in multiple formats, workflow management, AI scraper creation, and result retrieval."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.mrscraper.com/mcp",
+    "notes": "The vendor offers hosted Streamable HTTP with OAuth 2.1 or an API key, and publishes @mrscraper/mcp for local Streamable HTTP or stdio. Local stdio uses an API key. The seven documented tools cover account status, HTML, Markdown, screenshots, brand extraction, JSON extraction, and web search, but not saved-scraper management."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/mrscraper"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A self-serve free account provides credits to test the documented REST API, which supports both direct extraction and repeatable scraper runs. Use the official MCP for page retrieval and search, and the REST API or Composio for saved-scraper operations."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.mrscraper.com/docs/getting-started/overview",
+      "quote": "Whether you're scraping e-commerce product data, collecting job listings, gathering customer reviews for sentiment analysis, or extracting any website content, our AI scrapers and workflows are designed to automate and simplify the process, giving you a powerful edge in any project.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.mrscraper.com/docs/api/authentication",
+      "quote": "The MrScraper API uses API token authentication to secure all endpoints. Every request must include a valid API token in the HTTP request headers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.mrscraper.com/docs/api/authentication",
+      "quote": "Keep Your Token Secure Your API token grants access to your account and plan resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.mrscraper.com/docs/api/overview",
+      "quote": "All API endpoints require authentication using an API token passed in the x-api-token header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://mrscraper.com/blog/free-web-scraping-apis",
+      "quote": "The free tier gives you real credits to work with — not a 30-second demo or a single-page trial — which means you can genuinely validate your pipeline on your actual target sites.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://mrscraper.com/blog/free-web-scraping-apis",
+      "quote": "What the free tier includes: Credits for real requests, AI extraction, Scraping Browser access, JavaScript rendering, and proxy rotation.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://mrscraper.com/pricing",
+      "quote": "Scraper Free includes 1,000 MrScraper tokens every month at no cost - no credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.mrscraper.com/docs/api/overview",
+      "quote": "Built on REST principles, our API offers predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.mrscraper.com/docs/api/overview",
+      "quote": "Scrape HTML, Markdown, screenshots, brand data, and JSON from a single Scraper API endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.mrscraper.com/docs/api/overview",
+      "quote": "Rerun and manage workflows programmatically with the Platform API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.mrscraper.com/docs/guides/programmatically",
+      "quote": "Use the /scrapers-ai endpoint to create a General agent scraper to get only the URLs within the provided link.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+      "quote": "MrScraper MCP is the official Model Context Protocol server for MrScraper. It connects AI clients to web page retrieval, web search, and your account usage.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+      "quote": "Use the hosted Streamable HTTP endpoint for a managed connection, or run the published MCP package locally through Streamable HTTP or stdio.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+      "quote": "Your client follows the OAuth 2.1 challenge, opens MrScraper in your browser, and asks you to approve scrape:read for the six scraping and search tools and account:read for status .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/mrscraper",
+      "quote": "MrScraper provides web scraping APIs for structured extraction, search results, marketplace data, travel data, and web unblocking.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.mrscraper.com/docs/getting-started/billing",
+      "quote": "The Free plan includes 100 tokens per month with no credit card required.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page (https://mrscraper.com/pricing) and the billing table (https://docs.mrscraper.com/docs/getting-started/billing) show 1,000 monthly free tokens, but the billing prose says 100. The actual allowance was not verified in an account.",
+    "Older MCP examples use scraperAPI. Use current tool discovery rather than copying those examples.",
+    "The Composio toolkit focuses on saved-scraper operations, results, usage, and analytics. It is not a drop-in replacement for the native MCP retrieval and search tools.",
+    "Findings are based on public documentation. No authenticated API or MCP calls were made."
+  ],
+  "id": "mrscraper",
+  "name": "MrScraper",
+  "website": "docs.mrscraper.com",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "mrscraper",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/mrscraper",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish API-token authentication through the x-api-token header, supporting api_key as the primary direct-API method. No quote independently establishes the listed marketplace Bearer-token method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes describe a free tier with credits for real requests and no credit card requirement. They conflict on the monthly token allowance. The claims about local MCP requirements are not established."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public docs describe a REST API, direct scraping, workflow management, and scraper creation; nothing contradicts moderate breadth. Some details in the notes, including result retrieval, are not established."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation calls the server official and says clients can use its hosted endpoint or run its published package. The quotes do not establish every tool detail or the claimed API-key options."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "A Composio toolkit page for MrScraper is quoted."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free access to real requests and a documented, useful REST API support buildable_now with no stated blocker. The rationale's suggestion that Composio supports saved-scraper operations is not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:30+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 243756,
+    "output_tokens": 5438,
+    "cached_input_tokens": 174593,
+    "critic_tokens": 3817,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for MrScraper",
+      "charged_usd": 0.0,
+      "log_id": "log_FCgeeWV-A13R"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "MrScraper MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Dotn9VP1lSV2"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:mrscraper.com MrScraper \"free\" \"API\" \"1,000\" free plan API key access no credit card",
+      "charged_usd": 0.004,
+      "log_id": "log_qgsxjk2PBLXG"
+    }
+  ]
+}

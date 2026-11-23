@@ -1,0 +1,178 @@
+{
+  "one_liner": "SE Ranking provides SEO data and project-management APIs, plus an official hosted MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "api_key",
+    "notes": "The HTTP Data and Project APIs use an account API key. OAuth is documented for connecting MCP clients, not for those HTTP endpoints."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "A developer can obtain an API key after email confirmation during the 14-day trial, which includes 100K API credits. Continued use requires a subscription or purchased credits."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://seranking.com/api/how-to-get-api",
+    "notes": "The documented APIs cover SEO data and platform management, with HTTP GET, POST, PUT and DELETE methods."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://seranking.com/mcp.html",
+    "notes": "SE Ranking hosts the remote server and publishes connection instructions. Available tools depend on the subscription."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "Trial users can obtain an API key after email confirmation, and the documented HTTP APIs cover SEO data and platform-management workflows. The evidenced no-payment path is a 14-day trial."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://seranking.com/api/how-to-get-api",
+      "quote": "A single API key authenticates every endpoint across the Data API and the Project API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://seranking.com/api/integrations/mcp",
+      "quote": "Cursor supports Streamable HTTP and OAuth natively. An OAuth window will open on first use to authenticate with your SE Ranking account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://seranking.com/api-pricing.html",
+      "quote": "The 14-day free trial gives you 100K API credits across all six API endpoints, as well as MCP server access. You also get access to the complete SEO and GEO suite by SE Ranking.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://seranking.com/api-pricing.html",
+      "quote": "If you are on a free trial, you’ll get an API key once you confirm your email. Find your keys within the API dashboard.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://seranking.com/api/how-to-get-api",
+      "quote": "SE Ranking offers two powerful APIs to integrate our data and platform management capabilities into your workflows and applications: Data API: Designed for pulling large volumes of raw SEO and marketing data (e.g., AI Search, keywords, backlinks, domain data). It uses a flexible, pay-as-you-go credit system.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://seranking.com/api/project/getting-started",
+      "quote": "All API method invocations are HTTP GET/POST/PUT/DELETE requests to the URL:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://seranking.com/mcp.html",
+      "quote": "The MCP server is centrally hosted and managed by SE Ranking. Connect with one URL, no manual configuration required.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Composio’s toolkit page could not be read directly; extraction of `https://docs.composio.dev/toolkits/se-ranking` returned “404 page not found.” SE Ranking documents OAuth for its MCP connection, but the reviewed HTTP API documentation specifies API-key authentication.",
+    "No quoted evidence was supplied for the Composio catalog result, so its status is unknown."
+  ],
+  "id": "se-ranking",
+  "name": "SE Ranking",
+  "website": "seranking.com/api",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "An API key is quoted as authenticating every Data API and Project API endpoint, and OAuth is quoted for first-use authentication of an MCP client to a SE Ranking account. Nothing quoted recommends a different method for the HTTP APIs, so api_key as primary is supported. The OAuth quote is limited to MCP client connection."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show a 14-day free trial that includes API credits and an API key after email confirmation, which supports self_serve_trial. They do not show the note’s claim that continued use requires a subscription or purchased credits."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes describe Data and platform-management APIs and HTTP GET, POST, PUT and DELETE invocations, which supports rest and public docs. Breadth broad is an estimate and is not contradicted."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "SE Ranking is quoted as centrally hosting and managing the MCP server, with a usable connection URL and no beta, pilot or not-yet-launched language, supporting official and generally_available. Tool availability by subscription is not in the quote."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A self-serve 14-day trial yields an API key and the quoted HTTP APIs are usable and not narrow, so buildable_with_caveats with main_blocker trial_only follows."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:48:49+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 141263,
+    "output_tokens": 3691,
+    "cached_input_tokens": 112303,
+    "critic_tokens": 2972,
+    "composio_calls": 3,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for SE Ranking",
+      "charged_usd": 0.0,
+      "log_id": "log_azZ9NTirMf2A"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "SE Ranking MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_IN2gPwW3Mb1b"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:seranking.com/api/ \"Getting API access\" \"Authentication\" \"free trial\" API keys SE Ranking",
+      "charged_usd": 0.004,
+      "log_id": "log_8YbcPdEt42kW"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Does a SE Ranking toolkit page exist? Extract any SE Ranking toolkit description or page not found message.",
+      "charged_usd": 0.0,
+      "log_id": "log_QNzzvxejzcSA"
+    }
+  ]
+}

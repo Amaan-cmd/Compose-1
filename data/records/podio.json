@@ -1,0 +1,213 @@
+{
+  "one_liner": "Podio is an app-based work platform with an API covering workspaces, apps, items, tasks, and other objects.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "The API key provides a client ID and secret for OAuth2; the memo does not identify API-key authentication as a separate method."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "An account holder can obtain an API key from account settings. The free plan lists 1,000 API calls per hour and limits organizations to 100 items."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.podio.com/doc",
+    "notes": "The public reference documents core objects and read/write operations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://www.progress.com/podio/documentation/using-podio/ai-and-mcp/podio-mcp-server-integration-guide",
+    "notes": "The vendor-hosted MCP server is in beta and intended for evaluation and testing."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/podio"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developer instructions describe obtaining an API key from account settings, and the free plan lists API integrations. The documented REST API supports read and write operations; free-plan limits constrain scale."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://developers.podio.com/",
+      "quote": "The Podio API is a complete programmable interface to all Podio functionality.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.podio.com/authentication",
+      "quote": "The Podio API uses the OAuth2 protocol for authentication. This allows external apps to request authorization to Podio without having direct access to the user's password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.podio.com/authentication",
+      "quote": "Server-side flow This is the preferred way of authenticating for web apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://podio.com/site/pricing",
+      "quote": "Free Start structuring your work $ 0 per user per month Start Free",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://podio.com/site/pricing",
+      "quote": "API Integrations 1000 calls per hour",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.podio.com/",
+      "quote": "You'll need a Podio account, first of all. Then you should review our Terms of API use and then grab an API key for each app you want to build from your account settings page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://podio.com/site/pricing",
+      "quote": "On the free plan, you have a limit of 100 items per organization.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.podio.com/index/api",
+      "quote": "The API is available at https://api.podio.com . It is RESTful and uses json as the exchange format.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.podio.com/doc/items",
+      "quote": "Add new item Bulk delete items Calculate Clone item Delete item Delete item reference Export items Filter items Filter items by view Filter items from space and app",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.podio.com/",
+      "quote": "In fact, the entire Podio frontend is built on the API, and we've exposed it all for you to use too.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.progress.com/podio/documentation/using-podio/ai-and-mcp/podio-mcp-server-integration-guide",
+      "quote": "The server is live at https://mcp.podio.com — just point your AI platform at it and log in with your Podio account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.progress.com/podio/documentation/using-podio/ai-and-mcp/podio-mcp-server-integration-guide",
+      "quote": "The Podio MCP Server is currently in beta and is intended for evaluation and testing.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/podio",
+      "quote": "Podio MCP server for AI agents and assistants",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/podio",
+      "quote": "143 Tools",
+      "source_type": "third_party",
+      "check": "not_found"
+    }
+  ],
+  "problems": [
+    "The API-key settings URL redirects to login, so credential generation could not be inspected inside an account. The public developer instructions and pricing page were readable."
+  ],
+  "id": "podio",
+  "name": "Podio",
+  "website": "podio.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "podio",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/podio",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is documented, and the server-side flow is described as preferred for web apps. The note's claim that an API key provides a client ID and secret is not shown by the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The free plan lists API integrations, and the developer instructions say an account holder can obtain an API key from account settings."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes identify a RESTful API, show item write operations, and describe access to Podio functionality. The cited reference pages are publicly readable."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation identifies a live Podio MCP server and says it is in beta."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Podio."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free self-serve API access and a documented, usable REST API support buildable_now with no main blocker. The quoted free-plan limits constrain scale but do not prevent building."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:23+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 96288,
+    "output_tokens": 6695,
+    "cached_input_tokens": 53312,
+    "critic_tokens": 0,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Podio",
+      "charged_usd": 0.0,
+      "log_id": "log_bDIEz0apsE-I"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Podio MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_-SvP020FjfEI"
+    }
+  ]
+}

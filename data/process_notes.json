@@ -1,0 +1,82 @@
+{
+  "updated": "2026-11-23",
+  "notes": [
+    {
+      "date": "2026-11-23",
+      "title": "The first model layer was built on the wrong provider and the wrong Composio interface",
+      "what_happened": "The pipeline was first written against Composio's Python SDK and an Anthropic model. The Composio key turned out to be a Connect consumer key that only works on the MCP endpoint (the SDK rejected it with a 401), and the user did not want an Anthropic model as the pipeline's brain.",
+      "cost": "One rebuild of the tool layer and one of the model layer before any app was researched.",
+      "what_changed": "Tools now go through the Composio Connect MCP endpoint, and the models are called through the OpenAI Responses API on the user's Azure deployments."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "Composio returns only a preview when a tool result is large",
+      "what_happened": "A two-page extract of about 9,300 tokens came back as a preview, with the full result saved to a remote sandbox file.",
+      "cost": "Bulk page reading through Composio was not practical.",
+      "what_changed": "The researcher reads ordinary pages with a free direct fetch. Composio does the catalog search, web search, and extraction of pages the direct fetch cannot read."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "The checker was too strict in two ways",
+      "what_happened": "On the first Attio run the critic failed the access field because of an unevidenced side note, and failed the API field because no single quote can prove an API is broad.",
+      "cost": "A wasted repair attempt: Attio took two attempts and about 170,000 tokens, then one attempt and about 108,000 after the fix.",
+      "what_changed": "The critic judges each field's value, not its notes. API breadth is treated as the researcher's estimate and fails only if a quote contradicts it."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "The first ten-app batch lost eight apps to the model rate limit",
+      "what_happened": "Ten apps ran at once against one deployment. Seven failed on its tokens-per-minute limit and one on a connection error, because model-side retries had been left to the SDK's defaults.",
+      "cost": "Only two of ten records from that run, $0.064 of Composio credit, and a rerun.",
+      "what_changed": "Model calls got the same retry layer as the Composio calls: a rate-limit response pauses every worker on that deployment. Default concurrency was lowered."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "All six quote misses in the first batch were fragments",
+      "what_happened": "Six of 133 quotes were reported as not found. Every one was under 20 characters, such as \"143 Tools\" or \"Create a New Lead\", which the matcher rejects by design.",
+      "cost": "The six were reported as missing from their pages when they had only been too short to test.",
+      "what_changed": "Short quotes are now labelled too_short, and the researcher is told to quote complete sentences."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "The blocker value was inconsistent for trial-only apps",
+      "what_happened": "In the first batch Close was given the blocker \"paid plan\" while Pipedrive and Copper were given \"other\" for the same situation: credentials available only through a time-limited trial.",
+      "cost": "Trial-gated apps did not cluster together.",
+      "what_changed": "A trial_only blocker was added. Records made before that change keep their old value until they are re-run."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "DealCloud's answer flipped after a prompt change",
+      "what_happened": "DealCloud was first recorded as blocked behind a partner gate. After the access evidence rule was tightened, a re-run recorded it as buildable with caveats, needing admin approval, although both runs agreed a non-customer has no self-serve route.",
+      "cost": "One record whose verdict depended on which sentence the model could quote.",
+      "what_changed": "The access definition now says that when getting an account at all takes a sales contact, the level is partner or sales, even if an admin later enables the API. The DealCloud record made before that fix was still the published one when this note was written."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "A tighter access evidence rule tripled the cost per app",
+      "what_happened": "Requiring the access quote to tie credentials to a specific plan made the model search much more. Zoho CRM went from about 116,000 tokens and $0.004 of Composio credit to about 417,000 tokens and $0.032; Close went from about 190,000 tokens and $0.008 to about 456,000 and $0.020.",
+      "cost": "At that rate the remaining 90 apps would have needed more Composio credit than was left.",
+      "what_changed": "A hard cap of four paid Composio calls per app ($0.016) and two web searches per app, with the paid extractor used only on pages the free fetch cannot read."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "Two test runs of a different researcher model failed outright",
+      "what_happened": "A side-by-side test of two researcher models on three apps failed on every app with a rate limit. The deployments allow 100,000 and 125,000 tokens per minute, and every page read stayed in the model's conversation, so requests grew large; one app used about 940,000 tokens over 21 calls.",
+      "cost": "No usable comparison from those runs, and $0.036 of Composio credit.",
+      "what_changed": "Page reads were cut to about 12,000 characters with keyword-focused passages, a research conversation is stopped from reading more once it passes 45,000 tokens, and requests are paced to stay under each deployment's tokens-per-minute quota."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "A newly provisioned model endpoint could not be used",
+      "what_happened": "A second Azure resource provided to relieve the rate limit had no model deployments, and its region did not offer the Responses API the pipeline calls.",
+      "cost": "Time spent probing it; no records were affected.",
+      "what_changed": "The user provisioned another resource with a working deployment, and the pipeline can now put the researcher and the critic on different endpoints."
+    },
+    {
+      "date": "2026-11-23",
+      "title": "The catalog matcher would have produced false positives",
+      "what_happened": "The first rule for matching an app to a Composio toolkit accepted any toolkit whose name was a prefix of the app's. On the full list it would have marked Zoho Cliq as the zoho toolkit and Salesforce Commerce Cloud as the salesforce toolkit.",
+      "cost": "Caught before the full run; the ten CRM records were not affected.",
+      "what_changed": "Names must now match once generic words such as CRM, .com and .io are dropped, so a different product from the same vendor does not count."
+    }
+  ]
+}

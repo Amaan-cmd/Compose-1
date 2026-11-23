@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which apps can become an agent toolkit today? A 100-app case study</title>
+<meta name="description" content="Evidence-backed research on how ready 100 apps are to become agent toolkits: auth, access, API surface, MCP, buildability, with the checks and the misses shown.">
+<link rel="icon" href="data:,">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #6f6d68;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10); --wash: rgba(11,11,11,0.04);
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100; --neutral: #c3c2b7;
+  --on-1: #ffffff; --on-2: #0b0b0b; --on-3: #0b0b0b; --on-4: #0b0b0b;
+  --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --link: #1c5cab;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #a3a199;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --neutral: #52514e;
+    --on-1: #0b0b0b; --on-2: #0b0b0b; --on-3: #0b0b0b; --on-4: #0b0b0b;
+    --link: #86b6ef;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #a3a199;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --wash: rgba(255,255,255,0.05);
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500; --neutral: #52514e;
+  --on-1: #0b0b0b; --on-2: #0b0b0b; --on-3: #0b0b0b; --on-4: #0b0b0b;
+  --link: #86b6ef;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main, header.top, footer { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+header.top { padding-top: 32px; }
+h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
+h2 { font-size: 20px; margin: 0 0 4px; }
+h3 { font-size: 15px; margin: 0 0 8px; }
+p { margin: 0 0 10px; }
+a { color: var(--link); }
+code, pre { font: 13px/1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; }
+pre { background: var(--wash); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; overflow-x: auto; margin: 0 0 10px; }
+.lede { color: var(--ink-2); max-width: 78ch; margin-bottom: 6px; }
+.coverage { display: inline-block; margin: 6px 0 0; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); font-size: 13px; color: var(--ink-2); }
+nav.jump { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; }
+section { margin: 36px 0; }
+section > .sub { color: var(--ink-2); margin-bottom: 14px; max-width: 86ch; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+.tile .value { font-size: 40px; font-weight: 600; line-height: 1.1; }
+.tile .label { font-weight: 600; margin-top: 2px; }
+.tile .note { color: var(--ink-2); font-size: 13px; }
+
+.findings { list-style: none; padding: 0; margin: 0 0 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.findings li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.findings .claim { font-weight: 600; display: block; margin-bottom: 4px; }
+.findings .detail { color: var(--ink-2); font-size: 14px; display: block; }
+.findings .names { display: block; margin-top: 4px; font-size: 13px; color: var(--ink-2); }
+
+.charts { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+.charts .stack { display: grid; gap: 12px; }
+.chart-title { font-weight: 600; margin-bottom: 2px; }
+.chart-note { color: var(--ink-2); font-size: 13px; margin-bottom: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ink-2); margin-bottom: 12px; }
+.legend .key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.rows { display: grid; gap: 8px; }
+.row3 { display: grid; grid-template-columns: var(--label-w, 220px) minmax(0, 1fr) var(--value-w, 132px); gap: 10px; align-items: center; font-size: 13px; }
+.row3 .name { color: var(--ink); overflow-wrap: anywhere; }
+.row3 .val { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.track { display: flex; gap: 2px; height: 18px; }
+.seg { height: 18px; min-width: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; outline-offset: 2px; }
+.s1 { background: var(--series-1); color: var(--on-1); }
+.s2 { background: var(--series-2); color: var(--on-2); }
+.s3 { background: var(--series-3); color: var(--on-3); }
+.s4 { background: var(--series-4); color: var(--on-4); }
+.s0 { background: var(--neutral); color: var(--ink); }
+.seg.rest { background: var(--wash); }
+.seg.end { border-radius: 0 4px 4px 0; }
+.seg:hover, .seg:focus-visible, .bar:hover, .bar:focus-visible { filter: brightness(1.12); }
+.seg .n { pointer-events: none; }
+.bar { height: 14px; background: var(--series-1); border-radius: 0 4px 4px 0; min-width: 2px; outline-offset: 2px; }
+.barwrap { display: flex; align-items: center; }
+details.twin { margin-top: 12px; font-size: 13px; }
+details.twin summary { cursor: pointer; color: var(--ink-2); }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { font-weight: 600; font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.plain { font-size: 13px; }
+
+#tooltip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--page); padding: 6px 9px; border-radius: 6px; font-size: 12px; line-height: 1.35; max-width: 280px; box-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+#tooltip strong { display: block; font-size: 13px; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: end; margin-bottom: 10px; }
+.filters label { display: grid; gap: 2px; font-size: 12px; color: var(--ink-2); }
+.filters select, .filters input, button { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--axis); border-radius: 6px; padding: 6px 8px; }
+.filters input { width: 220px; }
+button { cursor: pointer; }
+button:hover { background: var(--wash); }
+.count-line { font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
+.matrix-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+table.matrix { font-size: 13px; min-width: 980px; }
+table.matrix tr.app { cursor: pointer; }
+table.matrix tr.app:hover { background: var(--wash); }
+table.matrix tr.app td:first-child { min-width: 190px; }
+.appbtn { all: unset; cursor: pointer; font-weight: 600; color: var(--ink); }
+.appbtn:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; border-radius: 3px; }
+.appbtn::before { content: "+"; display: inline-block; width: 14px; color: var(--muted); font-weight: 400; }
+.appbtn[aria-expanded="true"]::before { content: "\2212"; }
+.oneliner { color: var(--ink-2); font-size: 12px; margin-left: 14px; max-width: 38ch; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.badge { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.mark { width: 9px; height: 9px; flex: none; }
+.mark.good { background: var(--good); border-radius: 50%; }
+.mark.warning { background: var(--warning); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.mark.critical { background: var(--critical); }
+.mark.unknown { border: 1.5px solid var(--muted); border-radius: 50%; }
+.flag { display: inline-block; font-size: 11px; font-weight: 600; border: 1px solid var(--critical); border-radius: 4px; padding: 0 5px; margin-left: 6px; }
+tr.detail > td { background: var(--wash); padding: 14px 18px; }
+.detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 24px; margin-bottom: 12px; }
+.detail-grid dt { font-size: 12px; color: var(--ink-2); font-weight: 600; }
+.detail-grid dd { margin: 0 0 6px; overflow-wrap: anywhere; }
+.detail h4 { font-size: 13px; margin: 14px 0 4px; }
+.detail ul { margin: 0; padding-left: 18px; }
+.quote { color: var(--ink); }
+.chk { white-space: nowrap; }
+
+.flow { list-style: none; padding: 0; margin: 0 0 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 22px; counter-reset: step; }
+.flow li { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; counter-increment: step; font-size: 13px; color: var(--ink-2); }
+.flow li strong { display: block; color: var(--ink); font-size: 14px; }
+.flow li strong::before { content: counter(step) ". "; color: var(--muted); font-weight: 400; }
+.flow li:not(:last-child)::after { content: "\2192"; position: absolute; right: -18px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.flow li:nth-child(4n):not(:last-child)::after { content: "\21B5"; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+.notes { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.notes li { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.notes .what { font-weight: 600; }
+.notes dl { margin: 6px 0 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 2px 10px; font-size: 13px; }
+.notes dt { color: var(--ink-2); }
+.notes dd { margin: 0; }
+footer { color: var(--muted); font-size: 12px; padding-top: 8px; padding-bottom: 40px; }
+
+@media (max-width: 900px) {
+  .tiles, .findings, .charts, .two, .flow, .detail-grid { grid-template-columns: minmax(0, 1fr); }
+  .flow li::after { display: none; }
+  .row3 { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Which apps can become an agent toolkit today?</h1>
+  <p class="lede">For each app on a 100-app list, an agent researched the public docs for auth, access to credentials, API surface, an existing MCP server and Composio catalog status, then gave a buildability verdict. Every claim carries a quote from the page it came from, and each quote was checked against the live page.</p>
+  <p class="coverage" id="coverage"></p>
+  <nav class="jump" aria-label="Sections">
+    <a href="#patterns">Patterns</a><a href="#findings">Findings matrix</a><a href="#agent">The agent</a><a href="#proof">Proof</a><a href="#verification">Verification</a><a href="#wrong">What went wrong</a><a href="#for-agents">For agents</a>
+  </nav>
+</header>
+
+<main>
+<section id="patterns" aria-labelledby="h-patterns">
+  <h2 id="h-patterns">Patterns</h2>
+  <p class="sub" id="patterns-sub"></p>
+  <div class="tiles" id="tiles"></div>
+  <ul class="findings" id="finding-list"></ul>
+  <div class="charts">
+    <div class="card" id="chart-access"></div>
+    <div class="stack">
+      <div class="card" id="chart-auth"></div>
+      <div class="card" id="chart-blockers"></div>
+    </div>
+  </div>
+</section>
+
+<section id="findings" aria-labelledby="h-findings">
+  <h2 id="h-findings">Findings matrix</h2>
+  <p class="sub">One row per researched app. Select a row to see its evidence: every quote, the page it came from, and whether the quote was found there.</p>
+  <div class="filters" id="filters"></div>
+  <div class="count-line" id="count-line" aria-live="polite"></div>
+  <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+</section>
+
+<section id="agent" aria-labelledby="h-agent">
+  <h2 id="h-agent">The agent</h2>
+  <p class="sub">An async Python pipeline. Composio's Connect MCP endpoint supplies the catalog search and the paid web tools; a model does the reading; a program and a second model do the checking.</p>
+  <ol class="flow">
+    <li><strong>App list</strong>Name, website hint and category for each app, in <code>data/apps.csv</code>.</li>
+    <li><strong>Composio lookups</strong>Composio's own catalog search (free) for an existing toolkit, and one Composio web search for an MCP server. Every call is logged with its charge.</li>
+    <li><strong>Researcher model</strong>Reads official docs with a free direct page fetch. Composio search and extract are rationed per app.</li>
+    <li><strong>Evidence rule</strong>A field with no quoted evidence is reset to unknown. No quote, no claim.</li>
+    <li><strong>Quote check</strong>A program fetches every cited URL itself and string-matches the quote against the page.</li>
+    <li><strong>Critic model</strong>Sees only the claims and the matched quotes, and judges whether the quotes prove each field.</li>
+    <li><strong>One repair attempt</strong>Fields that fail are researched once more. Still failing: flagged for a human.</li>
+    <li><strong>Record</strong>Written to disk as each app finishes, with its evidence, check results and cost.</li>
+  </ol>
+  <div class="two">
+    <div class="card">
+      <h3>Models used</h3>
+      <div id="models"></div>
+    </div>
+    <div class="card">
+      <h3>Where a human was needed</h3>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li>Supplying the app list, the Composio key and the model endpoints.</li>
+        <li>Approving each round of tuning after reading a batch's results (blocker values, the per-app spend cap, which model does which job).</li>
+        <li>Adjudicating records flagged for review. <span id="human-flagged"></span></li>
+        <li>The human audit of a sample. <span id="human-audit"></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="proof" aria-labelledby="h-proof">
+  <h2 id="h-proof">Proof</h2>
+  <p class="sub" id="repo-line"></p>
+  <pre><code>uv sync
+cp .env.example .env            # fill in the Composio key and the model endpoint
+uv run appscout run --batch 1   # research one category; resumes if interrupted
+uv run appscout status          # progress for all apps
+uv run python -m appscout.page  # rebuild this page from data/results.jsonl
+uv run pytest -q                # the pipeline's tests</code></pre>
+  <p class="small muted">Each record in the embedded dataset lists the Composio calls made for it with Composio's log id, so usage can be matched against Composio's own logs.</p>
+</section>
+
+<section id="verification" aria-labelledby="h-verification">
+  <h2 id="h-verification">Verification</h2>
+  <p class="sub">What the automatic checks found, then the human audit. These are counts from the records on this page.</p>
+  <div class="two">
+    <div class="card"><h3>Quote checks</h3><div id="v-quotes"></div></div>
+    <div class="card"><h3>Field verdicts from the critic</h3><div id="v-fields"></div></div>
+    <div class="card"><h3>Repairs and review flags</h3><div id="v-repairs"></div></div>
+    <div class="card"><h3>Cost</h3><div id="v-cost"></div></div>
+  </div>
+  <div class="card" style="margin-top:12px"><h3>Human audit</h3><div id="v-audit"></div></div>
+</section>
+
+<section id="wrong" aria-labelledby="h-wrong">
+  <h2 id="h-wrong">What went wrong</h2>
+  <p class="sub">Mistakes and surprises during the build, what each cost, and what changed. Records still flagged for review are listed first.</p>
+  <div class="card" style="margin-bottom:12px"><h3>Records flagged for review</h3><div id="wrong-flagged"></div></div>
+  <ul class="notes" id="notes"></ul>
+</section>
+
+<section id="for-agents" aria-labelledby="h-for-agents">
+  <h2 id="h-for-agents">For agents</h2>
+  <div class="card small">
+    <p>The full dataset is embedded in this page as JSON in <code>&lt;script type="application/json" id="dataset"&gt;</code>. Keys: <code>apps</code> (every app on the list), <code>records</code> (one per researched app, with evidence, verification, usage and the Composio call log), <code>flat</code> (one row per researched app using the field names below), <code>process_notes</code>, <code>audit</code>. The same data is in the repository as <code>data/results.jsonl</code>, <code>data/apps.json</code> and <code>data/apps_flat.csv</code>.</p>
+    <p><strong>Flat fields.</strong> <span id="flat-fields"></span></p>
+    <p><strong>Values.</strong> <code>access_tier</code>: self_serve_free, self_serve_trial, paid_plan, admin_approval, partner_or_sales, unknown (the most accessible path to credentials for a developer who is not a customer). <code>buildability_verdict</code>: Ready_Now, Conditional, Blocked_No_Public_API, Blocked_Partner_Gated, Unknown. <code>primary_blocker</code>: none, trial_only, paid_plan, partner_gate, admin_approval, no_public_api, narrow_api, docs_gated, other. <code>mcp_maturity</code>: generally_available, beta_or_pilot, announced, not_applicable, unknown. <code>deployment_model</code>: cloud, self_hosted, both, unknown. <code>confidence_score</code> is computed: the share of a record's checked fields that the verification step marked supported. Quote check results: exact, exact_rendered, too_short, not_found, unreachable.</p>
+    <p><button type="button" id="dl-json">Download JSON</button> <button type="button" id="dl-csv">Download CSV</button></p>
+  </div>
+</section>
+</main>
+
+<footer><span id="generated"></span></footer>
+<div id="tooltip" role="tooltip" hidden></div>
+
+<script type="application/json" id="dataset">__DATASET_JSON__</script>
+<script>
+(function () {
+  "use strict";
+  const D = JSON.parse(document.getElementById("dataset").textContent);
+  const R = D.records, F = D.flat, APPS = D.apps;
+  const TOTAL = APPS.length, N = R.length;
+  const $ = (id) => document.getElementById(id);
+
+  const ACCESS = { self_serve_free: "Self-serve, free", self_serve_trial: "Self-serve, trial", paid_plan: "Paid plan", admin_approval: "Admin approval", partner_or_sales: "Partner or sales", unknown: "Unknown" };
+  const AUTH = { oauth2: "OAuth2", api_key: "API key", basic: "Basic", bearer_token: "Bearer token", none: "No auth", other: "Other", unknown: "Unknown" };
+  const VERDICT = { Ready_Now: "Ready now", Conditional: "Conditional", Blocked_No_Public_API: "Blocked: no public API", Blocked_Partner_Gated: "Blocked: partner gated", Unknown: "Unknown" };
+  const VERDICT_MARK = { Ready_Now: "good", Conditional: "warning", Blocked_No_Public_API: "critical", Blocked_Partner_Gated: "critical", Unknown: "unknown" };
+  const BLOCKER = { none: "None", trial_only: "Trial only", paid_plan: "Paid plan", partner_gate: "Partner gate", admin_approval: "Admin approval", no_public_api: "No public API", narrow_api: "Narrow API", docs_gated: "Docs gated", other: "Other (unlisted)" };
+  const MCP = { official: "Official", community: "Community", none_found: "None found" };
+  const MATURITY = { generally_available: "generally available", beta_or_pilot: "beta or pilot", announced: "announced", not_applicable: "", unknown: "maturity not recorded" };
+  const DEPLOY = { cloud: "Cloud", self_hosted: "Self-hosted", both: "Cloud and self-hosted", unknown: "not recorded" };
+  const CHECK = { exact: "Found on the page", exact_rendered: "Found via Composio's extractor", too_short: "Too short to verify", not_found: "Not found on the page", unreachable: "Page could not be read" };
+  const RESULT = { supported: "Supported", unsupported: "Not supported", unreachable: "Could not be checked" };
+  const label = (map, key) => (key in map ? map[key] : String(key));
+  const usageOf = (r) => r.usage || {};
+  const mcpText = (r, f) => label(MCP, r.mcp.status) + (r.mcp.status !== "none_found" && label(MATURITY, f.mcp_maturity) ? ", " + label(MATURITY, f.mcp_maturity) : "");
+
+  function h(tag, props, ...kids) {
+    const node = document.createElement(tag);
+    for (const [key, value] of Object.entries(props || {})) {
+      if (value === null || value === undefined || value === false) continue;
+      if (key === "class") node.className = value;
+      else if (key === "text") node.textContent = value;
+      else if (key.startsWith("on")) node.addEventListener(key.slice(2), value);
+      else node.setAttribute(key, value === true ? "" : value);
+    }
+    for (const kid of kids.flat(Infinity)) {
+      if (kid === null || kid === undefined || kid === false) continue;
+      node.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+    }
+    return node;
+  }
+  const count = (list, test) => list.reduce((n, item) => n + (test(item) ? 1 : 0), 0);
+  const sum = (list, get) => list.reduce((n, item) => n + (get(item) || 0), 0);
+  function tally(values) {
+    const map = new Map();
+    for (const value of values) map.set(value, (map.get(value) || 0) + 1);
+    return [...map.entries()].sort((a, b) => b[1] - a[1]);
+  }
+  const pct = (n, d) => (d ? Math.round((100 * n) / d) + "%" : "0%");
+  const plural = (n, one, many) => n + " " + (n === 1 ? one : many || one + "s");
+  const usd = (n) => "$" + n.toFixed(3);
+  const num = (n) => n.toLocaleString("en-US");
+  function nameList(names, limit) {
+    if (!names.length) return "none yet";
+    const shown = names.slice(0, limit).join(", ");
+    return names.length > limit ? shown + ", and " + (names.length - limit) + " more" : shown;
+  }
+  function link(url, text) {
+    return /^https?:\/\//i.test(url || "") ? h("a", { href: url, target: "_blank", rel: "noopener noreferrer", text: text || url }) : document.createTextNode(text || url || "");
+  }
+  function host(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ""); } catch (error) { return url; }
+  }
+  function simpleTable(headers, rows, numeric) {
+    return h("table", { class: "plain" },
+      h("thead", {}, h("tr", {}, headers.map((text, i) => h("th", { class: numeric && numeric.includes(i) ? "num" : null, text })))),
+      h("tbody", {}, rows.map((row) => h("tr", {}, row.map((cell, i) => h("td", { class: numeric && numeric.includes(i) ? "num" : null }, cell))))));
+  }
+
+  /* ---------- tooltip (hover and keyboard focus show the same thing) ---------- */
+  const tip = $("tooltip");
+  function attachTip(node, value, caption) {
+    node.tabIndex = 0;
+    node.setAttribute("aria-label", value + ". " + caption);
+    const show = () => {
+      tip.replaceChildren(h("strong", { text: value }), document.createTextNode(caption));
+      tip.hidden = false;
+      const box = node.getBoundingClientRect();
+      const width = tip.offsetWidth, height = tip.offsetHeight;
+      const left = Math.min(Math.max(8, box.left + box.width / 2 - width / 2), window.innerWidth - width - 8);
+      const top = box.top - height - 8 < 8 ? box.bottom + 8 : box.top - height - 8;
+      tip.style.left = left + "px";
+      tip.style.top = top + "px";
+    };
+    const hide = () => { tip.hidden = true; };
+    node.addEventListener("pointerenter", show);
+    node.addEventListener("focus", show);
+    node.addEventListener("pointerleave", hide);
+    node.addEventListener("blur", hide);
+  }
+
+  /* ---------- header ---------- */
+  const categories = [];
+  for (const app of APPS) if (!categories.includes(app.category)) categories.push(app.category);
+  const researchedCategories = categories.filter((category) => R.some((r) => r.category === category));
+  $("coverage").textContent = N + " of " + TOTAL + " apps researched so far, across " + plural(researchedCategories.length, "category", "categories") + " of " + categories.length + ". Every number below is computed from those " + N + ".";
+  $("patterns-sub").textContent = N === TOTAL
+    ? "All " + TOTAL + " apps are in. Counts are out of " + N + "."
+    : "Based on the " + N + " of " + TOTAL + " apps researched so far; these patterns will move as the rest come in.";
+  $("generated").textContent = "Generated " + D.generated_at + " from data/results.jsonl.";
+
+  /* ---------- derived values ---------- */
+  const free = count(R, (r) => r.access.level === "self_serve_free");
+  const trial = count(R, (r) => r.access.level === "self_serve_trial");
+  const paid = count(R, (r) => r.access.level === "paid_plan");
+  const admin = count(R, (r) => r.access.level === "admin_approval");
+  const partner = count(R, (r) => r.access.level === "partner_or_sales");
+  const accessUnknown = count(R, (r) => r.access.level === "unknown");
+  const ready = count(F, (f) => f.buildability_verdict === "Ready_Now");
+  const inCatalog = count(F, (f) => f.in_composio_catalog);
+  const netNew = N - inCatalog;
+  const easyWins = R.filter((r, i) => F[i].buildability_verdict === "Ready_Now" && !F[i].in_composio_catalog).map((r) => r.name);
+  const outreach = R.filter((r) => r.access.level === "partner_or_sales").map((r) => r.name);
+  const flagged = R.filter((r) => r.needs_human_review);
+
+  /* ---------- tiles ---------- */
+  function tile(value, labelText, note) {
+    return h("div", { class: "card tile" }, h("div", { class: "value", text: value }), h("div", { class: "label", text: labelText }), h("div", { class: "note", text: note }));
+  }
+  $("tiles").append(
+    tile(String(N), "apps researched", "of " + TOTAL + " on the list"),
+    tile(String(ready), "buildable today", "of " + N + " researched (" + pct(ready, N) + ")"),
+    tile(String(free + trial), "self-serve credentials", free + " free, " + trial + " trial-only, of " + N),
+    tile(String(netNew), "not yet in Composio's catalog", easyWins.length + " of them buildable today"));
+
+  /* ---------- findings ---------- */
+  function finding(claim, detail, names) {
+    return h("li", {}, h("span", { class: "claim", text: claim }), h("span", { class: "detail", text: detail }), names ? h("span", { class: "names", text: names }) : null);
+  }
+  const findings = $("finding-list");
+  if (!N) {
+    findings.append(finding("No apps have been researched yet.", "Run the pipeline, then rebuild this page."));
+  } else {
+    const primary = tally(R.map((r) => r.auth.primary));
+    const offered = tally(R.flatMap((r) => r.auth.methods));
+    findings.append(finding(
+      label(AUTH, primary[0][0]) + " is the dominant primary auth method.",
+      primary[0][1] + " of " + N + " apps recommend it for integrations. Methods offered (an app can offer several): " + offered.map(([key, n]) => label(AUTH, key) + " " + n).join(", ") + "."));
+
+    const selfHosted = count(R, (r) => ["both", "self_hosted"].includes(r.deployment_model));
+    const gated = paid + admin + partner;
+    let accessDetail = (free + trial) + " of " + N + " apps are self-serve: " + free + " free, " + trial + " through a trial only. " + gated + (gated === 1 ? " is" : " are") + " gated (" + paid + " paid plan, " + admin + " admin approval, " + partner + " partner or sales)" + (accessUnknown ? "; " + accessUnknown + " unknown" : "") + ".";
+    if (selfHosted) accessDetail += " " + plural(selfHosted, "app") + " can be self-hosted, where a free tier may apply to the self-hosted route only.";
+    let categoryNote = null;
+    if (researchedCategories.length >= 2) {
+      const share = researchedCategories.map((category) => {
+        const rows = R.filter((r) => r.category === category);
+        return { category, rows: rows.length, share: count(rows, (r) => r.access.level.startsWith("self_serve")) / rows.length };
+      }).sort((a, b) => b.share - a.share);
+      const top = share[0], bottom = share[share.length - 1];
+      categoryNote = "Most self-serve: " + top.category + " (" + pct(top.share * top.rows, top.rows) + " of " + top.rows + "). Most gated: " + bottom.category + " (" + pct(bottom.share * bottom.rows, bottom.rows) + " self-serve of " + bottom.rows + ").";
+    } else {
+      categoryNote = "Only one category has been researched so far, so there is no cross-category comparison yet.";
+    }
+    findings.append(finding(
+      (free + trial) * 2 > N ? "Most apps let a developer get credentials without talking to anyone." : "Half or fewer of the apps let a developer get credentials without talking to anyone.",
+      accessDetail, categoryNote));
+
+    const blockers = tally(R.map((r) => r.verdict.main_blocker).filter((b) => b !== "none"));
+    const noBlocker = count(R, (r) => r.verdict.main_blocker === "none");
+    findings.append(blockers.length
+      ? finding("The most common blocker is " + label(BLOCKER, blockers[0][0]).toLowerCase() + ".", blockers[0][1] + " of the " + sum(blockers, (b) => b[1]) + " apps that have a blocker. " + noBlocker + " of " + N + " apps have none. All blockers: " + blockers.map(([key, n]) => label(BLOCKER, key) + " " + n).join(", ") + ".")
+      : finding("No researched app has a blocker.", noBlocker + " of " + N + " apps have none."));
+
+    findings.append(finding(
+      plural(easyWins.length, "easy win") + ": buildable today and not in Composio's catalog.",
+      plural(outreach.length, "app needs", "apps need") + " outreach because an account takes a partner or sales contact.",
+      "Easy wins: " + nameList(easyWins, 14) + ". Needs outreach: " + nameList(outreach, 14) + "."));
+
+    const official = count(R, (r) => r.mcp.status === "official");
+    const community = count(R, (r) => r.mcp.status === "community");
+    const withMcp = R.filter((r) => r.mcp.status !== "none_found");
+    const recorded = withMcp.filter((r) => r.mcp.maturity && r.mcp.maturity !== "unknown" && r.mcp.maturity !== "not_applicable");
+    const maturity = tally(recorded.map((r) => r.mcp.maturity)).map(([key, n]) => n + " " + label(MATURITY, key)).join(", ");
+    const unrecorded = withMcp.length - recorded.length;
+    findings.append(finding(
+      (withMcp.length * 2 > N ? "Most apps already have an MCP server." : "Half or fewer of the apps have an MCP server."),
+      withMcp.length + " of " + N + ": " + official + " official, " + community + " community-only. " + (recorded.length ? "Maturity where recorded: " + maturity + "." : "") + (unrecorded ? " Maturity not recorded for " + unrecorded + "." : "")));
+
+    const netNewVerdicts = tally(F.filter((f) => !f.in_composio_catalog).map((f) => f.buildability_verdict)).map(([key, n]) => n + " " + label(VERDICT, key).toLowerCase()).join(", ");
+    findings.append(finding(
+      inCatalog + " of " + N + " apps are already in Composio's catalog; " + netNew + (netNew === 1 ? " is" : " are") + " net-new.",
+      netNew ? "Of the net-new apps: " + netNewVerdicts + "." : "No net-new apps among those researched so far."));
+  }
+
+  /* ---------- chart: access by category ---------- */
+  const TIERS = [
+    { key: "free", name: "Self-serve, free", cls: "s1", test: (r) => r.access.level === "self_serve_free" },
+    { key: "trial", name: "Self-serve, trial only", cls: "s2", test: (r) => r.access.level === "self_serve_trial" },
+    { key: "paid", name: "Paid plan or admin approval", cls: "s3", test: (r) => ["paid_plan", "admin_approval"].includes(r.access.level) },
+    { key: "partner", name: "Partner or sales", cls: "s4", test: (r) => r.access.level === "partner_or_sales" },
+    { key: "unknown", name: "Unknown", cls: "s0", test: (r) => r.access.level === "unknown" },
+  ];
+  (function accessChart() {
+    const box = $("chart-access");
+    box.append(h("div", { class: "chart-title", text: "Access to credentials, by category" }),
+      h("div", { class: "chart-note", text: "Each bar is one category; its full width is every app in that category on the list. The unfilled part has not been researched yet." }),
+      h("div", { class: "legend" }, TIERS.map((tier) => h("span", {}, h("span", { class: "key " + tier.cls }), tier.name))));
+    const rows = h("div", { class: "rows", style: "--label-w: 250px; --value-w: 150px" });
+    const tableRows = [];
+    for (const category of categories) {
+      const listed = count(APPS, (app) => app.category === category);
+      const records = R.filter((r) => r.category === category);
+      const counts = TIERS.map((tier) => count(records, tier.test));
+      const track = h("div", { class: "track", role: "img", "aria-label": category + ": " + (records.length ? TIERS.map((tier, i) => counts[i] + " " + tier.name).join(", ") : "not yet researched") });
+      let last = null;
+      TIERS.forEach((tier, i) => {
+        if (!counts[i]) return;
+        const names = records.filter(tier.test).map((r) => r.name + (["paid", "unknown"].includes(tier.key) ? " (" + label(ACCESS, r.access.level).toLowerCase() + ")" : "")).join(", ");
+        const seg = h("div", { class: "seg " + tier.cls, style: "flex: " + counts[i] + " 1 0" }, h("span", { class: "n", text: counts[i] }));
+        attachTip(seg, counts[i] + " of " + records.length + " researched", tier.name + " in " + category + ": " + names);
+        track.append(seg);
+        last = seg;
+      });
+      if (last) last.classList.add("end");
+      if (listed > records.length) track.append(h("div", { class: "seg rest", style: "flex: " + (listed - records.length) + " 1 0" }));
+      const selfServe = counts[0] + counts[1];
+      rows.append(h("div", { class: "row3" }, h("div", { class: "name", text: category }), track,
+        h("div", { class: "val", text: records.length ? selfServe + " of " + records.length + " self-serve" : "not yet researched" })));
+      tableRows.push([category, ...counts.map(String), String(listed - records.length)]);
+    }
+    box.append(rows, h("details", { class: "twin" }, h("summary", { text: "Show as a table" }),
+      simpleTable(["Category", ...TIERS.map((tier) => tier.name), "Not yet researched"], tableRows, [1, 2, 3, 4, 5, 6])));
+    function fitLabels() {
+      for (const seg of box.querySelectorAll(".seg")) {
+        const n = seg.querySelector(".n");
+        if (n) n.hidden = seg.offsetWidth < 20;
+      }
+    }
+    fitLabels();
+    new ResizeObserver(fitLabels).observe(rows);
+  })();
+
+  /* ---------- charts: single-series bars ---------- */
+  function barChart(box, title, note, items, unit) {
+    box.append(h("div", { class: "chart-title", text: title }), h("div", { class: "chart-note", text: note }));
+    if (!items.length) { box.append(h("p", { class: "muted small", text: "Nothing to show yet." })); return; }
+    const max = Math.max(...items.map((item) => item.value));
+    const rows = h("div", { class: "rows", style: "--label-w: 110px; --value-w: 34px" });
+    for (const item of items) {
+      const bar = h("div", { class: "bar", style: "width: " + (100 * item.value) / max + "%" });
+      attachTip(bar, item.value + " of " + N + " " + unit, item.label + (item.names ? ": " + item.names : ""));
+      rows.append(h("div", { class: "row3" }, h("div", { class: "name", text: item.label }), h("div", { class: "barwrap" }, bar), h("div", { class: "val", text: item.value })));
+    }
+    box.append(rows, h("details", { class: "twin" }, h("summary", { text: "Show as a table" }),
+      simpleTable([title, "Apps"], items.map((item) => [item.label, String(item.value)]), [1])));
+  }
+  barChart($("chart-auth"), "Auth methods offered", "Apps offering each method, out of " + N + " researched. An app can offer several.",
+    tally(R.flatMap((r) => r.auth.methods)).map(([key, value]) => ({ label: label(AUTH, key), value, names: R.filter((r) => r.auth.methods.includes(key)).map((r) => r.name).join(", ") })), "apps");
+  barChart($("chart-blockers"), "Main blocker", "Apps with each blocker. " + count(R, (r) => r.verdict.main_blocker === "none") + " of " + N + " have none and are not shown.",
+    tally(R.map((r) => r.verdict.main_blocker).filter((b) => b !== "none")).map(([key, value]) => ({ label: label(BLOCKER, key), value, names: R.filter((r) => r.verdict.main_blocker === key).map((r) => r.name).join(", ") })), "apps");
+
+  /* ---------- findings matrix ---------- */
+  const COLUMNS = ["App", "Category", "Verdict", "Blocker", "Access", "Auth", "API", "MCP", "In catalog", "Checks"];
+  const matrix = $("matrix");
+  const body = h("tbody");
+  matrix.append(h("thead", {}, h("tr", {}, COLUMNS.map((text) => h("th", { scope: "col", text })))), body);
+  const rowNodes = [];
+
+  function detailPanel(r, f) {
+    const facts = h("dl", { class: "detail-grid" });
+    const fact = (term, ...value) => facts.append(h("div", {}, h("dt", { text: term }), h("dd", {}, value)));
+    fact("What it is", r.one_liner);
+    fact("Verdict rationale", r.verdict.rationale);
+    fact("Access", label(ACCESS, r.access.level) + ". " + (r.access.notes || ""));
+    fact("Auth", "Primary " + label(AUTH, r.auth.primary) + ". " + (r.auth.notes || ""));
+    fact("API", (r.api.styles.join(", ") || "none") + ", breadth " + r.api.breadth + " (the researcher's estimate). ", link(r.api.docs_url, r.api.docs_url));
+    fact("MCP", mcpText(r, f) + ". " + (r.mcp.notes || "") + " ", link(r.mcp.url, r.mcp.url));
+    fact("Deployment", label(DEPLOY, f.deployment_model));
+    fact("Composio catalog", f.in_composio_catalog ? "Yes" + (f.composio_toolkit_slug ? ", toolkit " + f.composio_toolkit_slug : "") + " (signal: " + String(r.composio_catalog_source || "").replace("_", " ") + ")" : "No toolkit found by Composio's catalog search or on its toolkit pages");
+
+    const evidence = simpleTable(["Field", "Quote check", "Quote", "Source"], (r.evidence || []).map((item) => [
+      item.field,
+      h("span", { class: "chk", text: label(CHECK, item.check) }),
+      h("span", { class: "quote", text: "“" + item.quote + "”" }),
+      h("span", {}, link(item.url, host(item.url)), " (" + String(item.source_type).replace("_", " ") + ")"),
+    ]));
+    const fields = h("ul", {}, (r.verification || []).map((v) => h("li", {}, h("strong", { text: v.field + ": " + label(RESULT, v.result) + ". " }), v.note)));
+    const usage = usageOf(r);
+    const calls = simpleTable(["Composio tool", "What for", "Charged", "Composio log id"], (r.composio_log || []).map((call) => [call.tool, call.detail, usd(call.charged_usd || 0), call.log_id || ""]), [2]);
+    return h("div", { class: "detail" }, facts,
+      r.review_reasons && r.review_reasons.length ? [h("h4", { text: "Why this is flagged for review" }), h("ul", {}, r.review_reasons.map((text) => h("li", { text })))] : null,
+      h("h4", { text: "Evidence (" + f.quotes_verified + " of " + f.quotes_total + " quotes found on their pages)" }), evidence,
+      h("h4", { text: "Critic's verdict per field" }), fields,
+      r.problems && r.problems.length ? [h("h4", { text: "Problems the researcher reported" }), h("ul", {}, r.problems.map((text) => h("li", { text })))] : null,
+      h("h4", { text: "Composio calls" }), calls,
+      h("p", { class: "small muted", style: "margin-top:10px", text: "Researched " + r.researched_at + " by " + r.model + " (critic " + r.critic_model + "), " + plural(r.attempts, "attempt") + ", " + num((usage.input_tokens || 0) + (usage.output_tokens || 0)) + " tokens, " + usd(usage.composio_usd || 0) + " of Composio credit. Confidence score " + f.confidence_score + "." }));
+  }
+
+  R.forEach((r, i) => {
+    const f = F[i];
+    const supported = count(r.verification || [], (v) => v.result === "supported");
+    const button = h("button", { class: "appbtn", type: "button", "aria-expanded": "false", text: r.name });
+    const row = h("tr", { class: "app" },
+      h("td", {}, button, h("div", { class: "oneliner", text: r.one_liner })),
+      h("td", { text: r.category }),
+      h("td", {}, h("span", { class: "badge" }, h("span", { class: "mark " + VERDICT_MARK[f.buildability_verdict] }), label(VERDICT, f.buildability_verdict))),
+      h("td", { text: label(BLOCKER, f.primary_blocker) }),
+      h("td", { text: label(ACCESS, f.access_tier) + (["both", "self_hosted"].includes(f.deployment_model) ? " (" + label(DEPLOY, f.deployment_model).toLowerCase() + ")" : "") }),
+      h("td", { text: label(AUTH, f.primary_auth) + (f.auth_methods.length > 1 ? " (also " + f.auth_methods.filter((m) => m !== f.primary_auth).map((m) => label(AUTH, m)).join(", ") + ")" : "") }),
+      h("td", { text: (f.api_surface.join(", ") || "none") + ": " + f.endpoint_breadth }),
+      h("td", { text: mcpText(r, f) }),
+      h("td", { text: f.in_composio_catalog ? "Yes" + (f.composio_toolkit_slug ? " (" + f.composio_toolkit_slug + ")" : "") : "No" }),
+      h("td", {}, f.quotes_verified + "/" + f.quotes_total + " quotes, " + supported + "/" + (r.verification || []).length + " fields", f.needs_human_review ? h("span", { class: "flag", text: "Review" }) : null));
+    const detail = h("tr", { class: "detail", hidden: true }, h("td", { colspan: COLUMNS.length }));
+    let built = false;
+    const toggle = () => {
+      if (!built) { detail.firstChild.append(detailPanel(r, f)); built = true; }
+      detail.hidden = !detail.hidden;
+      button.setAttribute("aria-expanded", String(!detail.hidden));
+    };
+    row.addEventListener("click", (event) => { if (!event.target.closest("a")) toggle(); });
+    body.append(row, detail);
+    rowNodes.push({ r, f, row, detail, button, text: (r.name + " " + r.one_liner + " " + r.category + " " + f.auth_methods.join(" ") + " " + f.composio_toolkit_slug).toLowerCase() });
+  });
+
+  const controls = {};
+  function select(id, labelText, options) {
+    const node = h("select", { id }, h("option", { value: "", text: "All" }), options.map(([value, text]) => h("option", { value, text })));
+    controls[id] = node;
+    node.addEventListener("change", applyFilters);
+    return h("label", { for: id }, labelText, node);
+  }
+  const present = (values, map) => [...new Set(values)].map((value) => [String(value), map ? label(map, value) : String(value)]);
+  const search = h("input", { id: "f-search", type: "search", placeholder: "Name, auth method, toolkit" });
+  search.addEventListener("input", applyFilters);
+  const reset = h("button", { type: "button", text: "Clear filters" });
+  reset.addEventListener("click", () => { for (const node of Object.values(controls)) node.value = ""; search.value = ""; applyFilters(); });
+  $("filters").append(
+    select("f-category", "Category", present(R.map((r) => r.category))),
+    select("f-verdict", "Verdict", present(F.map((f) => f.buildability_verdict), VERDICT)),
+    select("f-access", "Access", present(F.map((f) => f.access_tier), ACCESS)),
+    select("f-catalog", "In Composio catalog", [["true", "Yes"], ["false", "No"]]),
+    h("label", { for: "f-search" }, "Search", search), reset);
+
+  function applyFilters() {
+    const want = { category: controls["f-category"].value, verdict: controls["f-verdict"].value, access: controls["f-access"].value, catalog: controls["f-catalog"].value, text: search.value.trim().toLowerCase() };
+    let shown = 0;
+    for (const item of rowNodes) {
+      const ok = (!want.category || item.r.category === want.category) && (!want.verdict || item.f.buildability_verdict === want.verdict) &&
+        (!want.access || item.f.access_tier === want.access) && (!want.catalog || String(item.f.in_composio_catalog) === want.catalog) &&
+        (!want.text || item.text.includes(want.text));
+      item.row.hidden = !ok;
+      if (!ok) { item.detail.hidden = true; item.button.setAttribute("aria-expanded", "false"); }
+      shown += ok ? 1 : 0;
+    }
+    $("count-line").textContent = "Showing " + shown + " of " + N + " researched apps. " + (TOTAL - N) + " of " + TOTAL + " on the list have not been researched yet.";
+  }
+  applyFilters();
+
+  /* ---------- the agent ---------- */
+  const pairs = tally(R.map((r) => r.model + " | " + r.critic_model));
+  $("models").append(pairs.length
+    ? simpleTable(["Researcher", "Critic", "Apps"], pairs.map(([key, n]) => [...key.split(" | "), String(n)]), [2])
+    : h("p", { class: "muted small", text: "No records yet." }));
+  $("human-flagged").textContent = flagged.length ? plural(flagged.length, "record is", "records are") + " waiting on this now." : "None are waiting now.";
+  $("human-audit").textContent = D.audit ? "Done; see Verification." : "Not done yet.";
+
+  /* ---------- proof ---------- */
+  $("repo-line").replaceChildren(...(D.repo_url
+    ? ["The code, the data and this page's builder are in the repository: ", link(D.repo_url, D.repo_url), ". To reproduce a batch:"]
+    : ["The repository link has not been set on this build of the page. To reproduce a batch from the code:"]));
+
+  /* ---------- verification ---------- */
+  const evidence = R.flatMap((r) => r.evidence || []);
+  const checks = tally(evidence.map((item) => item.check));
+  // Records made before the too_short label existed reported fragments as "not found"; say so rather than hide it.
+  const squash = (text) => String(text).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  const misses = evidence.filter((item) => item.check === "not_found");
+  const shortMisses = count(misses, (item) => squash(item.quote).length < 20);
+  const shortMissNote = shortMisses ? " " + shortMisses + " of the " + misses.length + " \"not found\" quotes are fragments under 20 characters, recorded before the too-short label existed." : "";
+  $("v-quotes").append(simpleTable(["Result", "Quotes", "Share"], checks.map(([key, n]) => [label(CHECK, key), String(n), pct(n, evidence.length)]), [1, 2]),
+    h("p", { class: "small muted", style: "margin-top:8px", text: plural(evidence.length, "quote") + " across " + N + " apps. \"Too short\" means under 20 characters, which the matcher refuses because a fragment proves nothing." + shortMissNote }));
+  const verdicts = R.flatMap((r) => r.verification || []);
+  $("v-fields").append(simpleTable(["Result", "Fields", "Share"], tally(verdicts.map((v) => v.result)).map(([key, n]) => [label(RESULT, key), String(n), pct(n, verdicts.length)]), [1, 2]),
+    h("p", { class: "small muted", style: "margin-top:8px", text: "Six checks per app: auth, access, API, MCP, Composio catalog page, and whether the verdict follows. API breadth is the researcher's estimate and fails only if a quote contradicts it." }));
+  const repaired = count(R, (r) => r.attempts > 1);
+  const preSchema = count(R, (r) => (r.deployment_model || "unknown") === "unknown");
+  $("v-repairs").append(h("ul", { class: "small", style: "margin:0;padding-left:18px" },
+    h("li", { text: repaired + " of " + N + " apps needed the repair attempt." }),
+    h("li", { text: flagged.length + " of " + N + " are flagged for human review" + (flagged.length ? ": " + flagged.map((r) => r.name).join(", ") + "." : ".") }),
+    preSchema ? h("li", { text: preSchema + " of " + N + " records were made before deployment model and MCP maturity were added, and show \"not recorded\" for them." }) : null));
+  const logs = R.flatMap((r) => r.composio_log || []);
+  const tokens = sum(R, (r) => (usageOf(r).input_tokens || 0) + (usageOf(r).output_tokens || 0));
+  const credit = sum(R, (r) => usageOf(r).composio_usd);
+  $("v-cost").append(simpleTable(["Composio tool", "Calls", "Charged"], tally(logs.map((call) => call.tool)).map(([tool, n]) => [tool, String(n), usd(sum(logs.filter((call) => call.tool === tool), (call) => call.charged_usd))]), [1, 2]),
+    h("p", { class: "small muted", style: "margin-top:8px", text: "Composio credit used by these records: " + usd(credit) + " over " + sum(R, (r) => usageOf(r).composio_calls) + " paid calls (" + usd(N ? credit / N : 0) + " per app). Model tokens: " + num(tokens) + ", of which " + num(sum(R, (r) => usageOf(r).cached_input_tokens)) + " were cached input. Runs that failed before producing a record are not counted here; see What went wrong." }));
+
+  const audit = D.audit;
+  if (!audit || !Array.isArray(audit.items)) {
+    $("v-audit").append(h("p", { text: "Not done yet. No human has checked a sample of these records against the live docs, so there is no audited accuracy figure on this page. The numbers above are the pipeline's own checks." }));
+  } else {
+    const hits = count(audit.items, (item) => item.match);
+    $("v-audit").append(
+      h("p", { text: hits + " of " + audit.items.length + " audited values matched what a human found in the live docs (" + pct(hits, audit.items.length) + "). " + (audit.sample_method || "") + (audit.checked_on ? " Checked on " + audit.checked_on + "." : "") }),
+      simpleTable(["App", "Field", "Agent", "Human", "Match", "Note"], audit.items.map((item) => [item.app, item.field, String(item.agent_value), String(item.human_value), item.match ? "Hit" : "Miss", item.note || ""])));
+  }
+
+  /* ---------- what went wrong ---------- */
+  $("wrong-flagged").append(flagged.length
+    ? h("ul", { class: "small", style: "margin:0;padding-left:18px" }, flagged.map((r) => h("li", {}, h("strong", { text: r.name + ": " }), (r.review_reasons || []).join(" "))))
+    : h("p", { class: "small", text: "None of the " + N + " researched records is flagged right now." }));
+  const notes = (D.process_notes && D.process_notes.notes) || [];
+  $("notes").append(...(notes.length
+    ? notes.map((note) => h("li", {}, h("div", { class: "what", text: note.title }),
+        h("dl", {}, h("dt", { text: "What happened" }), h("dd", { text: note.what_happened }), h("dt", { text: "What it cost" }), h("dd", { text: note.cost }), h("dt", { text: "What changed" }), h("dd", { text: note.what_changed }))))
+    : [h("li", { text: "No process notes file was found for this build." })]));
+
+  /* ---------- for agents ---------- */
+  $("flat-fields").textContent = D.flat_fields.join(", ") + ".";
+  function download(name, type, text) {
+    const url = URL.createObjectURL(new Blob([text], { type }));
+    const a = h("a", { href: url, download: name });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  const cell = (value) => {
+    const text = Array.isArray(value) ? value.join("; ") : String(value);
+    return /[",\r\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+  };
+  window.appscoutExports = {
+    json: () => JSON.stringify(F, null, 2),
+    csv: () => [D.flat_fields.join(","), ...F.map((row) => D.flat_fields.map((field) => cell(row[field])).join(","))].join("\r\n") + "\r\n",
+  };
+  $("dl-json").addEventListener("click", () => download("apps_flat.json", "application/json", window.appscoutExports.json()));
+  $("dl-csv").addEventListener("click", () => download("apps_flat.csv", "text/csv", window.appscoutExports.csv()));
+})();
+</script>
+</body>
+</html>

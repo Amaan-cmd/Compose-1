@@ -1,0 +1,304 @@
+{
+  "one_liner": "Twilio is a cloud communications platform with a broad public REST API and a 30-day trial for prototyping; its hosted MCP server searches documentation but cannot execute account actions.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "basic",
+      "other"
+    ],
+    "primary": "unknown",
+    "notes": "Twilio recommends API keys for general REST integrations, using the key SID and secret as HTTP Basic credentials. Operations that specify the Account SID and Auth Token use that pair instead. Account-level OAuth apps support only Client Credentials; organization-level APIs require OAuth 2.0 and support both Client Credentials and Authorization Code. Twilio Connect is a separate customer-delegation route that uses the returned Account SID and the app's own Auth Token. The docs do not identify a default method for third-party toolkits acting on behalf of customers. Public Key Client Validation signs requests with a private key and is limited to Enterprise and Security Edition customers. SDK access tokens are distinct from general REST credentials."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "New developers can sign up without a credit card, verify their email and phone number, and obtain credentials in the Console. The trial expires after 30 days and restricts recipients, geography, and message content. Existing legacy test credentials still work, but new developers cannot create them in the new Console."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.twilio.com/docs/usage/api",
+    "notes": "The public reference covers messaging, voice, phone numbers, and lookup. The Messages resource supports sending, fetching, listing, redacting, and deleting messages. Integrations can use HTTPS directly without an SDK."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://mcp.twilio.com/docs",
+    "notes": "The hosted server requires no credentials and offers twilio__search and twilio__retrieve for finding operations and retrieving schemas. It cannot send messages, place calls, or read account data. The separate Twilio Labs @twilio-alpha/mcp package is a self-run, credentialed option that can execute API calls."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/twilio"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "Twilio's broad public REST API and self-serve trial credentials are enough to prototype a toolkit that executes API calls. The trial expires after 30 days, and the hosted MCP server cannot execute account actions."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/api-keys",
+      "quote": "With API keys, you control which users and applications have access to your Twilio Account's API resources, and you can revoke access at your discretion.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "quote": "To authenticate requests to the Twilio APIs, use HTTP Basic authentication . Use your API key SID as the username and your API key secret as the password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "quote": "Use API keys for your applications unless the API reference or guide specifies Account SID and Auth Token authentication .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+      "quote": "When an API reference or guide specifies Account SID and Auth Token authentication, use the Account SID as the HTTP Basic authentication username and the Auth Token as the password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/oauth-apps/account-oauth-apps",
+      "quote": "Account-level OAuth apps only support the Client Credentials grant type. They do not support the Authorization Code grant type.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/oauth-apps/org-oauth-apps",
+      "quote": "Twilio's organization-level APIs only support OAuth 2.0. API keys and Auth Tokens are not supported.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/oauth-apps/org-oauth-apps",
+      "quote": "Organization-level APIs can be accessed using both the Client Credentials and Authorization Code grant types of OAuth 2.0.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/connect",
+      "quote": "The value of AccountSid is the SID (string identifier) of a subaccount set up under the user's Twilio account. You authenticate Connect requests made by your app with that Account SID and your own Auth Token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/pkcv",
+      "quote": "Public Key Client Validation is available to Twilio Enterprise Edition and Twilio Security Edition customers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/pkcv/quickstart",
+      "quote": "A private key is used to sign your requests. It is verified by the public key which you provide to Twilio.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/iam/access-tokens",
+      "quote": "Access Tokens are short-lived tokens that you use to authenticate Twilio client-side SDKs like Voice , Conversations , Sync , and Video .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "quote": "You can sign up for a Twilio free trial account without a credit card.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "quote": "Your Twilio trial account uses the same account credentials (Account SID and Auth Token) that you use after you upgrade.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "quote": "Trial accounts expire after 30 days.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/iam/test-credentials",
+      "quote": "Test credentials that you created in the legacy console before the console migration continue to work.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/en-us",
+      "quote": "Send, receive, and manage SMS, RCS, WhatsApp, MMS, and more on our globally reliable platform.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+      "quote": "Trial accounts expire after 30 days.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/usage/api",
+      "quote": "With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/usage/api",
+      "quote": "You can use the APIs directly over HTTPS or through Twilio SDKs available for several programming languages.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/messaging/api/message-resource",
+      "quote": "To send a new outgoing message, send an HTTP POST request to your Account's Messages list resource URI.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/messaging/api/message-resource",
+      "quote": "Returns a single Message resource specified by the provided Message SID .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/usage/api",
+      "quote": "With the Twilio APIs, you can build applications that help your users send messages, make phone calls, look up phone numbers, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.twilio.com/docs/ai/mcp",
+      "quote": "Twilio MCP and Twilio Skills are available as Public Beta products, and the information contained in this document is subject to change.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.twilio.com/docs/ai/mcp",
+      "quote": "This server is read-only: it searches and retrieves public API documentation, and it does not connect to a Twilio account or execute any API calls.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/twilio-labs/mcp",
+      "quote": "This is a monorepo for the Model Context Protocol server that exposes all of Twilio APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/twilio",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Twilio MCP or direct API to send SMS messages, place voice calls, manage phone numbers, and track delivery through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio search missed a toolkit that the public page lists. No authenticated Composio action was tested.",
+    "The Twilio Connect overview could not be read directly, so this memo does not make claims about that separate delegated-access route.",
+    "The preceding Twilio Connect problem was carried forward verbatim; the overview was reachable during the auth recheck."
+  ],
+  "id": "twilio",
+  "name": "Twilio",
+  "website": "twilio.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "twilio",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/twilio",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A developer can sign up for a free trial without a credit card, and trial accounts have API credentials and expire after 30 days. Some additional restrictions described in the notes are not shown by the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation describes direct HTTPS API use and an HTTP POST endpoint for sending messages. The quoted capabilities do not contradict the estimated broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Twilio documents its server as a Public Beta and says it searches documentation without connecting to an account or executing API calls."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is from Composio's Twilio toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial credentials and a documented, useful HTTP API support buildable_with_caveats with trial_only as the main blocker. The hosted MCP server's read-only scope does not prevent building directly against the API."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:56:19+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 307844,
+    "output_tokens": 12655,
+    "cached_input_tokens": 195060,
+    "critic_tokens": 13557,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Twilio",
+      "charged_usd": 0.0,
+      "log_id": "log_7AUPpGu8t1B5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Twilio MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ntmWJJFVTIYq"
+    }
+  ]
+}

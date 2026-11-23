@@ -1,0 +1,202 @@
+{
+  "one_liner": "Snowflake is a cloud data platform with broad, publicly documented REST APIs, self-service trial access, and a managed MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "other"
+    ],
+    "primary": "oauth2",
+    "notes": "Programmatic access tokens and key-pair authentication using a self-generated JWT are classified as bearer_token; workload identity federation is classified as other."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "A cloud trial requires no payment or approval to open and lasts 30 days or until its free usage balance is depleted. No retrieved sentence explicitly confirms REST API access on a trial account."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+    "notes": "The REST APIs manage Snowflake resources, and the SQL API can access and update database data."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "notes": "Snowflake documents a usable managed MCP server. An availability announcement calls it a public preview; the current documentation page does not state a maturity label."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/snowflake"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "The documented REST APIs cover resource management and database data, and a trial account can be opened without payment. The trial ends after 30 days or depletion of its free usage balance, after which the account is suspended."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+      "quote": "When you send a request, the request must include authentication information using either of the following: Using key pair authentication Using OAuth Using a programmatic access token (PAT) Using workload identity federation",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+      "quote": "We recommend using OAuth as the authentication method. Using hardcoded tokens can lead to token leakage.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+      "quote": "A Snowflake trial account lets you evaluate/test Snowflake’s full range of innovative and powerful features with no cost or contractual obligations. To sign up for a trial account, all you need is a valid email address; no payment information or other qualifying information is required.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/tutorials-overview",
+      "quote": "In the following tutorials, you learn how to get started with the API for object and task management in Snowflake.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+      "quote": "The trial continues for 30 days (from the sign-up date) or until you’ve depleted your free usage balance, whichever occurs first.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+      "quote": "Snowflake REST APIs for resource management provide a set of endpoints that lets users programmatically interact with and control various resources within the Snowflake Data Cloud. The Snowflake REST APIs suite of APIs enables developers to build end-to-end automation and integration with Snowflake resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.snowflake.com/en/developer-guide/sql-api/intro",
+      "quote": "The Snowflake SQL API is a REST API that you can use to access and update data in a Snowflake database.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+      "quote": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts without needing to deploy separate infrastructure. You can configure the MCP server to serve Cortex Analyst, Cortex Search, and Cortex Agents as tools, along with custom tools and SQL executions on the standards-based interface.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.snowflake.com/en/blog/managed-mcp-servers-secure-data-agents/",
+      "quote": "We are excited to announce the availability of Snowflake’s managed Model Context Protocol (MCP) servers in public preview, giving AI agents an open-standards-based interface to connect with AI-ready data in Snowflake.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/snowflake",
+      "quote": "Snowflake has no Composio-managed OAuth app, so you create an OAuth security integration in your own Snowflake account and use its credentials in Composio.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+      "quote": "At the end of the trial, the account is suspended. You can still log into a suspended account, but you cannot use any features, such as running a virtual warehouse, loading data, or performing queries.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing and signup pages attempted did not load through the page reader.",
+    "No retrieved sentence explicitly joins trial-account status to REST API credentials; the access finding relies on the trial’s stated full-range feature access together with the API tutorial’s account prerequisite.",
+    "The MCP preview designation comes from an availability announcement, not an explicit label on the current documentation page."
+  ],
+  "id": "snowflake",
+  "name": "Snowflake",
+  "website": "docs.snowflake.com",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "snowflake",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/snowflake",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The REST auth page lists OAuth, programmatic access tokens, key-pair authentication, and workload identity federation. PAT supports bearer_token and workload identity supports other; OAuth is the only method a quote recommends. The quote does not say key-pair auth is a self-generated JWT, so that part of the note is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A trial account opens with only an email, no payment or other qualifying information, lasts 30 days or until the free usage balance is gone, and is then suspended so features such as warehouses, loading, and queries cannot be used. No quote explicitly says a trial can create REST credentials; that gap is already noted and is an inference from full-feature trial access."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes describe Snowflake resource-management REST endpoints and a SQL REST API that can access and update database data. Nothing contradicts breadth broad, and the cited docs URL is a public documentation page."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Snowflake documents a usable Snowflake-managed MCP server, and the vendor announcement says managed MCP servers are available in public preview, which matches beta_or_pilot rather than generally available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from the Composio Snowflake toolkit page and describes connecting a Snowflake account through Composio."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "With access self_serve_trial and a public REST API of useful breadth, buildable_with_caveats and main_blocker trial_only follow. The rationale matches the quoted 30-day or usage-balance trial, later suspension, and REST coverage of resources and data."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:50:01+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 152764,
+    "output_tokens": 4117,
+    "cached_input_tokens": 113402,
+    "critic_tokens": 3535,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Snowflake",
+      "charged_usd": 0.0,
+      "log_id": "log_JiYr6Dizdf2P"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Snowflake MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_OF35lF_w3OXT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:docs.snowflake.com \"trial account\" \"REST API\" \"token\" Snowflake",
+      "charged_usd": 0.004,
+      "log_id": "log_wZTysXnFDpyS"
+    }
+  ]
+}

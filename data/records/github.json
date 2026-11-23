@@ -1,0 +1,239 @@
+{
+  "one_liner": "GitHub is ready for an agent toolkit: developers can register an app under a personal account, and its public REST and GraphQL APIs cover core development workflows.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "basic",
+      "none"
+    ],
+    "primary": "oauth2",
+    "notes": "GitHub recommends a GitHub App for integrations acting on another user's behalf. Tokens authenticate API requests; some app endpoints require basic authentication, and public-data requests can be unauthenticated."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The self-serve free path uses a personal account on GitHub's hosted service. The self-hosted alternative, GitHub Enterprise Server, is an Enterprise deployment. Organization owners can require approval for tokens accessing organization resources."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.github.com/en/rest",
+    "notes": "The public REST and GraphQL references describe integrations and workflows. App permissions determine which operations an integration can perform."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/copilot-for-common-tasks/use-the-github-mcp-server",
+    "notes": "GitHub provides and maintains the server, documents a hosted remote option, and says it is available to all GitHub users regardless of plan type. Individual tools retain their underlying feature's access requirements."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/github"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can register a GitHub App under a personal account and use the documented REST or GraphQL APIs. App permissions and organization approval policies may constrain access to particular resources."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+      "quote": "If you want to use the API for an organization or on behalf of another user, GitHub recommends that you use a GitHub App.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app",
+      "quote": "If a user authorizes your app, your app can generate a user access token to make API requests on the user's behalf and attribute app activity to the user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+      "quote": "Some REST API endpoints for GitHub Apps and OAuth apps require you to use basic authentication to access the endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+      "quote": "You can make unauthenticated requests if you are only fetching public data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app",
+      "quote": "You can register a GitHub App under your personal account or under any organization you own.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
+      "quote": "GitHub offers free and paid plans for storing and collaborating on code.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.github.com/en/get-started/learning-about-github/githubs-plans",
+      "quote": "GitHub Enterprise includes two deployment options: GitHub Enterprise Cloud, which is hosted by GitHub in the cloud, and GitHub Enterprise Server, which is self-hosted.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens",
+      "quote": "Organization owners can require approval for any fine-grained personal access tokens that can access resources in the organization.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.github.com/en/rest",
+      "quote": "Create integrations, retrieve data, and automate your workflows with the GitHub REST API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.github.com/en/graphql",
+      "quote": "To create integrations, retrieve data, and automate your workflows, use the GitHub GraphQL API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app",
+      "quote": "For each permission, select the dropdown menu and click Read-only , Read & write , or No access .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/copilot-for-common-tasks/use-the-github-mcp-server",
+      "quote": "The GitHub MCP server is a Model Context Protocol (MCP) server provided and maintained by GitHub.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/set-up-the-github-mcp-server",
+      "quote": "The remote GitHub MCP server is hosted by GitHub and is the recommended option for most users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/copilot-for-common-tasks/use-the-github-mcp-server",
+      "quote": "The GitHub MCP server is available to all GitHub users regardless of plan type.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/github",
+      "quote": "GitHub is a code hosting platform for version control and collaboration, offering Git-based repository management, issue tracking, and continuous integration features",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app",
+      "quote": "You can register a GitHub App under your personal account or under any organization you own.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.github.com/en/rest",
+      "quote": "Create integrations, retrieve data, and automate your workflows with the GitHub REST API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The free-plan documentation and app-registration documentation establish the self-serve path on separate pages; neither quoted sentence explicitly says “API credentials are included in GitHub Free.”",
+    "Organization-controlled resources may require approval even when a developer can create their own app or token."
+  ],
+  "id": "github",
+  "name": "GitHub",
+  "website": "docs.github.com/rest",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "github",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/github",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show GitHub App user authorization and user access tokens for acting on a user's behalf, basic authentication for some app endpoints, unauthenticated public-data requests, and fine-grained personal access tokens. Nothing recommends a different primary method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A GitHub App can be registered under a personal account, and GitHub offers free plans; no quoted payment, trial, or approval gate applies to creating that app. Enterprise Cloud and self-hosted Enterprise Server support both deployments, while organization approval is only an optional restriction on fine-grained tokens."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public pages document both the REST and GraphQL APIs for integrations and workflows, and app permissions include read-and-write access. Nothing contradicts broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "GitHub provides, maintains, and hosts the MCP server and says it is available to all GitHub users regardless of plan. No quote labels it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is on the Composio GitHub toolkit page and describes GitHub as the listed app."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve app registration and documented REST and GraphQL APIs with read-and-write permissions meet buildable_now with no main blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:49:54+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 6,
+    "input_tokens": 114789,
+    "output_tokens": 3877,
+    "cached_input_tokens": 66721,
+    "critic_tokens": 3810,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for GitHub",
+      "charged_usd": 0.0,
+      "log_id": "log_Hb38fYwua342"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "GitHub MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Azq2LmCJLacQ"
+    }
+  ]
+}

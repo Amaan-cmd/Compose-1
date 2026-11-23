@@ -1,0 +1,199 @@
+{
+  "one_liner": "TranscriptAPI.com is a hosted service that retrieves existing YouTube captions as timestamped text or JSON and helps agents discover videos through search, channels, and playlists.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "The REST API uses a vendor-issued API key sent as a Bearer credential. OAuth 2.1 is documented for MCP, not for REST."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "New accounts receive 100 free credits without a payment card and can obtain an API key from the dashboard. The similarly named open-source Python package is separate from the hosted service."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "narrow",
+    "public_docs": true,
+    "docs_url": "https://transcriptapi.com/docs/api/",
+    "notes": "The read-only API supports transcript retrieval, YouTube search, channel browsing, and playlist extraction. Transcript retrieval requires an existing caption track; the API does not transcribe raw audio."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://transcriptapi.com/mcp",
+    "notes": "The vendor-hosted server offers 12 tools, supports OAuth 2.1 or API-key authentication, and shares the REST API account and credits."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://docs.composio.dev/toolkits/youtube_transcript"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "narrow_api",
+    "rationale": "Developers can use free self-serve credits or the vendor’s hosted MCP server to discover YouTube videos and retrieve existing captions. The read-only API cannot generate missing transcripts or manage YouTube content."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://transcriptapi.com/docs/api/",
+      "quote": "The API uses Bearer token authentication. Include your API key in the Authorization header of every request:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://transcriptapi.com/",
+      "quote": "100 free credits to try the API — no card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://transcriptapi.com/",
+      "quote": "You can start for free: new accounts get 100 free credits, no card required, and one transcript costs one credit.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://transcriptapi.com/docs/getting-started/",
+      "quote": "Get YouTube video transcripts through our REST API or seamlessly integrate with AI assistants using Model Context Protocol (MCP).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://transcriptapi.com/",
+      "quote": "TranscriptAPI is a hosted REST API, separate from the open-source YouTubeTranscriptApi Python package, which fetches transcripts from your own machine.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://transcriptapi.com/docs/api/",
+      "quote": "The YouTube Transcript API provides a simple and reliable way to extract transcripts from YouTube videos programmatically. This complete reference covers authentication, request parameters, response formats, and practical examples.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://transcriptapi.com/",
+      "quote": "TranscriptAPI is managed and also adds YouTube search, channel browsing and playlist extraction.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://transcriptapi.com/docs/mcp/",
+      "quote": "TranscriptAPI runs a hosted (remote) MCP server at https://transcriptapi.com/mcp . Add that URL to an MCP client and your AI assistant can fetch YouTube transcripts, search YouTube, and list a channel’s or playlist’s videos.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/youtube_transcript",
+      "quote": "Retrieve and store captions for one video or a bounded batch, read job and batch status, access stored transcripts and languages, and resolve playlist or channel video metadata through the YouTube Transcript REST API.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/youtube_transcript",
+      "quote": "Read one transcript job's current processing, completed, failed, or requires-ASR-confirmation state without creating work or waiting.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://www.youtubetranscript.dev/api-docs",
+      "quote": "List, fetch, translate, and delete your stored transcripts, and list async jobs. All endpoints accept the same API-key auth.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Composio does not disclose the toolkit’s upstream hostname in its public listing, and compatibility with a TranscriptAPI.com key was not verified. The toolkit’s stored transcripts and asynchronous jobs match documentation for the separate YouTubeTranscript.dev service.",
+    "The billing page did not load directly. Free access was documented in the public pricing FAQ and MCP documentation. No authenticated API or MCP call was made."
+  ],
+  "id": "youtube-transcript",
+  "name": "YouTube Transcript",
+  "website": "transcriptapi.com",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "youtube_transcript",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/youtube_transcript",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quote documents an API key sent as a Bearer credential. It does not establish the note’s claim about OAuth for MCP."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "New accounts receive free API credits without a card. The quotes do not show that keys are obtained from a dashboard."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public REST API; the stated narrow breadth is not contradicted. They do not establish that it is read-only or requires existing captions."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor says it runs a hosted MCP server that clients can use now. The tool count, authentication options, and shared credits in the note are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free self-serve access and a documented API support buildability; the stated narrow breadth supports the caveat and main blocker. The rationale’s claims that the API is read-only and cannot generate missing transcripts are not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T21:01:05+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 220503,
+    "output_tokens": 7339,
+    "cached_input_tokens": 142325,
+    "critic_tokens": 6945,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for YouTube Transcript",
+      "charged_usd": 0.0,
+      "log_id": "log_BLUT8OdxinJe"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "YouTube Transcript MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_BsrRn3f8oMBZ"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "\"YouTube Transcript\" API \"requires_asr_confirmation\" \"batch\" stored transcripts YouTube transcript API Basic",
+      "charged_usd": 0.004,
+      "log_id": "log_b5LI9ghLsIR8"
+    }
+  ]
+}

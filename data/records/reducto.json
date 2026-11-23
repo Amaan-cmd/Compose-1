@@ -1,0 +1,202 @@
+{
+  "one_liner": "Reducto turns PDFs, scans, spreadsheets, and other documents into layout-aware content or schema-defined JSON through a public REST API and an official MCP server.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "api_key",
+    "notes": "A Studio-issued API key is the default integration credential and is sent in a Bearer header. OAuth 2.0 Token Exchange supports workload identity federation and authenticates as an organization, not as a delegated end user."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "On the hosted service, developers can create a free account and generate an API key in the quickstart or Studio. Standard includes $150 in free usage before usage-based billing applies. Deploying the document-processing backend in a customer-managed VPC or on premises requires Enterprise; running MCP locally does not self-host the backend."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.reducto.ai/api-reference/api/sections/parse/operations/parse",
+    "notes": "The public reference covers upload, parse, extract, classify, split, and edit, as well as job retrieval and deletion, asynchronous operations, and webhooks. Python, Node.js, and Go SDKs are optional."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.reducto.ai/mcp",
+    "notes": "Reducto offers a hosted HTTP server and a local server distributed as `mcp-server-reducto`. The hosted server uses an API key and does not accept local file paths. The local server can upload local files to Reducto. Both expose document-processing tools."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://docs.composio.dev/toolkits/reducto"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can create a free account and generate an API key without contacting sales. The public REST API covers the core document workflow, and Reducto offers an official MCP server for direct agent use."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.reducto.ai/quickstart/index.md",
+      "quote": "Create an API key in Reducto Studio (https://studio.reducto.ai) under API Keys. Signed-in readers can create one on this page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.reducto.ai/security/workload-identity-federation/reference/index.md",
+      "quote": "The token exchange endpoint trades a subject token from your identity provider for a short-lived Reducto access token. It implements [OAuth 2.0 Token Exchange (RFC 8693)](https://datatracker.ietf.org/doc/html/rfc8693).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.reducto.ai/security/workload-identity-federation/reference/index.md",
+      "quote": "An access token authenticates as your organization, the same way an API key does.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.reducto.ai/quickstart",
+      "quote": "Sign up for a free account without leaving the docs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.reducto.ai/quickstart",
+      "quote": "Sign in to create a key here, or create one in Studio under API Keys.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://reducto.ai/pricing",
+      "quote": "Standard includes $150 of free usage, then list rates apply.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.reducto.ai/enterprise/enterprise-readiness",
+      "quote": "VPC and on-premise deployments are available exclusively for Enterprise customers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.reducto.ai/overview/index.md",
+      "quote": "Each capability is available as a standalone API endpoint or composed into pipelines.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.reducto.ai/overview/index.md",
+      "quote": "Available in Python, Node.js, Go, and REST.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.reducto.ai/api-reference/api/sections/parse/operations/parse",
+      "quote": "For parse/split/extract pipelines, the URL of the document to be processed.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.reducto.ai/mcp-server/index.md",
+      "quote": "The Reducto MCP server connects AI agents directly to Reducto. Once installed, agents in Claude Desktop, Claude Code, Codex, Cursor, VS Code, Windsurf, or any other [Model Context Protocol](https://modelcontextprotocol.io) client can classify, parse, extract, split, and edit documents as part of their reasoning loop, without custom integration code.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.reducto.ai/mcp-server/index.md",
+      "quote": "The hosted server (mcp.reducto.ai) does not support local paths. Use a public URL or run the server locally.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The detailed on-premises and hybrid VPC deployment guide required sign-in. The public Enterprise Readiness page confirmed availability, but private deployment requirements were not independently checked.",
+    "The Composio catalog search returned no Reducto match, but the expected toolkit page could not be read directly and no catalog quote was available.",
+    "This was a documentation review; no credentials were created and no authenticated API or MCP calls were run."
+  ],
+  "id": "reducto",
+  "name": "Reducto",
+  "website": "reducto.ai (document parsing)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quickstart directs users to create an API key, while the separate OAuth token exchange authenticates as an organization rather than a delegated user. The quoted text does not establish the note’s claim about sending the key in a Bearer header."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free account can create a key, and the pricing quote confirms free usage. The quotes also support the note that VPC and on-premise deployments require Enterprise."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public docs explicitly identify REST and standalone API endpoints. The quotes do not substantiate every operation listed in the note, but do not contradict the breadth estimate."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Reducto’s docs describe a usable MCP server and identify a hosted server. The quotes do not establish all the note’s details about local uploads and authentication."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A free account can obtain an API key, and a documented REST API is available. Those supported values justify buildable_now with no main blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T21:01:03+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 187048,
+    "output_tokens": 4411,
+    "cached_input_tokens": 129747,
+    "critic_tokens": 3325,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Reducto",
+      "charged_usd": 0.0,
+      "log_id": "log_NigC2pVkDbUf"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Reducto MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_nqUxyAgyJiWO"
+    }
+  ]
+}

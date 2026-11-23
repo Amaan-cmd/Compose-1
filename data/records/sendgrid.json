@@ -1,0 +1,207 @@
+{
+  "one_liner": "SendGrid offers a public REST API for email sending, campaigns, contacts, and statistics, with API access available through a 60-day free trial.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "API keys are sent in a Bearer authorization header; this is not a separate personal-token method."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "The trial includes Web API access and permits 100 emails per day for 60 days. Account holders can create an API key in the dashboard; continued use requires a paid plan."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "notes": "The public reference covers email sending, marketing campaigns, contacts, and statistics."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://www.twilio.com/docs/ai/mcp",
+    "notes": "Twilio's public-beta server indexes SendGrid documentation but is read-only and cannot execute API calls. An independently published, actionable community alternative also exists at https://github.com/garethcull/sendgrid-mcp."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/sendgrid"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "The documented REST API covers sending, campaigns, contacts, and statistics, and the 60-day trial includes Web API access. Twilio's official MCP server retrieves documentation but cannot execute API calls, so an actionable toolkit must use the API or another MCP implementation."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+      "quote": "To authenticate, add an HTTP Authorization header to your API request that contains an API Key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+      "quote": "To use an API key, include an Authorization header with the value Bearer <YOUR_API_KEY_HERE> in your request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/en-us/products/email-api",
+      "quote": "Twilio SendGrid's free trial gives you 100 emails a day for 60 days across SMTP relay, SMTP API, and Web API.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/sendgrid/ui/account-and-settings/api-keys",
+      "quote": "To use the Mail API, you need an API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/docs/sendgrid/ui/account-and-settings/api-keys",
+      "quote": "Go to Settings > API Keys .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.twilio.com/en-us/products/email-api",
+      "quote": "SendGrid manages delivery with built-in cloud connections and authentication to maximize inbox placement.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+      "quote": "The SendGrid v3 Web API provides a REST interface to send email at scale and ensure your application can handle high volumes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+      "quote": "The SendGrid API endpoints allow you to integrate with your tech stack to send transactional emails, create marketing campaigns, manage your contacts, and monitor the health of your email statistics.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.twilio.com/docs/ai/mcp",
+      "quote": "Twilio MCP and Twilio Skills are available as Public Beta products, and the information contained in this document is subject to change.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.twilio.com/docs/ai/mcp",
+      "quote": "This server is read-only: it searches and retrieves public API documentation, and it does not connect to a Twilio account or execute any API calls.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.twilio.com/docs/ai/mcp",
+      "quote": "Twilio SendGrid docs and support articles",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/garethcull/sendgrid-mcp",
+      "quote": "A Model Context Protocol (MCP) server that exposes SendGrid Email Management and Reporting tools as MCP-compatible endpoints.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/sendgrid",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Sendgrid MCP or direct API to send emails, manage templates, check delivery status, and analyze engagement—all through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Two attempted pricing URLs did not load through `fetch_page`; the accessible SendGrid Email API product page supplied the trial terms.",
+    "The official MCP server’s existence could be misleading without its read-only limitation."
+  ],
+  "id": "sendgrid",
+  "name": "SendGrid",
+  "website": "sendgrid.com",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "sendgrid",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/sendgrid",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The authentication page documents an API key and shows it is supplied as Authorization: Bearer <API_KEY>. That supports api_key as the only evidenced method and therefore the primary method; the Bearer prefix is the key's header format, not a second method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The product page states a 60-day free trial includes Web API (100 emails/day), and the API-keys docs show keys are created in Settings, so self_serve_trial is proven. The notes' claim that continued use requires a paid plan is not stated in the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API reference calls the v3 Web API a REST interface and lists sending, campaigns, contacts, and statistics, which does not contradict breadth broad. The cited docs were readable without a login."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Twilio's own docs publish the MCP server as Public Beta and say it is read-only documentation retrieval, including Twilio SendGrid docs, matching official and beta_or_pilot. The GitHub quote separately shows a third-party SendGrid MCP server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists SendGrid for agents via MCP or direct API."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A documented REST API with useful breadth plus credentials only through a 60-day trial yields buildable_with_caveats with main_blocker trial_only. The MCP limitation in the rationale is supported but is not what sets the blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:47:17+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 194692,
+    "output_tokens": 3891,
+    "cached_input_tokens": 121156,
+    "critic_tokens": 3287,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for SendGrid",
+      "charged_usd": 0.0,
+      "log_id": "log_jVtcwUf1n-fv"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "SendGrid MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_S4sax3z-XDE4"
+    }
+  ]
+}

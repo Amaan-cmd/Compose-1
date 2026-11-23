@@ -1,0 +1,200 @@
+{
+  "one_liner": "Slack is buildable now as an agent toolkit using a free development sandbox, a broad Web API, and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth supports installations on behalf of users; Web API requests use bearer tokens."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The free path uses Slack’s hosted developer sandbox for development and testing. Installing an app in the workspace yields tokens; this does not establish unrestricted installation in other workspaces or public distribution."
+  },
+  "api": {
+    "styles": [
+      "other"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.slack.dev/apis/web-api/",
+    "notes": "The Web API uses HTTP RPC-style methods, not REST, and documents over 200 methods."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.slack.dev/ai/slack-mcp-server",
+    "notes": "Only Marketplace-published and internal apps can use Slack MCP; unlisted apps are prohibited. Workspace admins can approve and manage MCP client integrations."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/slack"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can provision a free sandbox and obtain tokens by installing an app. Slack documents over 200 Web API methods for querying information and enacting changes, although its official MCP server restricts which apps may use it."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+      "quote": "OAuth allows a user in any Slack workspace to install your app. At the end of the OAuth flow, your app gains an access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.slack.dev/apis/web-api/",
+      "quote": "Authenticate your Web API requests by providing a bearer token , which identifies a single user or bot user relationship. Register your application with Slack to obtain credentials for use with our OAuth 2.0 implementation, which allows you to negotiate tokens on behalf of users and workspaces.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.slack.dev/apis/web-api/using-web-api-with-postman",
+      "quote": "If you don't have one, you can go here to create one, or you can join the Developer Program and provision a sandbox (where you can create a workspace) with access to all Slack features for free. We recommend using a sandbox if you're just trying things out.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.slack.dev/apis/web-api/using-web-api-with-postman",
+      "quote": "Once the app is installed in a workspace, the tokens will be available.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.slack.dev/tools/developer-sandboxes",
+      "quote": "Yes. All developers can provision basic sandboxes with no paid plan or payment method required.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.slack.dev/apis/web-api/",
+      "quote": "The Slack Web API is an interface for querying information from and enacting change in a Slack workspace.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.slack.dev/apis/web-api/",
+      "quote": "The Web API is a collection of HTTP RPC-style methods , all with URLs in the form https://slack.com/api/METHOD_FAMILY.method . While it's not a REST API, those familiar with REST should be at home with its foundations in HTTP.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.slack.dev/apis/web-api/",
+      "quote": "With over 200 methods, surely there's one right for you. You can find them all in the reference , where you can filter by method family.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.slack.dev/ai/slack-mcp-server",
+      "quote": "With the Slack MCP server, your integrated apps can search channels, send messages, and perform other Slack actions through MCP clients. Workspace admins can approve and manage all MCP client integrations, keeping your Slack data safe.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.slack.dev/ai/slack-mcp-server",
+      "quote": "Only apps published in the Slack Marketplace and internal apps can use MCP at this time; unlisted apps are prohibited from using MCP.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/slack",
+      "quote": "Hosted Slack MCP for Claude, Cursor, and ChatGPT. Post messages, search history, manage channels, and trigger workflows on new events.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No blocking login wall encountered.",
+    "The free sandbox evidence establishes development access, not unrestricted production installation or public distribution."
+  ],
+  "id": "slack",
+  "name": "Slack",
+  "website": "slack.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "slack",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/slack",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes document OAuth 2.0 for installing an app and negotiating tokens on behalf of users, plus bearer-token authentication of Web API requests. Nothing recommends a different primary method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free developer sandbox with no paid plan or payment method, plus tokens after installing an app, proves self_serve_free. The note's claim that this does not permit unrestricted installation or public distribution is not shown by these quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes show a public HTTP RPC-style Web API that is explicitly not REST, with over 200 methods for querying and changing a workspace, so style other and broad breadth are supported."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation describes a usable Slack MCP server and the Marketplace/internal-app restriction; nothing labels it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Slack actions, so in_catalog yes is supported."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials and a documented broad API support buildable_now with no main blocker; the MCP app restriction is a constraint on the server, not on API credentials."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:38+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 11,
+    "input_tokens": 227310,
+    "output_tokens": 3715,
+    "cached_input_tokens": 155820,
+    "critic_tokens": 3133,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Slack",
+      "charged_usd": 0.0,
+      "log_id": "log_OvEVR2rlsMdd"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Slack MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_-9CvDy6T90hF"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:docs.slack.dev \"free\" \"API\" \"token\" \"workspace\" Slack app developer sandbox OR plan",
+      "charged_usd": 0.004,
+      "log_id": "log_1upLxJqfcR7y"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "one_liner": "Vonage offers self-serve credentials and public APIs for messaging, voice, numbers, applications, and account management.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "basic",
+      "bearer_token",
+      "other"
+    ],
+    "primary": "bearer_token",
+    "notes": "Vonage recommends JWT authentication for most Messages API use cases; this is not a documented user-delegated OAuth flow. SIP Trunking uses Digest authentication. Authentication varies by product."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Cloud signup provides an API key and secret and initial free credit without a credit card. API usage is charged per request, and developers can top up when credit runs low."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.vonage.com/en/api",
+    "notes": "The public reference covers communications and account-management APIs; the getting-started guide describes Curl requests and OpenAPI specifications."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developer.vonage.com/mcp-server/how-to-guides/install-tooling-mcp-server",
+    "notes": "Vonage documents a Tooling MCP Server that invokes API actions."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/vonage"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Self-serve signup yields API credentials and initial free credit. Public documentation covers communications, numbers, and application-management actions; API usage is charged per request."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.vonage.com/getting-started/concepts/authentication",
+      "quote": "When you create a Vonage account, an API key and secret will be created for you. These are located in your account settings in the Vonage Dashboard.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.vonage.com/getting-started/concepts/authentication",
+      "quote": "A number of newer Vonage APIs require authentication to be done using an API key and secret sent Base64 encoded in the Authorization header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.vonage.com/getting-started/concepts/authentication",
+      "quote": "Messages supports both JWT and Basic authentication, however basic authentication does not support webhooks or advanced features such as ACLs. For most use-cases we recommend JWT Authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.vonage.com/getting-started/concepts/authentication",
+      "quote": "SIP Trunking uses Digest Authentication method with the API Key as user and API Secret as password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "To work with our APIs, you will need to sign up for an account . This will give you an API key and secret that you can use to access our APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.vonage.com/communications-apis/pricing",
+      "quote": "Start developing now with free credit. No credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "Access to our APIs is charged on a per-request basis. We’ll give you some free credit when you first open your account and you can top up when you run low.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "When our APIs want to notify your app about something - whether that is an inbound call or message or a status update - they require your app to expose a URL endpoint that our platform can make a request to.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "If you are familiar with the command-line tool Curl , you will find Curl snippets for each of our APIs that you can copy, paste and modify.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "Each of our APIs has its own OpenAPI specification . You can read more about OpenAPI in our documentation .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.vonage.com/en/api",
+      "quote": "The Voice API lets you dial other phones, answer incoming calls, and control all aspects of the call including conferences, recordings, capturing user input and sending various audio content.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.vonage.com/en/api",
+      "quote": "Manage all the numbers you need for your applications. Search for numbers, list and configure your purchased numbers, cancel any number you no longer need.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.vonage.com/mcp-server/how-to-guides/install-tooling-mcp-server",
+      "quote": "The Vonage Server API Bindings MCP Server , also known as the Tooling MCP Server, lets you invoke various API actions directly through your LLM Assistant or IDE of choice.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.vonage.com/mcp-server/how-to-guides/install-tooling-mcp-server",
+      "quote": "The MCP extension will automatically download and start the Vonage Tooling MCP Server .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.vonage.com/getting-started/overview",
+      "quote": "This will give you an API key and secret that you can use to access our APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.vonage.com/en/api",
+      "quote": "Create and manage the applications you use across Vonage APIs. Create, manage and configure your applications and authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Individual API-reference pages fetched for SMS and applications exposed only a page shell; the API index and getting-started guide were readable.",
+    "The Composio toolkit URL could not be read directly; extraction reported a 404. No quoted evidence establishes its catalog status.",
+    "The cited authentication guidance recommends JWTs for Messages API use cases, not a single authentication method for every Vonage product."
+  ],
+  "id": "vonage",
+  "name": "Vonage",
+  "website": "developer.vonage.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show an account API key and secret, Basic auth (key/secret Base64 in the Authorization header, and Messages Basic), JWT (bearer token you mint; recommended for most Messages use cases), and SIP Digest (other). Nothing recommends a different primary. The note’s claim that there is no user-delegated OAuth flow is not in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Signup yields an API key and secret; free credit is given with no credit card, and usage is then charged per request with top-up. That is self-serve credentials with no payment or approval."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public pages describe Curl calls and per-API OpenAPI specs plus write actions for voice, numbers, and applications. Breadth broad is an estimate and is not contradicted."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vonage’s own developer docs describe the Tooling MCP Server as downloadable and startable and able to invoke API actions. Nothing labels it beta, pilot, or unreleased."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented, non-read-only public API meet buildable_now with main_blocker none. Per-request charging after free credit is noted and does not change that."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:39+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 165755,
+    "output_tokens": 4369,
+    "cached_input_tokens": 135828,
+    "critic_tokens": 3476,
+    "composio_calls": 2,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Vonage",
+      "charged_usd": 0.0,
+      "log_id": "log_CfA4j6mxS1LU"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Vonage MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ZFq5r5AFDYHn"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Is a Vonage toolkit listed at this URL? Page status or content",
+      "charged_usd": 0.0,
+      "log_id": "log_zZK8MtMDblTD"
+    }
+  ]
+}

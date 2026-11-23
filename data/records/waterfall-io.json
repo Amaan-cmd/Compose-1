@@ -1,0 +1,165 @@
+{
+  "one_liner": "Waterfall.io is a hosted B2B data API for finding prospects, enriching contacts and companies, verifying emails, and checking job changes. It supplies data to CRM and outreach workflows rather than running them.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "Requests use the x-api-key header. A master key is required to manage sub-keys. No OAuth flow was found in the authentication guide."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "Developers can request a key on the homepage with a work email without booking a sales call, but Waterfall reviews every request. Pricing is discussed with the vendor, and not every capability is enabled on every key."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.waterfall.io/v1/introduction",
+    "notes": "The public reference and downloadable OpenAPI 3.1 spec cover prospecting, contact and company search and enrichment, phone enrichment, email verification, and employment checks. The API retrieves data rather than editing CRM records or sending outreach. Search and verification can return results immediately; prospecting and enrichment return a job ID, with results available by polling or webhook."
+  },
+  "mcp": {
+    "status": "none_found",
+    "maturity": "not_applicable",
+    "url": "",
+    "notes": "The search surfaced a FullEnrich server, not a Waterfall.io server. Waterfall documents two agent skills for direct API calls and integration code, not an MCP server."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "The documented REST API supports a prospecting and enrichment toolkit, but live calls require a vendor-approved key. Prospecting and enrichment integrations also need to handle asynchronous results through polling or webhooks."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.waterfall.io/v1/overview",
+      "quote": "Waterfall brings together 30+ data vendors through one B2B data API. Find people at target accounts, match emails to business profiles, find contact details, and check whether existing contacts have changed jobs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.waterfall.io/v1/authentication",
+      "quote": "Authenticate data and account API requests with your Waterfall API key in the x-api-key header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.waterfall.io/v1/book-demo.md",
+      "quote": "API access is available by approval. Request a key through the email field on the [Waterfall website](https://www.waterfall.io/), or book a call to discuss your workflow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.waterfall.io/v1/authentication",
+      "quote": "The API host is https://api.waterfall.io .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.waterfall.io/v1/openapi-spec.md",
+      "quote": "The full OpenAPI 3.1 specification for the Waterfall API is available for download. Use it to generate client SDKs, import into Postman, or explore the schema.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.waterfall.io/v1/overview",
+      "quote": "Prospector and the contact, phone, and company enrichment APIs return a job_id . Use the matching Finder to retrieve the result, or provide a webhook_url to receive it.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.waterfall.io/v1/skills-overview.md",
+      "quote": "Waterfall provides two skills: one for making API calls during a task, and one for creating integration code you maintain.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Account-specific pricing and feature entitlements were not verified, and no live API calls were made.",
+    "The supplied Composio catalog search returned no Waterfall.io match, and the candidate toolkit pages for waterfall, waterfall_io, and waterfallio were unreadable. No listing was available to quote."
+  ],
+  "id": "waterfall-io",
+  "name": "Waterfall.io",
+  "website": "waterfall.io (contact/company intel)",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The authentication quote supports an API key in the x-api-key header. It does not establish the note’s claim about master keys."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "API access requires approval, and the quoted key-request route does not require booking a call. The quotes do not establish the claims about pricing, work email, or capability restrictions."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation describes an API, its host, and a downloadable OpenAPI specification, supporting the stated REST style. Nothing quoted contradicts moderate breadth. Some details in the notes, including immediate results for search and verification, are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The documented API and approval-based key request support buildable_with_caveats with admin_approval as the main blocker. The quote about job IDs and retrieval or webhooks also supports the rationale’s asynchronous-results caveat."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:38+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 88796,
+    "output_tokens": 3303,
+    "cached_input_tokens": 52654,
+    "critic_tokens": 3208,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Waterfall.io",
+      "charged_usd": 0.0,
+      "log_id": "log_na90Va6NvfO_"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Waterfall.io MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_twCGvD7N-8f0"
+    }
+  ]
+}

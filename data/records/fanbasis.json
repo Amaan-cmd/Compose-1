@@ -1,0 +1,169 @@
+{
+  "one_liner": "FanBasis, now Commas, is a cloud ecommerce platform for selling digital products, courses, and memberships, with built-in checkout and payments.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "unknown"
+    ],
+    "primary": "unknown",
+    "notes": "The SDK guide documents a checkout session secret but does not establish how integrations authenticate to the REST API."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Commas advertises APIs to enterprise sellers, but the available documentation does not establish whether an enterprise agreement is required or whether a new developer can obtain credentials through a free account, trial, or sandbox."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "unknown",
+    "public_docs": false,
+    "docs_url": "unknown",
+    "notes": "The payments page names a REST API alongside language SDKs and a sandbox, which establishes the style. It does not describe endpoints or objects, and no API reference was readable, so breadth and a docs URL are not evidenced."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "unknown",
+    "notes": "Commas advertises an MCP beta for creating checkout links, issuing refunds, and retrieving business figures. No server URL, setup instructions, or enrollment requirements were verified. The pre-run MCP web search returned only generic protocol explainers, none about FanBasis or Commas."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "unknown"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Commas states it offers a REST API, SDKs, and a sandbox, and it advertises an official MCP beta. The available material does not establish the API's breadth or how a new developer can obtain working credentials."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://demo.embedded.fanbasis.io/docs/how-it-works",
+      "quote": "Generate a secure checkout session secret that will be used to initialize the payment flow. This secret ensures that only authorized requests can create checkout sessions.",
+      "source_type": "official_docs",
+      "check": "unreachable"
+    },
+    {
+      "field": "access",
+      "url": "https://commas.com/enterprises",
+      "quote": "APIs and embeddable components, live in days not quarters.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://commas.com/payments",
+      "quote": "Built for your engineering team. REST API, SDKs for Node, Python, PHP and Ruby, a full sandbox, and 10,000+ app connections via Zapier.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://commas.com/",
+      "quote": "MCP beta Run Commas from your AI assistant. Create checkout links, issue refunds and pull your numbers in plain English.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The previously cited SDK guide at https://demo.embedded.fanbasis.io/docs/how-it-works, and the demo host itself, could not be read by direct fetch, and no paid extract calls remained, so those earlier quotes could not be re-verified.",
+    "docs.commas.com, commasdocs.com, and www.fanbasis.io/docs did not load or did not contain an API reference. developers.fanbasis.com, docs.fanbasis.com, api.fanbasis.com, and help.fanbasis.com all redirected to the commas.com marketing homepage.",
+    "The commas.com sitemap lists only marketing, legal, and billing pages, with no developer-docs URL.",
+    "The GitHub organization FanBasis has no public repositories.",
+    "Terms and privacy policy mention the platform's APIs only in warranty and scope language, which does not establish style, breadth, or documentation."
+  ],
+  "id": "fanbasis",
+  "name": "fanbasis",
+  "website": "fanbasis.com",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor's site advertises an MCP beta, supporting official status and beta_or_pilot maturity. The quoted capabilities are also supported; the claims about searches and unverified setup details are not."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth is unknown",
+    "access is unknown",
+    "api is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:58:25+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 23,
+    "input_tokens": 269352,
+    "output_tokens": 7878,
+    "cached_input_tokens": 170197,
+    "critic_tokens": 9171,
+    "composio_calls": 4,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for fanbasis",
+      "charged_usd": 0.0,
+      "log_id": "log_Ht8uE9u94Zrc"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "fanbasis MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log__vU7Zzk_Npbv"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "FanBasis Commas API reference developer docs authentication API key FanBasis webhook Commas MCP beta SDK",
+      "charged_usd": 0.004,
+      "log_id": "log_fGRMPvpiGnkA"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "FanBasis REST API developer documentation link credentials access testing sandbox API key checkout product transaction SDK",
+      "charged_usd": 0.0,
+      "log_id": "log_JjVbkIVXS8l1"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "API reference introductions authentication credential API keys developer dashboard sandbox free merchant account checkout sessions webhooks products subscriptions customers MCP",
+      "charged_usd": 0.0,
+      "log_id": "log_BVlyibIOgo_s"
+    }
+  ]
+}

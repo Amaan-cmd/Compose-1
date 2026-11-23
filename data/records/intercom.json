@@ -1,0 +1,202 @@
+{
+  "one_liner": "Intercom is a cloud customer-messaging and support platform with a broad public REST API (OAuth for third parties, access tokens for your own workspace), free development workspaces that issue API credentials, and an official hosted MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "The authentication docs describe exactly two options: an Access Token for a private app on your own workspace, and OAuth for a public app that accesses other people's Intercom data. Both are sent as an Authorization: Bearer header. OAuth is explicitly required for integrations acting on behalf of other users; asking users for their Access Token is against the terms of service. No basic auth and no open/unauthenticated API."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Free development workspaces (US region only) yield an Access Token with no payment, but they are limited (20 users/leads, no outbound email, Help Center cannot go live, cannot be converted to production). A real customer workspace needs a paid seat (Essential from $29/seat/mo, self-serve) or a 14-day no-credit-card trial that includes all features. Listing a public OAuth app in the App Store requires submitting it for review; private development does not."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.intercom.com/docs/references/introduction",
+    "notes": "Version 2.18 of the REST API is documented publicly and is interactive. The reference covers read and write across the core objects: contacts, companies, conversations, tickets, articles, help center, tags, segments, messages, data events, data export, and more. The getting-started guide shows a POST to https://api.intercom.io/contacts."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "notes": "Intercom hosts the remote server itself at mcp.intercom.com (US) and mcp.eu.intercom.com (EU); AU workspaces are not yet supported. Docs present it as available now, not beta, with 16 tools plus Fin Operator tools for OAuth connections. Auth is OAuth (recommended) or a Bearer API token. Community servers also exist, but the vendor one is the one that counts."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/intercom"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can create a free development workspace and an app, and immediately get an Access Token for a broad, publicly documented REST API covering contacts, conversations, tickets and help center; OAuth is the documented path for acting on other users' workspaces, and Intercom also hosts an official MCP server. Real customer workspaces are paid (or a 14-day trial), and publishing to the App Store needs review, but credentials for building are self-serve and free."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+      "quote": "To access the Intercom API, you have two authentication options depending on whether you app is public or private. An Access Token is for if you're using the API to access data in your own Intercom workspace, in other words, building a private app. OAuth is for if you're building a public app that accesses other people's Intercom data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+      "quote": "Once you have a token, whether an access token or a token via the OAuth process, simply provide it as an Authorization:Bearer header in your requests, as shown below.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+      "quote": "If you are building a public app to share with multiple customers, you must create a new development workspace to develop and publish the app. Development workspaces are free and intended for development purposes only.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+      "quote": "You can create an app for any of your workspaces (paid or development) in the Your apps section of the Developer Hub. ... Get your Access Token on the Authentication page to use in the next step.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://www.intercom.com/pricing",
+      "quote": "Is there a free trial? Yes. 14-day free trial No credit card required Includes all features, Fin, and add-ons You only pay once you choose a plan and add payment details.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/setting-up-oauth",
+      "quote": "It's best practice as these will go up for review when you submit your app for review.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.intercom.com/docs/references/introduction",
+      "quote": "This is documentation for version 2.18 of the REST API. All changes to version 2.18 can be viewed in the Changelog.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+      "quote": "Create a new Contact in Intercom. You can do this by making a POST request to https://api.intercom.io/contacts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.intercom.com/docs/guides/mcp",
+      "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification ( docs ). This server handles requests from AI tools and provides access to Intercom data through a secure interface.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.intercom.com/docs/guides/mcp",
+      "quote": "The Intercom MCP Server provides 16 tools for interacting with the Intercom API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.intercom.com/docs/guides/mcp",
+      "quote": "The MCP server supports two authentication approaches : OAuth Flow (Recommended) : Browser-based authentication with a consent step, described below Bearer Token : Direct API token authentication",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/intercom",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Intercom MCP or direct API to send messages, fetch conversations, update contacts, and automate support workflows through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The MCP guide and the OAuth setup page are long and were returned in truncated/keyword-matched form, so quotes from them come from the matched passages rather than a continuous full read.",
+    "The pricing FAQ renders as stacked short lines (\"Yes. 14-day free trial No credit card required...\"), so that quote is less sentence-like than the others, though it is the page's own wording.",
+    "I did not separately verify whether development-workspace API access is rate-limited or scope-restricted beyond the workspace limitations listed on the getting-started page."
+  ],
+  "id": "intercom",
+  "name": "Intercom",
+  "website": "intercom.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "intercom",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/intercom",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes identify Access Tokens for private apps and OAuth for public apps accessing other users’ data, supporting OAuth as primary. The terms-of-service claim in the notes is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Free development workspaces for building apps, together with the documented Access Token for an app’s own workspace, support a free development path. The quoted text does not establish the stated regional limits, workspace restrictions, or paid-seat price."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference identifies a REST API, and the getting-started quote shows a contact-creation endpoint. Breadth is accepted as an estimate; the detailed list of other objects in the notes is not established by these quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Intercom says it hosts an MCP server that provides 16 tools. Nothing quoted labels it a pilot or future release. The regional endpoints and availability restrictions in the notes are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quoted Composio Intercom toolkit page supports its catalog listing."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A free development path and documented REST API support buildable_now with no main blocker. The rationale goes beyond the quotes when it names additional API objects, says credentials are available immediately, and describes paid customer workspaces."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:55:28+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 95194,
+    "output_tokens": 4608,
+    "cached_input_tokens": 35417,
+    "critic_tokens": 3967,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Intercom",
+      "charged_usd": 0.0,
+      "log_id": "log_vxHnuRXSwO5o"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Intercom MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_2K-K_fARTWTF"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "one_liner": "Cloud team chat (channels, DMs, files, calls) with a free workspace, an HTTP API via API keys and OAuth2 app tokens, and a vendor-hosted MCP server at mcp.pumble.com.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "The integration path the SDK documents for an app acting for workspace users is OAuth2 (consent screen, then an access token and bot token). A simpler per-user API key exists via the API addon, and creating an app in the workspace also yields static app key, user token, and bot token sent as request headers (the scheme the official MCP server uses)."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Cloud only. Anyone can open a free workspace (owner of that workspace). The API addon and custom-app credentials are documented as available on all plans, and a free workspace may install up to 3 addons. Only owners and admins can install apps, so a member in someone else’s workspace may be blocked unless an admin installs the addon or turns off the optional “request app approval” setting. Marketplace listing review was not verified."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+    "notes": "There is a documented HTTP API, not SDK-only. The API-key addon covers sending and replying to messages, reactions, deletion, channel creation, and listing channels and messages. The OAuth/app-token client covers messages (including search, threads, scheduled messages, drafts), channels, users, workspace info, calls, and files, with read and write scopes. Incoming webhooks are HTTP POST. Help articles and the SDK reference are readable without login. The vendor also points at https://docs.pumble.com, which did not render here."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.pumble.com/mcp",
+    "notes": "Hosted by Pumble at https://mcp.pumble.com/mcp. Auth is the app key (x-app-token) plus a user or bot token. Tools depend on selected scopes and include messages, channels, users, reactions, files, calls, and search. Third-party servers also exist (for example shoutkol/pumble-mcp-server); the official one is usable now and is not described as beta."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/pumble"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can create a free Pumble workspace, install the API addon (documented as available on all plans, with up to three addons on Free) or create an app, and call a public HTTP API for messages, channels, and users with an API key or OAuth2/user and bot tokens. Pumble also hosts a generally available MCP server for those same credentials."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+      "quote": "Pumble uses OAuth2 in order to allow your app to access the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+      "quote": "With this access token you will be able to use the Pumble API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+      "quote": "This addon lets you generate an API key that allows you to send messages, reactions, and more via simple HTTP requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://pumble.com/help/integrations/add-pumble-apps/guide-to-pumble-integrations/",
+      "quote": "System displays the User token and Bot token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+      "quote": "Every Request to Pumble API must be sent with two headers: x-app-token : Your app token that you receive when app is created.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://pumble.com/help/integrations/add-pumble-apps/guide-to-pumble-integrations/",
+      "quote": "User scope implies that the addon can perform actions on behalf of users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pumble.com/pricing",
+      "quote": "Start using Pumble for free, and upgrade when you need more features.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pumble.com/pricing",
+      "quote": "Connect with up to 3 apps & integrations, in addition to free native integrations with Clockify and Plaky.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+      "quote": "Who can use this feature? Owner, Admin, Member Available on all plans",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pumble.com/help/integrations/add-pumble-apps/guide-to-pumble-integrations/",
+      "quote": "Only Owners and Admins can install apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://cake.com/updates/mcp-server",
+      "quote": "The MCP server is available to all new and existing Pumble users.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pumble.com/apps",
+      "quote": "Open Pumble in your browser No installation or download required.",
+      "source_type": "official_site",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://pumble.com/help/integrations/add-pumble-apps/incoming-webhooks-for-pumble/",
+      "quote": "https://api.pumble.com/workspaces/WORKSPACE-ID/incomingWebhooks/postMessage/WEBHOOK-CODE",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+      "quote": "The generated key enables interaction with the Addon’s public API, allowing users to send requests and execute various actions within Pumble, including:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+      "quote": "ApiClient contains methods that perform respective API calls, which can be done on behalf of either a user or a bot.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+      "quote": "curl --location 'https://api-ga.pumble.com/oauth2/access'",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pumble.com/help/integrations/add-pumble-apps/incoming-webhooks-for-pumble/",
+      "quote": "To send a message using the incoming webhooks you just created, simply make an HTTP POST request to the unique URL you copied from the webhook editor.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
+      "quote": "With the Pumble Model Context Protocol (MCP) server, you can connect third-party AI agents (e.g., Claude, Gemini, Codex) to Pumble and let them access content so they can search messages, find information, and take actions on your behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
+      "quote": "claude mcp add pumble-mcp https://mcp.pumble.com/mcp --transport http --header \"token: token\" --header \"x-app-token: xpat-token\"",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://cake.com/updates/mcp-server",
+      "quote": "The MCP server is available to all new and existing Pumble users.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/pumble",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Pumble MCP or direct API to send channel messages, manage direct messages, schedule announcements, and search workspace conversations through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/pumble",
+      "quote": "Yes, Pumble requires you to configure your own API key.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "https://docs.pumble.com and https://pumble.com/developers and https://api.pumble.com did not return readable text (likely JavaScript). Endpoint detail was taken from the public SDK reference, which links to docs.pumble.com, and from help articles, not from a live Swagger page.",
+    "The API help line “Available on all plans” is page metadata rather than a full sentence; the free-plan link is that line plus the pricing sentence that Free includes up to three apps and integrations, and the CAKE.com sentence that MCP is available to all users.",
+    "The pricing comparison table’s columns collapse in text, so plan limits were taken from the plan cards, not the comparison grid.",
+    "Composio’s pre-run catalog search missed Pumble even though https://composio.dev/toolkits/pumble is live.",
+    "Whether publishing an addon to the CAKE.com Marketplace requires vendor review was not opened."
+  ],
+  "id": "pumble",
+  "name": "Pumble",
+  "website": "pumble.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "pumble",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/pumble",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2, API keys, and access or user/bot tokens are evidenced. The quotes do not establish the note’s consent-screen details."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free workspace, up to three integrations on Free, and an API-key addon available on all plans support self_serve_free. The optional app-approval setting mentioned in the note is not evidenced."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public HTTP API and HTTP POST webhooks; nothing contradicts the estimated breadth. They do not establish the detailed endpoint coverage in the note."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor pages provide the MCP server URL and say it is available to users. The full tool list in the note is not evidenced."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quotes are from Composio’s Pumble toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free API access supports buildable_now with no main blocker. The rationale’s specific claim that the API covers channels and users is not established by the confirmed quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:56:46+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 14,
+    "input_tokens": 323403,
+    "output_tokens": 5784,
+    "cached_input_tokens": 242981,
+    "critic_tokens": 4169,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Pumble",
+      "charged_usd": 0.0,
+      "log_id": "log_f35OOHp1mqju"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Pumble MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_fOHLi0BKcfxc"
+    }
+  ]
+}

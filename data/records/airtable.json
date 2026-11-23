@@ -1,0 +1,192 @@
+{
+  "one_liner": "Airtable is ready for an agent toolkit: developers can use its REST API with OAuth or personal access tokens, and Airtable also operates an MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is documented for third-party integrations; personal access tokens provide a static-token route. Legacy API keys no longer work."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The Free plan permits API access, with 1,000 API calls per month. Some enterprise organizations can restrict API access through an admin allowlist, but the memo says this is not required for the Free-plan path."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://airtable.com/developers/web/api/introduction",
+    "notes": "Documented operations include reading, creating, updating and deleting records, and retrieving base schema."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.airtable.com/developers/agents/mcp/getting-started",
+    "notes": "Airtable says its MCP server is available to users on all plans."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/airtable"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "The Free plan supports API access, and the documented API includes record reads and writes. Its 1,000-call monthly Free-plan limit is a scaling constraint rather than a credential gate."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://support.airtable.com/articles/9934989703-creating-personal-access-tokens",
+      "quote": "All users should migrate to personal access tokens for individual use and OAuth for third-party integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://support.airtable.com/articles/2111090641-airtable-api-common-troubleshooting",
+      "quote": "To include an access token in the request use the Authorization header. When using the Authorization header method, make sure to use Bearer authentication (rather than basic).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.airtable.com/articles/6292134965-getting-started-with-airtable-s-web-api",
+      "quote": "The \"Create base\" endpoint (POST /v0/meta/bases) is available on all plans — Free, Team, Business, and Enterprise Scale— when you authenticate with a Personal Access Token (PAT) or OAuth token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.airtable.com/articles/9934989703-creating-personal-access-tokens",
+      "quote": "Plan availability All plan types. Certain features are only available to Enterprise Scale or Business plan customers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.airtable.com/articles/7735693959-managing-api-call-limits-in-airtable",
+      "quote": "Free plan: 1000 API calls per month.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://airtable.com/developers/web/api/introduction",
+      "quote": "The Airtable API can be used to integrate your data in Airtable with any external system. The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes.",
+      "source_type": "official_docs",
+      "check": "exact_rendered"
+    },
+    {
+      "field": "api",
+      "url": "https://support.airtable.com/articles/7735693959-managing-api-call-limits-in-airtable",
+      "quote": "Common examples of API calls in Airtable include: List records — Retrieve records from a table, returned in pages of up to 100 at a time Create records — Add new records to a table from an external form, app, or automation Update records — Modify field values in existing records Delete records — Remove records from a table programmatically Get base schema — Retrieve information about a base's structure, including its tables and fields",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.airtable.com/developers/agents/mcp/getting-started",
+      "quote": "Airtable's MCP server lets you connect AI tools directly to your Airtable bases. This integration allows you to ask questions about your data, create and update records, build and manage automations, and analyze information—all through natural conversation with AI tools like Claude, ChatGPT, Cursor, and more. The server is available to all users on all plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/airtable",
+      "quote": "Airtable merges spreadsheet functionality with database power, enabling teams to organize projects, track tasks, and collaborate through customizable views, automation, and integrations for data management",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "`fetch_page` could not read Airtable’s Web API introduction directly; extraction returned its public reference text.",
+    "Some enterprise organizations can restrict API access through an admin allowlist, but that does not appear to be required for the self-serve Free-plan path."
+  ],
+  "id": "airtable",
+  "name": "Airtable",
+  "website": "airtable.com/developers",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "airtable",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/airtable",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show OAuth for third-party integrations and personal access tokens sent as Bearer in the Authorization header, so oauth2 plus bearer_token, with oauth2 as the recommended integration method, is proven. The note that legacy API keys no longer work is not stated in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A Free plan is quoted as allowing API calls (1,000 per month), the create-base endpoint on Free with a PAT or OAuth token, and token creation on all plan types, which is self_serve_free. The enterprise admin-allowlist restriction is not in the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The cited public introduction says the API follows REST semantics with JSON, and another quote lists record list/create/update/delete plus base schema. Broad breadth is an estimate the quotes do not contradict; public_docs and the docs URL match that page."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Airtable's own developers page describes its MCP server as usable now and available to all users on all plans, which supports official and generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from the Composio toolkit page for Airtable, so in_catalog yes is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve Free-plan credentials and a documented REST API with record read/write support meet buildable_now with main_blocker none; the monthly call cap is a usage limit, not a credential gate."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:02+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 120226,
+    "output_tokens": 3489,
+    "cached_input_tokens": 82779,
+    "critic_tokens": 3323,
+    "composio_calls": 3,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Airtable",
+      "charged_usd": 0.0,
+      "log_id": "log_JXrUMG_kaaQ3"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Airtable MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Y1vMWbIRfCYU"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Airtable Web API introduction public documentation authentication personal access tokens OAuth and API endpoints",
+      "charged_usd": 0.0,
+      "log_id": "log_UHvD3Z46aL9y"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "quote check on https://airtable.com/developers/web/api/introduction",
+      "charged_usd": 0.004,
+      "log_id": "log_7v32jODtFE0J"
+    }
+  ]
+}

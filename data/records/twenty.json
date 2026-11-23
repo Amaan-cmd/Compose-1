@@ -1,0 +1,216 @@
+{
+  "one_liner": "Twenty is an open-source CRM with APIs suitable for agent tools.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is documented for external apps acting on behalf of users; API keys are documented for internal scripts and automation."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The free route is self-hosting. Twenty Cloud offers a time-limited trial."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.twenty.com/developers/extend/api",
+    "notes": "The public API guide is readable, but the interactive, workspace-specific reference requires a workspace and API key."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://twenty.com/pricing",
+    "notes": "Twenty says every Cloud workspace has a native MCP server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/twenty"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Self-hosting the open-source core is free, and developers can create an API key. Documented REST and GraphQL APIs support CRUD on core and custom objects; OAuth is documented for apps acting on behalf of users."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.twenty.com/developers/introduction",
+      "quote": "Build apps in TypeScript, connect your tools through APIs, and host Twenty yourself.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.twenty.com/developers/extend/oauth",
+      "quote": "External app acting on behalf of a user OAuth — Authorization Code",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.twenty.com/developers/extend/oauth",
+      "quote": "Internal scripts, automation API Key",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.twenty.com/developers/extend/api",
+      "quote": "Create an API key in Settings → Developers → API → + Create key .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://twenty.com/pricing",
+      "quote": "Self-hosting the open source core is free.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.twenty.com/developers/extend/apps/getting-started/local-server",
+      "quote": "local start runs the web UI, API, worker and databases.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.twenty.com/getting-started/quickstart",
+      "quote": "Pick 30 days (with card) or 7 days (without card). Both include full access — unlimited contacts, email integration, custom objects, API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.twenty.com/developers/extend/api",
+      "quote": "Both are available as REST and GraphQL. GraphQL adds batch upserts and the ability to traverse relations in a single query.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.twenty.com/developers/extend/api",
+      "quote": "CRUD on records: People, Companies, Opportunities, your custom objects",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.twenty.com/developers/extend/api",
+      "quote": "Your workspace-specific API documentation is available under Settings → Developers → API after creating an API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://twenty.com/pricing",
+      "quote": "Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/twenty",
+      "quote": "Twenty MCP server for AI agents and assistants",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/twenty",
+      "quote": "23 Tools",
+      "source_type": "third_party",
+      "check": "not_found"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.twenty.com/developers/extend/oauth",
+      "quote": "Use this flow when your app acts on behalf of a Twenty user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The public API guide is readable, but the interactive reference is workspace-specific and available only after creating a key.",
+    "The pricing page describes a “30-day trial,” while the quickstart distinguishes a 30-day trial with a card from a 7-day trial without one; neither changes the free self-hosted route."
+  ],
+  "id": "twenty",
+  "name": "Twenty",
+  "website": "twenty.com (open-source CRM)",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "twenty",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/twenty",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth for apps acting on behalf of users and API keys for internal scripts and automation."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Free self-hosting, a locally running API, and instructions to create an API key support a self-serve free path. The Cloud trial is also evidenced."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public guide documents REST and GraphQL and CRUD on core and custom objects. It also confirms that workspace-specific documentation requires an API key."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Twenty's pricing page says every Cloud workspace ships with a native MCP server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "A Composio toolkit page for Twenty lists its MCP server."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The evidenced free self-hosted path to API credentials and documented, useful REST and GraphQL APIs support buildable_now with no main blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:20+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 11,
+    "input_tokens": 139423,
+    "output_tokens": 3711,
+    "cached_input_tokens": 96995,
+    "critic_tokens": 0,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Twenty",
+      "charged_usd": 0.0,
+      "log_id": "log_wZaxWrvnnXKM"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Twenty MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_oAYlM57ii2vB"
+    }
+  ]
+}

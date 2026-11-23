@@ -1,0 +1,207 @@
+{
+  "one_liner": "QuickBooks Online has a broad accounting API and an Intuit-published local MCP server, but the path to credentials for a new developer is unclear.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Requires a developer app and OAuth flow; per-user API keys are not offered."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "The instructions describe connecting a developer app to a sandbox or production company, but do not establish whether a new developer can obtain credentials without payment or approval."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": false,
+    "docs_url": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/account",
+    "notes": "Public readability of the API reference is unverified; it could not be read through the available reader. The REST-specific SDK quote is a component description rather than a complete sentence."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+    "notes": "Intuit publishes a local MCP server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/quickbooks"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Intuit describes broad API coverage and requires app registration and OAuth. The evidence does not establish whether a new developer can obtain credentials without payment or approval."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "This server uses OAuth 2.0 to authenticate to a QuickBooks Online company.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "If you only want to read your own company's data, you still need to set up an app — Intuit does not offer per-user API keys.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "You'll set up an app on the Intuit Developer Portal and connect it to either a sandbox (for development) or your production QBO company.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "You must register an app on the Intuit Developer Portal and complete a one-time, browser-based OAuth handshake.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/intuit/QuickBooks-V3-Java-SDK",
+      "quote": "The QuickBooks Online Java SDK provides a set of Java class libraries that make it easier to call QuickBooks Online APIs, and access to QuickBooks Online data.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/intuit/QuickBooks-V3-Java-SDK",
+      "quote": "ipp-v3-java-devkit - core component, contains REST API support.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "It includes full CRUD operations for 29 entity types and 11 financial reports, giving you comprehensive access to QuickBooks Online functionality.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "This MCP server provides complete QuickBooks Online API integration for Claude Code and other MCP-compatible clients.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "quote": "Note: this is a local MCP server.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/quickbooks",
+      "quote": "Quickbooks is a cloud-based accounting software that helps you manage your finances, track your income and expenses, and get insights into your business",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Intuit’s API-reference page did not load through the available reader, preventing direct inspection and verification that it is publicly readable.",
+    "The accessible SDK documentation identifies REST support, but its clearest REST-specific wording is a component description rather than a complete sentence."
+  ],
+  "id": "quickbooks",
+  "name": "QuickBooks",
+  "website": "developer.intuit.com",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "quickbooks",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/quickbooks",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes state the integration uses OAuth 2.0 and that Intuit does not offer per-user API keys, so oauth2 as the only and primary method is shown. Nothing quoted recommends a different method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "REST is supported by the SDK line 'contains REST API support', and broad is supported (not contradicted) by full CRUD for 29 entity types plus 11 reports. public_docs false is not proven: no quote says the reference requires login or is unreadable, and the cited docs URL has no confirmed quote."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The confirmed quotes are on github.com/intuit/quickbooks-online-mcp-server and describe a working local MCP server with complete QBO integration. That supports official and generally_available; nothing labels it beta, pilot, or unreleased."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from https://docs.composio.dev/toolkits/quickbooks and describes QuickBooks on that Composio toolkit page, so in_catalog yes is shown."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "api: unsupported (REST is supported by the SDK line 'contains REST API support', and broad is supported (not contradicted) by full CRUD for 29 entity types plus 11 reports. public_docs false is not proven: no quote says the reference requires login or is unreadable, and the cited docs URL has no confirmed quote.)",
+    "access is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:53:23+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 24,
+    "input_tokens": 273914,
+    "output_tokens": 7957,
+    "cached_input_tokens": 208822,
+    "critic_tokens": 9506,
+    "composio_calls": 4,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for QuickBooks",
+      "charged_usd": 0.0,
+      "log_id": "log_wi4_zjhkMywg"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "QuickBooks MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_biPkgnxgnyAU"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "create free developer account QuickBooks sandbox OAuth client ID secret production API credentials pricing",
+      "charged_usd": 0.0,
+      "log_id": "log_7lNL9k1MA7lL"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developer.intuit.com \"sandbox\" \"free\" \"API\" \"account\" OAuth QuickBooks create app developer OR site:help.developer.intuit.com free sandbox developer account",
+      "charged_usd": 0.004,
+      "log_id": "log_149IDLgz-xTa"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Create an Intuit Developer account create app OAuth sandbox access developer credentials",
+      "charged_usd": 0.0,
+      "log_id": "log_-qCrAgCRp0ly"
+    }
+  ]
+}

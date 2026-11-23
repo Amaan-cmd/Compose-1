@@ -1,0 +1,101 @@
+id,name,website,category,batch
+salesforce,Salesforce,salesforce.com,CRM and Sales,1
+hubspot,HubSpot,hubspot.com,CRM and Sales,1
+pipedrive,Pipedrive,pipedrive.com,CRM and Sales,1
+attio,Attio,attio.com,CRM and Sales,1
+twenty,Twenty,twenty.com (open-source CRM),CRM and Sales,1
+podio,Podio,podio.com,CRM and Sales,1
+zoho-crm,Zoho CRM,zoho.com/crm,CRM and Sales,1
+close,Close,close.com,CRM and Sales,1
+copper,Copper,copper.com,CRM and Sales,1
+dealcloud,DealCloud,api.docs.dealcloud.com,CRM and Sales,1
+zendesk,Zendesk,zendesk.com,Support and Helpdesk,2
+intercom,Intercom,intercom.com,Support and Helpdesk,2
+freshdesk,Freshdesk,freshdesk.com,Support and Helpdesk,2
+front,Front,front.com,Support and Helpdesk,2
+pylon,Pylon,usepylon.com,Support and Helpdesk,2
+liveagent,LiveAgent,liveagent.com,Support and Helpdesk,2
+plain,Plain,plain.com,Support and Helpdesk,2
+help-scout,Help Scout,helpscout.com,Support and Helpdesk,2
+gorgias,Gorgias,gorgias.com,Support and Helpdesk,2
+gladly,Gladly,gladly.com,Support and Helpdesk,2
+slack,Slack,slack.com,Communications and Messaging,3
+twilio,Twilio,twilio.com,Communications and Messaging,3
+zoho-cliq,Zoho Cliq,zoho.com/cliq,Communications and Messaging,3
+lark,Lark (Larksuite),open.larksuite.com,Communications and Messaging,3
+pumble,Pumble,pumble.com,Communications and Messaging,3
+discord,Discord,discord.com,Communications and Messaging,3
+telegram,Telegram,core.telegram.org,Communications and Messaging,3
+whatsapp-business,WhatsApp Business,developers.facebook.com/docs/whatsapp,Communications and Messaging,3
+aircall,Aircall,aircall.io,Communications and Messaging,3
+vonage,Vonage,developer.vonage.com,Communications and Messaging,3
+google-ads,Google Ads,developers.google.com/google-ads,"Marketing, Ads, Email and Social",4
+meta-ads,Meta Ads,developers.facebook.com/docs/marketing-apis,"Marketing, Ads, Email and Social",4
+linkedin-ads,LinkedIn Ads,learn.microsoft.com/linkedin/marketing,"Marketing, Ads, Email and Social",4
+gohighlevel,GoHighLevel,highlevel.stoplight.io,"Marketing, Ads, Email and Social",4
+mailchimp,Mailchimp,mailchimp.com/developer,"Marketing, Ads, Email and Social",4
+klaviyo,Klaviyo,developers.klaviyo.com,"Marketing, Ads, Email and Social",4
+systeme-io,systeme.io,systeme.io (funnel builder),"Marketing, Ads, Email and Social",4
+pinterest,Pinterest,developers.pinterest.com,"Marketing, Ads, Email and Social",4
+threads,Threads (Meta),developers.facebook.com/docs/threads,"Marketing, Ads, Email and Social",4
+sendgrid,SendGrid,sendgrid.com,"Marketing, Ads, Email and Social",4
+shopify,Shopify,shopify.dev,Ecommerce,5
+woocommerce,WooCommerce,woocommerce.com/document/woocommerce-rest-api,Ecommerce,5
+bigcommerce,BigCommerce,developer.bigcommerce.com,Ecommerce,5
+salesforce-commerce-cloud,Salesforce Commerce Cloud,developer.salesforce.com/docs/commerce,Ecommerce,5
+magento,Magento (Adobe Commerce),developer.adobe.com/commerce,Ecommerce,5
+squarespace,Squarespace,developers.squarespace.com,Ecommerce,5
+ecwid,Ecwid,api-docs.ecwid.com,Ecommerce,5
+gumroad,Gumroad,gumroad.com/api,Ecommerce,5
+amazon-selling-partner,Amazon Selling Partner,developer-docs.amazon.com/sp-api,Ecommerce,5
+fanbasis,fanbasis,fanbasis.com,Ecommerce,5
+dataforseo,DataForSEO,docs.dataforseo.com,"Data, SEO and Scraping",6
+se-ranking,SE Ranking,seranking.com/api,"Data, SEO and Scraping",6
+ahrefs,Ahrefs,ahrefs.com/api,"Data, SEO and Scraping",6
+mrscraper,MrScraper,docs.mrscraper.com,"Data, SEO and Scraping",6
+apify,Apify,docs.apify.com,"Data, SEO and Scraping",6
+firecrawl,Firecrawl,firecrawl.dev,"Data, SEO and Scraping",6
+bright-data,Bright Data,brightdata.com,"Data, SEO and Scraping",6
+sherlock,Sherlock,github.com/sherlock-project/sherlock,"Data, SEO and Scraping",6
+waterfall-io,Waterfall.io,waterfall.io (contact/company intel),"Data, SEO and Scraping",6
+clay,Clay,clay.com,"Data, SEO and Scraping",6
+github,GitHub,docs.github.com/rest,"Developer, Infra and Data platforms",7
+vercel,Vercel,vercel.com/docs/rest-api,"Developer, Infra and Data platforms",7
+netlify,Netlify,docs.netlify.com/api,"Developer, Infra and Data platforms",7
+cloudflare,Cloudflare,developers.cloudflare.com/api,"Developer, Infra and Data platforms",7
+supabase,Supabase,supabase.com/docs,"Developer, Infra and Data platforms",7
+neo4j,Neo4j,neo4j.com/docs/api,"Developer, Infra and Data platforms",7
+snowflake,Snowflake,docs.snowflake.com,"Developer, Infra and Data platforms",7
+mongodb-atlas,MongoDB Atlas,mongodb.com/docs/atlas/api,"Developer, Infra and Data platforms",7
+datadog,Datadog,docs.datadoghq.com/api,"Developer, Infra and Data platforms",7
+sentry,Sentry,docs.sentry.io/api,"Developer, Infra and Data platforms",7
+notion,Notion,developers.notion.com,Productivity and Project Management,8
+airtable,Airtable,airtable.com/developers,Productivity and Project Management,8
+linear,Linear,developers.linear.app,Productivity and Project Management,8
+jira,Jira,developer.atlassian.com,Productivity and Project Management,8
+asana,Asana,developers.asana.com,Productivity and Project Management,8
+monday-com,Monday.com,developer.monday.com,Productivity and Project Management,8
+clickup,ClickUp,clickup.com/api,Productivity and Project Management,8
+coda,Coda,coda.io/developers,Productivity and Project Management,8
+smartsheet,Smartsheet,smartsheet.com/developers,Productivity and Project Management,8
+harvest,Harvest,harvestapp.com (help.getharvest.com/api-v2),Productivity and Project Management,8
+stripe,Stripe,stripe.com/docs/api,Finance and Fintech,9
+plaid,Plaid,plaid.com/docs,Finance and Fintech,9
+binance,Binance,binance-docs.github.io,Finance and Fintech,9
+paygent-connect,Paygent Connect,paygent (NMI-powered),Finance and Fintech,9
+ipayx,iPayX,ipayx.ai/docs,Finance and Fintech,9
+quickbooks,QuickBooks,developer.intuit.com,Finance and Fintech,9
+xero,Xero,developer.xero.com,Finance and Fintech,9
+brex,Brex,developer.brex.com,Finance and Fintech,9
+ramp,Ramp,docs.ramp.com,Finance and Fintech,9
+pitchbook,PitchBook,pitchbook.com (research API),Finance and Fintech,9
+notebooklm,NotebookLM,cloud.google.com/gemini (Enterprise API),"AI, Research and Media-native",10
+otter-ai,Otter AI,help.otter.ai (MCP server),"AI, Research and Media-native",10
+fathom,Fathom,fathom.video,"AI, Research and Media-native",10
+consensus,Consensus,consensus.app (OAuth requested),"AI, Research and Media-native",10
+reducto,Reducto,reducto.ai (document parsing),"AI, Research and Media-native",10
+devin,Devin,docs.devin.ai (MCP),"AI, Research and Media-native",10
+higgsfield,higgsfield,higgsfield.ai/cli (content suite),"AI, Research and Media-native",10
+mermaid-cli,Mermaid CLI,github.com/mermaid-js/mermaid-cli,"AI, Research and Media-native",10
+youtube-transcript,YouTube Transcript,transcriptapi.com,"AI, Research and Media-native",10
+grain,Grain,grain.com (meeting notes),"AI, Research and Media-native",10

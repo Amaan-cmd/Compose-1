@@ -1,0 +1,258 @@
+{
+  "one_liner": "DealCloud has a broad REST API and an official MCP server, but API access requires permissions within a DealCloud organisation.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "The REST API uses an API key to obtain an OAuth2 bearer token through the client-credentials flow. DealCloud also documents authorized user proxying; MCP separately supports user sign-in through OAuth 2.0."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "API capability must be enabled for a user group within a DealCloud site. No self-serve route to a site or credentials for a non-customer was established."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://api.docs.dealcloud.com/docs",
+    "notes": "The documentation covers multiple functional areas and authorized requests on behalf of users."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+    "notes": "DealCloud documents a default server and optional write tools. The MCP feature requires the DealCloud with Celeste license."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/dealcloud"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "DealCloud documents a broad REST API and authorized per-user requests, but API capability must be enabled within a DealCloud organisation. A self-serve path to credentials for a non-customer was not established."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://api.docs.dealcloud.com/docs/token",
+      "quote": "DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token, which is then used in the HTTP Authentication header for API requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://api.docs.dealcloud.com/docs/apikeys",
+      "quote": "Once user permissions are set, click the User icon at the top-right of your DealCloud screen and select Profile. Scroll down to the API Key section and click Enable.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://api.docs.dealcloud.com/mcp/authentication",
+      "quote": "DealCloud MCP uses OAuth to authenticate, letting AI assistants connect on behalf of an individual user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://api.docs.dealcloud.com/docs/apikeys",
+      "quote": "To enable API access, ensure the intended user is assigned to a user group with the appropriate permissions. Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable \"API\".",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://api.docs.dealcloud.com/docs/apikeys",
+      "quote": "If you do not see the Admin section, contact your organization's admin or DealCloud Customer Success Manager (CSM) for assistance.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.intapp.com/dealcloud/enterprise-offering",
+      "quote": "Data stored in the dedicated cloud (hosted in Microsoft Azure) is protected by Azure’s comprehensive security framework, which includes advanced encryption and access controls.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://api.docs.dealcloud.com/docs",
+      "quote": "This site provides a comprehensive overview of our REST APIs, their capabilities, and available endpoints.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://api.docs.dealcloud.com/docs",
+      "quote": "Our APIs are organized into functional areas. Each area includes multiple endpoints designed to help you perform specific tasks related to that category.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://api.docs.dealcloud.com/guides/making_requests_on_behalf_of_users",
+      "quote": "Once completed, proxy requests are serviced as if they were made by the principal user, consequently respecting their capabilities, permissions, data access, and auditability.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+      "quote": "DealCloud provides a default MCP Server out-of-the-box without any configuration required. It exposes your site's full schema and is the fastest way to get connected.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+      "quote": "To let assistants create and update records, go to Tools > MCP Servers, edit the MCP Server, and turn on the Enable Write Tools toggle.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://api.docs.dealcloud.com/releases",
+      "quote": "This feature is available as part of the DealCloud with Celeste license.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://api.docs.dealcloud.com/guides/making_requests_on_behalf_of_users",
+      "quote": "Principal and proxy users, both, need to have the API capability enabled in User Management.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://api.docs.dealcloud.com/docs/apikeys",
+      "quote": "If you cannot enable or copy your API key, verify your user group permissions and contact your admin or DealCloud support.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Composio toolkit URL would not load; the memo reports an absent catalog match but supplies no quoted evidence for that finding, so catalog status is unknown.",
+    "No official statement ties REST API credentials to a free account, trial or purchasable plan. A non-customer’s route to obtaining a DealCloud site remains unresolved.",
+    "The API release note describes MCP read access, while current MCP documentation describes optional write tools."
+  ],
+  "id": "dealcloud",
+  "name": "DealCloud",
+  "website": "api.docs.dealcloud.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show OAuth2 client-credentials bearer tokens, a user-enabled API key, and MCP OAuth. They do not explicitly say the API key is exchanged for that token, but nothing recommends a different primary method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Enabling API requires a user-group capability set in Admin > User Management, and non-admins are told to contact their organization admin or CSM. The note that no non-customer self-serve route exists is an absence inference, not a quoted denial."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public docs describe a REST API organized into functional areas with multiple endpoints and user-proxy requests. Nothing contradicts breadth broad."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor docs describe a default MCP server usable out of the box plus an optional write-tools toggle, so official and generally available hold. The Celeste-license sentence does not name MCP, but it does not label the server beta or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A documented REST API plus credentials that an existing organization's admin must enable is buildable with an admin-approval caveat, not a sales or partnership block."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:30+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 237002,
+    "output_tokens": 5524,
+    "cached_input_tokens": 167210,
+    "critic_tokens": 3256,
+    "composio_calls": 8,
+    "composio_usd": 0.032
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for DealCloud",
+      "charged_usd": 0.0,
+      "log_id": "log_zRBxUS42SSsA"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "DealCloud MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_V1Xwu5m8cfNr"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:api.docs.dealcloud.com \"API Keys\" \"Authorization Token\" \"Getting Started\" DealCloud API access admin",
+      "charged_usd": 0.004,
+      "log_id": "log_yxw2KKnNeRH6"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:api.docs.dealcloud.com/docs/ \"Authorization Token\" \"API key\" oauth grant DealCloud",
+      "charged_usd": 0.004,
+      "log_id": "log_la5BrKkUMTxu"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:intapp.com dealcloud trial API access contact sales pricing demo dealcloud license",
+      "charged_usd": 0.004,
+      "log_id": "log_eSFoNgwg3HG1"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:api.docs.dealcloud.com \"API Keys\" \"Authorization Token\" \"Getting Started\" dealcloud API access pricing licensing",
+      "charged_usd": 0.004,
+      "log_id": "log_owfqaiO7Ut0A"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "DealCloud API access sandbox developer trial pricing subscription contact sales developer account API",
+      "charged_usd": 0.004,
+      "log_id": "log_Gh4UYkSjlvkF"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:composio.dev/toolkits/dealcloud DealCloud toolkit composio",
+      "charged_usd": 0.004,
+      "log_id": "log_M5RJ-f3Wt8AC"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:intapp.com/dealcloud \"pricing\" \"contact\" sales DealCloud subscription API access",
+      "charged_usd": 0.004,
+      "log_id": "log_N_a8tFs7pIFO"
+    }
+  ]
+}

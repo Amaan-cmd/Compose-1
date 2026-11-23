@@ -1,0 +1,201 @@
+{
+  "one_liner": "NotebookLM is a source-grounded research and writing app. Its Google Cloud edition, Gemini Notebook Enterprise, has a documented API for assembling notebooks and generating Audio Overviews, but no documented notebook chat or citation-backed Q&A endpoint was found.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Notebook requests use an OAuth access token for a user with an active Gemini Notebook Enterprise license and the required Google Cloud IAM permissions. The bearer header carries the OAuth token; it is not a separate static-token method. Service-account support for notebook operations was not verified."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "The documented API path requires a billing-enabled Google Cloud project, the Discovery Engine API, the Cloud NotebookLM User IAM role, and an active Enterprise license assigned to the caller. Google documents a full-featured 14-day trial, but the reviewed docs do not explicitly confirm that a trial license grants access to the Preview notebook API. A personal NotebookLM account is not the documented API path."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "notes": "The public v1alpha REST API supports creating, retrieving, sharing, and deleting notebooks, listing recently viewed notebooks, managing sources, and generating and deleting Audio Overviews. Notebook management and Audio Overviews are in Preview. No notebook chat or citation-backed Q&A endpoint was found in the reviewed API surface."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/jacob-bd/gemini-notebook-mcp-cli",
+    "notes": "No Google-published NotebookLM MCP server was verified. The released community notebooklm-mcp-cli package offers an MCP server that relies on undocumented APIs and browser-session credentials. The separate PleasePrompto server is archived."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/notebook_lm"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "The documented Preview REST API supports notebook assembly and Audio Overview generation, but notebook operations require a licensed Enterprise user. Google documents a 14-day trial, but the reviewed docs do not confirm that a trial license grants API access."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview",
+      "quote": "Gemini Notebook is an AI-powered research and writing tool that helps you summarize and extract information across dense and complex sources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "quote": "Signing in with your user credentials ensures that gcloud auth print-access-token generates an access token for your user account. The projects.locations.notebooks REST API methods on this page require an authenticated user account with an active Gemini Notebook Enterprise license.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.composio.dev/toolkits/notebook_lm",
+      "quote": "The default auth config requests https://www.googleapis.com/auth/discoveryengine.readwrite . It can authorize Discovery Engine writes within the user's IAM permissions.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "quote": "The projects.locations.notebooks REST API methods on this page require an authenticated user account with an active Gemini Notebook Enterprise license.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+      "quote": "With this tier, you get a full-featured, 14-day trial subscription of 5000 licenses.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview",
+      "quote": "Gemini Notebook Enterprise runs in a Cloud-compliant environment. Your data is always within your Google Cloud project and can't be shared externally.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+      "quote": "The projects.locations.notebooks REST API methods on this page require an authenticated user account with an active Gemini Notebook Enterprise license.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-audio-overview",
+      "quote": "After you create your notebook and add data sources to it, you can programmatically generate an audio overview of the notebook. At a time, a given notebook can have only one audio overview.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/jacob-bd/gemini-notebook-mcp-cli",
+      "quote": "From an MCP-only app (for example Claude CoWork): ask the AI to use the profile tool. It can list your accounts, switch for the session, and, only if you ask, make one your saved default.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/PleasePrompto/notebooklm-mcp",
+      "quote": "This project is no longer maintained. As of September 2026 the repository is archived: no updates, bug fixes or support.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/notebook_lm",
+      "quote": "NotebookLM connects to an existing Gemini Notebook Enterprise deployment in the Global location. The user needs an active license and the Cloud NotebookLM User role in the deployment project.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No live trial or authenticated API call was tested. The next check is to assign a trial license and call notebooks.listRecentlyViewed as that user.",
+    "No documented first-party notebook chat endpoint was found. Community MCP chat capability does not establish that Google's public Notebook Enterprise API supports it."
+  ],
+  "id": "notebooklm",
+  "name": "NotebookLM",
+  "website": "cloud.google.com/gemini (Enterprise API)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "notebook_lm",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/notebook_lm",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The user access token and Google authorization scope support oauth2 as the primary method. The quotes do not independently verify every detail in the notes, including the statement about service-account support."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation explicitly identifies REST methods and describes programmatic Audio Overview generation. Nothing quoted contradicts moderate breadth. The specific endpoint list, Preview designation, and absence of chat or Q&A endpoints are not established by these quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The third-party repository quote describes using a tool from an MCP-only app now, supporting a usable community server. The quotes do not establish the notes' claims about undocumented APIs, browser-session credentials, or the absence of a Google-published server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on Composio's NotebookLM toolkit page and describes its connection requirements."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T21:00:56+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 369422,
+    "output_tokens": 6621,
+    "cached_input_tokens": 292966,
+    "critic_tokens": 7407,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for NotebookLM",
+      "charged_usd": 0.0,
+      "log_id": "log_SeJZrMfMH1PQ"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "NotebookLM MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_mF19ku6065PC"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:docs.cloud.google.com gemini notebooklm enterprise free trial API licenses free trial get subscription Notebook Enterprise get licenses",
+      "charged_usd": 0.004,
+      "log_id": "log_S0w1g2u-mBQx"
+    }
+  ]
+}

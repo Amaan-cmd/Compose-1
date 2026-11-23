@@ -1,0 +1,282 @@
+{
+  "one_liner": "Telegram supports bot-scoped messaging, but a bot token does not grant access to a user’s personal inbox or full chat history.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "other",
+      "bearer_token",
+      "oauth2"
+    ],
+    "primary": "other",
+    "notes": "An MTProto user-authorized session lets an integration call the Telegram API as the user. The app’s api_id and api_hash are required for authorization but do not sign the user in. A BotFather token authenticates the bot, not the user. A separately authorized business connection lets a bot handle updates and send messages on the user’s behalf within its permissions. Telegram Gateway accepts a bearer token for verification-code delivery. Telegram Login uses OAuth 2.0 authorization code flow with OpenID Connect for sign-in; its optional telegram:bot_access scope lets the linked bot send direct messages to the user, not read their chats."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Register a free bot through @BotFather to obtain a token for the hosted Bot API. Standard messaging is free within rate limits, with optional paid broadcasts for higher volume. MTProto requires an active Telegram account and app registration at my.telegram.org. Running the Bot API server locally replaces the API endpoint, not Telegram’s hosted messaging service."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "other"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://core.telegram.org/",
+    "notes": "The Bot API uses method-oriented HTTPS/JSON endpoints to send and edit messages, forward media, look up chats, and receive updates by webhook or polling. Bots ordinarily cannot start private conversations, see only relevant group messages by default, and cannot retrieve full chat history from the update queue. MTProto provides broader user-client access, including message history and contacts."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/BrainDAO/mcp-telegram",
+    "notes": "No Telegram-published MCP server was found. The community package @iqai/mcp-telegram uses a BotFather token and supports sending, forwarding, pinning, and chat lookup. Composio advertises a separate managed MCP option."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/telegram"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "other",
+    "rationale": "Free, self-serve credentials and a documented API make bot-scoped messaging practical, but a bot token does not grant access to a user’s personal inbox or full chat history. Before using Telegram conversations in an agent, review Telegram’s content-licensing terms, which restrict AI use of platform data and describe possible exceptions based on ongoing, context-specific consent from all relevant users."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/bots/tutorial",
+      "quote": "In this context, a token is a string that authenticates your bot (not your account) on the bot API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/bots/api",
+      "quote": "All queries to the Telegram Bot API must be served over HTTPS and need to be presented in this form: https://api.telegram.org/bot<token>/METHOD_NAME .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/api/obtaining_api_id",
+      "quote": "You will get basic addresses as well as the api_id and api_hash parameters required for user authorization.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/api/auth",
+      "quote": "As a result of authorization, the client key, auth_key_id , becomes associated with the user, and each subsequent API call with this key will be executed with that user's identity.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/api/qr-login",
+      "quote": "The method will return an authorization object, containing info about the app and session that we just authorized.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/api/bots/connected-business-bots",
+      "quote": "Connecting or disconnecting a business bot or changing the connection settings will emit an updateBotBusinessConnect update to the bot, with the new settings and a connection_id that will be used by the bot to handle updates from and send messages as the user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/gateway/api",
+      "quote": "The token must be passed in every request in one of two ways: in the HTTP header: Authorization: Bearer <token> as the access_token parameter.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/bots/telegram-login",
+      "quote": "Alternatively, Telegram supports the standard OpenID Connect protocol.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/bots/telegram-login",
+      "quote": "If the user approves the login, they will be redirected to your redirect_uri with a code parameter. Exchange this code for an access token and ID token by making a server-side POST request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://core.telegram.org/bots/telegram-login",
+      "quote": "Allows your bot to send direct messages to the user after login.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://core.telegram.org/bots",
+      "quote": "The Telegram Bot Platform hosts more than 10 million bots and is free for both users and developers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://core.telegram.org/bots",
+      "quote": "To get started, message @BotFather on Telegram to register your bot and receive its authentication token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://core.telegram.org/bots/api",
+      "quote": "You can run it locally and send the requests to your own server instead of https://api.telegram.org .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://core.telegram.org/bots/faq",
+      "quote": "By default, bots are able to message their users at no cost – but have limitations on the number of messages they can broadcast in a single interval:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://core.telegram.org/bots/api",
+      "quote": "The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://core.telegram.org/",
+      "quote": "The Telegram API and TDLib allow you to build your own customized Telegram clients.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://core.telegram.org/bots/api",
+      "quote": "Incoming updates are stored on the server until the bot receives them either way, but they will not be kept longer than 24 hours.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://core.telegram.org/bots",
+      "quote": "Bots can't start conversations with users. A user must either add them to a group or send them a message first.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://telegram.org/tos/content-licensing",
+      "quote": "For clarity, Telegram firmly prohibits the scraping, indexing, harvesting, aggregation or use of data obtained from its platform to train, fine-tune, validate or otherwise engage in the development, enhancement, benchmarking or deployment of artificial intelligence, machine learning models and similar technologies. Exceptions may be granted in instances where all relevant users individually provide explicit, informed, affirmative and continued consent that is strictly limited to the specific content and chat, channel, or non-global context window for which it was requested.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/BrainDAO/mcp-telegram",
+      "quote": "This server enables AI agents to send messages, manage channels, forward content, and respond intelligently to Telegram conversations.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/BrainDAO/mcp-telegram",
+      "quote": "Users should ensure their bot usage complies with Telegram's Terms of Service and Bot API policies.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/telegram",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Telegram MCP or direct API to send messages, automate group chats, manage channels, and interact with users through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/telegram",
+      "quote": "Poll pending bot updates and filter the returned batch by chat ID or username; this is not complete chat history, and an empty filtered batch does not establish that the chat has no accessible messages.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio lookup returned no match despite a public Telegram toolkit page.",
+    "The public listing and MCP setup were verified from documentation, not by executing authenticated calls.",
+    "Composio’s “Get Chat History” action filters pending bot updates; it does not retrieve full chat history."
+  ],
+  "id": "telegram",
+  "name": "Telegram",
+  "website": "core.telegram.org",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "telegram",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/telegram",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes support bot tokens, user-authorized sessions, bearer tokens for Gateway, and an authorization-code login flow. They do not establish every detail in the notes, such as the named bot-access scope."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Telegram says the Bot Platform is free for developers and that messaging BotFather yields an authentication token. The quotes do not establish the notes' details about MTProto registration or optional paid broadcasts."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public HTTP Bot API and a separate API for custom clients; they do not contradict the estimated breadth. Several specific capabilities in the notes, including editing messages and retrieving contacts, are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The GitHub quote describes a functioning third-party server. It does not substantiate the notes' claims about the named package's specific features or a separate managed MCP option."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote comes from Composio's Telegram toolkit page and describes its integration."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free self-serve bot credentials and a documented, useful API support buildability. The evidenced bot limitations support a caveat and an 'other' blocker; the cited licensing restriction also supports the rationale."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:09+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 19,
+    "input_tokens": 361656,
+    "output_tokens": 11947,
+    "cached_input_tokens": 230938,
+    "critic_tokens": 8501,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Telegram",
+      "charged_usd": 0.0,
+      "log_id": "log_Bt3c7EREmCmg"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Telegram MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ovfIn8mjGxg8"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "one_liner": "Cloud collaboration suite with a broad public HTTP OpenAPI using app id/secret and OAuth user tokens; whether a non-paying developer can create those credentials is not evidenced.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "A custom app mints a tenant access token by POSTing its app id and app secret, and a separate OAuth flow exchanges a login authorization code for a user_access_token used to call APIs as the user. The user-token path is the one prescribed for acting on behalf of a user."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Developer docs say to create an app and take the App ID and App Secret, and a free Starter plan is mentioned, but no readable sentence ties that plan or any other plan to OpenAPI calls or credential creation. Publishing a new app version is described as reviewed, but that claim could not be re-verified from a readable page."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://open.larksuite.com/document/home/index",
+    "notes": "The official Node SDK documents server APIs as HTTP calls (domain plus /open-apis/..., method GET or POST, JSON body) covering messaging, calendars, documents, Base, contacts, approvals and application management. Linked reference pages are public and the SDK bundle is readable without logging in."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://github.com/larksuite/lark-openapi-mcp",
+    "notes": "Published by larksuite as @larksuiteoapi/lark-mcp and documented on the Lark developer site. The GitHub README labels it Beta. A remote hosted MCP mode exists but the docs mark it Deprecated; the usable path is the local npm server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/lark"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "The HTTP API is public, broad, and callable with app id/secret plus an OAuth user token, so the product is technically buildable. Access to credentials is unknown because the only pages that describe the free plan and the OpenAPI call limit are JavaScript-rendered and could not be re-read, so neither buildable_now nor a paid or partner gate can be proven."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://cdn.jsdelivr.net/npm/@larksuiteoapi/node-sdk@1.77.0/lib/index.js",
+      "quote": "自建应用通过此接口获取 `tenant_access_token`。",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://cdn.jsdelivr.net/npm/@larksuiteoapi/node-sdk@1.77.0/lib/index.js",
+      "quote": "根据登录预授权码 返回 code 获取 `user_access_token`。",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "auth",
+      "url": "https://raw.githubusercontent.com/larksuite/lark-openapi-mcp/main/README.md",
+      "quote": "If you need to call APIs as a user, set the OAuth 2.0 redirect URL to http://localhost:3000/callback.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://raw.githubusercontent.com/larksuite/lark-openapi-mcp/main/README.md",
+      "quote": "Obtain the App ID and App Secret, which will be used for API authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/larksuite/node-sdk/main/README.md",
+      "quote": "Feishu Open Platform provides a series of atomic APIs on the server side to realize diversified functions.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://cdn.jsdelivr.net/npm/@larksuiteoapi/node-sdk@1.77.0/lib/index.js",
+      "quote": "自建应用通过此接口获取 `tenant_access_token`。",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/larksuite/lark-openapi-mcp",
+      "quote": "This is the Feishu/Lark official OpenAPI MCP (Model Context Protocol) tool designed to help users quickly connect to the Feishu/Lark platform and enable efficient collaboration between AI Agents and Feishu/Lark.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/larksuite/lark-openapi-mcp",
+      "quote": "Beta Version Notice: This tool is currently in Beta stage. Features and APIs may change, so please stay updated with version releases.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/mcp_integration/mcp_introduction",
+      "quote": "It also supports application access tokens (tenant_access_token) and user access tokens (user_access_token) to ensure secure and controllable API calls.",
+      "source_type": "official_docs",
+      "check": "unreachable"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/lark",
+      "quote": "Lark is an enterprise collaboration platform for messaging, video calls, calendars, and documents. It brings team communication and work management into one connected workspace.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "open.larksuite.com, open.feishu.cn and larksuite.com all render with JavaScript, so fetch_page failed on every official docs and pricing URL, and the paid Tavily budget was already zero, so none of those pages could be re-extracted.",
+    "The previous quotes about the free trial, the free Starter plan, the app-version review, and the user_access_token OAuth sentence therefore could not be re-verified and were dropped rather than repeated.",
+    "The pricing page's OpenAPI call-limit row still cannot be tied to a plan column.",
+    "GitHub code search requires a login, so I could not search the SDK repository; the evidence instead comes from the raw README and the published npm bundle."
+  ],
+  "id": "lark",
+  "name": "Lark (Larksuite)",
+  "website": "open.larksuite.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "lark",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/lark",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The OAuth 2.0 quote supports its use for calls as a user and thus the stated primary method. The tenant_access_token quote supports a token method, though the claimed app-secret exchange and authorization-code details are not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "The quote mentions an interface for obtaining a token, but shows no HTTP endpoint, method, or JSON request establishing REST, and does not establish that the stated API docs are publicly readable. It does not contradict the breadth estimate, but it cannot prove the other API claims."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The quotes identify an official MCP tool and explicitly label it Beta. The note's claims about npm and a deprecated remote mode are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote appears on Composio's Lark toolkit page and identifies Lark."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "api: unsupported (The quote mentions an interface for obtaining a token, but shows no HTTP endpoint, method, or JSON request establishing REST, and does not establish that the stated API docs are publicly readable. It does not contradict the breadth estimate, but it cannot prove the other API claims.)",
+    "access is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:56:45+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 25,
+    "input_tokens": 346535,
+    "output_tokens": 11264,
+    "cached_input_tokens": 239521,
+    "critic_tokens": 10130,
+    "composio_calls": 4,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Lark (Larksuite)",
+      "charged_usd": 0.0,
+      "log_id": "log_XDwSes9pBr5v"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Lark (Larksuite) MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_dOu1tPnVpmJE"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "authentication methods app id app secret OAuth API access free plan developer credentials REST API",
+      "charged_usd": 0.0,
+      "log_id": "log_FBj1STTRYKtN"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Become a Lark developer Free Trial create an organization account app credentials App ID App Secret OAuth authentication API style REST OpenAPI basic call limit Starter plan",
+      "charged_usd": 0.004,
+      "log_id": "log_kxrGbzTvrHil"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Lark Open Platform OAuth user_access_token API reference site:open.larksuite.com Starter plan OpenAPI call limit free",
+      "charged_usd": 0.004,
+      "log_id": "log_rzZv6Aavljdd"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "OAuth user_access_token authorization code app credentials REST HTTP API list breadth of server APIs",
+      "charged_usd": 0.0,
+      "log_id": ""
+    }
+  ]
+}

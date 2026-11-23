@@ -1,0 +1,200 @@
+{
+  "one_liner": "Fathom is a meeting-data agent toolkit with free-plan API keys, a documented REST API, and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Fathom recommends OAuth for apps installed by other users and API keys for personal or internal use."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Users can generate API keys on the Free plan without admin approval. Public OAuth apps are subject to review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://developers.fathom.ai/api-overview",
+    "notes": "The API provides meeting summaries, action items, transcripts, Highlights, and CRM matches; webhooks can also be created via the API."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.fathom.ai/mcp-docs",
+    "notes": "Fathom offers a hosted MCP server usable with MCP-compatible tools. Community implementations also exist."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/fathom"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free-plan users can generate API keys without admin approval, and the documented REST API returns several kinds of meeting data. Public OAuth apps are subject to review."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.fathom.ai/faq",
+      "quote": "Use an API key if you only need access to your own (or your team’s) meetings—for internal tools or personal automation. Use OAuth if you’re building an app that other Fathom users will install so they can connect their own accounts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.fathom.ai/features/api",
+      "quote": "Yes. API keys, webhooks, and SDKs are included on every Fathom plan, including Free.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.fathom.ai/features/api",
+      "quote": "Generate an API key yourself in Fathom, with no admin approval needed.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.fathom.ai/oauth",
+      "quote": "OAuth apps are eligible for promotion by Fathom and can unlock visibility in our App Marketplace, as well as co-marketing opportunities. They are subject to review to ensure the best experience for all users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.fathom.ai/api-overview",
+      "quote": "This documentation describes Fathom’s REST API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.fathom.ai/features/api",
+      "quote": "Fathom’s notetaker API returns summaries, action items, transcripts, Highlights, and CRM matches, so you can build custom workflows and integrations on top of your meeting data.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.fathom.ai/faq",
+      "quote": "Create one in User Settings → API Access → Manage → Add Webhook (or via the API).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.fathom.ai/mcp-docs",
+      "quote": "Fathom now offers an official MCP (Model Context Protocol) server, allowing you to connect your Fathom meeting data to AI assistants like ChatGPT, Claude, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.fathom.ai/features/mcp-server",
+      "quote": "Fathom MCP works with ChatGPT (through the Fathom app), Claude (through the Fathom connector or Claude Code), and any MCP-compatible tool using the server URL https://api.fathom.ai/mcp.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/fathom",
+      "quote": "Yes. Create a key in Fathom under Settings > API Access, create a Fathom auth config with the API Key authentication type, and paste the key when you click Connect Account.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.fathom.ai/features/api",
+      "quote": "Yes. API keys, webhooks, and SDKs are included on every Fathom plan, including Free.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.fathom.ai/oauth",
+      "quote": "They are subject to review to ensure the best experience for all users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The documentation says public OAuth apps are subject to review but does not establish precisely when review is required relative to testing or distribution."
+  ],
+  "id": "fathom",
+  "name": "Fathom",
+  "website": "fathom.video",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "fathom",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/fathom",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The FAQ quote documents both an API key for personal or team use and OAuth for apps other users install, so api_key plus oauth2 and primary oauth2 are proven."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "API keys are included on every plan including Free and can be generated without admin approval, proving self_serve_free. The OAuth quote supports the note that public OAuth apps are subject to review."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The docs explicitly call it a REST API and are publicly quoted. Returning summaries, action items, transcripts, Highlights and CRM matches, plus webhook creation, does not contradict moderate breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Fathom states it offers an official MCP server that works now at https://api.fathom.ai/mcp, supporting official and generally_available. No quote shows the claimed community implementations."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on the Composio Fathom toolkit page and describes creating a Fathom API-key auth config, so in_catalog yes is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free-plan API keys need no payment or approval and the public REST API covers several meeting-data objects, so buildable_now with main_blocker none follows. OAuth review is a distribution caveat, not a block on the free key path."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:54:28+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 96231,
+    "output_tokens": 3342,
+    "cached_input_tokens": 69100,
+    "critic_tokens": 3265,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Fathom",
+      "charged_usd": 0.0,
+      "log_id": "log_sDjCtp3IEPgf"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Fathom MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Pvl37XZpLHZd"
+    }
+  ]
+}

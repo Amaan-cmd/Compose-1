@@ -1,0 +1,167 @@
+{
+  "one_liner": "Mermaid CLI is an installable diagram-rendering tool with a local Node.js API, not an API-backed account service.",
+  "deployment_model": "self_hosted",
+  "auth": {
+    "methods": [
+      "none"
+    ],
+    "primary": "none",
+    "notes": "The documented interfaces use local files, stdin, or Node.js. The README does not explicitly state that authentication is unnecessary."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The license permits anyone to use the software free of charge, and the README describes a local CLI that takes a diagram file as input and generates an output file. This local use does not require API credentials."
+  },
+  "api": {
+    "styles": [
+      "sdk_only"
+    ],
+    "breadth": "narrow",
+    "public_docs": true,
+    "docs_url": "https://github.com/mermaid-js/mermaid-cli",
+    "notes": "The public README documents local diagram rendering through Node.js, not an HTTP API for account objects."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/andrewginns/mermaid-mcp-server",
+    "notes": "A third-party wrapper invokes Mermaid CLI. Mermaid Chart’s hosted MCP server serves a separate service."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "narrow_api",
+    "rationale": "Credentials are self-serve, but the API is narrow."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://github.com/mermaid-js/mermaid-cli",
+      "quote": "It's possible to call mermaid-cli via a Node.JS API. Please be aware that the NodeJS API is not covered by semver , as mermaid-cli follows mermaid 's versioning.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://github.com/mermaid-js/mermaid-cli",
+      "quote": "You can easily pipe input from stdin. This example shows how to use a heredoc to send a diagram as stdin to mermaid-cli (mmdc).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/mermaid-js/mermaid-cli/blob/master/LICENSE",
+      "quote": "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/mermaid-js/mermaid-cli",
+      "quote": "This is a command-line interface (CLI) for mermaid . It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/mermaid-js/mermaid-cli",
+      "quote": "It's possible to call mermaid-cli via a Node.JS API. Please be aware that the NodeJS API is not covered by semver , as mermaid-cli follows mermaid 's versioning.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/andrewginns/mermaid-mcp-server",
+      "quote": "The server internally calls npx @mermaid-js/mermaid-cli as a subprocess to perform diagram validation and rendering.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/mermaid_chart_mcp",
+      "quote": "Validates Mermaid syntax, renders diagrams as high-quality SVG, and displays them in an interactive UI for preview, zoom, and real-time iteration.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The README does not explicitly say “no authentication”; the auth finding rests on its documented local invocation methods.",
+    "Mermaid Chart’s accounts, API, and official MCP server are distinct from Mermaid CLI.",
+    "The attempted Mermaid CLI Composio toolkit page could not be read, so catalog absence remains unverified.",
+    "The quoted Composio page describes a different toolkit and does not establish a Mermaid CLI listing."
+  ],
+  "id": "mermaid-cli",
+  "name": "Mermaid CLI",
+  "website": "github.com/mermaid-js/mermaid-cli",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "inferred",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quoted interfaces are a local Node.js call and stdin piping, with no credential, header, or login step and nothing recommending another method. primary none is inferred from that local invocation, not from an explicit statement that authentication is unnecessary."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred self_serve_free: the MIT quote grants use free of charge to any person who obtains a copy, and the README quote shows a local CLI that renders a file with no account, payment, trial, or approval. Nothing quoted restricts use to a paid plan or sales."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes show a local CLI plus a Node.js API that turns a diagram definition into SVG/PNG/PDF, with no HTTP endpoints, so sdk_only is fair and narrow is not contradicted. The README is on a public GitHub page, so public_docs and the docs URL hold. Breadth remains the researcher's estimate."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The andrewginns quote shows a third-party server that invokes mermaid-cli via npx, so community is supported, and nothing in it says beta, pilot, or unreleased, so generally_available is not contradicted. The note's claim about a separate Mermaid Chart hosted MCP server is not in these quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "With auth none, access self_serve_free, and a documented but narrow local Node/CLI API, buildable_with_caveats and main_blocker narrow_api follow. The rationale matches those facts; the unsupported composio value is not an input to the verdict."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:55:22+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 84255,
+    "output_tokens": 7143,
+    "cached_input_tokens": 36912,
+    "critic_tokens": 9411,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Mermaid CLI",
+      "charged_usd": 0.0,
+      "log_id": "log_JW5PJkuZ-OC8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Mermaid CLI MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_kPNgG8HIT3Wi"
+    }
+  ]
+}

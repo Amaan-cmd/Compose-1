@@ -1,0 +1,197 @@
+{
+  "one_liner": "Meta's hosted WhatsApp Business Platform (Cloud API) is a broad Graph REST API that a developer can start calling with self-serve tokens and a free test number, with an official beta MCP server as well as a Composio toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "bearer_token",
+      "oauth2"
+    ],
+    "primary": "bearer_token",
+    "notes": "The Cloud API is called with a bearer access token. For a direct developer acting on their own business, Meta recommends a long-lived System User access token; user access tokens (from the App Dashboard, Graph API Explorer, or Facebook Login) are supported but short-lived, and Tech Providers/partners use Business Integration System User tokens obtained by exchanging an Embedded Signup code from Facebook Login for Business."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A developer registers, creates a Meta app, and gets a test WhatsApp account, test Messaging account, and test phone number that can send template messages with no payment method on file. Real usage is metered per delivered business-to-user message and needs a payment method and business verification; distributing an app to other businesses (Tech Provider) needs App Review. Cloud-hosted only."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp",
+    "notes": "Cloud API (graph.facebook.com) sends and receives messages, calls, and groups; the Business Management API covers accounts, phone numbers, templates, billing, and analytics; webhooks deliver inbound events. The reference is readable without login."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+    "notes": "Meta hosts \"WhatsApp Business Tools\" at https://mcp.facebook.com/whatsapp_business_tools, authenticated by Meta developer OAuth, labelled beta, and rolling out gradually. Community servers also exist (for example the LobeHub whatsapp-mcp-server and GreenAPI-based servers), but the vendor server is usable now."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/whatsapp"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can register, create an app, and call the Cloud API with a generated token against an auto-provisioned test number that needs no payment method, and the public API covers messaging, templates, accounts, media, and webhooks. Production sending is per-message billed and requires a payment method, and the official MCP server is beta and not yet available to every account."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens",
+      "quote": "If you are a direct developer, meaning only you or your business accesses your own data, use a System User access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens",
+      "quote": "When making API requests, include your token in an authorization request header, preceded by Bearer.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/access-tokens",
+      "quote": "Although User access tokens are supported and can be used by all app developers, you typically only use them when you first use the App Dashboard to send your first test message.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+      "quote": "This guide helps developers quickly get started with the WhatsApp Cloud API. It covers the basic setup steps, including registering as a developer, creating a Meta app, sending your first message, and setting up a test webhook endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform",
+      "quote": "Test accounts and test phone numbers are useful for testing purposes, as they have relaxed messaging limits and don’t require a payment method on file in order to send template messages.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform",
+      "quote": "The WhatsApp Business Platform Cloud API enables you to programmatically message and call on WhatsApp.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/about-the-platform",
+      "quote": "The WhatsApp Business Management API enables you to programmatically manage your WhatsApp platform assets: WhatsApp account management: Create accounts, add and remove phone numbers, link accounts together, and assign partner access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+      "quote": "For developers building on the WhatsApp Business Platform (Cloud API) — the WhatsApp Business Tools MCP server lets your AI agent and IDE assistant manage and debug your WhatsApp Business integration from one place.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+      "quote": "Note: The interface and tool set of the WhatsApp Business Tools MCP server are in beta and may change.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/whatsapp",
+      "quote": "WhatsApp is a business messaging platform for secure, automated customer communication. It streamlines chat workflows and customer outreach using the WhatsApp Business API.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pre-run Composio catalog search returned no match, but the public toolkit page exists.",
+    "I did not find a current official sentence saying the on-premises API is gone, so deployment is \"cloud\" from the Cloud API docs rather than an explicit \"on-premises retired\" quote.",
+    "Pricing is usage-based rather than a subscription, and community forum posts suggest some test numbers are blocked until a payment method is added; the official about-the-platform page still says test numbers don't require one."
+  ],
+  "id": "whatsapp-business",
+  "name": "WhatsApp Business",
+  "website": "developers.facebook.com/docs/whatsapp",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "whatsapp",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/whatsapp",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes recommend a System User access token for a direct developer and say to send tokens as Bearer credentials. OAuth2 is listed as another method but has no confirming quote. The notes’ claims about token lifetimes and partner flows are also unproven."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve free access is inferred: the getting-started guide covers developer registration, app creation and sending a first message, while test accounts and numbers require no payment method for template messages. The claims about production billing, verification and App Review are not shown."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "The quotes establish programmatic messaging, calling and account management, but do not establish the claimed REST style with an HTTP endpoint, method or JSON request. Several capabilities in the notes are also not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Meta’s documentation describes the server and expressly labels its interface and tools beta. The claimed host address, authentication and gradual rollout are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote appears on Composio’s WhatsApp toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "The verdict rests on access or API claims that were not confirmed."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "api: unsupported (The quotes establish programmatic messaging, calling and account management, but do not establish the claimed REST style with an HTTP endpoint, method or JSON request. Several capabilities in the notes are also not shown.)",
+    "verdict: unsupported (The verdict rests on access or API claims that were not confirmed.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:26+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 252374,
+    "output_tokens": 9262,
+    "cached_input_tokens": 146343,
+    "critic_tokens": 11340,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for WhatsApp Business",
+      "charged_usd": 0.0,
+      "log_id": "log_Tiz2du-a1xUH"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "WhatsApp Business MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_IckInD8MLOKb"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "WhatsApp Cloud API developer test number free no payment method required site:developers.facebook.com",
+      "charged_usd": 0.004,
+      "log_id": "log_77crNeOYEUcF"
+    }
+  ]
+}

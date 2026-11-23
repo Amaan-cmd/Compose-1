@@ -1,0 +1,199 @@
+{
+  "one_liner": "Binance’s documented Spot API supports market data, account reads, and trading, and its Spot Test Network provides a path to development credentials.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "none"
+    ],
+    "primary": "api_key",
+    "notes": "Authenticated endpoints require an API key; endpoints with security type NONE do not. The memo does not identify the MCP connection’s authorization protocol."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Developers can generate an API key on the hosted Spot Test Network and receive virtual assets. This development path does not establish access to real-asset trading or every production endpoint."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+    "notes": "The public Spot API reference documents order placement and account information alongside market data."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.binance.com/en/docs/agent-native/mcp-server/agentic",
+    "notes": "Binance documents an MCP connection for agents. A separate community-built Spot server is also described at https://github.com/ethancod1ng/binance-mcp-server."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can generate Spot Test Network API keys, and the public Spot API documents account reads and order placement. The test network supports only /api endpoints, and trading must be enabled separately for an API key."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "quote": "Secure endpoints require a valid API key to be specified and authenticated.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "quote": "If unspecified, the security type is `NONE`.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://testnet.binance.vision/",
+      "quote": "Step 1: Log in on this website, and generate an API Key.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://testnet.binance.vision/",
+      "quote": "All users registering on the Spot Test Network automatically receive a balance in many different assets.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "quote": "Send in a new order. This adds 1 order to the `EXCHANGE_MAX_ORDERS` filter and the `MAX_NUM_ORDERS` filter.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "quote": "Get current account information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.binance.com/en/docs/agent-native/mcp-server/agentic",
+      "quote": "Connect your AI agent to Binance with a single URL. Your agent can read market data, check balances, trade Spot / Margin / Convert / USDⓈ-M / COIN-M Futures, and move funds between wallets inside a dedicated Agentic sub-account — no local install, no API keys on your device.",
+      "source_type": "official_docs",
+      "check": "exact_rendered"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/ethancod1ng/binance-mcp-server",
+      "quote": "A Binance Spot MCP server for compatible AI clients, using stdio and ten tools. Node.js 24+ is required.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://testnet.binance.vision/",
+      "quote": "No, only the /api endpoints are available on the Spot Test Network.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/master/rest-api.md",
+      "quote": "By default, an API key cannot `TRADE`. You need to enable trading in API Management first.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Binance’s developer-docs pages and the Composio toolkit URL would not load through the direct page reader. The official MCP page was read through extraction; the API reference was read from Binance’s public documentation repository.",
+    "The supplied catalog search returned no Binance match, but the memo provides no quoted evidence for a Composio catalog finding."
+  ],
+  "id": "binance",
+  "name": "Binance",
+  "website": "binance-docs.github.io",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show secure endpoints need a valid API key and that an unspecified security type is NONE, so api_key plus none, with api_key primary for authenticated use, is proven. The trading-permission quote does not name another method. The note's claim about the MCP connection's authorization protocol is not in these quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The testnet quotes show registration, logging in, and generating an API key, with balances issued automatically and no payment, trial, or approval mentioned, which meets self_serve_free. They do not explicitly say the balances are virtual or that production real-asset trading is unavailable."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public rest-api.md quotes document placing an order and reading account information, so rest, public docs, and the cited URL are proven; breadth broad is not contradicted. The testnet quote limits that network to /api endpoints only. Market data is not shown in the quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The Binance developer-docs quote describes a vendor-hosted agent connection that can already read data and trade, supporting official and generally_available. The GitHub quote separately supports the noted community Spot server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve testnet API keys plus a public REST API covering account reads and order placement support buildable_now with main_blocker none. Enabling trading and the testnet /api-only limit are constraints but not one of the defined blockers."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:43+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 75277,
+    "output_tokens": 3334,
+    "cached_input_tokens": 56177,
+    "critic_tokens": 3235,
+    "composio_calls": 3,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Binance",
+      "charged_usd": 0.0,
+      "log_id": "log_Jf5183sn-OGL"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Binance MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_TiCgLU9FSR3x"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Is Binance MCP server released available now? how to connect authenticate agentic account official hosted",
+      "charged_usd": 0.0,
+      "log_id": "log_Jc5641Kxa71M"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "quote check on https://developers.binance.com/en/docs/agent-native/mcp-server/agentic",
+      "charged_usd": 0.0,
+      "log_id": "log_099ctpQZ6UhH"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "one_liner": "Cloud B2B helpdesk with a broad bearer-token REST API and an official MCP server, reachable only through a paid plan or a sales-arranged trial.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "bearer_token"
+    ],
+    "primary": "bearer_token",
+    "notes": "The public REST API authenticates with a static API token in an Authorization: Bearer header. Tokens are created in the dashboard, do not expire, and have no separate scopes. The hosted MCP server also accepts OAuth 2.0 for interactive AI clients, and error codes mention invalid_oauth_token and oauth_not_permitted, but no public page documents registering an OAuth client for a third-party REST integration, so oauth2 is not listed as an API method."
+  },
+  "access": {
+    "level": "partner_or_sales",
+    "notes": "REST API and the Pylon MCP server are included on Professional ($89/seat), Advanced ($139/seat), and Enterprise, all annual and sold through a demo or sales. The FAQ says free trials exist, but a sales representative sets up the demo organization, so there is no self-serve signup. Inside an organization, only Admins can mint API tokens."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference.md",
+    "notes": "The API reference is readable without login. It is an HTTP API (OpenAPI 3.0.3, bearer auth) with read and write across core objects: the index lists accounts, contacts, issues, messages, knowledge base, tags, teams, users, custom fields, custom objects, tasks and projects, surveys, ticket forms, and more. Issues and accounts both support create and list. Official TypeScript, Python, and Go SDKs wrap the same HTTP API. Base URLs are https://api.usepylon.com and https://api.eu.usepylon.com."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "notes": "Pylon hosts the server at https://mcp.usepylon.com (EU: https://mcp.eu.usepylon.com), Streamable HTTP, OAuth 2.0 or an API token. The identity needs the MCP Access permission, which the standard Member and Admin roles include. Pricing lists \"Pylon MCP server\" on every paid tier. A separate community server exists (github.com/JustinBeckwith/pylon-mcp) but the vendor one is usable now."
+  },
+  "composio": {
+    "in_catalog": "no",
+    "url": "https://composio.dev/toolkits/pylon"
+  },
+  "verdict": {
+    "status": "blocked",
+    "main_blocker": "partner_gate",
+    "rationale": "The REST API is public, broad, and token-authenticated, and an official MCP server is generally available, but both require a Pylon organization, and the only way to get one is a sales-arranged paid plan or a sales-arranged trial."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+      "quote": "The Pylon API uses Bearer authentication. This means you’ll need to pass your API token in the header of your request:",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+      "quote": "Only Admins can create and manage API tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+      "quote": "Tokens don't expire, and their access is controlled only by the role. There are no separate scopes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.usepylon.com/pricing",
+      "quote": "Does Pylon offer a free trial or free plan? Pylon offers free trials for prospects. Your sales representative will work with you on setting up the demo organization.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.usepylon.com/pricing",
+      "quote": "Professional Includes: Viewer seats Core support Out-of-the-box Analytics Automations Skills Broadcasts MCP API Integrations $89/seat on an annual contract Book a demo",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api.md",
+      "quote": "Pylon’s API can be used to programmatically access and take action on data within Pylon. Only Admin users can create API tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api.md",
+      "quote": "Pylon’s API can be used to programmatically access and take action on data within Pylon.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference.md",
+      "quote": "Documentation on available endpoints.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/issues.md",
+      "quote": "Creates a new issue and its first message. Requires either an account_id or requester information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/accounts.md",
+      "quote": "Creates a new account with the specified name and optional metadata.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+      "quote": "The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol (e.g. Claude, ChatGPT, Cursor).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+      "quote": "The authenticated user or token identity needs the MCP Access permission to connect. The standard Member and Admin roles include this permission.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/pylon",
+      "quote": "404 page not found",
+      "source_type": "third_party",
+      "check": "too_short"
+    }
+  ],
+  "problems": [
+    "The issues and accounts reference pages are enormous OpenAPI dumps, so endpoint prose is embedded beside JSON. Breadth is evidenced by the reference index plus the create-issue and create-account descriptions, which appear as complete sentences on those pages.",
+    "OAuth appears as an MCP auth method and as API error codes (`invalid_oauth_token`, `oauth_not_permitted`), but no developer page documents registering an OAuth client for the REST API, so oauth2 is not listed as an API method.",
+    "The pricing feature matrix flattens to text; the Professional plan card and the FAQ sentence are the reliable quotes. The trial is real but sales-provisioned, which is why access is partner_or_sales rather than self_serve_trial."
+  ],
+  "id": "pylon",
+  "name": "Pylon",
+  "website": "usepylon.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish that Admins create API tokens and that the tokens do not expire, supporting a static-token primary method. They do not establish the claimed Authorization: Bearer header. No other API authentication method has a confirmed quote."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The pricing quotes tie API access to a plan offered through a demo and say a sales representative sets up the trial organization. That supports partner_or_sales rather than a self-serve trial."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API reference describes endpoints that create issues and accounts, supporting a documented HTTP API with write operations. The quotes do not establish all the objects, SDKs, or base URLs mentioned in the notes, but they do not contradict the breadth estimate."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation describes the Pylon MCP Server and the permission needed to connect. Nothing quoted labels it a pilot, preview, or future release. The hosting URLs and transport details in the notes are not established by the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The sales-arranged route to an organization supports partner_gate and blocked, despite the documented API. The rationale's claims about a bearer header and the MCP server's general availability are more specific than the quotes establish."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:55:46+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 240668,
+    "output_tokens": 9516,
+    "cached_input_tokens": 122593,
+    "critic_tokens": 11122,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Pylon",
+      "charged_usd": 0.0,
+      "log_id": "log_W9zJO3kc9zzT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Pylon MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_tty-BeDQqMOQ"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Does a Pylon toolkit exist in the Composio catalog? Quote any statement that the toolkit is listed or that the page is not found.",
+      "charged_usd": 0.004,
+      "log_id": "log_hCpuMK3c2Axa"
+    }
+  ]
+}

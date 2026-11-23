@@ -1,0 +1,219 @@
+{
+  "one_liner": "Plaid’s JSON-over-HTTP API is publicly documented and immediately usable in a free Sandbox; acting on real bank data requires Production approval, and Plaid hosts its own Dashboard MCP server (still under active development).",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "api_key",
+    "notes": "Almost every product endpoint authenticates with a team client_id and secret (body or PLAID-CLIENT-ID / PLAID-SECRET headers). OAuth 2.0 client-credentials exists only for narrower services (Dashboard MCP, consumer-report sharing), not for the Link flow where an end user connects a bank."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Credentials come from a Dashboard signup and work immediately against Plaid’s hosted Sandbox, which is always free and needs no approval. Production (live bank data) must be requested in the Dashboard; a free Trial plan (US/Canada teams created on or after April 15, 2026, capped at 10 Production Items) or a paid plan is required after that. There is no self-hosted edition."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://plaid.com/docs/api/",
+    "notes": "JSON over HTTPS POST, specified as OpenAPI. Coverage spans accounts, transactions, auth, identity, investments, liabilities, assets, statements, income, transfers, and payments (read and write), plus Link, Items, and Institutions."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "notes": "Plaid hosts a remote Dashboard MCP server (Streamable HTTP at https://api.dashboard.plaid.com/mcp/) with five tools for Item diagnostics, Link analytics, and usage. It is under active development, Production-only, and does not return end-user bank data. A second official local MCP server in the AI coding toolkit covers Sandbox tokens, mock data, docs search, and webhook simulation. Third-party read-only servers (for example t-rhex/plaid-mcp) also exist."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/plaid"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "Anyone can sign up and call the full public API in the free Sandbox with a client ID and secret, so an agent toolkit can be built and tested now. Using it on a real user’s bank data requires Plaid to approve Production access (or a limited free Trial), which is a vendor review step rather than an open credential."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://plaid.com/docs/api/",
+      "quote": "Almost all Plaid API endpoints require a client_id and secret. These may be sent either in the request body or in the headers PLAID-CLIENT-ID and PLAID-SECRET.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://plaid.com/docs/api/oauth/",
+      "quote": "These endpoints are for customers, partners and services that are integrating with Plaid's OAuth service to obtain a token for sharing consumer reports or accessing the Plaid Dashboard or other Plaid services.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://plaid.com/docs/quickstart/",
+      "quote": "You'll need API keys, which you can receive by signing up in the Dashboard. You'll have two different API keys, and there are two different Plaid environments.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://plaid.com/docs/account/billing/",
+      "quote": "These models only apply to Production traffic; usage of Sandbox is always free.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://plaid.com/docs/api/",
+      "quote": "You can request Production API access via the Dashboard.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://plaid.com/docs/account/billing/",
+      "quote": "Free Trial plans are available to new Plaid teams (US/Canada only) created on or after April 15, 2026. Using a Trial plan, you can use Plaid with real production data for free.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://plaid.com/docs/sandbox/",
+      "quote": "The Plaid Sandbox is a free and fully-featured environment for application development and testing. All Plaid functionality of both the Plaid API and Plaid Link is supported in the Sandbox environment.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://plaid.com/docs/api/",
+      "quote": "The Plaid API is JSON over HTTP. Requests are POST requests, and responses are JSON, with errors indicated in response bodies as error_code and error_type (use these in preference to HTTP status codes for identifying application-level errors).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://plaid.com/docs/api/",
+      "quote": "The Plaid API is specified in our Plaid OpenAPI GitHub repo.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://plaid.com/docs/resources/mcp/",
+      "quote": "The Dashboard MCP server is a remote MCP server hosted by Plaid. It provides Production diagnostics and analytics tools, including tools for debugging Items, reviewing Link conversion data, and checking usage metrics.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://plaid.com/docs/resources/mcp/",
+      "quote": "The Dashboard MCP server is under active development. Breaking changes may occur, and Plaid currently provides limited support.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://plaid.com/docs/resources/mcp/",
+      "quote": "Plaid offers two Model Context Protocol (MCP) servers: The Dashboard MCP server is a remote MCP server hosted by Plaid.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://plaid.com/docs/resources/mcp/",
+      "quote": "The Plaid AI coding toolkit includes a local MCP server for development.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/plaid",
+      "quote": "Plaid provides financial data aggregation and banking APIs for applications to connect with users' bank accounts.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pre-run Composio catalog search returned no Plaid toolkit; the docs page at https://docs.composio.dev/toolkits/plaid does exist and was used instead.",
+    "Production approval is described as “request” / “apply” rather than a guaranteed self-serve grant, so the exact review SLA is not quoted. The Trial plan is an application form limited to US/Canada teams created on or after April 15, 2026, so it is not an open path for every developer.",
+    "The Sandbox page quote in the prior access evidence was not re-fetched this pass; the billing and quickstart quotes above cover the same claim."
+  ],
+  "id": "plaid",
+  "name": "Plaid",
+  "website": "plaid.com/docs",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "plaid",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/plaid",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes support client ID and secret as the primary credentials for almost all endpoints and describe a separate OAuth service. They do not explicitly establish OAuth 2.0 or the notes' more specific claims about its scope."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve free access is inferred: developers can sign up for API keys, and the fully featured Sandbox is free. The quotes do not establish that Production approval is required, the Trial's stated item cap, or the absence of a self-hosted edition."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation describes a JSON-over-HTTP API and an OpenAPI specification. The quoted text does not establish the notes' list of covered products, but it does not contradict the estimated breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "unsupported",
+      "note": "Plaid hosting the server is established. Active development, possible breaking changes, and limited support do not establish that it is labelled beta, preview, or pilot, as the claimed maturity requires. Several details in the notes are also unquoted."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on Composio's Plaid toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "Free Sandbox credentials and a documented API support building and testing now. The quotes say Production access can be requested, but do not prove a required approval or review step. Consequently, admin_approval as the main blocker—and the rationale's claim that Plaid must approve access—do not follow."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "mcp: unsupported (Plaid hosting the server is established. Active development, possible breaking changes, and limited support do not establish that it is labelled beta, preview, or pilot, as the claimed maturity requires. Several details in the notes are also unquoted.)",
+    "verdict: unsupported (Free Sandbox credentials and a documented API support building and testing now. The quotes say Production access can be requested, but do not prove a required approval or review step. Consequently, admin_approval as the main blocker—and the rationale's claim that Plaid must approve access—do not follow.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:59:52+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 117227,
+    "output_tokens": 9085,
+    "cached_input_tokens": 53121,
+    "critic_tokens": 11797,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Plaid",
+      "charged_usd": 0.0,
+      "log_id": "log_80wiYVyaC4kh"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Plaid MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_gnBsfs0Br1v-"
+    }
+  ]
+}

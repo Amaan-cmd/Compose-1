@@ -1,0 +1,215 @@
+{
+  "one_liner": "Plain is a cloud B2B support platform with a public GraphQL API and an official remote MCP server, but API credentials are only reachable through a 7-day free trial of a paid plan.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "The GraphQL API accepts two credentials. Machine users get static API keys sent as bearer tokens, and the docs explicitly recommend OAuth when an integration should act as a workspace user."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "Signup is self-serve (Google or work email) and every plan, including Foundation, starts with a 7-day trial that needs no credit card. There is no free plan; after the trial, Foundation is $45/user/month billed annually. The pricing comparison lists API, Webhooks, Events, MCP, and Custom channels under Developer platform on Foundation, but the docs never state in a sentence that the trial includes API keys. OAuth apps are created inside a workspace under Settings, and an app only works in the workspace that created it. Cloud only. Frontier is annual billing only and requires emailing sales@plain.com."
+  },
+  "api": {
+    "styles": [
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.plain.com/docs/graphql/introduction",
+    "notes": "A single public GraphQL endpoint covers customers, threads, accounts, labels, messaging, notes, tasks, SLAs, help center, webhooks, and more, with both queries and mutations. Plain says the API has parity with the UI, and the schema is downloadable without logging in."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.plain.com/mcp",
+    "notes": "Plain hosts a remote MCP server at https://mcp.plain.com/mcp and documents setup for ChatGPT, Cursor, Claude, and Claude Code. It authenticates with the user's Plain account over OAuth (openid and offline_access) and exposes nearly 400 tools. The pre-run web search only returned generic MCP explainers, not this server. Composio separately offers its own Plain MCP gateway, which is third-party."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/plain"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "Plain documents a broad GraphQL API with OAuth and API-key auth plus an official MCP server, and anyone can start a workspace without a credit card, but credentials exist only inside a 7-day trial of a paid plan."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.plain.com/docs/graphql/authentication",
+      "quote": "Create a machine user and an API key, and scope it with fine-grained permissions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.plain.com/docs/graphql/authentication",
+      "quote": "To call the API as a user in your workspace, use an OAuth app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.plain.com/docs/graphql/oauth",
+      "quote": "Your app gets an access token with the OAuth 2.0 authorization code flow: it sends the user to sign in, receives a code at a redirect URL, and exchanges that code for tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.plain.com/docs/product/billing/pricing.md",
+      "quote": "Every plan starts with a free 7-day trial, and the trial doesn't need a credit card.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.plain.com/docs/getting-started.md",
+      "quote": "The person signs up themselves. You can't create an account or a workspace for them.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.plain.com/docs/product/billing/pricing.md",
+      "quote": "Frontier is available on annual billing only. For Frontier pricing, email sales@plain.com.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.plain.com/docs/graphql/introduction",
+      "quote": "Plain itself is built on this same GraphQL API. This means that there are no limitations in what can be done via the API vs the UI.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.plain.com/docs/product/what-is-plain.md",
+      "quote": "Everything the app can do, the GraphQL API can do, so you can automate a workflow, build a support portal inside your own product, or run your own agent against the same data your team uses.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://www.plain.com/docs/graphql/schema",
+      "quote": "If you need the schema programmatically for code generation or want to read it directly, view the raw GraphQL schema.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.plain.com/docs/integrations/mcp-server",
+      "quote": "The Plain MCP server at https://mcp.plain.com/mcp lets tools like Claude, ChatGPT, and Cursor work with your support data directly.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.plain.com/docs/integrations/mcp-server",
+      "quote": "Once connected, your AI client can do almost anything you can do in Plain, across nearly 400 tools.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/plain",
+      "quote": "Plain is a collaborative support platform for B2B teams, focused on consolidating conversations and boosting efficiency with AI.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/plain",
+      "quote": "Yes, Plain requires you to configure your own API key credentials.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing FAQ answers (\"Can I try Plain before paying?\") never rendered, so the trial terms come from the billing docs rather than the FAQ.",
+    "I could not find a sentence that explicitly says the 7-day trial includes API key or OAuth app creation; the developer-platform row is a comparison-table cell, which is not usable as a quote. The trial conclusion is inferred from \"every plan starts with a free 7-day trial\" plus API being a Foundation feature.",
+    "The pre-run MCP web search returned only generic Model Context Protocol articles and missed Plain's own server; the official docs page settled it."
+  ],
+  "id": "plain",
+  "name": "Plain",
+  "website": "plain.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "plain",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/plain",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document API keys and recommend OAuth for calling the API as a workspace user. They do not establish how API keys are transmitted as bearer tokens."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve trial access is inferred: a person signs up themselves, every plan starts with a 7-day trial without a credit card, and the authentication instructions say to create a machine user and API key. The quotes do not establish the claimed Foundation price, prove there is no free plan, or support the other detailed access notes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation identifies a GraphQL API and says it has no limitations relative to the UI, supporting broad breadth. The detailed list of objects in the notes is not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Plain documents its own usable MCP server and nearly 400 tools, with no quoted beta or pilot qualification. The authentication and third-party gateway details in the notes are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quotes come from Composio's Plain toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A self-serve, time-limited trial and a documented broad API support buildable_with_caveats and trial_only. The rationale overstates the evidence when it says credentials exist only inside the trial; the quotes establish a trial route, not the absence of every other route."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:55:57+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 25,
+    "input_tokens": 510253,
+    "output_tokens": 9161,
+    "cached_input_tokens": 370041,
+    "critic_tokens": 10704,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Plain",
+      "charged_usd": 0.0,
+      "log_id": "log_JBrh3QWMNol_"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Plain MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_k6q1goxadVEh"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Plain support \"API\" \"trial\" site:plain.com OR site:help.plain.com \"free trial\" API key plan",
+      "charged_usd": 0.004,
+      "log_id": "log_u73KLFVXha9u"
+    }
+  ]
+}

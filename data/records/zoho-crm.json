@@ -1,0 +1,258 @@
+{
+  "one_liner": "Zoho CRM is a cloud CRM with a broad REST API, API calls in its Free edition, and pre-built MCP servers.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth 2.0 supports delegated access for third-party applications."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The Free edition offers API connectivity without a trial period or credit card. Developers can register a client to receive credentials. The memo reports a 5,000-credit API limit."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+    "notes": "REST documents CRM-module CRUD. GraphQL is documented but unavailable in trial editions."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "notes": "Zoho documents pre-built CRM MCP servers that can be installed now."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/zoho"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Zoho lists API connectivity in its no-trial Free edition, documents client-credential registration, and provides REST endpoints for CRM-module CRUD."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+      "quote": "The Zoho CRM API uses the OAuth 2.0 protocol for authentication. OAuth 2.0 is an industry-standard protocol specification that enables third-party applications (clients) to gain delegated access to protected resources in Zoho via an API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/zohocrm-pricing-free.html",
+      "quote": "Easily connect your website, a billing tool, or any other software your business runs on with Zoho CRM's API.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/zohocrm-pricing-free.html",
+      "quote": "There’s no catch; you can sign up without your credit card.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/zohocrm-pricing-free.html",
+      "quote": "There's no catch; you can sign up without your credit card. There's no trial period and no forced upgrade.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html",
+      "quote": "You will receive the client credentials such as Client ID and Client Secret in the Client Secret tab.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+      "quote": "Each API call made will result in a reduction of 1 credit.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "quote": "Perform CRUD operations on CRM module entities and integrate with any third party application through flexible RESTful endpoints.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/crm/developer/docs/api/graphql/graphql-overview.html",
+      "quote": "GraphQL is a query language that provides a more flexible and efficient way to access data and metadata within your Zoho CRM. Unlike REST APIs that return fixed datasets, GraphQL allows you to request specific resources, fields of the resources and relationships of the resources, reducing redundant data and streamlining your development process.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/crm/developer/docs/api/graphql/graphql-overview.html",
+      "quote": "Please note that GraphQL APIs are not available in the trial versions of any Zoho CRM editions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+      "quote": "Zoho CRM provides these as pre-built MCP servers, so you don't need to build, host, or maintain any infrastructure.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+      "quote": "Since the servers are pre-built, you can directly install the servers in your AI tool and start prompting.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/zoho",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Zoho MCP or direct API to send emails, manage CRM contacts, update deals, and automate campaign tasks through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/crm/zohocrm-pricing-free.html",
+      "quote": "Easily connect your website, a billing tool, or any other software your business runs on with Zoho CRM's API.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "quote": "Perform CRUD operations on CRM module entities and integrate with any third party application through flexible RESTful endpoints.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page presents the Free-edition API allowance as a feature-list item rather than a standalone sentence tying the allowance to the plan.",
+    "GraphQL is limited to higher editions.",
+    "The memo explicitly corrects an earlier pricing-page quote that used a curly apostrophe; the corrected quote uses a straight apostrophe."
+  ],
+  "id": "zoho-crm",
+  "name": "Zoho CRM",
+  "website": "zoho.com/crm",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "zoho",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/zoho",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The OAuth overview says the Zoho CRM API uses OAuth 2.0 so third-party clients can gain delegated access. No other method or different recommendation is shown, so oauth2 as the only listed and primary method holds."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The free-plan page offers API connectivity, signup without a credit card, and explicitly no trial period or forced upgrade; the register-client page shows Client ID and Client Secret are issued. The notes' 5,000-credit limit is not in the quotes, which only say each call reduces one credit."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes document REST endpoints for CRUD on CRM module entities and a GraphQL API, so both styles and broad read/write coverage are supported and not contradicted. GraphQL being unavailable in trial editions is shown; the cited docs pages are public."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Zoho's own docs say it provides pre-built CRM MCP servers that can be installed and used immediately, which supports official and generally_available rather than a pilot or announcement."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quoted Composio toolkit page lists Zoho for agent connections via MCP or direct API."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented REST API with CRM-module CRUD meet buildable_now with no blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:24+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 21,
+    "input_tokens": 410300,
+    "output_tokens": 6870,
+    "cached_input_tokens": 313893,
+    "critic_tokens": 6187,
+    "composio_calls": 8,
+    "composio_usd": 0.032
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Zoho CRM",
+      "charged_usd": 0.0,
+      "log_id": "log_5bWfkoHIUu24"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Zoho CRM MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_cznasAX5smaS"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm/developer/docs \"Free Edition\" \"API\" access OR credits OR calls Zoho CRM",
+      "charged_usd": 0.004,
+      "log_id": "log_XNPmFXAOHgF4"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm \"free edition\" \"API\" \"access\" OR \"API calls\"",
+      "charged_usd": 0.004,
+      "log_id": "log_WUAmFnT7qNVj"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm/developer/docs/graphql Zoho CRM GraphQL API endpoint documentation",
+      "charged_usd": 0.004,
+      "log_id": "log_wiaQIQ1TOnww"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Zoho CRM GraphQL API docs query endpoint GraphQL Zoho official",
+      "charged_usd": 0.004,
+      "log_id": "log_RRb-bifnlBoE"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm/developer/docs/api \"free edition\" \"API\" limits calls",
+      "charged_usd": 0.004,
+      "log_id": "log_zMeGXPmOee9b"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm \"free edition\" \"API\" \"calls\" Zoho CRM",
+      "charged_usd": 0.004,
+      "log_id": "log_zvZWl255GIub"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:zoho.com/crm \"free edition\" \"API\" \"available\" Zoho CRM",
+      "charged_usd": 0.004,
+      "log_id": "log_j6W8PWJXESNr"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "one_liner": "Higgsfield offers a hosted image-and-video generation API, an official MCP connector, and a Composio toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "The REST API uses a key ID and secret. The separate MCP product uses OAuth authorization."
+  },
+  "access": {
+    "level": "paid_plan",
+    "notes": "This is the closest category for self-service, prepaid access to working generation. Higgsfield says no plan or subscription is required, but developers must fund a balance with a $5 minimum top-up."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.higgsfield.ai/docs/api-reference/overview",
+    "notes": "The reference covers model-specific generation schemas, request status, and cancellation."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.higgsfield.ai/mcp",
+    "notes": "The connector uses OAuth and the signed-in Higgsfield account, separately from API-key billing."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/higgsfield"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "paid_plan",
+    "rationale": "Developers can sign up for an API account and use documented generation endpoints. Requests are paid from a prepaid balance, although Higgsfield says no plan or subscription is involved."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.higgsfield.ai/docs/authentication",
+      "quote": "Create and manage API credentials in Higgsfield Console . Each credential consists of a key ID and a secret.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp",
+      "quote": "MCP connects through OAuth authorization, no API key is needed. API keys belong to the Higgsfield API, a separate developer product.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "quote": "Sign up for an API account, either as an individual or as a company. Register a payment method and fund your balance.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "quote": "Billing is pay-as-you-go from a US dollar balance, and the minimum top-up is $5.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "quote": "No plan or subscription is involved: fund the balance, send requests at the rates listed in the catalog, and new requests simply wait once the balance hits zero.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.higgsfield.ai/docs/api-reference/overview",
+      "quote": "The API reference is generated from the public OpenAPI specification. It includes model-specific generation schemas plus the shared status and cancellation operations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.higgsfield.ai/docs/quickstart",
+      "quote": "This guide uses the REST API so you can see the complete request lifecycle. It takes about five minutes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/how-do-i-connect-higgsfield-to-ai-agent",
+      "quote": "Higgsfield connects to Claude, ChatGPT, Cursor, and other MCP-compatible agents, with no API key. In Claude, add a custom connector with the URL https://mcp.higgsfield.ai/mcp .",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/higgsfield",
+      "quote": "Higgsfield AI provides asynchronous image and video generation APIs powered by multiple creative AI models.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+      "quote": "The Higgsfield API lets you generate video and images from your own code: one API key opens every model in the API catalog, and each request is paid in US dollars from a prepaid balance.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The access categories have no exact value for self-service credentials with prepaid usage but no subscription.",
+    "The API FAQ describes account creation and credential generation without mentioning payment, while the getting-started article instructs developers to fund the balance before generating a key. The funded route is used because the classification concerns working generation requests."
+  ],
+  "id": "higgsfield",
+  "name": "higgsfield",
+  "website": "higgsfield.ai/cli (content suite)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "higgsfield",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/higgsfield",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The API docs show credentials as a key ID plus secret, so api_key as the only and primary API method is fair. The OAuth quote is explicitly for the separate MCP product, not another recommended API method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Quotes show self-serve signup but require a payment method and a prepaid balance with a $5 minimum top-up, and they deny any free path. That is not a subscription, which the quotes state outright, but paid_plan is the only defined level for must-pay access with no free or trial path."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "A public OpenAPI reference and a quickstart that uses the REST API prove rest and public docs. Generation schemas plus status and cancellation do not contradict moderate breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Higgsfield's own help page tells users to add the connector at https://mcp.higgsfield.ai/mcp now, so official and generally_available are shown. Nothing quoted calls it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The cited Composio docs page describes a Higgsfield toolkit for image and video generation APIs."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Documented REST access exists and signup is self-serve, but working requests require funding a prepaid balance, so buildable_with_caveats with main_blocker paid_plan follows from the judged auth, access, and api values."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:54:32+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 162618,
+    "output_tokens": 3932,
+    "cached_input_tokens": 105896,
+    "critic_tokens": 3249,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for higgsfield",
+      "charged_usd": 0.0,
+      "log_id": "log_RGuo-XsNP-yK"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "higgsfield MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_sUCiCYFjpFr-"
+    }
+  ]
+}

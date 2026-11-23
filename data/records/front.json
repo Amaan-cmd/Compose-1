@@ -1,0 +1,226 @@
+{
+  "one_liner": "Front (front.com) is a cloud shared-inbox and helpdesk. It has a public REST Core API (OAuth2 or company API tokens) covering conversations, messages, contacts, inboxes and more, a 14-day self-serve Professional trial that includes API access, and an official hosted MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "bearer_token",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "The Core API authenticates every request with a Bearer token. Front documents two ways to obtain that token: a company API token created in settings, or an OAuth 2.0 authorization-code flow. Front recommends OAuth for third-party integrations and requires it for public App Store integrations unless they grant an exception. Basic auth is used only to exchange the authorization code (and to refresh) at the OAuth token endpoint, using the client id and secret. End users who authorize a non-MCP OAuth app must be company admins."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "A free 14-day trial of the Professional plan needs no credit card and includes the Core API (Starter is also documented as having its own API rate limit, so the API is not limited to higher tiers). Creating API tokens and developer apps requires a company admin. Publishing an app to all customers requires notifying Front (partner submission); private apps need no review. Cloud only. After the trial, paid plans start at Starter $25/seat/month."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://dev.frontapp.com/reference/introduction",
+    "notes": "The Core API is a public JSON HTTP API at https://api2.frontapp.com. The reference lists read and write endpoints for accounts, contacts, conversations, messages, drafts, comments, tags, inboxes, channels, teammates, knowledge bases, rules, analytics, and more, so breadth is broad. The reference is readable without logging in."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.frontapp.com/mcp",
+    "notes": "Front hosts https://mcp.frontapp.com/mcp (Streamable HTTP, OAuth 2.1, no Dynamic Client Registration). It is listed in the Claude and ChatGPT directories and documented as usable now for search, drafts, comments, tags, and contacts. A separate Admin MCP server exists. An earlier community GitHub server (zqushair/Frontapp-MCP) predates the official one; Front staff had only \"longer term interest\" then."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/front"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "The public Core API is a broad JSON HTTP API documented without a login, and a developer can get credentials alone through a free 14-day Professional trial with no credit card. There is no permanent free plan: Starter and above are paid. Public distribution of an OAuth app also needs Front to publish it, and non-MCP OAuth consent requires a company admin."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://dev.frontapp.com/docs/authentication.md",
+      "quote": "The Core API uses Bearer tokens to authenticate its user. You MUST send the token for each request in the Authorization header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://dev.frontapp.com/docs/authentication.md",
+      "quote": "There are two ways to get a Bearer token — through API tokens in your settings or through an OAuth implementation.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://dev.frontapp.com/docs/authentication.md",
+      "quote": "In general, Front recommends implementing OAuth when feasible, which has the additional benefit of building within our application framework.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://dev.frontapp.com/docs/oauth.md",
+      "quote": "Your request MUST be authenticated with Basic authentication using your OAuth application Client ID and Client Secret base64 encoded, as shown below.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "auth",
+      "url": "https://dev.frontapp.com/docs/oauth.md",
+      "quote": "End users authorizing OAuth apps must be admins. This applies to both private and public OAuth apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://front.com/pricing",
+      "quote": "Our free 14-day trial offers all the features available in our Professional plan. You can get started without a credit card and can upgrade at any time during your trial.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://help.front.com/en/articles/2438",
+      "quote": "Front's default API rate limits vary by pricing plan: Starter: 50 requests per minute Professional: 100 requests per minute Enterprise: 200 requests per minute.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://dev.frontapp.com/docs/create-and-revoke-api-tokens.md",
+      "quote": "You must be an admin to create or manage API tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://dev.frontapp.com/docs/create-and-manage-apps.md",
+      "quote": "To publish your app, notify our team as described in the Partnering with Front topic.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://dev.frontapp.com/reference/introduction",
+      "quote": "Here is Front's Core API, a backend API that gives comprehensive control over all entities in Front from Contacts to Comments.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://dev.frontapp.com/reference/introduction",
+      "quote": "API calls will always work with https://api2.frontapp.com as the base URL.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://dev.frontapp.com/reference/introduction",
+      "quote": "The API is designed to communicate with your server using JSON. All responses coming from the API will send data in a valid JSON object.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://dev.frontapp.com/docs/mcp-server.md",
+      "quote": "Front's MCP server (`mcp.frontapp.com/mcp`) lets AI agents act on Front conversation data using a single OAuth-authenticated endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.front.com/en/articles/4883136",
+      "quote": "Available now: Claude — is available in the Claude connector directory. ChatGPT or Codex — is available in the OpenAI plugin directory.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/front",
+      "quote": "Front is a shared inbox and collaboration platform that centralizes customer communications from multiple channels, enabling teams to manage emails, chats, and more.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing comparison table is flattened in text, so plan columns for the \"MCP server\" and \"Integrations\" rows could not be read reliably; plan inclusion of the API is evidenced from the rate-limit article instead.",
+    "composio.dev/toolkits/front rendered a category listing rather than the toolkit detail; the toolkit quote comes from docs.composio.dev/toolkits/front.",
+    "The pre-run MCP web search only found a 2025 community thread in which Front said an official server was not yet prioritized; the current official server is documented at dev.frontapp.com/docs/mcp-server.md and the help center.",
+    "The HTML reference page at dev.frontapp.com/reference/introduction is a navigation shell; the quoted sentences come from its markdown rendering, which the docs themselves say is served by appending .md. The getting-started page did not yield a sentence that names the style \"REST\"."
+  ],
+  "id": "front",
+  "name": "Front",
+  "website": "front.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "front",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/front",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish bearer-token authentication, API tokens, OAuth, and a recommendation for OAuth. No quote separately establishes Basic authentication or the claimed App Store requirement."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve trial access is inferred: the no-credit-card Professional trial includes all Professional features, Professional has an API rate limit, and admins can create API tokens. The quotes do not establish the claims about app publishing, private-app review, or post-trial pricing."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quoted public reference describes a JSON API at an HTTPS base URL and comprehensive control over Front entities, supporting REST and not contradicting broad breadth. The detailed list of objects and read/write operations in the notes is not established by these quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Front documents its own MCP endpoint, and a Front help page says integrations are available now. The quotes do not establish the additional protocol, feature, or historical claims in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote appears on Composio's Front toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A usable public API and self-serve, time-limited trial credentials support buildable_with_caveats and trial_only. The rationale's claims about no permanent free plan and public-app publishing are not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:55:39+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 235042,
+    "output_tokens": 9758,
+    "cached_input_tokens": 115958,
+    "critic_tokens": 11464,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Front",
+      "charged_usd": 0.0,
+      "log_id": "log_mDwEYpG_EUv0"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Front MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_6jWMPVWDDGRz"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "one_liner": "Discord offers self-serve app registration, a broad cloud API with OAuth2 and bot-token authentication, community MCP servers, and a Composio toolkit. Free credential eligibility is unverified, and some scopes and large-scale privileged intents require Discord approval.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "basic",
+      "other"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth2 is used to act on behalf of a user. Its bearer token is not a separate authentication method. Bot tokens authenticate as the bot itself and are used for most REST calls and Gateway connections. HTTP Basic with the client ID and secret applies only to OAuth2 token endpoints."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Discord documents self-serve app registration and bot-token generation, but the cited onboarding flow does not explicitly confirm that a free account can obtain working credentials. Apps accessible to fewer than 10,000 users can enable privileged intents in the Developer Portal; continued access requires review once the app reaches 10,000 users."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "other"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.discord.com/developers/reference",
+    "notes": "The public REST API supports read and write operations on core resources including channels, guilds, users, and messages. The separate bidirectional Gateway WebSocket carries real-time events."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/v-3/discordmcp",
+    "notes": "The community server is available for sending and reading channel messages with a bot token. No official Discord MCP server was found in the developer documentation reviewed."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/discord"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Discord documents self-serve bot-token generation and a broad public REST API. The cited onboarding guide does not establish that a new developer can obtain working credentials on a free account, and no product gate was established."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.discord.com/developers/platform/oauth2-and-permissions",
+      "quote": "When you need to act on behalf of a user, you use OAuth2 to get a user access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.discord.com/developers/platform/oauth2-and-permissions",
+      "quote": "Your code uses this token to authenticate as the bot user, a dedicated application account separate from a regular user account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.discord.com/developers/reference",
+      "quote": "Using basic authentication with credentials as the client ID and client secret found on the OAuth2 page of your app’s settings in the format client_id:client_secret as a Base64 encoded string. Only applicable for OAuth2 API token endpoints.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.discord.com/developers/bots/overview",
+      "quote": "Create an application in the Discord Developer Portal. This is where your bot token, OAuth2 credentials, and configuration live.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.discord.com/developers/bots/overview",
+      "quote": "Add a bot user to your application from the Bot tab. This generates the token your code uses to authenticate.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support-dev.discord.com/hc/en-us/articles/6205754771351-How-do-I-get-Privileged-Intents-for-my-bot",
+      "quote": "If your app is accessible to fewer than 10,000 users, you can enable Privileged Intents in the Developer Portal. Once your app reaches 10,000 users, your app now requires review for continued access to Privileged Intents.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.discord.com/developers/reference",
+      "quote": "The Discord API is a REST API that allows you to interact with Discord data from your own applications. It’s the primary way to interact with Discord from your own code.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.discord.com/developers/quick-start/overview-of-apps",
+      "quote": "The HTTP API is a REST API that lets you interact and modify core Discord resources like channels , servers (or guilds) , users , and messages .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.discord.com/developers/quick-start/overview-of-apps",
+      "quote": "The Gateway API is a WebSocket connection between your app and Discord. While it’s most commonly used to receive a real-time stream of events from Discord, the connection is bidirectional.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/v-3/discordmcp",
+      "quote": "A Model Context Protocol (MCP) server that enables LLMs to interact with Discord channels, allowing them to send and read messages through Discord's API.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/discord",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Discord MCP or direct API to send messages, fetch channel history, manage roles, and automate server tasks through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No single official sentence says “the API is free.” The getting-started flow shows no payment or sales step, but its explicit free statement applies to creating a test server, not to issuing API credentials.",
+    "The pre-run Composio catalog search returned no Discord match, but https://composio.dev/toolkits/discord loaded and lists the toolkit.",
+    "The “no MCP server” statement appeared only in an unopened search snippet from strac.io. No official server was found in the documentation reviewed, but there is no verified official denial."
+  ],
+  "id": "discord",
+  "name": "Discord",
+  "website": "discord.com",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "discord",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/discord",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is explicitly recommended for acting on behalf of users; bot-token authentication and OAuth2-endpoint-only Basic authentication are also shown. The claim that bot tokens are used for most REST calls and Gateway connections is not established by these quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public REST API that can modify several core resources and a separate bidirectional WebSocket Gateway."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The cited third-party repository describes a usable Discord MCP server. The quotes do not establish the note's claim that no official server exists."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from Composio's Discord toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:08+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 20,
+    "input_tokens": 392955,
+    "output_tokens": 9903,
+    "cached_input_tokens": 261029,
+    "critic_tokens": 10797,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Discord",
+      "charged_usd": 0.0,
+      "log_id": "log_GLdLbNm9uvdW"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Discord MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ZBn2HWxLejYa"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Discord developer portal create application free no cost bot token site:discord.com OR site:docs.discord.com",
+      "charged_usd": 0.004,
+      "log_id": "log_ynKG0Y5jHYkY"
+    }
+  ]
+}

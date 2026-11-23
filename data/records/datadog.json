@@ -1,0 +1,183 @@
+{
+  "one_liner": "Datadog has a broad, publicly documented REST API and an official MCP server. The unresolved question is whether a new developer can obtain API credentials on its Free tier or only during a trial.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Ordinary API calls use an API key and, for some endpoints, an application key. OAuth is restricted to approved Technology Partners developing official integrations."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "The memo does not establish whether a new developer can obtain API credentials on the Free tier or during a trial. OAuth-based third-party distribution has a separate partner restriction."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.datadoghq.com/api/latest/",
+    "notes": "The public reference covers data submission, visualizations, and account management."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.datadoghq.com/product/mcp-server/",
+    "notes": "Datadog offers its own MCP Server for in-chat AI agents and AI-powered IDE experiences."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/datadog"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Datadog documents a REST API and API-key authentication, but the cited evidence does not establish whether a new developer can obtain working credentials. OAuth for official third-party integrations is restricted to approved Technology Partners."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.datadoghq.com/api/latest.md",
+      "quote": "Authenticate to the API with an [API key](https://docs.datadoghq.com/account_management/api-app-keys.md#api-keys) using the header `DD-API-KEY`. For some endpoints, you also need an [Application key](https://docs.datadoghq.com/account_management/api-app-keys.md#application-keys), which uses the header `DD-APPLICATION-KEY`.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.datadoghq.com/extend/authorization.md",
+      "quote": "Datadog uses the [OAuth 2.0 (OAuth2) Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749) to allow users to securely authorize third-party applications' access to restricted Datadog resources on behalf of the user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.datadoghq.com/extend/integrations/api_integration.md",
+      "quote": "OAuth is available only to approved Technology Partners developing official Datadog integrations. Standalone OAuth clients are not supported.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.datadoghq.com/account_management/api-app-keys.md",
+      "quote": "[Application keys](https://app.datadoghq.com/organization-settings/application-keys), in conjunction with your organization's API key, give users access to Datadog's programmatic API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.datadoghq.com/extend/integrations/api_integration.md",
+      "quote": "OAuth is available only to approved Technology Partners developing official Datadog integrations. Standalone OAuth clients are not supported.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.datadoghq.com/api/latest.md",
+      "quote": "The Datadog API is an HTTP REST API. The API uses resource-oriented URLs to call the API, uses status codes to indicate the success or failure of requests, returns JSON from all requests, and uses standard HTTP response codes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.datadoghq.com/api/latest/using-the-api.md",
+      "quote": "You can use the API to send data to Datadog, build data visualizations, and manage your account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.datadoghq.com/product/mcp-server/",
+      "quote": "For developers building and operating AI agents across development and operational workflows, Datadog offers two solutions for accessing live observability data within AI-driven experiences: Pup CLI for scripting, automation, shell-style agents, and high-scale custom agent workflows; and MCP Server for in-chat AI agents and AI-powered IDE experiences.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/datadog",
+      "quote": "Datadog offers monitoring, observability, and security for cloud-scale applications, unifying metrics, logs, and traces to help teams detect issues and optimize performance",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "I found no statement explicitly tying API-key or application-key creation to Datadog’s Free tier or trial.",
+    "The community GitHub MCP result in the supplied search could not be read directly; the official MCP evidence did not depend on it."
+  ],
+  "id": "datadog",
+  "name": "Datadog",
+  "website": "docs.datadoghq.com/api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "datadog",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/datadog",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "unsupported",
+      "note": "Both methods are quoted: API calls authenticate with an API key (DD-API-KEY) plus an application key for some endpoints, and OAuth 2.0 exists for third-party apps. Primary oauth2 is not proven. The API reference tells callers to authenticate with an API key, and OAuth is only for approved Technology Partners; standalone OAuth clients are not supported. The notes correctly describe that split, but the chosen primary does not."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The docs explicitly call it an HTTP REST API that uses resource URLs and returns JSON, and they describe sending data, building visualizations, and managing the account. That supports rest, public docs at the cited URL, and broad breadth; nothing quoted contradicts breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Datadog's own product page says Datadog offers an MCP Server for in-chat AI agents and AI-powered IDE experiences. That is an official, currently offered server, and nothing labels it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on docs.composio.dev/toolkits/datadog and describes Datadog, so a Composio toolkit page for this app is shown."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth: unsupported (Both methods are quoted: API calls authenticate with an API key (DD-API-KEY) plus an application key for some endpoints, and OAuth 2.0 exists for third-party apps. Primary oauth2 is not proven. The API reference tells callers to authenticate with an API key, and OAuth is only for approved Technology Partners; standalone OAuth clients are not supported. The notes correctly describe that split, but the chosen primary does not.)",
+    "access is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:50:59+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 199421,
+    "output_tokens": 5037,
+    "cached_input_tokens": 129534,
+    "critic_tokens": 6805,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Datadog",
+      "charged_usd": 0.0,
+      "log_id": "log_IVxY2W5AqEEp"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Datadog MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_8lC6tChItlwJ"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "one_liner": "WooCommerce is an open-source ecommerce platform for WordPress with a production-ready REST API and an official MCP integration in developer preview.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "api_key",
+      "basic",
+      "other",
+      "none"
+    ],
+    "primary": "basic",
+    "notes": "For merchant integrations over HTTPS, use HTTP Basic Auth with the Consumer Key as the username and the Consumer Secret as the password. HTTPS query parameters are a fallback if the server cannot process the Authorization header. The /wc-auth/v1/authorize flow provisions API keys, not OAuth 2.0 tokens. Plain HTTP uses one-legged OAuth 1.0a. Unauthenticated access applies to the customer-facing Store API and the public REST API index, not to merchant data; some Store API writes require a nonce."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "On a free self-hosted installation, enable non-Plain permalinks and generate keys under WooCommerce → Settings → Advanced → REST API. Keys inherit the selected WordPress user's capabilities and can be scoped to Read, Write, or Read/Write. The hosted alternative, WordPress.com Managed Woo, is included in the paid Commerce plan and is not required to test the API."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+    "notes": "REST v3 supports reads and writes for products, variations, orders, customers, and coupons, plus refunds, fulfillment, and webhooks. The separate Store API supports storefront use cases. The experimental Dual API generates GraphQL APIs for plugin authors; it is not a general WooCommerce store-management API."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://developer.woocommerce.com/docs/features/mcp",
+    "notes": "WooCommerce registers product and order abilities. Exposing them requires the separately installed WordPress MCP Adapter. Remote HTTP access uses a WordPress username and Application Password, not a WooCommerce REST key. A separate community plugin offers a public, read-only storefront server without access to private orders or customers."
+  },
+  "composio": {
+    "in_catalog": "no",
+    "url": "https://composio.dev/toolkits/woocommerce"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can generate credentials on a free self-hosted installation, and the public REST v3 API supports reads and writes across core ecommerce objects. The official MCP developer preview is optional."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+      "quote": "For Authorization, choose basic auth and enter your consumer key and consumer secret keys from WooCommerce into the username and password fields.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://woocommerce.com/document/woocommerce-rest-api/",
+      "quote": "The WooCommerce REST API uses a key system to control access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+      "quote": "In this case, you may provide the consumer key/secret as query string parameters instead.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+      "quote": "This endpoint works exclusively for users to generate API keys and facilitate integration between the WooCommerce REST API and an application.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+      "quote": "You must use OAuth 1.0a \"one-legged\" authentication to ensure REST API credentials cannot be intercepted by an attacker.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/store-api/",
+      "quote": "This is an unauthenticated API. It does not require API keys or authentication tokens for access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/v3/",
+      "quote": "Authentication is not required to access the API index.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://woocommerce.com/",
+      "quote": "WooCommerce is the Open Source commerce platform for WordPress that gives you full control: of your checkout, your data, your costs.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://woocommerce.com/pricing/",
+      "quote": "The free core platform includes: Unlimited products, orders, and APIs.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://woocommerce.com/document/woocommerce-rest-api/",
+      "quote": "Each set of keys is linked to a WordPress user on your site. You can create keys with different permission levels depending on what the connected application needs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://wordpress.com/woocommerce/",
+      "quote": "WordPress.com offers paid plans that include ecommerce tools. While there’s no permanently free ecommerce option, all plans include managed hosting, security, and support — so you get a complete, ready-to-use store from day one.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/v3/",
+      "quote": "The orders API allows you to create, view, update, and delete individual, or a batch, of orders.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.woocommerce.com/docs/apis/rest-api/v3/",
+      "quote": "The products API allows you to create, view, update, and delete individual, or a batch, of products.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.woocommerce.com/docs/apis/dual-api/",
+      "quote": "The dual API is a code-first API architecture: you write plain PHP classes (the code API ), and a build script generates a fully functional GraphQL API that mirrors them.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.woocommerce.com/docs/features/mcp",
+      "quote": "With the MCP Adapter plugin, AI clients can discover and run these store operations through the Model Context Protocol (MCP), subject to WordPress and WooCommerce permissions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.woocommerce.com/docs/features/mcp",
+      "quote": "The MCP implementation in WooCommerce is currently in developer preview. Implementation details, APIs, and integration patterns may change in future releases as the feature matures.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://wordpress.org/plugins/mcp-for-woocommerce/",
+      "quote": "MCP for WooCommerce turns your store into a read-only Model Context Protocol (MCP) server.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/woocommerce",
+      "quote": "404 page not found",
+      "source_type": "third_party",
+      "check": "too_short"
+    }
+  ],
+  "problems": [
+    "The supplied Composio catalog search found no matching toolkit. The expected listing could not be read directly, and the fallback returned a 404.",
+    "MCP setup is version-sensitive: WooCommerce 11.3 removed the older WooCommerce-specific MCP endpoint in favor of the WordPress MCP Adapter endpoint. Verify the target store's version before configuring MCP."
+  ],
+  "id": "woocommerce",
+  "name": "WooCommerce",
+  "website": "woocommerce.com/document/woocommerce-rest-api",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes support API keys, Basic authentication, OAuth 1.0a as 'other', and unauthenticated Store API access. They recommend Basic authentication. The notes’ details about HTTPS, nonces, and merchant-data access are not fully established by the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The free core platform includes APIs, and site users can create API keys, supporting a free self-hosted path. The quotes do not establish the notes’ permalink requirement or the specific Commerce-plan claim."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The publicly cited REST v3 reference shows read and write operations for orders and products. Nothing quoted contradicts the broad-breadth estimate. Other endpoint and Dual API qualifications in the notes are not fully evidenced."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "WooCommerce’s documentation describes a usable MCP integration and labels it developer preview, supporting official and beta_or_pilot. The adapter installation and remote-auth details in the notes are not fully evidenced."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The supported free path to API keys and documented read/write REST operations across core objects support buildable_now with no main blocker. The MCP preview is also evidenced and does not change that verdict."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:41+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 13,
+    "input_tokens": 188562,
+    "output_tokens": 8997,
+    "cached_input_tokens": 108150,
+    "critic_tokens": 7120,
+    "composio_calls": 2,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for WooCommerce",
+      "charged_usd": 0.0,
+      "log_id": "log_da5A5s_9gpa8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "WooCommerce MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_80yMakIY-CHX"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Is WooCommerce listed as a toolkit or is this URL not found (404)?",
+      "charged_usd": 0.0,
+      "log_id": "log_piP48JA7Pp2E"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "one_liner": "Monday.com is buildable now as an agent toolkit. A free developer sandbox provides API tokens, the public GraphQL API supports core read/write operations, and monday.com offers a hosted MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is recommended for an app making background API calls; personal API tokens are available for testing but are not recommended for most apps."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The free, hosted developer sandbox is the accessible path for building and testing; it is not intended to serve end customers or run production workflows."
+  },
+  "api": {
+    "styles": [
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.monday.com/api-reference/reference",
+    "notes": "The documented GraphQL API supports core objects and mutations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.monday.com/mcp",
+    "notes": "Monday.com documents a usable hosted server; no local setup is required."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/monday"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A free developer account yields an API token for testing, and the documented GraphQL API supports core objects and mutations. Production use requires an appropriate non-sandbox account; OAuth is the better fit for an integration acting on users’ behalf."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.monday.com/apps/docs/choosing-auth",
+      "quote": "“If your app needs to store a user’s API token or make API calls in the background, OAuth is a good option.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.monday.com/api-reference/docs/authentication",
+      "quote": "“The monday.com platform API utilizes personal V2 API tokens to authenticate requests and identify the user making the call.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.monday.com/api-reference/docs/authentication",
+      "quote": "“If you don't have a monday.com account yet, create a free developer account to get an API token and start testing.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.monday.com/api-reference/docs/developer-sandbox-account",
+      "quote": "“Developer accounts are for development and testing only . They are not intended for running production business workflows or serving end customers.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.monday.com/api-reference/docs/basics",
+      "quote": "“It supports operations boards, items, column values, users, workspaces, and more.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+      "quote": "“Mutations are special queries that perform the CUD (Create, Update, Delete) operations to modify your data.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.monday.com/api-reference/reference",
+      "quote": "“The monday.com platform API reference contains documentation for our GraphQL API schema.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.monday.com/api-reference/docs/mondaycom-mcp",
+      "quote": "“The Platform MCP is monday.com's hosted MCP (Model Context Protocol) server, maintained by the monday.com AI team. It lets AI agents read and write monday.com data — creating items, updating columns, querying boards, and more — through a standardized protocol supported by all major AI platforms.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/monday",
+      "quote": "“monday.com is a customizable work management platform for project planning, collaboration, and automation, supporting agile, sales, marketing, and more”",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.monday.com/api-reference/docs/authentication",
+      "quote": "“If you don't have a monday.com account yet, create a free developer account to get an API token and start testing.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [],
+  "id": "monday-com",
+  "name": "Monday.com",
+  "website": "developer.monday.com",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "monday",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/monday",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth is stated as a good option for an app that stores a user's token or makes background API calls, and personal V2 API tokens are documented for authenticating API requests (fairly bearer_token). Nothing quoted recommends a different method for that third-party case. The note's claim that tokens are not recommended for most apps is not in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free developer account is explicitly offered to obtain an API token and start testing, with no payment or approval mentioned. The testing-only / not-for-production limitation is also quoted."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference documents a GraphQL schema covering boards, items, column values, users, workspaces and more, and mutations are defined as create/update/delete. That does not contradict breadth broad; public docs were readable at the cited reference URL."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "monday.com documents its own hosted Platform MCP, maintained by its AI team, that agents can use now to read and write data. Nothing labels it beta, pilot, or unlaunched, so official and generally_available hold. The specific host URL is not in the quote."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is on the Composio toolkit page for monday.com and describes the app there."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "self_serve_free credentials plus a documented GraphQL API of useful breadth map to buildable_now with main_blocker none. The sandbox-not-for-production limit is a note, not a change to those values."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:06+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 6,
+    "input_tokens": 76866,
+    "output_tokens": 3020,
+    "cached_input_tokens": 50733,
+    "critic_tokens": 3269,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Monday.com",
+      "charged_usd": 0.0,
+      "log_id": "log_5TQrxYq11mcx"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Monday.com MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_aOqlU8g8GG-Z"
+    }
+  ]
+}

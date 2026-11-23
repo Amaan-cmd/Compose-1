@@ -1,0 +1,207 @@
+{
+  "one_liner": "Freshdesk is a cloud helpdesk with a broad public REST API and an official MCP server; API credentials are available through a 14-day trial or a paid plan, not the free plan.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "basic"
+    ],
+    "primary": "api_key",
+    "notes": "The API reference recommends a personal API key supplied through HTTP Basic. A help article also documents username-and-password authorization. OAuth setup could not be verified, so OAuth is excluded."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "Signup grants a 14-day Enterprise trial with an API limit of 50 calls per minute. The free Sprout plan lacks API access; continuing after the trial requires a paid plan."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.freshdesk.com/api/",
+    "notes": "The public reference describes reading, modifying, adding, and deleting helpdesk data."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+    "notes": "Freshworks documents a hosted MCP server and API-key authentication. Its article says the integration is generally available, although the URL retains “eap.”"
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/freshdesk"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "A self-serve 14-day trial provides an API allowance, and the public REST API supports reading and writing helpdesk data. The free plan lacks API access, and continuing after the trial requires payment."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.freshdesk.com/api/",
+      "quote": "You can use your personal API key to authenticate the request. If you use the API key, there is no need for a password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://support.freshdesk.com/support/solutions/articles/225435-where-can-i-find-my-api-key",
+      "quote": "Irrespective of which version of Freshdesk's APIs you use, you will need to provide either your username and password combination or your API key for authorization when making API calls by triggering webhooks.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.freshworks.com/freshdesk/pricing/",
+      "quote": "How does the 14-day free trial work? When you sign up, you instantly get access to our Enterprise plan for 14 days. We will alert you before your trial expires. You can then select a plan and pay by credit card to continue using the product. If you choose not to continue, your account will be suspended.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.freshdesk.com/support/solutions/articles/225439-what-are-the-rate-limits-for-the-api-calls-to-freshdesk-",
+      "quote": "Please note: For every trial period the API limit is 50 per minute.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000001047-do-we-have-api-and-integration-capabilities-in-the-free-sprout-plan-",
+      "quote": "No, the access to Freshdesk APIs and the integration capabilities is not available in the free Sprout plan.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.freshdesk.com/api/",
+      "quote": "Freshdesk is a cloud-based customer support platform that was founded with the mission of enabling companies of all sizes to provide great customer service.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.freshdesk.com/api/",
+      "quote": "Freshdesk's APIs belong to the Representational State Transfer (REST) category. They allow you to perform 'RESTful' operations such as reading, modifying, adding or deleting data from your helpdesk.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+      "quote": "The Freshworks Model Context Protocol (MCP) server enables AI tools like Cursor and Claude to securely connect and interact with Freshdesk.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+      "quote": "Starting September 10, 2026 , the Freshworks MCP integration is generally available.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+      "quote": "Currently, Freshdesk allows you to authenticate requests involved in MCP integration by using an API key only.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/freshdesk",
+      "quote": "Freshdesk is customer support software with ticketing and automation tools. It helps teams streamline helpdesk operations for faster, better customer support.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Freshworks developer OAuth page could not be read. Endpoint scope labels alone do not establish how a third-party integration obtains OAuth tokens.",
+    "The free-plan exclusion article refers to the older Sprout plan.",
+    "The official MCP article’s URL retains “eap,” although its live text says the integration is generally available."
+  ],
+  "id": "freshdesk",
+  "name": "Freshdesk",
+  "website": "freshdesk.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "freshdesk",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/freshdesk",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The API reference documents a personal API key, and the help article documents either a username-and-password combination or an API key. Nothing recommends a different primary method. The notes' claim that the key is sent as HTTP Basic is not in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Signup gives a 14-day Enterprise trial, the trial has a stated API limit of 50 calls per minute, and the free Sprout plan has no API access. Continuing after the trial requires payment, so self_serve_trial is proven."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API page describes a REST API that can read, modify, add, and delete helpdesk data. That supports rest and public docs and does not contradict breadth broad."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A Freshworks support article documents the Freshworks MCP server and says the integration is generally available starting September 10, 2026, with API-key authentication. The EAP slug is not a quote saying it is unlaunched or a pilot."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The cited Composio toolkit page lists Freshdesk."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial credentials plus a documented read/write REST API make it buildable with the trial-only caveat; the free plan has no API and payment is required to continue."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:36+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 254249,
+    "output_tokens": 8479,
+    "cached_input_tokens": 109852,
+    "critic_tokens": 7045,
+    "composio_calls": 3,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Freshdesk",
+      "charged_usd": 0.0,
+      "log_id": "log_wRiCLlPxdOOp"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Freshdesk MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_l7zSLbVfA_kT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Freshdesk API access which plans free trial API key available",
+      "charged_usd": 0.004,
+      "log_id": "log_WqSTWgGUL0yZ"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "How does OAuth 2.0 authentication work for Freshdesk apps? Which grant types and credentials are documented?",
+      "charged_usd": 0.004,
+      "log_id": "log_-zW2ou_G-R33"
+    }
+  ]
+}

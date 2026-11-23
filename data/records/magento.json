@@ -1,0 +1,253 @@
+{
+  "one_liner": "Magento is an ecommerce platform for running storefronts and managing catalogs, inventory, checkout, and orders, available as self-hosted Magento Open Source and commercial Adobe Commerce deployments.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "other",
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "other",
+    "notes": "Magento Open Source, Adobe Commerce on Cloud (PaaS), and on-premises Adobe Commerce use signed OAuth 1.0a requests for third-party integrations and document bearer tokens for admin and customer access. Adobe Commerce as a Cloud Service (SaaS) uses Adobe IMS OAuth 2 for user-based and server-to-server flows."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "On a free, self-hosted Magento Open Source store, the store administrator can create and activate an integration without paying Adobe or submitting it for review. Composer installation uses separate Marketplace keys. Adobe's hosted offerings have customized pricing, and the SaaS REST API requires an Adobe Commerce as a Cloud Service license and Adobe Developer Console access."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql",
+      "soap"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.adobe.com/commerce/webapi/",
+    "notes": "REST covers back-office reads and writes, including product management and order processing. GraphQL supports storefront workflows. The SaaS REST API is smaller than the PaaS and on-premises APIs: customer and guest REST endpoints are not available on SaaS, but GraphQL offers similar functionality."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/coding-tools",
+    "notes": "The maturity rating applies to the installable Commerce Developer MCP for App Builder development and storefront customization, not live-store administration. Adobe separately describes a Storefront MCP for live shopping but does not confirm its rollout status. The third-party thomastx05/magento-mcp project documents a local server for Magento 2 administration."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can self-activate an integration on a free, self-hosted Magento Open Source store and use the generated credentials with the documented web APIs. The REST docs cover the full order-processing workflow, so an API-backed toolkit does not depend on the Storefront MCP rollout."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-oauth",
+      "quote": "OAuth authentication with Adobe Commerce and Magento Open Source is based on OAuth 1.0a , an open standard for secure API authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token",
+      "quote": "For most web API calls, you supply this token in the Authorization request header with the Bearer HTTP authorization scheme to prove your identity.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/authentication/",
+      "quote": "Adobe Commerce as a Cloud Service REST API authentication is handled through Adobe's Identity Management System (IMS) through standardized OAuth 2 protocols. This authentication system supports both interactive user-based workflows and automated server-to-server integrations, ensuring secure and appropriate access for different use cases.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://business.adobe.com/products/magento/open-source.html",
+      "quote": "A free eCommerce platform which provides small businesses with a flexible, digital commerce solution to successfully sell online.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/create-integration",
+      "quote": "An integration enables third-party services to call the Adobe Commerce and Magento Open Source web APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+      "quote": "After activating an integration (self activated), you can use the generated consumer key, consumer secret, access token, and access token secret to provide third-party systems access to Commerce Store resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/prerequisites/authentication-keys",
+      "quote": "Use your Commerce Marketplace account to generate a pair of 32-character authentication keys to access the repository.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://business.adobe.com/products/magento/pricing.html",
+      "quote": "Get customized pricing for Adobe Commerce. Talk to us about how Adobe Commerce can help you increase your traffic, conversion rates and sales for global, multi-brand, B2B and B2C commerce experiences.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/authentication/",
+      "quote": "The following concepts apply to both authentication flows and are important for successful integration: Prerequisites: Adobe Commerce as a Cloud Service license Adobe Developer Console access Understanding of OAuth 2",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.adobe.com/commerce/webapi/get-started/",
+      "quote": "Support for GraphQL , REST (Representational State Transfer) and SOAP (Simple Object Access Protocol).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/tutorials/",
+      "quote": "The order processing tutorial demonstrates the lifecycle of an order. Major steps include creating a quote, converting it to an order, issuing an invoice, and shipping the order.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/",
+      "quote": "Specifically, the customer and guest REST APIs that are available in Adobe Commerce on Cloud and on-premises deployments are not available in Adobe Commerce as a Cloud Service. However, access to similar functionality remains available with the GraphQL APIs .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/reference/",
+      "quote": "Each endpoint includes complete parameter descriptions, request/response examples, authentication requirements, and error handling information to help developers integrate with the platform effectively.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.adobe.com/commerce/webapi/rest/",
+      "quote": "The Adobe Commerce as a Cloud Service REST API serves as a critical tool for extending and integrating commerce functionalities, but the endpoints available differ significantly from the REST APIs for Adobe Commerce on Cloud and on-premises deployments.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/coding-tools",
+      "quote": "When migrating to Adobe Commerce as a Cloud Service, you can use the Commerce development MCPs and skills to convert existing Adobe Commerce PHP extensions to Adobe Developer App Builder applications. You can also use these tools to create completely new App Builder applications and storefront customizations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/coding-tools",
+      "quote": "Skills and MCP tools are installed. If you do not see them, restart your coding agent.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://business.adobe.com/products/commerce/ai-commerce",
+      "quote": "The Adobe Commerce Storefront MCP server exposes tools that agents can use to search your product catalog, retrieve real-time pricing and inventory, manage cart contents, and complete checkout — all without requiring custom point-to-point integrations.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://lobehub.com/mcp/thomastx05-magento-mcp",
+      "quote": "An MCP server for Adobe Commerce / Magento 2 administration providing 30+ tools for catalog management, promotions, CMS, diagnostics, and more. Requires a Magento 2 instance and OAuth 1.0 integration credentials passed via environment variables.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio catalog search returned no matching toolkit, but https://docs.composio.dev/toolkits/magento could not be read directly and the memo provides no catalog quote.",
+    "The rendered PaaS endpoint reference could not be read directly. Adobe’s public reference index and REST tutorials supplied the API evidence instead.",
+    "Adobe’s product page confirms the Storefront MCP’s purpose but does not confirm its rollout status. No MCP server or live API call was tested."
+  ],
+  "id": "magento",
+  "name": "Magento (Adobe Commerce)",
+  "website": "developer.adobe.com/commerce",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth 1.0a, bearer-token authentication, and OAuth 2 for Cloud Service. The self-activated integration credentials support the choice of OAuth 1.0a as primary for the self-hosted integration path. The quotes do not explicitly establish every deployment distinction in the notes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free Magento Open Source deployment, third-party API integrations, and self-activation with generated credentials establish a self-serve free path. The quotes do not expressly establish every detail about installation or review in the notes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes explicitly document REST, GraphQL, and SOAP, and describe an order-processing workflow and a public endpoint reference. Nothing quoted contradicts broad API coverage. Product-management coverage is not specifically shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Adobe's developer documentation describes installed, usable Commerce development MCP tools, supporting an official, currently usable server. The quoted third-party server is separate. The quotes do not establish the Storefront MCP's rollout status or that the third-party server runs locally."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The supported self-serve free credential path and documented, useful public APIs support buildable_now with no main blocker. The rationale's specific claim that an integration can be activated without review goes beyond what the quotes expressly say."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:45+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 20,
+    "input_tokens": 470845,
+    "output_tokens": 13370,
+    "cached_input_tokens": 337740,
+    "critic_tokens": 8777,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Magento (Adobe Commerce)",
+      "charged_usd": 0.0,
+      "log_id": "log_iDjTfLjB1kAA"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Magento (Adobe Commerce) MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_5Ij5fnU-Nl6_"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developer.adobe.com/commerce \"Commerce MCP\" \"Coming Soon\" Adobe Commerce Developer MCP official",
+      "charged_usd": 0.004,
+      "log_id": "log_FV9obQz46vwJ"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "one_liner": "Google Ads has a broad, publicly documented API and an official MCP server. Self-serve access supports test accounts; live-account access requires an application.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Google recommends multi-user OAuth for integrations acting on behalf of users."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Self-serve Test access works only with test accounts. Access to production accounts requires an application for Explorer access or higher."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.google.com/google-ads/api/docs/start",
+    "notes": "The API also offers gRPC. Documented use cases include account management, reporting, and campaign creation and updates."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "notes": "Developers can configure and run the server locally. Its supported mutations do not cover the entire Ads API."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/googleads"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "Automatically granted Test access and a broad API make development possible, but production-account access requires an application for Explorer access or higher."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+      "quote": "I am building an app that manages Google Ads accounts on behalf of other users. My app will build a user screen that lets the signed-in users connect to their Google Ads accounts and authorize my app to manage those accounts on their behalf. Use multi-user authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.google.com/google-ads/api/docs/oauth/cloud-project",
+      "quote": "Enabling billing for your project is optional. If you have billing enabled, select a billing account for the new project. There is no charge for using the Google Ads API, though Cloud projects are subject to standard project quota limits.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+      "quote": "Enable Google Ads API in your Google Cloud project to automatically be granted Test access for your project.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+      "quote": "After you've enabled Google Ads API, your Google Cloud project is granted Test access. This means that the project can only make Google Ads API requests against test accounts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+      "quote": "If you don't already have Google Ads API access, you can start by enabling the API to obtain Test access level for your Google Cloud project, and then apply for Explorer access on the Google Ads API Overview page to access production accounts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.google.com/google-ads/api/rest/overview",
+      "quote": "The Google Ads API can be called either using gRPC or REST. Both interfaces expose a resource-oriented design shared with other Google Cloud APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.google.com/google-ads/api/docs/start",
+      "quote": "Typical use cases include: Automated account management : Create and link accounts, manage account hierarchies, and automate user access. Custom reporting : Query performance metrics, segments, and resource attributes using the Google Ads Query Language (GAQL) . Campaign and inventory-based ad management : Create and update Performance Max , Search , Demand Gen , Shopping , Video , and App campaigns, budgets , and assets .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+      "quote": "The Google Ads MCP server provides a standardized bridge to the Google Ads API. It lets AI agents retrieve and analyze account data, create assets, upload videos, and manage labels by using natural language.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+      "quote": "Follow these steps to configure and run the Google Ads MCP server locally.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/googleads",
+      "quote": "Hosted Google Ads MCP for Claude, Cursor, and ChatGPT. Monitor campaigns, update ad groups, and pull performance reports with managed OAuth.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+      "quote": "The Explorer access level allows your Google Cloud project to make Google Ads API requests against both test accounts and production accounts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Automatically granted Test access is limited to test accounts; the self_serve_free classification does not imply unrestricted live-account use."
+  ],
+  "id": "google-ads",
+  "name": "Google Ads",
+  "website": "developers.google.com/google-ads",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "googleads",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/googleads",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The OAuth overview quote recommends multi-user authentication in which users authorize an app to manage their Google Ads accounts, so oauth2 as the offered and primary method is supported. No quote points to a different method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Enabling the API automatically grants free Test access with no charge and billing optional, limited to test accounts, which is the most accessible self_serve_free path. Production use requires applying for Explorer access, as the notes say."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes show a public REST interface (also gRPC) and read/write coverage of accounts, reporting, and campaign creation and updates, so rest, broad, public docs, and the stated docs URL are supported."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor docs describe a usable Google Ads MCP server and how to configure and run it locally, supporting official and generally_available. The note that its mutations do not cover the entire Ads API is not shown by the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page quote lists Google Ads for campaign monitoring, ad-group updates, and performance reports, so in_catalog yes is supported."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free Test credentials plus a broad public API make it buildable, while applying for Explorer access to reach production accounts is a vendor review step, so buildable_with_caveats with main_blocker admin_approval follows."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:42+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 6,
+    "input_tokens": 81951,
+    "output_tokens": 3154,
+    "cached_input_tokens": 45592,
+    "critic_tokens": 3234,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Google Ads",
+      "charged_usd": 0.0,
+      "log_id": "log_BCrZge5rm9eu"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Google Ads MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_QZiurRie-NmC"
+    }
+  ]
+}

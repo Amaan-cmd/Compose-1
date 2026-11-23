@@ -1,0 +1,231 @@
+{
+  "one_liner": "Ahrefs is a hosted SEO data platform for keyword research, backlink analysis, rank tracking, and brand visibility monitoring; most useful agent workflows require a paid plan.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "none"
+    ],
+    "primary": "oauth2",
+    "notes": "Use Ahrefs Connect OAuth 2.0 with PKCE when acting on behalf of users. Direct REST integrations send an API key in the Authorization Bearer header; it is not a separate bearer-token credential. The public crawler-IP request example omits credentials."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free account can generate a key for the public Domain Rating endpoint, but this does not grant general API access. Starter allows limited test queries only; general access starts at Lite ($129/month as listed). Distributing a third-party Ahrefs Connect integration requires applying and submitting the app for review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.ahrefs.com/en/api/docs/introduction",
+    "notes": "API v3 is mainly read-oriented and covers backlinks, organic and paid traffic estimates, keyword research, search results, rank tracking, site audits, and AI visibility. It also supports management operations for Rank Tracker projects and Keywords Explorer lists. The default rate limit is 60 requests per minute. Metered requests cost at least 50 units, with cost depending on requested fields and returned rows."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://api.ahrefs.com/mcp/mcp",
+    "notes": "The hosted Streamable HTTP server is available on Lite and higher for supported AI clients and uses the workspace's API-unit allowance. Custom scripts, bridges, and standalone HTTP/JSON-RPC clients are not permitted to use the hosted endpoint; use REST for custom scripts and backend workflows."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/ahrefs"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "paid_plan",
+    "rationale": "A developer can verify API-key authentication for free with the Domain Rating endpoint, but general REST API access for a multi-tool SEO agent starts at Lite. Use REST for a custom toolkit and the official MCP server for supported AI clients."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.ahrefs.com/",
+      "quote": "Research keywords, analyze backlinks, track rankings, and monitor brand visibility across traditional search and AI platforms.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ahrefs.com/en/ahrefs-connect/docs/introduction",
+      "quote": "Users connect their Ahrefs account via OAuth, and your app can fetch data using their API units.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ahrefs.com/en/ahrefs-connect/docs/oauth-guide",
+      "quote": "Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with Proof Key for Code Exchange (PKCE) .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ahrefs.com/en/api/docs/api-keys-creation-and-management",
+      "quote": "You'll need an API key to send requests via Ahrefs API v3. Provide it in the Authorization header when making requests: Authorization: Bearer YOUR_API_KEY .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ahrefs.com/en/api/reference/public/get-crawler-ips",
+      "quote": "Requests to this endpoint are free and do not consume any API units.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ahrefs.com/en/api/reference/public/get-domain-rating-free",
+      "quote": "Requests to this endpoint are free and do not consume any API units. APIv3 keys are free to generate and use.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://ahrefs.com/seo-api",
+      "quote": "API access is included in every Ahrefs plan from Lite up.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://ahrefs.com/seo-api",
+      "quote": "Starter ($29/mo) includes free test queries only.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ahrefs.com/en/ahrefs-connect/docs/introduction",
+      "quote": "Ahrefs Connect is our integration program that lets third-party products access Ahrefs API data on behalf of Ahrefs users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+      "quote": "With Ahrefs API, you can use data from your Ahrefs workspace to create custom integrations and automations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+      "quote": "The reference contains an OpenAPI-compatible specification of each endpoint's request and response format.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+      "quote": "The cost depends on the number of rows in a response and the fields requested. The minimum cost for any request is 50 units .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ahrefs.com/en/api/docs/introduction",
+      "quote": "Ahrefs API is limited to 60 requests per minute by default.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.ahrefs.com/en/mcp/docs/introduction",
+      "quote": "Ahrefs provides a hosted MCP server that allows users with a Lite plan or higher to connect their Ahrefs account to supported AI tools.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.ahrefs.com/en/mcp/docs/introduction",
+      "quote": "Using the external MCP endpoint via custom scripts, bridges, or standalone HTTP/JSON-RPC clients is unsupported and not permitted.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/ahrefs",
+      "quote": "Ahrefs is an SEO and marketing platform offering site audits, keyword research, content analysis, and competitive insights to improve search rankings and drive organic traffic",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Public documentation was readable without logging in.",
+    "The SEO API pricing page says API access is unavailable on Ahrefs Free, while the Domain Rating reference explicitly permits a free-account key. This record treats Domain Rating as a specific exception, not general free API access.",
+    "No authenticated calls were made to verify live plan entitlements or Composio tool behavior."
+  ],
+  "id": "ahrefs",
+  "name": "Ahrefs",
+  "website": "ahrefs.com/api",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "ahrefs",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/ahrefs",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth 2.0 with PKCE is evidenced for integrations acting on behalf of users, and API-key authentication is evidenced for API v3. No quote establishes that the crawler-IP endpoint requires no credentials, so the listed 'none' method and that part of the notes are unproven."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes say API v3 keys are free to generate and use for a free endpoint, supporting the most accessible level, self_serve_free. They also show that broader API access is included from Lite up. The stated Lite price and app-review requirement are not established by the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "An endpoint reference with an OpenAPI-compatible request and response specification supports a documented HTTP API; nothing quoted contradicts moderate breadth. The detailed list of capabilities and management operations in the notes is not established."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Ahrefs says it provides a hosted MCP server that Lite-or-higher users can connect to supported AI tools, supporting official and generally_available. The quote also supports the restriction on custom clients, but not every usage detail in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote appears on a Composio page for the Ahrefs toolkit."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free credentials support a limited endpoint, while the quotes place broader API access on paid plans from Lite up. A useful multi-tool integration is therefore buildable with a paid-plan caveat."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:28+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 100449,
+    "output_tokens": 4993,
+    "cached_input_tokens": 63550,
+    "critic_tokens": 4104,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Ahrefs",
+      "charged_usd": 0.0,
+      "log_id": "log_6Iv4bGVksY3M"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Ahrefs MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_DQwuWnaZyp3H"
+    }
+  ]
+}

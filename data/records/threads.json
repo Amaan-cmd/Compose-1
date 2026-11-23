@@ -1,0 +1,255 @@
+{
+  "one_liner": "Threads is Meta’s text-first social network for public conversations, with an API for organic publishing, reply moderation, and performance reporting.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Integrations acting on behalf of users use the OAuth 2.0 authorization-code flow. Short-lived user tokens last one hour and can be exchanged for refreshable 60-day tokens. The client-credentials flow supports app-level operations such as oEmbed and does not replace user consent."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A developer can create a Meta app with the Threads use case, invite a Threads profile as a tester, and obtain a user token after the tester accepts the invitation and authorizes the app. This path does not require Meta App Review. For users without an app role, each requested permission must pass App Review and the app must be published. Meta’s docs do not state a price; the no-fee claim relies on Blotato."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.facebook.com/documentation/threads",
+    "notes": "The API supports publishing and deleting posts, retrieving media and profiles, reading and moderating replies, discovering public content, and reading post and account insights. Each profile can publish up to 250 API posts in a rolling 24-hour period; a carousel counts as one post."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://www.outstand.so/mcp/threads",
+    "notes": "No Meta-published Threads MCP server was found. Outstand offers a hosted third-party server that uses Meta’s official API and OAuth. The quinnjr/threads-mcp project is a self-hosted alternative for publishing, replies, and insights."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/threads"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "Developers can build and test publishing, reply moderation, and insights with tester accounts. For users without an app role to grant the relevant permissions, Meta must approve each permission through App Review and the app must be published."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/threads/get-started",
+      "quote": "API authentication is handled by Threads user access tokens that conform to the OAuth 2.0 protocol.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/threads/get-started",
+      "quote": "Long-lived tokens can be refreshed before they expire by querying the GET /refresh_access_token endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens",
+      "quote": "Long-lived tokens are valid for 60 days and can be refreshed as long as they are at least 24 hours old but have not expired, and the app user has granted your app the threads_basic permission.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.facebook.com/documentation/threads/get-started/app-access-tokens",
+      "quote": "Use an app access token to make requests to the Threads API on behalf of an app rather than a user. Certain APIs require app access tokens instead of user access tokens, such as the oEmbed API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/threads/get-started/create-an-app",
+      "quote": "Click the Add or Remove Threads Test Users to add testers to your app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/threads/get-started",
+      "quote": "To test your app with a Threads user, you must first send an invitation to the Threads user’s profile and accept the invitation.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/threads/get-started",
+      "quote": "Threads testers can grant your app these permissions at any time.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/threads/get-started/get-access-tokens-and-permissions",
+      "quote": "After a user logs in and chooses which data to allow your app to access, Threads will redirect the user to your app and include an authorization code, which you can then exchange for a short-lived access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.blotato.com/blog/threads-api-pricing",
+      "quote": "Threads API pricing in 2026 is free. Meta publishes no paid tier, no per-call fee, and no pricing page in the official Threads developer docs.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://about.fb.com/news/2023/07/introducing-threads-new-app-text-sharing/",
+      "quote": "Threads is a new app, built by the Instagram team, for sharing text updates and joining public conversations.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/docs/threads/",
+      "quote": "Use the Threads API to create and publish posts, retrieve media and profiles, moderate replies, and access insights.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/documentation/threads/reference",
+      "quote": "The Threads API can be accessed by either graph.threads.com or graph.threads.net.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/documentation/threads/overview",
+      "quote": "Threads profiles are limited to 250 API-published posts within a rolling 24-hour period. Carousels count as a single post.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/documentation/threads/overview",
+      "quote": "To check a profile’s current Threads API rate limit usage, query the GET /{threads-user-id}/threads_publishing_limit endpoint .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.outstand.so/mcp/threads",
+      "quote": "Point Claude, Cursor, or any MCP client at Outstand's server and the agent can post text with optional media, chain a multi-post thread, repost, quote, reply to comments, and read views and engagement. Everything goes through Meta's official Threads API over an OAuth connection you approve once.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/quinnjr/threads-mcp",
+      "quote": "This server provides comprehensive tools for creating, reading, and managing Threads content programmatically.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/threads",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Threads MCP or direct API to publish posts, manage replies, discover public content, and analyze profile performance through natural language.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.facebook.com/documentation/threads/get-started",
+      "quote": "Threads testers can grant your app these permissions at any time. For app users without a role on your app to grant your app these permissions, each permission must first be approved through the App Review process, and your app must be published.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.facebook.com/blog/post/2024/06/18/the-threads-api-is-finally-here/",
+      "quote": "People can now publish posts via the API, fetch their own content, and leverage our reply management capabilities to set reply and quote controls, retrieve replies to their posts, hide, unhide or respond to specific replies. Insights are one of our top requested features for the API, so we are making it possible for people to see key metrics: the number of views, likes, replies, reposts, and quotes at media and account level, and the number of followers as well as follower demographics for your account.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Meta’s public docs explain tester access and App Review but do not explicitly state a price. The finding that there is no published fee relies on a third-party source.",
+    "OAuth and MCP availability were verified from documentation, not by connecting an account or executing a live tool call."
+  ],
+  "id": "threads",
+  "name": "Threads (Meta)",
+  "website": "developers.facebook.com/docs/threads",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "threads",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/threads",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish OAuth 2.0 user tokens. They do not establish the note’s one-hour token lifetime or client-credentials flow."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show a tester can grant permissions and obtain a token without App Review; the cited pricing quote supports the free claim. App Review is required for users without an app role."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public developer pages show HTTP endpoints and substantial publishing, reply-management, and insights capabilities. The API quotes do not establish every capability mentioned in the note, such as deletion."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Outstand describes a usable third-party MCP server. The quotes do not establish that no Meta-published server exists or that the GitHub alternative is self-hosted."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quoted Composio toolkit page lists Threads."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free tester access and a useful documented API support building now. App Review for users without an app role supports the caveat and the stated approval blocker; it does not block the tester path."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:39+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 14,
+    "input_tokens": 228048,
+    "output_tokens": 9470,
+    "cached_input_tokens": 149633,
+    "critic_tokens": 7906,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Threads (Meta)",
+      "charged_usd": 0.0,
+      "log_id": "log_wGMbm6weJFtb"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Threads (Meta) MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_oOjp_q75erJv"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Meta Threads API free to use developer app no cost free API Threads Meta developer test access",
+      "charged_usd": 0.004,
+      "log_id": "log_xkeNFMYpgh6j"
+    }
+  ]
+}

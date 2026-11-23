@@ -1,0 +1,193 @@
+{
+  "one_liner": "Clay is a go-to-market data and workflow platform with a Public API, an official MCP connection, and a Composio toolkit.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "OAuth is documented for the separate MCP connection, not as Public API authentication."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The developer platform is available on the free plan. The memo reports a limit of 100 search results per 30 days on that plan; table queries require Enterprise."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://developers.clay.com/",
+    "notes": "The documented scope includes searches, reusable routines, table data, and Audiences. Tables are Enterprise only."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://university.clay.com/docs/mcp-for-reps-vs-agent-plugin",
+    "notes": "The MCP connection is separate from the agent plugin. An admin enables access and invites reps before each rep adds the connection."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/clay"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "The developer platform is available on the free plan, and the documented Public API supports searches and reusable Clay logic. Tables are Enterprise only."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.clay.com/public-api/authentication",
+      "quote": "Every request to the Clay Public API must include a Clay API key in the clay-api-key header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://university.clay.com/docs/mcp-troubleshooting-and-faqs",
+      "quote": "Clients that register themselves at connection time — a CLI connection like claude mcp add , or an editor such as Cursor or VS Code — aren't pre-verified by Clay, so the OAuth consent screen labels them Unverified application .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://university.clay.com/docs/clay-api-cli",
+      "quote": "The developer platform is available across all Clay plans, including free, trial, and Legacy plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.clay.com/quickstart",
+      "quote": "You can create an API key three ways: Ask your agent to generate one for you after installing the agent plugin . Run clay api-keys create --name \"<key name>\" with the clay CLI. The key is returned once, in the apiKey field.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.clay.com/quickstart",
+      "quote": "Use the Public API to call Clay from your own applications and services — backend jobs, internal tools, queues, and product features. Requests authenticate with a Clay API key in the clay-api-key header.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.clay.com/",
+      "quote": "Use the developer platform to search Clay’s GTM data, run reusable Clay logic, read table data, and work with Audiences programmatically.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.clay.com/",
+      "quote": "Tables are Enterprise only.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://university.clay.com/docs/mcp-for-reps-vs-agent-plugin",
+      "quote": "MCP for Reps brings Clay's data and your team's approved workflows into the AI tools sellers already use, and the Clay Agent Plugin gives builders Clay's skills and the clay CLI inside their coding agent.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://university.clay.com/docs/mcp-for-reps-vs-agent-plugin",
+      "quote": "Setup has two halves: an admin enables access, invites each rep, and sets their credit budget, and each rep then adds the connection in their own AI tool.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/clay",
+      "quote": "Clay is a go-to-market data enrichment and workflow automation platform for searching people and companies, running routines, and querying workspace tables.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Clay’s pricing FAQ says Enterprise includes “Clay API access,” while its more specific developer-platform documentation explicitly says the platform is available on free and trial plans. The memo uses the developer documentation for the most accessible credential path and flags the inconsistency.",
+    "A guessed older API-reference URL did not load; the current public developer site at https://developers.clay.com/ did.",
+    "The memo calls the deployment cloud-hosted but provides no quoted evidence establishing the deployment model."
+  ],
+  "id": "clay",
+  "name": "Clay",
+  "website": "clay.com",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "clay",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/clay",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The Public API requires a Clay API key in the clay-api-key header, so api_key as the only and primary Public API method is proven. The OAuth quote is explicitly about MCP client registration, matching the note that OAuth is not Public API auth."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The developer platform is available on free plans and the quickstart shows creating an API key without payment or approval, which proves self_serve_free. The note's 100-results-per-30-days limit is not in any quote; Tables being Enterprise only is quoted under api, not as a credential gate."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Quotes describe a public HTTP API (requests with a clay-api-key header) for search, reusable logic, table data, and Audiences, which supports rest, public docs at developers.clay.com, and moderate breadth. Tables being Enterprise only limits one area and does not contradict that breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor docs describe MCP for Reps as a connection users add after an admin enables access, so official and generally_available are proven. Nothing quoted calls it beta, pilot, or unlaunched; the admin-invite setup matches the note."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit docs page for Clay describes the app, so in_catalog yes is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free developer-platform credentials plus a documented public API covering searches and reusable logic meet buildable_now with main_blocker none. Enterprise-only tables are a scope limit, not a credential or partnership block."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T21:01:55+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 18,
+    "input_tokens": 446682,
+    "output_tokens": 4695,
+    "cached_input_tokens": 294803,
+    "critic_tokens": 3224,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Clay",
+      "charged_usd": 0.0,
+      "log_id": "log_LYKu66V44-Kr"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Clay MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_e4VgwjOwUkIe"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Clay public API documentation api.clay.com authentication API key developer docs",
+      "charged_usd": 0.004,
+      "log_id": "log_SHx9gZIgledY"
+    }
+  ]
+}

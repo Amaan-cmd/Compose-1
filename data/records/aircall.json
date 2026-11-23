@@ -1,0 +1,225 @@
+{
+  "one_liner": "Aircall is a cloud-only business phone system with a broad public REST API (Basic Auth for your own account, OAuth for multi-customer apps), but working credentials require a paid customer account; its own MCP server is an official beta that an account manager must enroll you in.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "basic",
+      "oauth2"
+    ],
+    "primary": "basic",
+    "notes": "The docs explicitly offer two methods and recommend Basic Authentication when you are connecting your own internal tools or private integration, which is the path a third-party agent acting for one user takes. OAuth is reserved for apps distributed to many customers and requires joining the Technology Partner Program. The resulting access token is sent as a Bearer token, but that is the OAuth grant, not a separately documented token method."
+  },
+  "access": {
+    "level": "paid_plan",
+    "notes": "API keys are generated from the dashboard of an existing Aircall account (Integrations → API keys), and the pricing FAQ says all plans include API access. The cheapest plan is Essentials at $30 per license/month (billed annually) with a 3-license minimum. \"Get free access\" is offered to test the platform, but no page ties API-key creation to that free period, so it is not counted as a trial path to credentials. OAuth client_id/client_secret for a public app are issued only after a partner signup (\"We will get back to you shortly\"), and an Admin must install the integration. Cloud only."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.aircall.io/api-references/",
+    "notes": "The reference documents read and write endpoints across users, teams, calls (search, transfer, tag, comment, archive, recording control, outbound dial), contacts, tags, numbers, webhooks, conversations, dialer and outbound campaigns, messaging (SMS and WhatsApp), analytics exports, and AI voice-agent calls. The reference page is readable without logging in."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://mcp.aircall.io/mcp",
+    "notes": "Aircall hosts https://mcp.aircall.io/mcp and documents it as beta: read-only access to calls and conversation intelligence, OAuth login, enrollment via an Account Manager, and the AI add-on for transcript/sentiment tools. A separate community server (themobilefirstco/aircall-mcp-server, 73 tools, explicitly not endorsed by Aircall) and Zapier/Pipedream wrappers also exist. Aircall's \"Register a Public MCP\" docs are the inverse: partners register their own MCP for Aircall's AI to call."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/aircall"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "paid_plan",
+    "rationale": "The REST API is public, broad, and usable with dashboard-generated Basic Auth credentials, but those credentials exist only inside a paid Aircall account (Essentials from $30/license/month, 3-license minimum, and all plans include API access), and the official MCP is a read-only beta that needs Account Manager enrollment."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.aircall.io/docs/authentication",
+      "quote": "Aircall supports two ways to authenticate with the REST API: Basic Authentication and OAuth. Use Basic Authentication when you are connecting your own internal tools or private integration to Aircall.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.aircall.io/api-references/",
+      "quote": "With Aircall Public API, Authentication can be done through OAuth or Basic Auth. If you want to build an App for companies using Aircall - this is mainly the case for Technology Partners - please use the OAuth flow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.aircall.io/docs/public-vs-private-app",
+      "quote": "To build one, you must first join the Aircall Technology Partner Program Public Apps are intended to be published and discoverable by Aircall's customer base.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.aircall.io/docs/basic-authentication",
+      "quote": "You must have an Aircall account. Sign up here if you don't have one yet.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.aircall.io/docs/basic-authentication",
+      "quote": "Open your Aircall Dashboard > Integrations > API keys. In the top right corner, click Generate API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://aircall.io/pricing/",
+      "quote": "All plans include API access and 250+ integrations. Aircall also offers an open API and webhook framework for custom integrations.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://aircall.io/pricing/",
+      "quote": "The Essentials plan starts at $30/license/month (billed annually) and includes 250+ integrations, IVR, call recording, and SMS.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.aircall.io/api-references/",
+      "quote": "Before starting building the OAuth flow for your app, you will need to get OAuth client_id and client_secret from Aircall. Click the start building button on top of the page and fill in the form. We will get back to you shortly.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.aircall.io/docs/introduction",
+      "quote": "The foundation for every Aircall integration. Manage calls, messages, AI agents, users, numbers, and more — fully documented with detailed schemas, and request and response examples in the API reference.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.aircall.io/api-references/",
+      "quote": "Each Public API request must be authenticated and should not exceed the rate limit, please check the Authentication and the rate limiting sections before jumping in our documentation!",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.aircall.io/en-gb/articles/39677926959517",
+      "quote": "Important: Aircall MCP is currently in beta. To join the beta, contact your Account Manager.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.aircall.io/en-gb/articles/39677926959517",
+      "quote": "Aircall MCP is read-only. It can retrieve data, but it can't take action, it can't make calls, send messages, tag calls, or change any data in your account.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/themobilefirstco/aircall-mcp-server",
+      "quote": "This MCP server is NOT built, maintained, or endorsed by Aircall. It was built by Allo — the AI-native business phone system that's replacing legacy phone tools like Aircall.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/aircall",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Aircall MCP or direct API to manage calls, search contacts, organize teams, and update phone numbers through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing comparison table collapses in text extraction, so \"Full API access\" could not be reliably tied to a single column. The FAQ sentence that all plans include API access was used instead, and it sits under the integrations question rather than a standalone \"Does Aircall offer API access?\" heading.",
+    "aircall.io/get-started renders its form in JavaScript, so the length or conditions of \"free access\" could not be confirmed, and no page states that the free period includes API keys."
+  ],
+  "id": "aircall",
+  "name": "Aircall",
+  "website": "aircall.io",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "aircall",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/aircall",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "unsupported",
+      "note": "The quotes document both Basic Authentication and OAuth, but recommend OAuth for an app built for companies using Aircall. Basic is recommended for internal tools or private integrations, so the claimed primary method does not follow."
+    },
+    {
+      "field": "access",
+      "result": "unsupported",
+      "note": "The quotes show dashboard API-key creation, API access on all plans, and a paid Essentials plan. They do not establish that payment is required or rule out a free or trial path to credentials. The note's claim about a free test period is also not shown by a confirmed quote."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes identify a REST API and a publicly readable reference, and describe several core objects it can manage. Nothing quoted contradicts the estimated broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Aircall's support page describes Aircall MCP as an existing beta, supporting official status and beta_or_pilot maturity. The quoted text does not establish the claimed MCP URL or every detail in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is from Composio's Aircall toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "The verdict rests on access or API claims that were not confirmed."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth: unsupported (The quotes document both Basic Authentication and OAuth, but recommend OAuth for an app built for companies using Aircall. Basic is recommended for internal tools or private integrations, so the claimed primary method does not follow.)",
+    "access: unsupported (The quotes show dashboard API-key creation, API access on all plans, and a paid Essentials plan. They do not establish that payment is required or rule out a free or trial path to credentials. The note's claim about a free test period is also not shown by a confirmed quote.)",
+    "verdict: unsupported (The verdict rests on access or API claims that were not confirmed.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:35+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 18,
+    "input_tokens": 319261,
+    "output_tokens": 10132,
+    "cached_input_tokens": 220677,
+    "critic_tokens": 11782,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Aircall",
+      "charged_usd": 0.0,
+      "log_id": "log_MRgNZ1d1Rk3t"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Aircall MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_yr0EpmmPJdaq"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Aircall API access which plan \"Professional\" OR \"Essentials\" \"API keys\" free trial",
+      "charged_usd": 0.004,
+      "log_id": "log_BoWAwf_l5qhR"
+    }
+  ]
+}

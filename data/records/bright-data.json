@@ -1,0 +1,184 @@
+{
+  "one_liner": "Bright Data offers self-serve API credentials, documented HTTP APIs, and an official MCP server for web data access.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "basic"
+    ],
+    "primary": "api_key",
+    "notes": "The username-and-password option is for native proxy access, not the recommended API integration path."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "New accounts receive an API key and 5,000 recurring monthly credits for listed APIs without a credit card. The allowance excludes proxy products, which have separate time-limited trial credit. The self-serve path uses Bright Data's hosted services; a locally run MCP connector does not self-host the underlying platform."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.brightdata.com/api-reference/authentication",
+    "notes": "Public documentation covers HTTP scraping and other product APIs, including search, browsers, and account management."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.brightdata.com/products/mcp-server/overview",
+    "notes": "Bright Data documents a usable managed remote server and a locally run connector."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/brightdata"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "New accounts receive an API key and recurring credits for documented APIs. The free allowance has usage limits and excludes proxy products."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.brightdata.com/api-reference/authentication",
+      "quote": "Authenticate with Bright Data using 1 of 2 methods: API Access with an API key or Native Access with proxy username and password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.brightdata.com/api-reference/authentication",
+      "quote": "An API key is a secure hashed token used to authenticate with Bright Data API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.brightdata.com/quickstart",
+      "quote": "New accounts receive an API key in the Bright Data welcome email. Use that key for this guide.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+      "quote": "Every new Bright Data account gets 5,000 free credits per month (~$7.50 value), usable across the Web Unlocker API, SERP API, Web Scraper API, Scraper Studio and Browser API. No credit card, no promo code, no commitment.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.brightdata.com/products/mcp-server/overview",
+      "quote": "You can run the server two ways: a fully managed remote server, or a self-hosted local instance.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.brightdata.com/quickstart",
+      "quote": "The same call works for every one of Bright Data’s thousands of pre-built scrapers: change the dataset_id over HTTP, or call a different method in the SDK.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.brightdata.com/",
+      "quote": "Guides, quickstarts and API references for Bright Data Scraper API, Scraper Studio, Web Unlocker API, SERP API, proxies, datasets and Bright Data MCP.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.brightdata.com/products/mcp-server/overview",
+      "quote": "The Bright Data MCP server gives AI agents and assistants real-time access to public web data through the Model Context Protocol (MCP). Connect it to Claude, Cursor or any MCP-compatible client, and your agent can search, scrape and read live web pages without you building or maintaining data pipelines.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/brightdata",
+      "quote": "Bright Data provides the world's #1 web data platform with Web Unlocker for bypassing anti-bot systems, SERP API for search engine data, and pre-made scrapers for popular websites.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.brightdata.com/general/account/billing-and-pricing/free-tier",
+      "quote": "Every new Bright Data account gets 5,000 free credits per month (~$7.50 value), usable across the Web Unlocker API, SERP API, Web Scraper API, Scraper Studio and Browser API. No credit card, no promo code, no commitment.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [],
+  "id": "bright-data",
+  "name": "Bright Data",
+  "website": "brightdata.com",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "brightdata",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/brightdata",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes name two methods: API access with an API key, and native proxy access with username and password (basic). API key is the documented API method, so primary api_key is supported."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "New accounts get an API key and 5,000 monthly credits with no credit card, promo code, or commitment, which proves self_serve_free. The note's claim that proxy products are excluded and have a separate time-limited trial is not in the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public docs describe HTTP calls and API references across scrapers, Web Unlocker, SERP, proxies, datasets, and related products. That supports rest, public docs, and does not contradict broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Bright Data's own docs describe a usable MCP server available as a managed remote server or a local instance, supporting official and generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Bright Data."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented, useful HTTP API yield buildable_now with main_blocker none. The rationale's claim that the free allowance excludes proxy products is not shown by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:48:54+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 106502,
+    "output_tokens": 3298,
+    "cached_input_tokens": 79291,
+    "critic_tokens": 3238,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Bright Data",
+      "charged_usd": 0.0,
+      "log_id": "log__XMJOQkDHL_t"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Bright Data MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Z8m1OxT2Mbg1"
+    }
+  ]
+}

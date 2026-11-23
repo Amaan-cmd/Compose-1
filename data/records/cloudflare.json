@@ -1,0 +1,223 @@
+{
+  "one_liner": "Cloudflare offers self-serve API credentials, a broad public API, and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is documented for third-party applications; API tokens and legacy API keys are also documented. Cloudflare recommends API tokens over API keys."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Developers can create an API token through the hosted dashboard. Making an OAuth client public requires client-URL domain ownership verification; private clients are limited to members of their parent account."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.cloudflare.com/api/",
+    "notes": "The REST API covers Cloudflare products; a separate GraphQL API provides analytics data."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.cloudflare.com/mcp",
+    "notes": "Cloudflare hosts an API-wide remote MCP server and documents OAuth authorization when connecting."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/cloudflare"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can create an API token, and Cloudflare documents an API spanning its products and an API-wide MCP server. Public distribution of an OAuth client requires client-URL domain ownership verification."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.cloudflare.com/fundamentals/oauth/",
+      "quote": "OAuth allows third-party applications to securely access Cloudflare resources without requiring users to share long-lived API tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.cloudflare.com/api/overview/",
+      "quote": "You can also authenticate with API keys, but these keys have several limitations that make them less secure than API tokens. Whenever possible, use API tokens to interact with the Cloudflare API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.cloudflare.com/fundamentals/account/create-account/",
+      "quote": "Existing users can create additional Free accounts in the dashboard or with the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.cloudflare.com/fundamentals/account/create-account/",
+      "quote": "Use a user-owned API token or OAuth access token. Account-owned API tokens cannot create accounts.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+      "quote": "With this you have successfully created an API token and can start working with the Cloudflare API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/",
+      "quote": "Private clients can only be authorized by members of the parent Cloudflare account. Public clients allow authorization from any Cloudflare user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/",
+      "quote": "Cloudflare requires client URL domain ownership verification before a client can become public.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.cloudflare.com/fundamentals/account/create-account/",
+      "quote": "For those who prefer to interact with Cloudflare programmatically, you can use several methods:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.cloudflare.com/fundamentals/account/create-account/",
+      "quote": "RESTful API based on HTTPS requests and JSON responses.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.cloudflare.com/analytics/graphql-api/",
+      "quote": "The GraphQL Analytics API provides data regarding HTTP requests passing through Cloudflare's network, as well as data from specific products, such as Firewall or Load Balancing.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare",
+      "quote": "It provides access to the entire Cloudflare API — over 2,500 endpoints across DNS, Workers, R2, Zero Trust, and every other product — and to the Cloudflare developer documentation.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare",
+      "quote": "The Cloudflare API MCP server ↗︎ at https://mcp.cloudflare.com/mcp is the only MCP server you need to work with Cloudflare.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare",
+      "quote": "When you connect, you will be redirected to Cloudflare to authorize via OAuth and select the permissions to grant to your agent.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/cloudflare",
+      "quote": "Cloudflare is a global network designed to make everything you connect to the Internet secure, private, fast, and reliable.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Cloudflare’s availability table lists OAuth across plans, but its extracted table cells are not suitable sentence-length evidence. The Free-account/API-token finding above is supported by separate prose on the same official account-creation page.",
+    "The legacy API-key option is documented but explicitly not recommended for new customers."
+  ],
+  "id": "cloudflare",
+  "name": "Cloudflare",
+  "website": "developers.cloudflare.com/api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "cloudflare",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/cloudflare",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth is quoted for third-party apps so users need not share long-lived API tokens, which is the primary third-party method. API keys and API tokens are both quoted, with tokens recommended over keys; listing tokens as bearer_token is allowed."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Free accounts and a completed API token that can be used with the API are quoted, with no payment, trial, or approval step, so self_serve_free holds. Public OAuth clients need client-URL domain ownership verification and private clients are limited to the parent account; the token quote itself does not say the token is created in the dashboard."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "A RESTful HTTPS/JSON API and a GraphQL Analytics API are quoted. Breadth broad is supported, not contradicted, by the quote of the entire Cloudflare API covering 2,500 endpoints across products. The cited pages are public developer docs."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Cloudflare's own docs publish the API MCP server at https://mcp.cloudflare.com/mcp and describe connecting and authorizing now. Nothing labels it beta, pilot, or unlaunched, so official and generally_available hold."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on the Composio toolkit page for Cloudflare, so the catalog listing is shown."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented, broad API meet buildable_now with main_blocker none. Domain verification applies only to making an OAuth client public, not to creating an API token."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:49:57+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 294528,
+    "output_tokens": 4444,
+    "cached_input_tokens": 214957,
+    "critic_tokens": 3476,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Cloudflare",
+      "charged_usd": 0.0,
+      "log_id": "log_RtC_OBesZJh5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Cloudflare MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_8U146S2jqFtK"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developers.cloudflare.com \"Free plan\" \"API token\" create access Cloudflare OR site:developers.cloudflare.com \"free accounts\" \"API tokens\"",
+      "charged_usd": 0.004,
+      "log_id": "log_pTndpOvbP4kQ"
+    }
+  ]
+}

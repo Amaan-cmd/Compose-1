@@ -1,0 +1,222 @@
+{
+  "one_liner": "Otter.ai turns meetings and interviews into searchable transcripts, with an official read-only MCP server and a separate Enterprise REST API.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "The REST API uses an Otter-issued API key sent in the HTTP Authorization header as a Bearer credential. The separate MCP server uses OAuth."
+  },
+  "access": {
+    "level": "partner_or_sales",
+    "notes": "REST API credentials are limited to hosted Enterprise workspaces. Prospective Enterprise customers are directed to sales; existing Enterprise customers should contact their account manager if the API feature is not visible. No self-serve REST credential path is documented. The free Basic plan lists MCP access, not REST API credentials."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+    "notes": "The public reference documents versioned GET and POST endpoints covering channels, conversations, and workspace details. Most operations retrieve data; the documented write operation creates a conversation from a file URL."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.otter.ai/mcp",
+    "notes": "Listed on the free Basic plan, with OAuth setup documented for Claude, ChatGPT, Cursor, and Perplexity. Its three read-only tools retrieve the signed-in user's profile, search meetings, and fetch a full transcript. Meeting access is limited to meetings the user captured or that others in the workspace shared with them."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/otter_ai_mcp"
+  },
+  "verdict": {
+    "status": "blocked",
+    "main_blocker": "partner_gate",
+    "rationale": "A new developer cannot obtain REST API credentials without an Enterprise workspace, which Otter directs prospective customers to sales to obtain. The separate OAuth-authenticated MCP server supports read-only retrieval of authorized meetings and transcripts."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "All API requests require authentication using Bearer token authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "Follow the steps below to create your API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "Otter's Public API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://otter.ai/enterprise",
+      "quote": "Need a custom solution? Contact our sales team to learn more about Otter’s advanced capabilities.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://help.otter.ai/hc/en-us/articles/4412365535895-Does-Otter-offer-an-open-API",
+      "quote": "Yes, Otter offers a public API for Enterprise customers . To get started, contact your Otter account manager to enable access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "Otter.ai’s Public API provides programmatic access to retrieve channels, conversations, transcripts, audio, action items, insights, outlines, and workspace details from your Otter account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "Use this endpoint to get the summary and details of a specific conversation. You can optionally include additional conversation data such as action items, insights, outlines, transcript, or all available relationships.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://help.otter.ai/hc/en-us/articles/36130822688279",
+      "quote": "Creates a new conversation from a file. This is useful if you are importing calls into Otter, such as from a Dialer.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "Otter MCP can be connected to third-party AI tools that support the Model Context Protocol (MCP) using a JSON configuration file.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "All access is OAuth-authenticated with granular permissions. Your AI assistant can only access meetings you explicitly authorize.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "This tool retrieves the authenticated user's profile information, including their name and email address.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "Search for meetings and get an overview of information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "Retrieves a full speech transcript of a meeting or conversation.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server",
+      "quote": "You can access all meetings that you have captured in Otter, as well as any meetings shared with you from other users in your Workspace.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/otter_ai_mcp",
+      "quote": "Otter.ai MCP lets agents retrieve the authenticated user's profile, search authorized meetings and conversations, and fetch complete transcripts for analysis and summarization.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Composio catalog lookup missed the exact match. Composio’s public docs list OTTER_AI_MCP with three tools, but that listing does not establish access to the Enterprise REST API.",
+    "Otter’s MCP FAQ says there is no public API key for setting up MCP, while the separate Enterprise REST reference documents API keys. These statements concern different interfaces.",
+    "Credential issuance and authenticated tool calls were not tested; the findings are based on public documentation."
+  ],
+  "id": "otter-ai",
+  "name": "Otter AI",
+  "website": "help.otter.ai (MCP server)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "toolkit_page",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The API requires bearer authentication and documents creating an API key, supporting api_key as the primary REST API method. The MCP quote separately supports OAuth for the MCP server."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The API is limited to Enterprise workspaces, and the Enterprise page directs prospective customers to sales. The quotes do not establish the notes’ claims about the free Basic plan or the absence of every possible self-serve credential path."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API quotes describe endpoints for retrieving several resources and creating a conversation, consistent with moderate breadth. They do not specifically establish the notes’ GET/POST methods, versioning, or file-URL detail."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation describes a usable MCP connection and retrieval tools, with no quoted beta or pilot restriction. The quotes do not establish Basic-plan availability, the listed client integrations, or the exact server URL."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is from a Composio toolkit page for Otter.ai MCP."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Enterprise-only API access and the sales route support blocked with partner_gate, notwithstanding the separately documented read-only MCP server."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T21:01:01+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 174539,
+    "output_tokens": 8784,
+    "cached_input_tokens": 95782,
+    "critic_tokens": 7956,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Otter AI",
+      "charged_usd": 0.0,
+      "log_id": "log_xYONFTAbvUwp"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Otter AI MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_UN71_VSroSLx"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "one_liner": "Vercel has a broad public REST API, self-serve access tokens, and an official MCP server.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth supports integrations acting for users; personal access tokens support direct API access."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The free Hobby plan can be the default team for API requests, and Vercel documents creating an API token from a personal account. Submitting a Marketplace integration requires review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://vercel.com/docs/rest-api",
+    "notes": "The public reference covers deployment and project management, among other resources."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+    "notes": "Vercel documents its MCP server as available on all plans."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/vercel"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Vercel documents API requests against a default team that can be a free Hobby team, personal-account API-token creation, and a broad REST API. Submitting a Marketplace integration for review is distinct from making API requests."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://vercel.com/docs/sign-in-with-vercel",
+      "quote": "Vercel's IdP uses the OAuth 2.0 authorization framework, a widely adopted industry standard for securing and delegating access to resources on behalf of users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://vercel.com/docs/sign-in-with-vercel",
+      "quote": "Access Token : A bearer token your application uses to call the Vercel REST API for the permissions the user grants. This lasts for 1 hour",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://vercel.com/docs/accounts/access-tokens",
+      "quote": "Vercel access tokens authenticate requests to the Vercel REST API and the Vercel CLI on your behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://vercel.com/docs/accounts",
+      "quote": "Your default team will be used when you make a request through the API or CLI and don’t specify a specific team.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://vercel.com/docs/accounts",
+      "quote": "The first Hobby or Pro team you create will automatically be nominated as the default team.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://vercel.com/docs/plans/hobby",
+      "quote": "The Hobby plan is free and includes a generous set of features on a per month basis:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://vercel.com/docs/accounts/access-tokens",
+      "quote": "Create a Vercel API access token from your personal account's Account Tokens page :",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://vercel.com/docs/integrations/create-integration",
+      "quote": "The Create Integration form must be completed in full before you can submit your integration for review.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://vercel.com/docs/rest-api",
+      "quote": "All endpoints live under the URL https://api.vercel.com and follow the REST architecture.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://vercel.com/docs/rest-api",
+      "quote": "You can deploy new versions of web applications, manage custom domains, retrieve information about deployments, and manage secrets and environment variables for projects.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "quote": "Vercel MCP is Vercel's official MCP server.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "quote": "Vercel MCP is available on all plans and your use is subject to Vercel's AI Product Terms .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/vercel",
+      "quote": "Vercel is a platform for frontend frameworks and static sites, enabling developers to host websites and web services that deploy instantly, scale automatically, and require minimal configuration.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Vercel does not state in one explicit sentence that Hobby users can create REST API tokens; the access finding rests on its linked account, default-team, and token instructions.",
+    "The initial Composio catalog search missed an accessible toolkit page.",
+    "The memo gives no quoted evidence for the deployment model."
+  ],
+  "id": "vercel",
+  "name": "Vercel",
+  "website": "vercel.com/docs/rest-api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "vercel",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/vercel",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth 2.0 is documented for delegated access, and the resulting token calls the Vercel REST API for user-granted permissions. Separate Vercel access tokens authenticate API requests on the account holder’s behalf, which supports bearer_token; OAuth is the evidenced method for acting for users."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The Hobby plan is free, a Hobby team can be the default team for API requests, and token creation is documented from a personal account. The integration-submission review quote concerns Marketplace integrations, not obtaining API credentials."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The cited reference says endpoints live at api.vercel.com and follow REST, and it describes deploy, domain, deployment, secret, and environment-variable operations. That does not contradict breadth broad, and the quotes are from the stated public docs URL."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vercel calls Vercel MCP its official MCP server and says it is available on all plans, with no quoted beta, pilot, or not-yet-launched limitation."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio toolkit page for Vercel."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented, useful REST API support buildable_now with no main blocker. Marketplace review is separate from making API requests."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:49:56+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 17,
+    "input_tokens": 338313,
+    "output_tokens": 7396,
+    "cached_input_tokens": 216766,
+    "critic_tokens": 6418,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Vercel",
+      "charged_usd": 0.0,
+      "log_id": "log_BRO72RaDiCo8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Vercel MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_sp7kgEoXKF3b"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:vercel.com/docs \"Hobby\" \"API\" \"tokens\" create access free plan",
+      "charged_usd": 0.004,
+      "log_id": "log_1W7ufEWBZvBO"
+    }
+  ]
+}

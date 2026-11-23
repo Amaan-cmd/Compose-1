@@ -1,0 +1,248 @@
+{
+  "one_liner": "Gumroad is an ecommerce platform for creators with a public REST API, self-serve access tokens for personal integrations, and official hosted MCP connectors.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Use OAuth 2.0 when acting on behalf of other sellers. For an integration that only connects to your own account, register an application and generate an access token manually."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "On hosted Gumroad, sign in with a regular account, create an application in Settings > Advanced, and generate an access token. The personal setup instructions list no paid tier or approval step. Gumroad charges fees on sales, not a monthly fee. The self-hosted source can run locally without custom credentials, but external services such as Stripe and S3 require their own credentials. Public OAuth app distribution requirements were not verified."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://gumroad.com/api",
+    "notes": "The JSON REST API reads and manages products and related objects, reads sales, subscribers, and payouts, and supports refunds and receipt resends. Permissions vary by endpoint."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://gumroad.com/mcp",
+    "notes": "Gumroad hosts client-specific OAuth connectors for Claude, ChatGPT, Cursor, and Google Antigravity. They can read sales and payouts and create unpublished product drafts. With product access, they can publish or unpublish products. Customers still pay through Gumroad checkout. The separately listed Muse connector is not yet available."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/gumroad"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can generate a token for their own Gumroad account and use documented REST endpoints to read product and payout data and manage offer codes, variants, and custom fields. This verdict applies to personal integrations; approval requirements for public OAuth app distribution were not verified."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/pages/Public/Api.tsx",
+      "quote": "Gumroad's OAuth 2.0 API lets you see information about your products, as well as you can add, edit, and delete offer codes, variants, and custom fields.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://github.com/rmarescu/gumroad-mcp",
+      "quote": "Redirect URI: For personal use, you can enter http://127.0.0.1 (localhost) as this value is not meaningful in this context.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://github.com/rmarescu/gumroad-mcp",
+      "quote": "Use the \"Generate access token\" button to get your access token.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/rmarescu/gumroad-mcp",
+      "quote": "Log in to your Gumroad account (or your own instance of Gumroad). Go to Settings > Advanced page.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/rmarescu/gumroad-mcp",
+      "quote": "Click \"Create application.\" Use the \"Generate access token\" button to get your access token.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://gumroad.com/pricing",
+      "quote": "Unlike other platforms, Gumroad doesn't charge you a monthly fee. Instead, our fees are deducted as a small percentage of every sale, so we only make money when you do.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/antiwork/gumroad",
+      "quote": "App can be booted without any custom credentials. But if you would like to use services that require custom credentials (e.g. S3, Stripe, Resend, etc.), you can copy the .env.example file to .env and fill in the values.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/components/ApiDocumentation/Introduction.tsx",
+      "quote": "The Gumroad OAuth API is based around REST.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/pages/Public/Api.tsx",
+      "quote": "Gumroad's OAuth 2.0 API lets you see information about your products, as well as you can add, edit, and delete offer codes, variants, and custom fields. Finally, you can see a user's public information and subscribe to be notified of their sales.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/components/ApiDocumentation/Endpoints/Subscribers.tsx",
+      "quote": "Retrieves all of the active subscribers for one of the authenticated user's products.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/components/ApiDocumentation/Endpoints/Payouts.tsx",
+      "quote": "Retrieves all of the payouts for the authenticated user. Available with the 'view_payouts' scope.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://gumroad.com/mcp",
+      "quote": "Every assistant connects to its own URL and asks for OAuth access to your Gumroad account. Each connector page lists the exact address to paste.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://gumroad.com/claude",
+      "quote": "Listed in Claude’s connector directory. You can also add it as a custom connector.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://gumroad.com/chatgpt",
+      "quote": "New products start as unpublished drafts. With product access, the connector can publish or unpublish them.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/gumroad",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Gumroad MCP or direct API to manage products, analyze sales, update listings, and contact customers through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/pages/Public/Api.tsx",
+      "quote": "Gumroad's OAuth 2.0 API lets you see information about your products, as well as you can add, edit, and delete offer codes, variants, and custom fields.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The direct fetch could not read the API reference or credential-setup article; both were readable through extraction.",
+    "Credential issuance and authenticated calls were not tested. The docs establish self-serve setup for personal use; any separate review requirement for publicly distributing an OAuth app was not verified.",
+    "The source repository documents local development, not parity with Gumroad’s hosted checkout and payouts."
+  ],
+  "id": "gumroad",
+  "name": "Gumroad",
+  "website": "gumroad.com/api",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "gumroad",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/gumroad",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes identify an OAuth 2.0 API and instructions to generate a personal access token. They support OAuth as the primary method for integrations acting on behalf of other users."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The instructions show a path to creating an application and generating a token, while Gumroad says it charges no monthly fee. The repository also describes running the app without custom credentials. The quotes do not establish requirements for distributing a public OAuth app."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The publicly cited documentation identifies a REST API and describes product-related operations, subscribers, and payouts. Breadth is an estimate, and nothing quoted contradicts 'broad.' The notes' claims about refunds and receipt resends are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Gumroad's own connector pages describe available OAuth connectors, including one listed in Claude's directory. The quotes do not substantiate every client and capability named in the notes, or the claim about Muse."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The cited Composio toolkit page explicitly describes connecting agents with Gumroad."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The supported self-serve credential path and documented REST API support buildable_now with no identified blocker. The rationale's product, payout, offer-code, variant, and custom-field claims are evidenced; it appropriately leaves public OAuth app distribution requirements unverified."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:49+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 23,
+    "input_tokens": 404233,
+    "output_tokens": 10697,
+    "cached_input_tokens": 305075,
+    "critic_tokens": 6840,
+    "composio_calls": 4,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Gumroad",
+      "charged_usd": 0.0,
+      "log_id": "log_2pRaNtdpqYCz"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Gumroad MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_C5S02PLFDEA1"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Authentication OAuth access token generate register an application settings free scopes API v2 products sales subscribers licenses webhooks",
+      "charged_usd": 0.004,
+      "log_id": "log_6_p7P-hiOra5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Gumroad create an OAuth application access token free Gumroad account API settings advanced official help",
+      "charged_usd": 0.004,
+      "log_id": "log_jvxDzweMUQEz"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "For any Gumroad account free API access sign in generating an access token create application requirements no approval OAuth for other users",
+      "charged_usd": 0.0,
+      "log_id": "log_ItVLYfdqz5S6"
+    }
+  ]
+}

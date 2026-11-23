@@ -1,0 +1,201 @@
+{
+  "one_liner": "Smartsheet is a cloud work-management platform for tracking projects, collaborating in sheets, and automating workflows, with a broad REST API, an official MCP server, and a Composio toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Smartsheet recommends OAuth 2.0 for integrations that involve user consent. Unattended integrations can use a user-generated access token as an HTTP Bearer credential."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "API token generation is self-service on Business, Enterprise, and Advanced Work Management plans. OAuth app registration requires an existing licensed Business-or-higher user. It is not verified whether the public trial includes API credentials or whether a free developer sandbox is available."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.smartsheet.com/api/smartsheet/introduction",
+    "notes": "Public developer guides document read and write operations for core resources such as sheets, rows, and reports, with additional coverage for folders, users, and webhooks."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+    "notes": "Smartsheet hosts production endpoints in the US, EU, and Australia. The server provides read and write tools and supports a Smartsheet API token or OAuth in supported clients."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/smartsheet"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "The documented read/write REST API is broad enough to build a useful integration on a qualifying plan. It remains unverified whether a new developer can obtain working credentials through the public trial or a free sandbox."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+      "quote": "“If your scenario involves user consent and interaction, it's typically best to use OAuth with Smartsheet.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+      "quote": "“Each API request requires passing in an access token as the Bearer value in your authorization header.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+      "quote": "“Required plan: Business, Enterprise, or Advanced Work Management Generate an API access token in the Smartsheet UI.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.smartsheet.com/register",
+      "quote": "“The email address used to register for Developer Tools must belong to an existing licensed Smartsheet user on a Business plan or higher.”",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/http-and-rest",
+      "quote": "“The REST URL structure follows typical resource-oriented conventions.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.smartsheet.com/api/smartsheet/introduction",
+      "quote": "“The API Reference includes object schemas, operation specifications, and code snippets for Sheets , Folders , Users , and more.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.smartsheet.com/api/smartsheet/introduction",
+      "quote": "“Manage the entire lifecycle of a report with the new endpoints .”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.smartsheet.com/content-center/product-insights/product-updates/introducing-smartsheet-mcp-server",
+      "quote": "“With dozens of tools available at GA — spanning discovery, data retrieval, sheet creation, row and column operations, and collaboration — the MCP Server covers the workflows developers need from day one.”",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+      "quote": "“Valid Smartsheet API token, unless you're connecting an AI tool that supports Smartsheet's OAuth, such as ChatGPT (web or mobile), Claude AI, Claude Desktop, Gemini Enterprise Plus, or Microsoft 365 Copilot.”",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/smartsheet",
+      "quote": "“Smartsheet is a collaborative work management platform for organizing projects, sheets, reports, dashboards, workflows, and teams.”",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The public trial signup does not state whether API token generation is included. No trial credentials were generated or tested.",
+    "The OpenAPI reference root and Sheets reference did not load in the research tools. The public developer guides were readable and supplied the API evidence above."
+  ],
+  "id": "smartsheet",
+  "name": "Smartsheet",
+  "website": "smartsheet.com/developers",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "smartsheet",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/smartsheet",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth is recommended for integrations involving user consent, and requests use an access token as a Bearer credential. The quotes do not establish the note’s claim about unattended, user-generated tokens."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public REST API covering multiple resources and do not contradict the estimated broad breadth. The note’s specific references to rows and webhooks are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A vendor page describes the MCP server’s tools as available at GA, supporting official and generally_available. The quoted text does not establish the note’s regional endpoint claim."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on a Composio toolkit page for Smartsheet."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:59:40+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 212664,
+    "output_tokens": 4977,
+    "cached_input_tokens": 153900,
+    "critic_tokens": 6921,
+    "composio_calls": 3,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Smartsheet",
+      "charged_usd": 0.0,
+      "log_id": "log_ckHhhJ2Eowoy"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Smartsheet MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_o8wV4SwkUDtD"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Smartsheet \"trial\" \"API access\" generate API token Smartsheet trial Business sandbox credentials",
+      "charged_usd": 0.004,
+      "log_id": "log_D8BkZVsz1-Mc"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "public OpenAPI reference HTTPS Smartsheet API read and write sheets rows columns reports workspaces API access Business Enterprise plans",
+      "charged_usd": 0.0,
+      "log_id": "log_60yN3WnSc1-W"
+    }
+  ]
+}

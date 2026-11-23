@@ -1,0 +1,248 @@
+{
+  "one_liner": "Ecwid by Lightspeed is a cloud ecommerce platform for standalone stores and embedded storefronts, with a REST API that covers core store operations.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Public apps use OAuth 2.0 to act on behalf of merchants. For a single store, a private custom app provides a store-specific bearer token in the Ecwid admin without an OAuth flow. The token does not expire and is limited to the app's scopes."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "Developers can get immediate API access with a paid store. The no-cost route requires Ecwid approval: qualifying developers can email for a test-store upgrade, and an approved public-app request includes a free Premium test store and a development app. The API has no test mode, and publishing in the App Market requires validation."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.ecwid.com/api-reference",
+    "notes": "The JSON REST API supports reads and writes for products, categories, inventory, orders, customers, discounts, and store settings. Ecwid documents webhooks and limits REST requests to 600 per minute per token."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://zapier.com/mcp/ecwid",
+    "notes": "No Ecwid-published MCP server was found. Zapier and viaSocket document hosted Ecwid connectors. Zapier lists order and customer lookup, order creation, and product updates. No authenticated tool call was tested."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/ecwid"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "Ecwid's documented REST API supports reads and writes across core store data. A paid store provides immediate API access, but the no-cost route requires Ecwid to approve test-store access."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.ecwid.com/ecwid-api-features",
+      "quote": "With Ecwid, your store can work from any website as an integrated widget called product browser.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+      "quote": "Ecwid uses OAuth 2.0 to provide secure access to the store data for public apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+      "quote": "Add store ID to the request path , your secret access token as a Bearer Token on the Authorization tab , and click Send :",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ecwid.com/develop-apps/app-settings",
+      "quote": "Access tokens authorize REST API requests for the specific app in the specific store.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ecwid.com/develop-apps/app-settings",
+      "quote": "Access tokens also do not expire , so once you get them for your custom app, save and use these tokens on your side for as long as you need.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid",
+      "quote": "Only stores on paid plans can access API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid",
+      "quote": "Email us to get a free plan upgrade for your test store.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ecwid.com/launch-apps/steps-to-go-live-with-a-public-app",
+      "quote": "With an approved Request form , you get a free test store on a Premium plan and a dev app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ecwid.com/launch-apps/steps-to-go-live-with-a-public-app",
+      "quote": "When your app is ready to be published, start the app validation process to ensure it meets all requirements.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+      "quote": "There is no test mode in Ecwid API, so we recommend setting up a separate test store.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.ecwid.com/pricing",
+      "quote": "Ecwid stores are hosted on fast, global servers with no bandwidth limits for quick loading",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ecwid.com/ecwid-api-features",
+      "quote": "Access all of the store data: orders, customers, products, general store settings, discounts, and more. API allows you to read, create, update, and delete any items from your store.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ecwid.com/api-reference",
+      "quote": "We use OAuth 2.0 authorization simplified for single-store customizations, JSON-formatted data, and a clear structure.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ecwid.com/api-reference",
+      "quote": "We accept up to 600 requests per minute per token .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ecwid.com/webhook-automations",
+      "quote": "Ecwid webhooks are automatic real-time notifications for apps about different events in the store.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://zapier.com/mcp/ecwid",
+      "quote": "Zapier Ecwid by Lightspeed MCP lets you connect Ecwid by Lightspeed 's actions with any AI tool that supports MCP, all without managing integrations or writing glue code.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://viasocket.com/mcp/ecwid-by-lightspeed",
+      "quote": "viaSocket MCP Server lets you easily connect Ecwid actions with AI tools like ChatGPT, Claude, and Cursor, all with built-in authentication.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio catalog search found no matching toolkit, and the expected toolkit URL returned a 404 on extraction. No quoted listing evidence was available.",
+    "MCP availability was verified from provider documentation, not through a live connection to an Ecwid store."
+  ],
+  "id": "ecwid",
+  "name": "Ecwid",
+  "website": "api-docs.ecwid.com",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth 2.0 for public apps and bearer access tokens for store-specific apps. They do not establish every detail in the notes, such as token scopes or where the token is obtained."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "API access requires a paid plan, but the quotes also document a free test-store upgrade by email and a free Premium test store after request approval. That supports admin_approval as the most accessible route. Immediate access on a paid store is not explicitly shown."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes support a publicly cited REST API with read and write operations across core store data. They do not specifically establish the notes' inventory or category coverage."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Zapier and viaSocket describe usable third-party Ecwid MCP connections. The quotes do not establish that no official server exists or substantiate the specific tool actions listed in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A broad documented API and an approval-dependent no-cost route support buildable_with_caveats with admin_approval as the main blocker. The rationale's claim of immediate paid-store access is stronger than the quotes establish."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:57:47+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 119862,
+    "output_tokens": 4340,
+    "cached_input_tokens": 74184,
+    "critic_tokens": 3480,
+    "composio_calls": 3,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Ecwid",
+      "charged_usd": 0.0,
+      "log_id": "log_nIkbQTow3bnd"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Ecwid MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_pFffJFe1wHWh"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Ecwid by Lightspeed Composio toolkit or page not found",
+      "charged_usd": 0.004,
+      "log_id": "log_Pkx4FLJ6oHHm"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Ecwid by Lightspeed official Model Context Protocol MCP server site:docs.ecwid.com OR site:ecwid.com OR site:lightspeedhq.com Ecwid",
+      "charged_usd": 0.004,
+      "log_id": "log_SZOQvQzUDmWp"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "one_liner": "Copper is a CRM with a public, read/write Developer API covering core sales records.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "API keys are suitable for individual users; OAuth2.0 is preferred for partner integrations."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "API use is available during the free, 14-day trial. Only Admin users can generate API keys. Registering an OAuth application requires contacting Copper."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.copper.com/",
+    "notes": "The public reference covers core sales records and create, update and delete operations."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "unknown",
+    "url": "https://www.synchub.io/connectors/copper/knowledge-base/mcp",
+    "notes": "A third-party connector is documented. Copper describes its own hosted MCP server as a forthcoming beta, not a presently available server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/copper"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "other",
+    "rationale": "The documented API is available during Copper’s free trial, but that path is time-limited and only Admin users can generate API keys. Registering an OAuth application requires contacting Copper."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://developer.copper.com/",
+      "quote": "The Copper Developer API (\"Dev API\") provides a RESTful interface with JSON-formatted responses to access most Copper resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.copper.com/introduction/authentication.html",
+      "quote": "There are two ways to access the Copper Developer API: API keys and OAuth2.0. API Keys are suitable for individual users, while OAuth2.0 is the preferred approach for partner integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.copper.com/en/articles/8823462-api-docs-and-tips",
+      "quote": "Available on our trial, professional and business plan",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.copper.com/signup",
+      "quote": "Free 14-day trial No credit card required",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.copper.com/en/articles/8823347-generating-an-api-key",
+      "quote": "Only Admin users are able to generate API Keys.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.copper.com/introduction/oauth/index.html",
+      "quote": "To register your application, contact us.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.copper.com/",
+      "quote": "The Copper Developer API (\"Dev API\") provides a RESTful interface with JSON-formatted responses to access most Copper resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.copper.com/",
+      "quote": "Create a New Lead",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.copper.com/",
+      "quote": "Update a Lead",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.copper.com/",
+      "quote": "Delete a Lead",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.synchub.io/connectors/copper/knowledge-base/mcp",
+      "quote": "The Model Context Protocol (MCP) allows you easily query your Copper data from within your favourite AI chatbot by simply connecting to our MCP server.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.copper.com/mcp",
+      "quote": "Copper is launching an official MCP server, built and hosted by Copper. The beta launches in November 2026.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/copper",
+      "quote": "Copper MCP server for AI agents and assistants",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/copper",
+      "quote": "65 Tools",
+      "source_type": "third_party",
+      "check": "not_found"
+    }
+  ],
+  "problems": [
+    "Copper’s MCP page describes a forthcoming beta, not a presently available vendor-hosted server; its availability and eventual public pricing cannot be established from that page.",
+    "The help article establishes trial API availability but does not explicitly state the permissions assigned to a newly created trial account."
+  ],
+  "id": "copper",
+  "name": "Copper",
+  "website": "copper.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "copper",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/copper",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quote identifies API keys and OAuth2.0 and explicitly prefers OAuth2.0 for partner integrations."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes establish API availability on a free 14-day trial and say only Admin users can generate API keys. OAuth application registration requires contact with Copper, but the trial API-key path supports the chosen level."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public developer page documents a RESTful API accessing most Copper resources. The quotes do not specifically establish the note's claims about create, update, and delete operations."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A third-party page describes its Copper MCP server; Copper describes its official server as launching in a future beta."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio Copper toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A documented, useful API is accessible through a time-limited self-serve trial, so buildable_with_caveats follows. With no trial-specific blocker value, other is reasonable; the OAuth registration requirement does not eliminate the trial API-key path."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:28+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 13,
+    "input_tokens": 216445,
+    "output_tokens": 3836,
+    "cached_input_tokens": 174809,
+    "critic_tokens": 0,
+    "composio_calls": 5,
+    "composio_usd": 0.02
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Copper",
+      "charged_usd": 0.0,
+      "log_id": "log_zxYx64EH0AHU"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Copper MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_H9gXbSgmdW3C"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developer.copper.com \"Authentication\" \"API Key\" \"OAuth\" Copper developer api",
+      "charged_usd": 0.004,
+      "log_id": "log_1khopQg_gk-J"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:support.copper.com \"trial\" \"API\" \"key\" generate Copper CRM plan",
+      "charged_usd": 0.004,
+      "log_id": "log_c260zC-uZQf6"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:copper.com OR site:support.copper.com \"MCP\" \"server\" Copper CRM",
+      "charged_usd": 0.004,
+      "log_id": "log_u8Nx1NFAsWX5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:support.copper.com \"trial\" \"API Keys\" Copper 14-day OR site:copper.com \"trial\" \"API\"",
+      "charged_usd": 0.004,
+      "log_id": "log_-wsnT9Qbn2lX"
+    }
+  ]
+}

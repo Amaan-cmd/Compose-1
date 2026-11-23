@@ -1,0 +1,193 @@
+{
+  "one_liner": "Zoho Cliq is buildable now: a free cloud account, public OAuth2 REST API covering core chat objects, plus an official MCP server and a Composio toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "The public REST docs describe only Zoho OAuth 2.0. Client registration, grant code, access and refresh tokens, and the Zoho-oauthtoken header are the documented path. No API key or basic auth is documented."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Cloud only. Free signup is self-serve with no time limit (FAQ). The plan comparison lists Developer platform \"API support\" as Yes for Free, Standard, Professional, and Enterprise. Paid tiers are optional trials, not required for API credentials. Public OAuth client creation is at accounts.zoho.com/developerconsole. No quote found that an admin must enable the API."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "notes": "Versioned REST under https://cliq.zoho.com with JSON and OAuth. The reference is readable without login and covers users, departments, roles, chats, channels, threads, messages, bots, files, calls, events, reminders, and databases, with create/read/update/delete."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+    "notes": "Zoho publishes a Cliq MCP server and docs, lists Cliq among apps MCP works with today, and says new users can sign up and use MCP immediately. No beta or preview label on the Cliq MCP pages."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/zoho_cliq"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A free Cliq organization has no time limit, the plan comparison marks API support as available on Free, and the public REST docs cover read and write across core chat objects via self-serve OAuth. An official Zoho Cliq MCP server is also usable now."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "quote": "This API follows HTTP rules, identifies Cliq users using OAuth and provides response as a JSON Object.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "quote": "Each API request must include an OAuth token in order to receive a success response.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/cliq/help/user-faq.html",
+      "quote": "For how long can I use the Free Plan? There is no specific limit for free plan. You can use it as long as you want.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/cliq/plan-comparison.html",
+      "quote": "Developer platform API support Yes Yes Yes Yes",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "quote": "Register your application as a new client by accessing this website: https://accounts.zoho.com/developerconsole",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "quote": "Cliq API is standardized around REST, allowing you to perform read and write operations that you do with our web client.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+      "quote": "The relative path prefix /v2/ means that we are currently using version 2 of our API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+      "quote": "Any AI model or agent can use our official MCP server to access your Cliq data and do: More work, less chat: Send quick messages to colleagues or groups with prompts like, \"Post a product launch announcement in the #marketing-updates channel\" or \"Schedule a message about the agenda of the competitor campaign to the brand strategy group chat.\"",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.zoho.com/mcp/",
+      "quote": "MCP integrates with many Zoho apps, including CRM, Mail, Calendar, Desk, Cliq, Projects, and WorkDrive.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.zoho.com/mcp/",
+      "quote": "New users can sign up and start using MCP immediately, while Zoho users, developers, and partners can log in to access the MCP playground.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/zoho_cliq",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Zoho Cliq MCP or direct API to send channel messages, read conversations, manage bots, and find team updates through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page comparison loses the Yes/No cells next to \"API support\"; the readable \"API support Yes Yes Yes Yes\" line is on plan-comparison.html and is still a table row, not a prose sentence.",
+    "The Cliq MCP help page is short and diagram-heavy; setup steps beyond \"explore Zoho MCP\" were not in the fetched text."
+  ],
+  "id": "zoho-cliq",
+  "name": "Zoho Cliq",
+  "website": "zoho.com/cliq",
+  "category": "Communications and Messaging",
+  "batch": 3,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "zoho_cliq",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/zoho_cliq",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish OAuth as the required API authentication method and do not point to a different recommended method. They do not establish every detail in the notes, such as refresh tokens or the absence of other documented methods."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The unlimited Free Plan, API support marked Yes in the plan comparison, and instructions to register an application as a new client support self_serve_free. The quotes do not independently establish every detail in the notes, including the claims about paid-tier trials or admin enablement."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation identifies a versioned REST API with read and write operations. Nothing quoted contradicts the estimated broad breadth, though the listed object coverage and CRUD details are not individually shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Zoho calls it its official MCP server, describes current uses, and says new users can start using MCP immediately. The quotes do not establish the notes' claim about the absence of beta or preview labels."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quoted Composio toolkit page explicitly describes connecting agents with Zoho Cliq."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free API access and a documented read/write REST API support buildable_now with no identified blocker. The rationale's more specific claim about coverage across core chat objects is not established by these quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:56:20+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 116158,
+    "output_tokens": 3730,
+    "cached_input_tokens": 66077,
+    "critic_tokens": 3240,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Zoho Cliq",
+      "charged_usd": 0.0,
+      "log_id": "log_LW7o7UCtvxfj"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Zoho Cliq MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_iChg7ub0s7-o"
+    }
+  ]
+}

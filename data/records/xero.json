@@ -1,0 +1,232 @@
+{
+  "one_liner": "Xero is a cloud accounting service with a broad, documented API and a free route to developer credentials. Its free Starter app tier has a five-connection limit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "other"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth 2.0 is required for new integrations. Xero also supports legacy OAuth 1.0a, which is being deprecated; basic API-key authentication is not supported."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free Xero account and demo company allow development without cost. New apps default to the Starter tier, capped at five connections; adding a sixth requires payment details."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.xero.com/documentation/api/accounting/overview",
+    "notes": "The Accounting API documents creating transactions and extracting accounting data. The overview was readable without signing in through extraction, although direct page fetching failed."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developer.xero.com/faq/remote-mcp",
+    "notes": "Xero documents a hosted remote server and publishes a local server. Starter apps can use the hosted server with the demo organisation; real customer organisations require Core or above."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/xero"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free development and a Starter app are available, and the Accounting API supports creating transactions and extracting accounting data. Starter is capped at five connections; the hosted remote MCP requires Core or above for real customer organisations."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.xero.com/faq/getting-started",
+      "quote": "We currently support OAuth 1.0a and OAuth 2.0. However, OAuth 1.0a is in the process of being deprecated and OAuth 2.0 is required for all new integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.xero.com/faq/getting-started",
+      "quote": "The Xero API does not support basic API Key authentication. Our API uses OAuth 2.0 which means you need to register your app to get a client id and client secret which you use to access the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.xero.com/faq/getting-started",
+      "quote": "The first step is to sign up for a free Xero account . Once you have done that, you have two options as to how you can begin development without incurring any cost: Use the demo company (recommended) Start a trial or paid Xero organisation subscription",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.xero.com/faq/pricing-and-policy-updates",
+      "quote": "New apps created in the Xero Developer portal will default to the Starter tier. The Starter tier has unlimited data access to enable early innovation but is capped at 5 connections. In order to add a 6th connection, you will need to first add your payment details.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.xero.com/accounting-software/",
+      "quote": "With your accounting and bookkeeping software and data stored in the cloud, you can access your up-to-date accounts anywhere there’s an internet connection.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://github.com/XeroAPI/Xero-OpenAPI",
+      "quote": "An OpenAPI (Swagger) specification for the Xero API with OAuth 2.0 security schema.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.xero.com/documentation/api/accounting/overview",
+      "quote": "The Accounting API exposes accounting and related functions of the main Xero application and can be used for a variety of purposes such as creating transactions like invoices and credit notes, right through to extracting accounting data via our reports endpoint.",
+      "source_type": "official_docs",
+      "check": "exact_rendered"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.xero.com/faq/remote-mcp",
+      "quote": "It's built, monitored and maintained by the team that builds the API. It uses the same OAuth 2.0 sign-in, permissions and rate limits as the rest of the Xero API, and the layer between your AI tool and your accounting data runs on Xero infrastructure.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.xero.com/faq/remote-mcp",
+      "quote": "Yes, apps on Starter plan can use it with the demo organisation. You can connect, run the tools, and decide whether it's worth upgrading to Core. Real customer organisations need the Core plan or above.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/XeroAPI/xero-mcp-server",
+      "quote": "This is a Model Context Protocol (MCP) server implementation for Xero. It provides a bridge between the MCP protocol and Xero's API, allowing for standardized access to Xero's accounting and business features.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/xero",
+      "quote": "Composio has no managed OAuth app for Xero, so you need your own Xero app. It also lets you control the app name users see and the permissions your integration requests.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/xero",
+      "quote": "In the Composio dashboard, go to Auth Configs , click Create , and select Xero .",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.xero.com/faq/pricing-and-policy-updates",
+      "quote": "The Starter tier has unlimited data access to enable early innovation but is capped at 5 connections.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.xero.com/documentation/api/accounting/overview",
+      "quote": "The Accounting API exposes accounting and related functions of the main Xero application and can be used for a variety of purposes such as creating transactions like invoices and credit notes, right through to extracting accounting data via our reports endpoint.",
+      "source_type": "official_docs",
+      "check": "exact_rendered"
+    }
+  ],
+  "problems": [
+    "Several developer documentation URLs, including the accounting overview and remote-MCP overview, would not load through direct page fetching. The accounting overview was readable through extraction; the accessible official FAQs supplied the remote-MCP evidence."
+  ],
+  "id": "xero",
+  "name": "Xero",
+  "website": "developer.xero.com",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "xero",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/xero",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show OAuth 2.0 is required for new integrations and that OAuth 1.0a is still supported but being deprecated, which fits methods oauth2 and other with primary oauth2. Basic API-key auth is explicitly not supported."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free Xero account plus the demo company lets development start at no cost, and new apps default to the free Starter tier. The five-connection cap and payment only for a sixth connection do not change the most accessible path to credentials. The cloud quote supports deployment_model cloud."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "An OpenAPI specification and the Accounting API overview document an HTTP API that creates invoices and credit notes and extracts data via a reports endpoint, which supports rest. Nothing contradicts breadth broad, and the public docs URL is the cited overview."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Xero's own remote-MCP page says the server is built and hosted by the API team and can be connected and used now, including by Starter apps against the demo organisation. The XeroAPI GitHub server is also vendor-published. No quote calls it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The cited Composio docs page names a Xero toolkit and tells users to select Xero when creating an auth config."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials and a documented, non-narrow Accounting API meet buildable_now with main_blocker none. The five-connection Starter cap and the Core-plan requirement for real organisations on the hosted MCP are evidenced constraints, not a gate on getting credentials or a usable API."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:53:24+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 179925,
+    "output_tokens": 4445,
+    "cached_input_tokens": 146126,
+    "critic_tokens": 3714,
+    "composio_calls": 4,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Xero",
+      "charged_usd": 0.0,
+      "log_id": "log_G79s5b0V9mx_"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Xero MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Ebk-MIBaO7cN"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Public Xero accounting API endpoint REST HTTP JSON invoices contacts payments bank transactions create update API reference",
+      "charged_usd": 0.0,
+      "log_id": "log_L-zoS8sovspY"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "quote check on https://developer.xero.com/documentation/api/accounting/overview",
+      "charged_usd": 0.0,
+      "log_id": "log_QuDBQ3Y0YBEN"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "quote check on https://developer.xero.com/documentation/api/accounting/overview",
+      "charged_usd": 0.0,
+      "log_id": "log_MVYq7NkgbVX_"
+    }
+  ]
+}

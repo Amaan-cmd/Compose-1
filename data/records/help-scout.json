@@ -1,0 +1,201 @@
+{
+  "one_liner": "Hosted customer-support platform with a broad public REST API usable today, but credentials only via a paid plan or a 15-day trial.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "Inbox API and Chat API use OAuth 2.0 with Authorization Code (for integrations used by other Help Scout users) and Client Credentials (for internal integrations). The Docs API uses HTTP Basic with a per-user API key."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "Cloud-only. The most accessible path is the no-card 15-day Standard or Plus trial on the hosted service; the permanent free plan does not include API access; Pro is sales-gated. API access is included on Standard, Plus, and Pro. On Plus and Pro, Access API is a permission an admin can turn off, and Light Users cannot use the API."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.helpscout.com/mailbox-api/",
+    "notes": "Inbox API 2.0 is an HTTPS JSON API at api.helpscout.net/v2 covering conversations, threads, replies, notes, customers, organizations, inboxes, tags, webhooks, workflows, and reports, with reads and writes. The Docs API covers articles, categories, collections, and sites, and the Chat API covers live chats."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.helpscout.net/mcp",
+    "notes": "Help Scout hosts a remote server and announced general availability on July 28, 2026. New connections are read-only; write tools are on the roadmap, though a few beta accounts kept them. Available on Standard, Plus, and Pro; report tools need Plus or Pro. Community servers also exist, notably drewburchfield/help-scout-mcp-server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/help_scout"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "A developer can self-serve a 15-day Standard or Plus trial and use a broad, publicly documented read/write REST API, but lasting credentials require a paid plan, and the free plan excludes the API."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+      "quote": "This is an HTTPS-only API and it uses OAuth 2.0 authorization, implementing Authorization Code and Client Credential flows.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+      "quote": "The Authorization Code flow is typically used for integrations to be used by other Help Scout users. The Client Credentials flow is meant for internal integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.helpscout.com/docs-api/",
+      "quote": "Authentication is based on API keys. Each API key is associated with a Help Scout user. Results returned from various responses are based upon the role of the user to which the API key is tied. The API key is passed via HTTP Basic Authentication and goes in the username field.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.helpscout.com/pricing/",
+      "quote": "When you sign up for a free trial of the Standard or Plus plan, you’ll get 15 days to take all of the plan’s features for a test drive — no credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+      "quote": "Your Help Scout account must have API access, which is included on the Standard, Plus, and Pro plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.helpscout.com/mailbox-api/",
+      "quote": "Welcome to the second generation of our Inbox API. This is an HTTPS-only API, with OAuth 2 authentication and CORS support running at: https://api.helpscout.net/v2",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.helpscout.com/mailbox-api/",
+      "quote": "It uses JSON for requests, responses and error messages.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.helpscout.com/",
+      "quote": "Inbox API - read and write data to Help Scout inboxes Chat API - read and answer live Beacon chats while they are still open Docs API - read and write data to your Docs sites",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://articles.helpscout.com/blog/introducing-help-scout-mcp",
+      "quote": "Today, we're bringing Help Scout's Model Context Protocol (MCP) server out of beta, making it generally available to all Help Scout customers.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://articles.helpscout.com/blog/introducing-help-scout-mcp",
+      "quote": "That's why the first generally available version of MCP is intentionally read-only.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/help_scout",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Help Scout MCP or direct API to triage conversations, draft replies, update customers, search mailboxes, and manage support workflows through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing comparison table loses its column alignment in text, so the previous record relied on Help Scout's support article rather than the table for which plans include the API. I did not re-fetch that page; access evidence is repeated unchanged as instructed.",
+    "The free plan's lack of API access is inferred from that article plus the rate-limit cells, not from a sentence that says \"the Free plan has no API.\"",
+    "Auth and API quotes were re-read from the live developer docs. The Docs API Basic-auth quote is now the full consecutive sentences from the Authentication section rather than the shortened form that failed verification."
+  ],
+  "id": "help-scout",
+  "name": "Help Scout",
+  "website": "helpscout.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "help_scout",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/help_scout",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish OAuth 2.0 for the Inbox API and HTTP Basic with an API key for the Docs API. They support OAuth 2.0 as primary for integrations used by other users. The claimed Chat API authentication is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A no-card 15-day Standard or Plus trial includes the plans’ features, and API access is included on those plans. The quotes do not establish the claims about the permanent free plan, Pro being sales-gated, or admin and Light User restrictions."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public developer pages describe an HTTPS JSON API and read/write capabilities. They do not substantiate the detailed list of objects in the notes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A Help Scout article says its MCP server is out of beta and generally available. The quotes establish that the generally available version is read-only, but not the claimed date, URL, plan restrictions, or community servers."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio toolkit page for Help Scout."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve trial access and a documented, useful API support buildable_with_caveats with trial_only as the main blocker. The rationale’s claims that the free plan excludes API access and that lasting credentials require a paid plan are not established by these quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:55:58+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 14,
+    "input_tokens": 198851,
+    "output_tokens": 7447,
+    "cached_input_tokens": 111074,
+    "critic_tokens": 6771,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Help Scout",
+      "charged_usd": 0.0,
+      "log_id": "log_1XCFtuy_pzez"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Help Scout MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_pZOh1jMtA70h"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Help Scout official MCP server site:helpscout.com OR site:developer.helpscout.com",
+      "charged_usd": 0.004,
+      "log_id": "log_euslDVAbuIxc"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "one_liner": "Neo4j is a graph database for connected data, with an official MCP server for read-first graph exploration, a Cypher Query API for application integration, and a separate Aura API for cloud administration.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "basic",
+      "bearer_token"
+    ],
+    "primary": "unknown",
+    "notes": "The Aura management API uses OAuth 2.0 client credentials that inherit the issuing account’s roles; this is not a delegated user-consent flow. The database Query API accepts Basic authentication or a bearer token generated through a configured SSO provider. The docs do not recommend one method across both surfaces for integrations acting on behalf of users."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Hosted AuraDB Free allows one free database instance per account. Developers can create Aura management API credentials in the console; the database password is separate and is issued during instance setup. For self-hosting, the official Community Edition Docker image lets developers set the initial database password locally. Enterprise Edition has separate licensing requirements."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql",
+      "other"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://neo4j.com/docs/query-api/current/",
+    "notes": "The HTTP Query API accepts parameterized Cypher for graph reads and writes and exposes explicit transactions. Its breadth comes from what Cypher can do, not from separate REST endpoints for nodes and relationships. The separate Aura REST API manages hosted instances. Neo4j’s GraphQL library generates an executable schema from supplied type definitions rather than exposing a universal GraphQL endpoint. Bolt is the native database protocol."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://neo4j.com/docs/mcp/current/",
+    "notes": "Neo4j provides a self-hosted quickstart and a hosted Aura option. The server supports schema inspection, read and write Cypher, and optional Graph Data Science procedure discovery. Neo4j lists APOC as a prerequisite, and hosted Aura MCP requires organization-level Tool authentication. In read-only mode, clients can start with get-schema and read-cypher; write tools are hidden."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/neo4j.md"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can provision an AuraDB Free instance, obtain its database password during setup, and use the documented Query API to run Cypher reads and writes over HTTPS. The separate Aura management API also offers self-serve credentials on the Free tier."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://neo4j.com/docs/aura/api/authentication/",
+      "quote": "The Aura API uses OAuth 2.0 for API authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://neo4j.com/docs/aura/api/authentication/",
+      "quote": "API credentials are linked to the user account, inheriting its capabilities and roles.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+      "quote": "Both basic and bearer authentication are supported.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+      "quote": "It is up to your application to generate bearer tokens via your SSO provider.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/api/authentication/",
+      "quote": "All tiers can create Aura API credentials.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/api/overview/",
+      "quote": "AuraDB Free and AuraDB Professional trial accounts without a billing method attached, get a rate limit of 25 requests per minute.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/getting-started/create-instance/",
+      "quote": "After selecting Next , your instance is created. A password is generated for the instance, ensure to either copy or download it, as it will not be recoverable after.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/getting-started/create-instance/",
+      "quote": "You can only create one Free instance per account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/operations-manual/current/docker/introduction/",
+      "quote": "DockerHub hosts an official Neo4j image that provides a standard, ready-to-run package of Neo4j Community Edition and Enterprise Edition for a variety of versions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/operations-manual/current/docker/introduction/",
+      "quote": "When using Neo4j in a Docker container, you can set the initial password for the database directly by specifying the NEO4J_AUTH in your run directive:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/",
+      "quote": "The Query API allows to execute Cypher statements against a Neo4j server through HTTP requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/query/",
+      "quote": "Type of query executed: read only ( \"r\" ), read write ( \"rw\" ), write only ( \"w\" ) and schema write ( \"s\" ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/query/",
+      "quote": "Instead, always use placeholders and specify the Cypher parameters within a parameters object in the body of the request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/query/",
+      "quote": "The server wraps the submitted Cypher query in a (implicit) transaction for you.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/endpoints/",
+      "quote": "This page contains a list of the endpoints that the Query API provides, plus pointers to other HTTP endpoints available on a Neo4j server.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/aura/api/overview/",
+      "quote": "The Aura API allows you to programmatically perform actions on your Aura instances without the need to log in to the Console. A complete list of the available endpoints can be seen and tested in the API Specification .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/graphql/current/",
+      "quote": "The Neo4j GraphQL Library requires a set of type definitions that describes the shape of your graph data and creates an API layer to communicate with the data. It generates an entire executable schema with all additional types needed to execute queries and mutations to interact with your Neo4j database.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/bolt/current/",
+      "quote": "Bolt Protocol — The application protocol for database queries via a database query language.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://neo4j.com/docs/mcp/current/",
+      "quote": "It bridges any MCP-compatible client and your Neo4j instance, giving that client direct, structured access to your graph database.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://neo4j.com/docs/mcp/current/quickstart/",
+      "quote": "Before connecting, enable Tool authentication in Security for your organization in the Aura console.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://neo4j.com/docs/mcp/current/tools/",
+      "quote": "When enabled, write tools (such as write-cypher ) are not exposed to clients.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/neo4j.md",
+      "quote": "Retrieves details for a specific Neo4j Aura instance using its unique instance ID.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/neo4j.md",
+      "quote": "Executes a directorsAggregate GraphQL query to count directors in Neo4j.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/getting-started/create-instance/",
+      "quote": "The password is required to access your instance later. You can only create one Free instance per account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/aura/connecting-applications/query-api/",
+      "quote": "The Query API enables interaction with an Aura database using Cypher via HTTPS.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://neo4j.com/docs/query-api/current/query/",
+      "quote": "Type of query executed: read only ( \"r\" ), read write ( \"rw\" ), write only ( \"w\" ) and schema write ( \"s\" ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/api/authentication/",
+      "quote": "All tiers can create Aura API credentials.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://neo4j.com/docs/aura/api/overview/",
+      "quote": "AuraDB Free and AuraDB Professional trial accounts without a billing method attached, get a rate limit of 25 requests per minute.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The website hint neo4j.com/docs/api did not load directly; Neo4j’s dedicated Query API and Aura documentation supplied the evidence instead.",
+    "The supplied Composio catalog search returned no match, but Composio’s public docs list NEO4J with 21 tools. Coverage is mainly Aura administration rather than general-purpose Cypher, and Composio-managed OAuth is not available.",
+    "No live credentials were provisioned, and no API, MCP, or Composio calls were tested."
+  ],
+  "id": "neo4j",
+  "name": "Neo4j",
+  "website": "neo4j.com/docs/api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "neo4j",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/neo4j",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve free access is supported: the quotes describe a Free hosted instance with a generated password, say all tiers can create Aura API credentials, and document setting a password for a local Community Edition container. The claim about Enterprise Edition licensing is not established by these quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes document an HTTP Query API with read and write queries, a GraphQL library that creates an API layer, and the Bolt protocol. Nothing contradicts broad breadth. The note’s claim about explicit transactions is not established by the quoted transaction text."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Neo4j’s MCP documentation describes a server clients can connect to and tools it exposes, supporting an official server usable now; no quote labels it beta or pilot. The notes’ APOC prerequisite and Graph Data Science discovery claims are not established by the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quoted Neo4j actions appear on a Composio Neo4j toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free access and a documented HTTP API capable of reads and writes support buildable_now with no main blocker. The verdict rationale is supported by the Free-instance password, Query API, and all-tiers Aura API credential quotes."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:59:04+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 19,
+    "input_tokens": 350251,
+    "output_tokens": 11943,
+    "cached_input_tokens": 244733,
+    "critic_tokens": 13094,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Neo4j",
+      "charged_usd": 0.0,
+      "log_id": "log_55-RHD9FMDEV"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Neo4j MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_z9RhrIZuEbyK"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:neo4j.com/docs AuraDB Free using Query API all Aura instances Neo4j HTTPS",
+      "charged_usd": 0.004,
+      "log_id": "log_UvSLmLbBKYE_"
+    }
+  ]
+}

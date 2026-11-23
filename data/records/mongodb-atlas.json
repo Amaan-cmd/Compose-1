@@ -1,0 +1,206 @@
+{
+  "one_liner": "Cloud database platform whose Administration API and database wire protocol are reachable from a free, self-registered Atlas account, with an official MongoDB MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "The Administration API accepts service-account access tokens using OAuth 2.0 client credentials, which the docs explicitly recommend, and legacy public/private API keys using HTTP Digest. Database users authenticate separately with a username and password over the MongoDB wire protocol, which is not one of the listed integration methods."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Anyone can register an Atlas account with email, GitHub, or Google and create an organization without payment. Free clusters never expire, and the Administration API can create one Free cluster per project. Creating service accounts or API keys requires the Organization Owner role of that account, not a vendor review. Free clusters cannot be modified through the Clusters API resource and omit some Atlas features."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "other"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://www.mongodb.com/docs/atlas/api/atlas-admin-api",
+    "notes": "The Administration API is REST and covers projects, users, and clusters for create, edit, and delete. It does not read or write stored documents; data access uses the MongoDB wire protocol and drivers with a database user, recorded as other. The reference is readable without logging in."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.mongodb.com/docs/mcp-server/overview.md",
+    "notes": "MongoDB documents and hosts the MongoDB MCP Server, both as a self-run local server and as the Atlas Managed MCP Server. The overview gives current deployment options and does not label the server itself beta or preview. The only public-preview caveat is lack of support on Atlas Infinite clusters. The mongodb-js GitHub repository is the vendor's own repository."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/mongodb_mcp"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can register an Atlas account for free and immediately create Administration API credentials and a never-expiring Free cluster, and the public REST API covers the core administrative objects. Data reads and writes go through the MongoDB protocol rather than the Admin API, and Free clusters cannot be modified through the Clusters API resource."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.mongodb.com/docs/atlas/api/api-authentication.md",
+      "quote": "We recommend you use service accounts instead of API (Application Programming Interface) keys to authenticate to the Atlas Administration API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.mongodb.com/docs/atlas/api/api-authentication.md",
+      "quote": "The Atlas Administration API accepts the following authentication methods: Service account access tokens ([OAuth 2.0)](https://oauth.net/2/) - API keys ([HTTP Digest Authentication)](http://en.wikipedia.org/wiki/Digest_access_authentication).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.mongodb.com/docs/atlas/tutorial/create-atlas-account.md",
+      "quote": "Register for an Atlas account using your GitHub account, your Google account or your email address.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster.md",
+      "quote": "You can create Free clusters through the Atlas CLI, Atlas User Interface, and Atlas Administration API.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster.md",
+      "quote": "Free clusters never expire, and provide access to a subset of Atlas features and functionality.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://www.mongodb.com/docs/atlas/configure-api-access.md",
+      "quote": "To create a service account or API (Application Programming Interface) keys for an organization, you must have Organization Owner access to that organization.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://www.mongodb.com/docs/atlas/reference/free-shared-limitations.md",
+      "quote": "While you can create a Free cluster using the Clusters API (Application Programming Interface) resource, you cannot modify a Free cluster using the Clusters API (Application Programming Interface) resource.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://www.mongodb.com/docs/atlas/configure-api-access.md",
+      "quote": "The Atlas Administration API follows the principles of the REST (Representational State Transfer) architectural style to expose a number of internal resources which enable programmatic access to administrative features in Atlas.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.mongodb.com/docs/atlas/api/atlas-admin-api.md",
+      "quote": "Atlas Administration API resources add, edit, or delete administrative objects within Atlas, including projects, users, and clusters.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.mongodb.com/docs/atlas/api/atlas-admin-api.md",
+      "quote": "The Atlas Administration API doesn't provide access to the data stored in your clusters.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.mongodb.com/docs/mcp-server/overview.md",
+      "quote": "MongoDB offers two MCP Server deployment types: Local MCP for MongoDB MCP Server, which you run and manage yourself, and MongoDB Atlas Managed MCP Server, which MongoDB hosts and manages for you in Atlas.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/mongodb_mcp",
+      "quote": "MongoDB MCP lets authorized agents explore and manage MongoDB Atlas resources, databases, collections, documents, indexes, performance data, and MongoDB knowledge sources.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The HTML pages at mongodb.com/docs render mostly navigation. The .md versions load the real content, and the quotes above were taken from those .md pages.",
+    "Pricing is JavaScript-heavy and was not needed because the docs state Free clusters never expire and can be created through the Administration API."
+  ],
+  "id": "mongodb-atlas",
+  "name": "MongoDB Atlas",
+  "website": "mongodb.com/docs/atlas/api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "toolkit_page",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth 2.0 service-account tokens and API keys, and recommend service accounts. The claimed client-credentials flow and separate database-user authentication are not shown."
+    },
+    {
+      "field": "access",
+      "result": "unsupported",
+      "note": "The quoted text was not found on the cited page."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "The quotes establish a REST Administration API covering administrative objects. They do not establish the additional 'other' API style claimed for database access or the stated wire-protocol details."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "MongoDB says it offers a local MCP server and hosts a managed one, supporting official and currently usable status. The notes about Infinite clusters and the GitHub repository are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio toolkit page for MongoDB MCP."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "The claimed values would imply buildable_now with no blocker, but the quotes do not establish self-serve credentials. They also do not support the asserted additional API style or the rationale's free-cluster claims, so the published verdict is not evidenced."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access: unsupported (The quoted text was not found on the cited page.)",
+    "api: unsupported (The quotes establish a REST Administration API covering administrative objects. They do not establish the additional 'other' API style claimed for database access or the stated wire-protocol details.)",
+    "verdict: unsupported (The claimed values would imply buildable_now with no blocker, but the quotes do not establish self-serve credentials. They also do not support the asserted additional API style or the rationale's free-cluster claims, so the published verdict is not evidenced.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:59:12+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 210164,
+    "output_tokens": 8472,
+    "cached_input_tokens": 108101,
+    "critic_tokens": 10112,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for MongoDB Atlas",
+      "charged_usd": 0.0,
+      "log_id": "log_1tdqHUSnZp4g"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "MongoDB Atlas MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_--ukmOZ2_KEH"
+    }
+  ]
+}

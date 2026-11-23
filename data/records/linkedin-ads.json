@@ -1,0 +1,202 @@
+{
+  "one_liner": "LinkedIn's hosted Marketing/Advertising API is a broad REST API with 3-legged OAuth, but working credentials require applying for and being approved for the Advertising API product; third-party MCP servers exist and Composio lists a toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Marketing API permissions are documented exclusively as member (3-legged) OAuth scopes. The recommended flow is the OAuth 2.0 authorization code flow: the member consents, the app exchanges the code for an access token, and calls the API on that member's behalf. The Client ID is also called an \"API key,\" but it is the OAuth client identifier, not a standalone credential. No basic auth, static bearer/PAT, or client-credentials grant is documented for Marketing APIs."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "Anyone can create a free developer app (a LinkedIn Company Page is required), but Advertising API access is not granted until LinkedIn approves the product application; all apps start on the Development tier (read unlimited accounts you administer, create one test ad account, edit up to five). Standard tier (unlimited create/edit) is a separate support-ticket request, and LinkedIn may refuse even qualifying apps. No paid-plan or time-limited-trial path is documented. The service is vendor-hosted only."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+    "notes": "Public Microsoft Learn pages document versioned HTTP endpoints under the base path https://api.linkedin.com/rest/, with GET and POST for ad accounts, campaign groups, campaigns, creatives, targeting facets and entities, audience counts, budget pricing, plus reporting (adAnalytics), conversions, lead sync, matched audiences and events. Reads and writes are both documented, so breadth is broad."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/danielpopamd/linkedin-ads-mcp",
+    "notes": "Multiple third-party servers exist and are usable now (self-hosted danielpopamd/linkedin-ads-mcp with 25 tools and OAuth; hosted offerings from Ryze AI, Pipeboard, PaidSync, NotFair). PaidSync states LinkedIn publishes no official MCP server. Not verified against LinkedIn's own changelog, so \"no official server\" rests on third-party statements plus the absence of any MCP mention in the Marketing docs pages read."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/linkedin_ads"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "The Marketing API is a documented, public REST API broad enough to create and manage campaigns, creatives, audiences and reporting via OAuth on a user's behalf, but credentials only work after LinkedIn approves the app for the Advertising API, and the default Development tier caps editing to five ad accounts."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-11",
+      "quote": "All permissions listed are Member Permissions (3-legged OAuth), meaning they require an authenticated LinkedIn member to grant consent — your application requests these scopes during the OAuth authorization flow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?view=li-lms-2026-11",
+      "quote": "The Authorization Code Flow is used for applications to request permission from a LinkedIn member to access their account data. ... This workflow will send a consent prompt to a selected member, and once approved your application may begin making API calls on behalf of that member.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-11",
+      "quote": "The Advertising API, Community Management API, Events Management API, Lead Sync API, Conversions API, and Matched Audiences API are open to all approved developers — apply through the standard process.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-11",
+      "quote": "All applications start with Development tier. You must apply separately to upgrade to the Standard tier.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access?view=li-lms-2026-11",
+      "quote": "LinkedIn reserves the right to review applications and select partners at its discretion and a partner might not be upgraded even if they meet these minimum requirements.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start?view=li-lms-2026-11",
+      "quote": "Create a developer application in the Developer Portal. ... Apply to the desired API under the Products tab of your app. Complete the access form.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+      "quote": "The platform offers APIs to create LinkedIn marketing campaigns, to report campaign performance, to manage leads, and to grow a company Page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/versioning?view=li-lms-2026-11",
+      "quote": "LinkedIn’s Marketing APIs first versioned API release was June 2022 under a new base path: https://api.linkedin.com/rest/",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/getting-started?view=li-lms-2026-11",
+      "quote": "Use the following API to create a Campaign Group: Ad Campaign Groups Sample request ... POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/adCampaignGroups",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads-reporting/getting-started?view=li-lms-2026-11",
+      "quote": "The Ad Analytics API provides account, campaign, and creative level statistics on current spend as well as chargeable clicks and impressions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/danielpopamd/linkedin-ads-mcp",
+      "quote": "This MCP server connects Claude Desktop (or any MCP-compatible client) to the LinkedIn Marketing API, allowing you to: Query campaign performance using natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/linkedin_ads",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Linkedin Ads MCP or direct API to manage campaigns, review ad performance, analyze spend, and publish organization social content through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Several Microsoft Learn pages prepend \"Access to this page requires authorization. You can try signing in or changing directories.\" The article body still rendered and was quotable, so this appears to be a template notice rather than a real gate.",
+    "The increasing-access page was cut off mid-table; the Advertising Development/Standard tier descriptions and the approval language were captured before the cutoff.",
+    "No LinkedIn-authored page was found stating \"there is no official MCP server\"; that part of the MCP note relies on third-party pages surfaced by the pre-run search plus the absence of MCP in the docs pages actually read.",
+    "The previous campaign-getting-started quote was rebuilt from a page that was cut off and included \"Sample request\" labels the matcher could not find as one sentence; the replacement quotes above are complete sentences copied from the pages as returned this time."
+  ],
+  "id": "linkedin-ads",
+  "name": "LinkedIn Ads",
+  "website": "learn.microsoft.com/linkedin/marketing",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "linkedin_ads",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/linkedin_ads",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quote supports three-legged OAuth and does not point to another recommended method. It does not establish the note’s claims about the authorization-code flow or the absence of other methods."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes establish an application and approval step for Advertising API access, supporting admin_approval. They do not establish the note’s claims about free app creation, account-editing limits, or the absence of paid and trial paths."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes identify a public REST path and APIs for several marketing functions, with no contradiction of the estimated breadth. The note’s detailed endpoint list is not fully evidenced."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The GitHub quote describes an existing third-party MCP server and does not label it a pilot or preview. It does not substantiate the note’s claims about other servers, 25 tools, or the absence of an official server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio page listing LinkedIn Ads as an MCP or direct-API toolkit."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A documented, useful API with an approval step supports buildable_with_caveats and admin_approval as the main blocker. The rationale’s five-ad-account editing cap is not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:57:37+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 11,
+    "input_tokens": 140034,
+    "output_tokens": 8800,
+    "cached_input_tokens": 72350,
+    "critic_tokens": 6871,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for LinkedIn Ads",
+      "charged_usd": 0.0,
+      "log_id": "log_fFgrWvvGufWm"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "LinkedIn Ads MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_fVJ5Ip-rPX_o"
+    }
+  ]
+}

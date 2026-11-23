@@ -1,0 +1,213 @@
+{
+  "one_liner": "Amazon's cloud-only REST API for sellers and vendors (Selling Partner API).",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "A third party acting for a selling partner uses Login with Amazon. The partner authorizes the app, and the integration exchanges the refresh token for a short-lived access token whose token type is bearer. Grantless calls use the OAuth client-credentials grant with the same client id and secret. There is no separate static API key or personal access token."
+  },
+  "access": {
+    "level": "admin_approval",
+    "notes": "Anyone with Amazon credentials can open a Solution Provider Portal account and register a sandbox application while the developer profile is still under review, and that sandbox can make test calls immediately. Amazon then evaluates the profile and decides whether to grant or deny Selling Partner API access, and it may ask for more information. Private seller applications also require a Professional selling account. Individual accounts are not eligible. Public apps must be listed in the Selling Partner Appstore. There is no paid API plan or sales contract."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api",
+    "notes": "SP-API is a public REST API covering orders, shipments, payments, inventory, listings, pricing, and fulfillment, with read and write operations. Data Kiosk adds GraphQL queries for analytics. The reference is readable without logging in. Only Amazon's hosted sellingpartnerapi endpoints are documented, and nothing is self-hosted."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://github.com/amzn/selling-partner-api-samples/discussions/382",
+    "notes": "Amazon Selling Partner Developer Services published Local MCP for SP-API in May 2026 as the npm package @amazon-sp-api-release/sp-api-dev-mcp. It ships two servers that are configurable and usable now in MCP clients. Community servers also exist, including jay-trivedi's amazon_sp_mcp and DataDoe's hosted endpoint, but the vendor server is the one reported here."
+  },
+  "composio": {
+    "in_catalog": "no",
+    "url": "https://docs.composio.dev/toolkits/amazon"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "admin_approval",
+    "rationale": "The public REST API is broad and documented, and a sandbox app can be registered and called while review is pending. Amazon must approve the developer profile before SP-API access is granted, and private seller development also requires a Professional selling account."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api.md",
+      "quote": "A Login with Amazon (LWA) <<glossary:access token>> authorizes your application to take certain actions on behalf of a <<glossary:selling partner>>.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api.md",
+      "quote": "An LWA access token expires one hour after it is issued.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api.md",
+      "quote": "For more information, visit the Authorization Code Grant page in the Login with Amazon documentation.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/onboarding-step-4-register-your-first-sandbox-application.md",
+      "quote": "This sandbox application lets you start testing API calls immediately, even while your developer profile is under review.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/register-as-a-private-developer.md",
+      "quote": "The decision to grant or deny Selling Partner API access is made based on the information that you provide in your Developer Profile, including but not limited to your application functionality and your compliance with the Acceptable Use Policy and the Data Protection Policy.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/sp-api-registration-overview.md",
+      "quote": "Note that in Seller Central, you must have a professional selling account to develop SP-API private seller applications.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api.md",
+      "quote": "The Selling Partner API (SP-API) is a REST-based API that helps sellers and vendors access their data on orders, shipments, payments, inventory, and other business information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/what-is-the-selling-partner-api.md",
+      "quote": "The API supports building applications that automate Amazon business operations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/data-kiosk-api.md",
+      "quote": "You use the Data Kiosk API to submit <<glossary:GraphQL>> queries for data from a variety of schemas to help selling partners manage their businesses.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/amzn/selling-partner-api-samples/discussions/382",
+      "quote": "Local MCP for SP-API brings this to the SP-API ecosystem as a consolidated npm package bundling MCP servers for Amazon Selling Partner API development.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/amzn/selling-partner-api-samples/discussions/382",
+      "quote": "Configure it in your MCP-compatible IDE, and your AI assistant is equipped with authoritative SP-API knowledge, actionable developer tools for code generation, optimization, and migration, and a workflow engine to build and execute multi-step API operations.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/amzn/selling-partner-api-samples/discussions/382",
+      "quote": "Authored by: Tong S. Solutions Architect, Selling Partner Developer Services",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/amazon",
+      "quote": "Amazon is an e-commerce giant delivering a massive online marketplace, cloud services, and digital products that connect retailers, consumers, and businesses worldwide for seamless transactions.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The HTML docs pages are dominated by the navigation sidebar. Body text was only reliable by appending .md to the doc URLs, so the quotes above are taken from those markdown pages.",
+    "Composio's toolkit index was not fully scanned. Absence of a Selling Partner toolkit rests on the pre-run catalog search, the generic amazon slug, and failed fetches of docs.composio.dev/toolkits/amazon_selling_partner and docs.composio.dev/toolkits/selling_partner."
+  ],
+  "id": "amazon-selling-partner",
+  "name": "Amazon Selling Partner",
+  "website": "developer-docs.amazon.com/sp-api",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "unsupported",
+      "note": "The quotes show an LWA access token used on a selling partner’s behalf, but do not establish that the documented method is OAuth2. The refresh-token and client-credentials details in the notes are also unquoted."
+    },
+    {
+      "field": "access",
+      "result": "unsupported",
+      "note": "The quotes establish that a developer profile can be denied SP-API access, but also say a sandbox application can make test calls immediately while review is pending. They do not establish that approval is required for the most accessible path to working API credentials, or substantiate the notes’ claim that anyone can open that path."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "The public REST API is established, and nothing quoted contradicts broad breadth. No quote establishes the additional claimed GraphQL style."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A discussion in Amazon’s repository, attributed to Selling Partner Developer Services, describes an MCP package and how to configure it for use now. The extra package and community-server details in the notes are not established by the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "The verdict rests on access or API claims that were not confirmed."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth: unsupported (The quotes show an LWA access token used on a selling partner’s behalf, but do not establish that the documented method is OAuth2. The refresh-token and client-credentials details in the notes are also unquoted.)",
+    "access: unsupported (The quotes establish that a developer profile can be denied SP-API access, but also say a sandbox application can make test calls immediately while review is pending. They do not establish that approval is required for the most accessible path to working API credentials, or substantiate the notes’ claim that anyone can open that path.)",
+    "api: unsupported (The public REST API is established, and nothing quoted contradicts broad breadth. No quote establishes the additional claimed GraphQL style.)",
+    "verdict: unsupported (The verdict rests on access or API claims that were not confirmed.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:58:06+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 17,
+    "input_tokens": 279788,
+    "output_tokens": 11087,
+    "cached_input_tokens": 170929,
+    "critic_tokens": 13006,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Amazon Selling Partner",
+      "charged_usd": 0.0,
+      "log_id": "log_BqbTC-4uVWPD"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Amazon Selling Partner MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_O0leZDz4vbc2"
+    }
+  ]
+}

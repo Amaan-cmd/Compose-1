@@ -1,0 +1,246 @@
+{
+  "one_liner": "Shopify has a broad, publicly documented commerce API and a free dev-store path for building and testing integrations. Its available official MCP server serves shopping agents; the announced store-management MCP server is not yet public.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth2 is documented for apps acting on behalf of merchants; API requests use access tokens."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free dev store provides a path to install an app and authenticate API requests for development. Public distribution requires Shopify App Store registration and a one-time fee."
+  },
+  "api": {
+    "styles": [
+      "graphql",
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://shopify.dev/docs/api/admin-graphql",
+    "notes": "The REST Admin API is legacy; new public apps must use the GraphQL Admin API."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://shopify.dev/docs/agents/shop-mcp",
+    "notes": "The available official Shop MCP server supports shopping agents. The separately named Shopify MCP store-management server is not publicly available yet."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/shopify"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "other",
+    "rationale": "A developer can install an app on a free dev store and authenticate API requests against the documented Admin API. Public distribution additionally requires App Store registration and a one-time fee."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+      "quote": "Authorization code grant, for apps that run outside the Shopify admin. The merchant is redirected to Shopify to approve access, then back to your app with a code that your app exchanges for an access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://shopify.dev/docs/api/usage/authentication",
+      "quote": "To call a Shopify API, your code sends an access token in a request header to authenticate the identity that token represents (your app or a buyer) and authorize what that identity can access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://shopify.dev/docs/api/usage/authentication",
+      "quote": "How you obtain the token and which header carries it vary by API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/storefronts/themes/tools/development-stores",
+      "quote": "A dev store is a free Shopify store for building themes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/build/dev-dashboard/create-apps-using-dev-dashboard",
+      "quote": "In this tutorial, you'll learn how to do the following tasks: Create and configure a new app using the Dev Dashboard Install your app on a dev store Authenticate your app to make API requests",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/build/dev-dashboard/create-apps-using-dev-dashboard",
+      "quote": "To make API requests, your app needs an access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/launch/distribution",
+      "quote": "Public distribution also requires registering for the Shopify App Store, which has a one-time fee.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://shopify.dev/docs/api",
+      "quote": "GraphQL Admin API reads and writes products, customers, orders, inventory, and the rest of the data behind the Shopify admin.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://shopify.dev/docs/api/admin-rest",
+      "quote": "The REST Admin API is a legacy API as of October 1, 2024. Starting April 1, 2025, all new public apps must be built exclusively with the GraphQL Admin API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://shopify.dev/docs/agents/shop-mcp",
+      "quote": "Shop MCP is a hosted Model Context Protocol (MCP) server from Shopify, accessed at https://mcp.shop.com/, that lets your agent find products from Shopify merchants, check out with them, and use the buyer's Shop account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://shopify.dev/docs/api/shopify-mcp",
+      "quote": "Shopify MCP isn't publicly available yet. This page shows where its documentation will live.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/shopify",
+      "quote": "This toolkit is GraphQL-first for new Admin API automations while retaining legacy REST compatibility actions for older workflows and numeric-ID interoperability",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/storefronts/themes/tools/development-stores",
+      "quote": "A dev store is a free Shopify store for building themes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/build/dev-dashboard/create-apps-using-dev-dashboard",
+      "quote": "To make API requests, your app needs an access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/build/dev-dashboard/create-apps-using-dev-dashboard",
+      "quote": "Your app is now installed. To start making API calls, you'll need to authenticate your app as described in the next step.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://shopify.dev/docs/api/admin-graphql",
+      "quote": "The Admin API lets you build apps and integrations that extend and enhance the Shopify admin.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://shopify.dev/docs/apps/launch/distribution",
+      "quote": "Public distribution also requires registering for the Shopify App Store, which has a one-time fee.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The free-store and API-credential connection is established across separate pages, not by one sentence expressly saying that free dev stores issue API credentials.",
+    "Shopify uses “Shop MCP” for an available shopping server and “Shopify MCP” for a separately documented, forthcoming store-management server.",
+    "The prior record’s tokenless Storefront API note lacks a supporting auth quote."
+  ],
+  "id": "shopify",
+  "name": "Shopify",
+  "website": "shopify.dev",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "shopify",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/shopify",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The authorization-code grant (merchant approval, then a code exchanged for an access token) establishes oauth2 as the documented method for apps acting for merchants, so primary oauth2 holds. Sending that token in a request header is how the OAuth token is used; no quote shows a separate static bearer token or personal access token, so bearer_token is not independently evidenced, but that does not fail the field."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred self_serve_free: a dev store is described as a free Shopify store, and the Dev Dashboard tutorial has the developer create an app, install it on a dev store, and authenticate to obtain an access token for API requests. Nothing quoted limits development credentials to payment, a trial, or sales. The one-time Shopify App Store fee is quoted only for public distribution, which matches the note and is not the credential path."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "GraphQL Admin API is documented as reading and writing products, customers, orders, inventory, and the rest of admin data, which supports graphql and broad. The REST Admin API is explicitly documented, including that it is legacy and that new public apps must use GraphQL from April 1, 2025. The cited shopify.dev pages are the public docs, so public_docs and the Admin GraphQL docs URL hold."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Shop MCP is quoted as a hosted MCP server from Shopify, already reachable at https://mcp.shop.com/, so official and generally_available are proven for that server. The separate quote that Shopify MCP is not publicly available yet matches the note and does not contradict Shop MCP's maturity."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio docs page for the Shopify toolkit describes it as GraphQL-first for Admin API automations with legacy REST actions, so in_catalog yes is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "self_serve_free credentials plus a broad, publicly documented Admin API meet buildable_now with main_blocker none. The App Store registration fee applies only to public distribution, which the access definition treats as a note rather than a credential blocker, so buildable_with_caveats and main_blocker other do not follow."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "verdict: unsupported (self_serve_free credentials plus a broad, publicly documented Admin API meet buildable_now with main_blocker none. The App Store registration fee applies only to public distribution, which the access definition treats as a note rather than a credential blocker, so buildable_with_caveats and main_blocker other do not follow.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:48:09+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 324188,
+    "output_tokens": 8449,
+    "cached_input_tokens": 215152,
+    "critic_tokens": 11166,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Shopify",
+      "charged_usd": 0.0,
+      "log_id": "log_643BJ0ZA8GVu"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Shopify MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_9Yf-siW0rJQO"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:shopify.dev \"free\" \"dev store\" \"API\" app credentials OR site:shopify.com/partners \"free\" \"API\" development stores",
+      "charged_usd": 0.004,
+      "log_id": "log_RK49LKGKNiNe"
+    }
+  ]
+}

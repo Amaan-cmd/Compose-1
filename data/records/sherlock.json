@@ -1,0 +1,159 @@
+{
+  "one_liner": "Sherlock is an open-source, self-hosted tool for finding social-media accounts by username. Its documented interface is a command-line tool, not an API-backed service.",
+  "deployment_model": "self_hosted",
+  "auth": {
+    "methods": [],
+    "primary": "unknown",
+    "notes": "The documented CLI usage does not establish credentials for an integration API."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Sherlock can be run locally, but the memo documents no path to API credentials."
+  },
+  "api": {
+    "styles": [],
+    "breadth": "none",
+    "public_docs": false,
+    "docs_url": "unknown",
+    "notes": "The public usage documentation covers CLI searches and file output, not a public HTTP API or API reference. The absence of an API is inferred from the documentation, not an explicit statement."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/Burnsedia/sherlock-mcp",
+    "notes": "A third-party repository provides instructions for running a Sherlock MCP server."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "blocked",
+    "main_blocker": "no_public_api",
+    "rationale": "No public API is documented."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "quote": "Hunt down social media accounts by username across 400+ social networks",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://sherlockproject.xyz/usage",
+      "quote": "Accounts found will be stored in an individual text file with the corresponding username (e.g user123.txt ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://sherlockproject.xyz/installation",
+      "quote": "If you’d rather not install directly to your system, you can import the module at runtime with -m.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://sherlockproject.xyz/usage",
+      "quote": "Accounts found will be stored in an individual text file with the corresponding username (e.g user123.txt ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/Burnsedia/sherlock-mcp",
+      "quote": "This starts the MCP server with stdio transport, ready for MCP clients.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://sherlockproject.xyz/usage",
+      "quote": "Accounts found will be stored in an individual text file with the corresponding username (e.g user123.txt ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Composio toolkit URL https://docs.composio.dev/toolkits/sherlock could not be read, and the memo provides no quoted Composio evidence; catalog status is therefore unknown.",
+    "The absence of an API is inferred from the documented CLI interface and documentation index, not an explicit statement that no API exists."
+  ],
+  "id": "sherlock",
+  "name": "Sherlock",
+  "website": "github.com/sherlock-project/sherlock",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "Quotes only show a username search and text-file output. They never state that no HTTP API exists, so styles [], breadth none, public_docs false, and docs_url unknown are inferred rather than proven."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The Burnsedia page, a third party rather than sherlock-project, says the MCP server starts over stdio and is ready for clients, supporting community and generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "unsupported",
+      "note": "The claimed access.level is unknown, which requires verdict.status unknown rather than blocked. no_public_api also does not follow because the quotes do not prove api.breadth none."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "api: unsupported (Quotes only show a username search and text-file output. They never state that no HTTP API exists, so styles [], breadth none, public_docs false, and docs_url unknown are inferred rather than proven.)",
+    "verdict: unsupported (The claimed access.level is unknown, which requires verdict.status unknown rather than blocked. no_public_api also does not follow because the quotes do not prove api.breadth none.)",
+    "auth is unknown",
+    "access is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:49:51+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 50770,
+    "output_tokens": 3550,
+    "cached_input_tokens": 35381,
+    "critic_tokens": 5564,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Sherlock",
+      "charged_usd": 0.0,
+      "log_id": "log_yKHntdfGplf5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Sherlock MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Kl4b2rclSlTU"
+    }
+  ]
+}

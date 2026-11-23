@@ -1,0 +1,186 @@
+{
+  "one_liner": "Netlify is a hosted web deployment platform with a broad public REST API and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Public integrations acting on behalf of users must use OAuth 2.0. Personal access tokens are documented for scripts and other direct API calls."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The pricing page says the free plan is always free, and a developer guide says you can generate a PAT in your user settings. Nothing quoted restricts API credentials to a paid plan, approval, or sales, so self-serve free access is inferred rather than explicit."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://open-api.netlify.com/",
+    "notes": "The public OpenAPI reference documents read and write operations for sites, builds, deploys and rollbacks, environment variables, DNS, and team membership, as well as read operations for form submissions."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.netlify.com/mcp",
+    "notes": "Netlify offers a hosted server and the local @netlify/mcp package. The server can create projects, deploy code, and manage project configuration. Netlify recommends the hosted server for the latest capabilities."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://docs.composio.dev/toolkits/netlify"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Credentials are self-serve and free, and the documented API is broad enough to be useful."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.netlify.com/api/",
+      "quote": "If you’re making a public integration with Netlify for others to enjoy, you must use OAuth2.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.netlify.com/api/",
+      "quote": "Use your PAT for manual authentication in shell scripts or commands that use the Netlify API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.netlify.com/pricing/",
+      "quote": "The free plan is always free, with hard monthly limits that cannot be exceeded or incur any costs.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.netlify.com/guides/deploy-zip-file-to-production-website/",
+      "quote": "If you’re deploying on behalf of a single user, or users that won’t need to claim their site on Netlify, you can generate a PAT in your user settings.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://open-api.netlify.com/",
+      "quote": "Netlify is a hosting service for the programmable web. It understands your documents and provides an API to handle atomic deploys of websites, manage form submissions, inject JavaScript snippets, and much more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://open-api.netlify.com/",
+      "quote": "This is a REST-style API that uses JSON for serialization and OAuth 2 for authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.netlify.com/blog/netlify-mcp-server-ai-agents-deploy-your-code",
+      "quote": "The official Netlify MCP Server is available now.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.netlify.com/blog/netlify-mcp-server-ai-agents-deploy-your-code",
+      "quote": "Agents can now create projects, deploy applications, and manage your infrastructure using natural language prompts.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.netlify.com/build/build-with-ai/agent-setup-guides/agent-setup-overview.md",
+      "quote": "Our recommendation is to use the remote MCP server to have the most up-to-date version of the MCP capabilities.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Netlify’s pricing and authentication pages establish the Free plan and the token workflow separately, but the retrieved text did not explicitly tie Free to credential eligibility. No authenticated Free-plan test was performed.",
+    "The Composio catalog search returned no Netlify match. The expected toolkit page could not be read, and the fetch error did not distinguish a missing page from a blocked or client-rendered page."
+  ],
+  "id": "netlify",
+  "name": "Netlify",
+  "website": "docs.netlify.com/api",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "inferred",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is required for public integrations, and PATs are documented for direct API use."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Self-serve free access is inferred from the always-free plan and the ability to generate a PAT in user settings; the quotes do not explicitly tie PAT creation to the free plan."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference calls it a REST-style API. Broad coverage is an acceptable estimate, though the quotes do not establish the specific operations listed in the notes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A Netlify page says its official server is available now. The quotes do not establish the local package claim or the exact server URL."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Inferred self-serve free credentials and a documented, useful REST API support buildable_now with no stated blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:57+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 364602,
+    "output_tokens": 4924,
+    "cached_input_tokens": 246100,
+    "critic_tokens": 6325,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Netlify",
+      "charged_usd": 0.0,
+      "log_id": "log_YN2ZEDOD5ElT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Netlify MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_tGT-XQLkYhKD"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Netlify \"free\" \"API access\" all plans personal access token free account Netlify REST API free tier",
+      "charged_usd": 0.004,
+      "log_id": "log_2kJL52a9u0tO"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "one_liner": "Grain is a hosted meeting-recording and notes service with a public API, an official MCP server, and a Composio toolkit.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth2 is documented for integrations used by Grain users. Personal and workspace access tokens can also be sent as bearer tokens."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Personal access tokens are available on the Free plan. Workspace-wide tokens require admin access and a Business or Enterprise plan."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.grain.com/",
+    "notes": "The publicly readable HTTP reference covers meeting data, recordings, highlights, uploads, and sharing."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+    "notes": "Grain documents an operating server and connection instructions; some capabilities depend on plan."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/grain"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Personal API access is available on the Free plan, and the documented API can read meeting data and manage recordings. Workspace API access requires a Business or Enterprise plan and admin access."
+  },
+  "evidence": [
+    {
+      "field": "access",
+      "url": "https://grain.com/pricing",
+      "quote": "All data is hosted on AWS infrastructure in the USA within a dedicated virtual private cloud (VPC).",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.grain.com/authentication.html",
+      "quote": "This authentication method is for developers building integrations with Grain to be used by any Grain users. The API supports a standard OAuth2 Authorization Code flow, including the PKCE extension for client-side only authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.grain.com/authentication.html",
+      "quote": "To authenticate API calls, the client must add the following header:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.grain.com/authentication.html",
+      "quote": "Authorization: Bearer TOKEN",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api",
+      "quote": "Personal Access Token (PAT) : grants access on behalf of a single user. The token has the same permissions as the user who generated it. Best for personal automations or testing. Available on every plan, including Free.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api",
+      "quote": "Requires admin access to generate and is available on Business and Enterprise plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api",
+      "quote": "The Grain API lets developers read meeting data, manage recordings, and receive real-time events from Grain programmatically. Use it to build custom integrations, sync data to internal systems, or automate workflows that go beyond what Grain's built-in integrations support.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.grain.com/",
+      "quote": "The Grain API lets you read and manage recordings, highlights, uploads, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+      "quote": "Grain's MCP (Model Context Protocol) server gives AI assistants direct access to your meetings, transcripts, AI notes, and workspace data. Ask questions, generate reports, create clips, and organize recordings, all from your AI chat interface.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.grain.com/mcp/claude-setup.html",
+      "quote": "If everything is set up properly, you'll see Claude make requests to the available Grain tools that are needed to fulfill the data needs of the Chat request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/grain",
+      "quote": "Grain records, transcribes, and organizes meetings so teams can review conversations, share insights, and manage meeting content.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.grain.com/en/articles/15507288-grain-api",
+      "quote": "Not for personal API access, which is available on every plan, including Free. Workspace API access is available on Business and Enterprise plans and requires admin access to generate.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Grain’s MCP overview says ChatGPT support is still being worked on, while its support article gives ChatGPT connection instructions. This does not affect the finding that the server is usable with Claude."
+  ],
+  "id": "grain",
+  "name": "Grain",
+  "website": "grain.com (meeting notes)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "grain",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/grain",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 Authorization Code (with PKCE) is documented for integrations used by Grain users, and calls use an Authorization: Bearer TOKEN header. Personal access tokens are also documented; nothing recommends a different primary method."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Personal access tokens are available on every plan, including Free. The admin and Business/Enterprise requirement applies only to workspace API access, so the most accessible path is self_serve_free. The AWS hosting quote does not bear on access."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public docs describe an HTTP API that reads meeting data and manages recordings, highlights, and uploads, plus real-time events. That supports rest, public_docs, and the docs URL; breadth broad is not contradicted."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Grain's own support and setup pages describe Grain's MCP server as giving assistants access now and show it making tool requests, so official and generally_available are supported. Plan limits are not evidenced by these quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio docs page for the Grain toolkit describes Grain, so the catalog listing is supported."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free personal credentials plus a documented API that reads meeting data and manages recordings meet buildable_now with no main blocker. Workspace access needing Business/Enterprise and admin is a narrower path, not the blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:55:23+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 6,
+    "input_tokens": 54736,
+    "output_tokens": 3535,
+    "cached_input_tokens": 35766,
+    "critic_tokens": 3259,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Grain",
+      "charged_usd": 0.0,
+      "log_id": "log_Tk6tR81To7se"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Grain MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_ITCJQp7MVyxg"
+    }
+  ]
+}

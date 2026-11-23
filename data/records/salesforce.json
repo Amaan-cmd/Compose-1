@@ -1,0 +1,236 @@
+{
+  "one_liner": "Salesforce is a CRM with a broad, publicly documented API suitable for an agent toolkit. Its free Developer Edition supports building and testing integrations; customer data access depends on the customer org and user permissions.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "other"
+    ],
+    "primary": "oauth2",
+    "notes": "The legacy SOAP login() call uses a username and password. The memo says it is disabled by default for newer orgs, scheduled for retirement, and not recommended."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free Developer Edition supports testing and development. Access to another organization's records requires an org and user with API access enabled. Salesforce recommends external client apps rather than newly created connected apps."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql",
+      "soap"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm",
+    "notes": "The REST API covers metadata, record creation, retrieval, updates and deletion, queries, and search."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://github.com/salesforcecli/mcp",
+    "notes": "Salesforce publishes a Salesforce DX MCP server. Its local server repository reports an end-of-life date of November 2nd, 2026; Salesforce described its hosted MCP servers as a pilot."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/salesforce"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free Developer Edition access and documented read/write APIs support building and testing a toolkit. Access to customer data requires an org and user with API access enabled."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+      "quote": "For an external client app or connected app to request access, it must be integrated with your org’s REST API using the OAuth 2.0 protocol.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_login.htm",
+      "quote": "When a client app invokes the login() call, it passes in a username and password as credentials.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_dev_org.htm",
+      "quote": "Developer Edition provides a free and easy solution so that you can use Salesforce for testing and development. To sign up for a Developer Edition account, go to developer.salesforce.com/signup .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm",
+      "quote": "This feature is enabled by default for Performance, Unlimited, Enterprise, and Developer Editions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+      "quote": "Creating connected apps is restricted as of Spring ‘26. You can continue to use existing connected apps during and after Spring ‘26. However, we recommend using external client apps instead.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest_resources.htm",
+      "quote": "Depending on which resource you want to access and how you construct an HTTP request, you can perform several types of operations, including: Determine available API versions Access limits for your Salesforce org Retrieve object metadata Create, read, update, and delete records Query and search for data",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/platform/graphql/guide/graphql-about.html",
+      "quote": "This API allows developers to interact with the Salesforce Platform through GraphQL, a standard query language for APIs and a runtime for fulfilling those queries with your data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart_intro.htm",
+      "quote": "Salesforce SOAP API is designed to work with Salesforce objects.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/salesforcecli/mcp",
+      "quote": "The Salesforce DX MCP Server is a specialized Model Context Protocol (MCP) implementation designed to facilitate seamless interaction between large language models (LLMs) and Salesforce orgs.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/salesforcecli/mcp",
+      "quote": "The Salesforce DX local MCP server ( @salesforce/mcp ) reaches end of life on November 2nd, 2026.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.salesforce.com/blogs/2025/06/introducing-mcp-support-across-salesforce",
+      "quote": "Salesforce is introducing hosted MCP servers that support access to certain targeted APIs on our platform. This is currently in Pilot, and pricing is TBD.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/salesforce",
+      "quote": "Salesforce MCP Server for Claude and Cursor",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/salesforce",
+      "quote": "556 Tools 7 Triggers Managed auth",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm",
+      "quote": "You can set up and use REST API in many ways, and the examples show how to use the free Developer Edition and cURL.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm",
+      "quote": "To access your Salesforce org and data using the Salesforce API, you need both an org and a user with API access enabled.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The signup page itself did not load through the page reader, so access is evidenced by Salesforce’s public API guides instead.",
+    "The official local MCP repository reports end-of-life, while the hosted-server announcement describes a pilot; neither establishes current general availability of a hosted Salesforce MCP server."
+  ],
+  "id": "salesforce",
+  "name": "Salesforce",
+  "website": "salesforce.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "salesforce",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/salesforce",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth 2.0 and the SOAP login() call using a username and password are evidenced. The claim that login() is disabled by default, scheduled for retirement, and not recommended is not shown by the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes establish a free Developer Edition that can be used with the REST API. Access to an org’s data requires an org and a user with API access enabled."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish publicly documented REST, GraphQL, and SOAP APIs. The listed REST operations are consistent with broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "A Salesforce DX MCP server is shown in a Salesforce-hosted repository, and Salesforce describes its hosted MCP servers."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quotes are from a Composio Salesforce toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free Developer Edition API use and a documented, broad read/write API support buildable_now with no main blocker. The stated requirement for an org and user with API access is evidenced."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:13+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 11,
+    "input_tokens": 185756,
+    "output_tokens": 5316,
+    "cached_input_tokens": 128432,
+    "critic_tokens": 0,
+    "composio_calls": 3,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Salesforce",
+      "charged_usd": 0.0,
+      "log_id": "log_kDHnn6sEhwpA"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Salesforce MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Z0NnFwkSlMzv"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developer.salesforce.com/docs/atlas.en-us.api_soap.meta/api_soap/ login session id SOAP API site:developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ graphql API site:developer.salesforce.com docs",
+      "charged_usd": 0.004,
+      "log_id": "log_JunLcX1G4wQJ"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developer.salesforce.com/docs/atlas.en-us.api_graphql.meta/api_graphql/ GraphQL API query mutations Salesforce",
+      "charged_usd": 0.004,
+      "log_id": "log_HJahfIdDcYOe"
+    }
+  ]
+}

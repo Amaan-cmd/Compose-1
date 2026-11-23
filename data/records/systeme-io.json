@@ -1,0 +1,172 @@
+{
+  "one_liner": "systeme.io is a hosted funnel and marketing platform with a public REST API and a vendor-operated MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key"
+    ],
+    "primary": "api_key",
+    "notes": "The public API documents API-key authentication as its only current option."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The pricing page says the free plan never expires and requires no credit card. The API reference says users can generate a key in their dashboard’s “Public API keys” section; none of the quoted evidence restricts that step to paid accounts."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.systeme.io/reference",
+    "notes": "The memo reports read and write operations across contacts, mailing, funnels, payments, courses, and other resources."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developer.systeme.io/docs/mcp-server",
+    "notes": "The vendor describes this as an initial release and says it is improving stability and reliability."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Credentials are self-serve and free, and the documented API is broad enough to be useful."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.systeme.io/reference",
+      "quote": "To authenticate with the Systeme.io Public API, your only option right now is to attach your API key to the X-API-Key header of each request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://systeme.io/pricing",
+      "quote": "The free plan never expires and does not require a credit card.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.systeme.io/reference",
+      "quote": "Simply navigate to the profile settings within your Systeme.io dashboard, and generate a new key under the \"Public API keys\" section.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.systeme.io/reference",
+      "quote": "Adhering to RESTful conventions, our API ensures an intuitive and consistent interaction pattern for all users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.systeme.io/reference",
+      "quote": "It is meticulously designed to offer a seamless integration experience, allowing you to manage contacts, tags, and a variety of other operations integral to our platform.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.systeme.io/docs/mcp-server",
+      "quote": "Our MCP server acts as a bridge between your Systeme.io account and AI-powered environments (such as ChatGPT, Claude Desktop, or other MCP-compatible clients).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.systeme.io/docs/mcp-server",
+      "quote": "The Systeme.io MCP server is in its initial release. We’re actively improving it by adding more capabilities and strengthening stability and reliability over time.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing comparison rendered its API-request row without usable plan values.",
+    "No explicit statement tied public API-key availability to the free plan.",
+    "The attempted Composio toolkit URLs could not be read; the memo provides no quoted catalog evidence."
+  ],
+  "id": "systeme-io",
+  "name": "systeme.io",
+  "website": "systeme.io (funnel builder)",
+  "category": "Marketing, Ads, Email and Social",
+  "batch": 4,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "inferred",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The reference states the only current option is an API key sent in the X-API-Key header, so api_key as the sole and primary method is proven."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred, not explicit: the pricing quote shows a free plan that never expires and needs no credit card, and the reference shows a dashboard user generates a Public API key. Nothing quoted ties that step to payment, a trial, approval, or sales."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The reference calls the API RESTful and says it can manage contacts, tags, and other operations, on a publicly quoted docs URL. Breadth broad is a researcher estimate and is not contradicted. The note's specific list (mailing, funnels, payments, courses) is not in the quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor docs describe a Systeme.io MCP server that bridges an account to MCP clients, so official and usable now. 'Initial release' plus ongoing stability work is not a beta, preview, pilot, or unlaunched label, so generally_available is not contradicted."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented REST API whose breadth is not contradicted meet buildable_now with main_blocker none."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:47:13+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 123631,
+    "output_tokens": 4044,
+    "cached_input_tokens": 90953,
+    "critic_tokens": 5703,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for systeme.io",
+      "charged_usd": 0.0,
+      "log_id": "log_V2FSHmVzFrqd"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "systeme.io MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_iGEtfYcf0G1b"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:help.systeme.io \"API\" \"free plan\" API keys systeme.io OR site:systeme.io \"API\" \"free plan\"",
+      "charged_usd": 0.004,
+      "log_id": "log_Jmo4JnqN_4vV"
+    }
+  ]
+}

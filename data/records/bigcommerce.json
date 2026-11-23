@@ -1,0 +1,269 @@
+{
+  "one_liner": "BigCommerce is a cloud ecommerce platform with a broad public API. Its official shopper-facing MCP is generally available, while its merchant administration MCP is in early access.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "bearer_token",
+      "other"
+    ],
+    "primary": "oauth2",
+    "notes": "Third-party apps use a modified OAuth 2.0 authorization-code flow that issues a token per store. For a direct single-store integration, a merchant can provision a static access token and send it in the X-Auth-Token header; it functions like an API key, although BigCommerce classifies it as OAuth-based. GraphQL Storefront supports bearer tokens, and REST Storefront supports same-origin shopper-session authentication. HTTP Basic is documented for legacy accounts unavailable to new stores and for provider-hosted tax endpoints, not as a current authentication path into BigCommerce’s public store APIs."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "New developers can create scoped API credentials in a 15-day trial store. The current signup FAQ says a credit card is required, but there is no charge unless the user chooses to upgrade. A separate non-transactional sandbox is documented through the Partner Portal, but no approval-free path to it was verified. Public distribution of a single-click app requires approval; testing with a trial store’s own credentials does not."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.bigcommerce.com/developer/api-reference/about-our-apis",
+    "notes": "The API reference is readable without login. Store Management APIs support reads and writes across core objects such as products, orders, and customers. Storefront APIs cover shopping workflows, including carts and checkout."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+    "notes": "The maturity rating applies to Storefront MCP, which searches products, manages carts, and hands shoppers off to checkout without admin credentials. The separate Store Management MCP is in early access and uses per-user scopes for operations such as catalog, inventory, promotions, and orders. BigCommerce also documents browser-based WebMCP for eligible storefronts and a Docs MCP that only searches documentation."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/bigcommerce"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "BigCommerce offers a broad, publicly documented API and self-serve scoped credentials. The verified self-serve path for developers without an existing store is limited to a 15-day trial."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/auth",
+      "quote": "BigCommerce uses a modified version of the OAuth2 authorization code grant (tools.ietf.org) .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/auth",
+      "quote": "BigCommerce responds with either an error or an access_token unique to the merchant’s store; see receiving the access_token response .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+      "quote": "Store-level API accounts include a static access token that does not change.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+      "quote": "Pass the access token as the value of the X-Auth-Token header of the request you want to authenticate.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts",
+      "quote": "It is a convenience collection of operations that affect one customer at a time and run in the context of the customer’s current session on a BigCommerce-hosted storefront.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.bigcommerce.com/developer/docs/storefront/guides/graphql-storefront-api",
+      "quote": "This method uses a bearer token in the request header.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.bigcommerce.com",
+      "quote": "Sign up for a free BigCommerce trial store to test API calls and build integrations without affecting live data.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.bigcommerce.com",
+      "quote": "Navigate to Settings > API Accounts in your store control panel. Create credentials with the scopes you need.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.bigcommerce.com/free-trial/",
+      "quote": "Yes, a credit card is required to sign up for a trial. But, you will never be charged without choosing to upgrade.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.bigcommerce.com/developer/docs/overview/sandboxes",
+      "quote": "Navigate to the BigCommerce Partner Portal and sign in using your credentials.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/auth",
+      "quote": "However, when an app is approved to be publicly available for additional stores to install, it can generate access_token s on behalf of store owners and authorized users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.bigcommerce.com/free-trial/",
+      "quote": "Your 15-day trial gives you extensive access to the BigCommerce platform — most standard features and tools included.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.bigcommerce.com",
+      "quote": "The products we offer are all powered by our platform, and our developer-focused starter projects give examples of what’s possible.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.bigcommerce.com",
+      "quote": "Their hosted control panel and bundled storefront are how most brands interact with BigCommerce.",
+      "source_type": "official_site",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.bigcommerce.com",
+      "quote": "Use REST and GraphQL APIs to manage products, orders, customers, and store settings programmatically.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/about-our-apis",
+      "quote": "BigCommerce’s Store Management and Payment APIs (for example, the Catalog API ) allow you to manage transactions, modify store data, and act as store administrator.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/about-our-apis",
+      "quote": "BigCommerce’s GraphQL Storefront API lets you query and mutate products, customers, and carts, then launch a checkout on a headless storefront as well as from a native storefront’s frontend.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+      "quote": "Every store gets the storefront tools. Catalog, cart, and checkout tools work for guests, logged-in customers, and B2B buyers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+      "quote": "Store Management MCP is in early access and available to all stores.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+      "quote": "It lets your AI tool search the BigCommerce developer documentation, and it can’t read or change store data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/bigcommerce",
+      "quote": "Manage BigCommerce stores, catalogs, orders, customers, channels, content, and settings through the Store Management APIs.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "An older BigCommerce chatbot article labels Storefront MCP private beta; the current API reference lists it as generally available. The rating follows the API reference.",
+    "The older article also advertises a no-card trial, while the current signup FAQ says a card is required. The access notes follow the signup FAQ.",
+    "The Partner Portal docs explain how to provision a sandbox after signing in, but do not establish whether a new developer can get that access without partner approval.",
+    "The Composio toolkit lists API Key and OAuth2, but Composio-managed OAuth is not available."
+  ],
+  "id": "bigcommerce",
+  "name": "BigCommerce",
+  "website": "developer.bigcommerce.com",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "bigcommerce",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/bigcommerce",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes support OAuth2 as the primary app authorization flow and a static token sent in the X-Auth-Token header. They do not independently establish the listed bearer_token or other methods, or the notes about Basic authentication."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A developer can sign up for a trial store, create scoped API credentials, and use the 15-day trial without a charge unless they upgrade. The quotes do not establish the sandbox’s terms or every detail about app approval and testing in the notes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API page identifies REST and GraphQL APIs, including operations on core store objects. Nothing quoted contradicts broad breadth."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor’s MCP documentation says every store gets storefront tools, supporting an official, available Storefront MCP. The separate Store Management MCP is explicitly early access. The quotes do not establish the WebMCP details in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio BigCommerce toolkit page and describes its Store Management API coverage."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The evidenced 15-day self-serve trial provides credentials for a documented, broad API. That supports buildable_with_caveats with trial_only as the blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:57:45+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 181450,
+    "output_tokens": 5237,
+    "cached_input_tokens": 123505,
+    "critic_tokens": 3948,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for BigCommerce",
+      "charged_usd": 0.0,
+      "log_id": "log_Qhltgckp4-7J"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "BigCommerce MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_3SAoHPBxAfqO"
+    }
+  ]
+}

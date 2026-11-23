@@ -1,0 +1,210 @@
+{
+  "one_liner": "LiveAgent is a cloud help desk (with a self-hosted option) that has a broad REST API and an official MCP server, but working credentials exist only inside a 30-day free trial or a paid plan, and the MCP server itself is gated to Business and Enterprise.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "api_key",
+    "notes": "The documented integration method is an API key sent in a request header (v3) or as a query parameter (v1). Keys are created by an account admin and can be permission-scoped, so the key is the method the docs give a third-party integration. The MCP feature additionally accepts a profile-generated access token or an OAuth 2.1 sign-in; no OAuth2 flow is documented for the general REST API, so api_key is primary."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "Most accessible path is the vendor cloud: anyone can open a cloud account alone with no credit card, and the docs tell developers to register a free trial specifically to test API v3 and generate an API key. The trial lasts 30 days and then ends unless a paid plan is chosen, so credentials are not available on a permanent free tier. Self-hosted standalone installation is also offered but still assumes an account/license. The official MCP server is a further gate: not included on Starter or Team and included only on Business and Enterprise. REST API access is not shown to have that plan restriction."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://support.liveagent.com/840770-Complete-API-reference",
+    "notes": "API v1 is a fully public REST reference covering agents, companies, conversations (create messages, change status, tags), customers and groups, files, knowledge base, tags and several reports, with read and write calls. API v3 is the current version (tickets, calls, phone numbers, cursor pagination, OpenAPI/Swagger descriptor) but its full reference lives inside each account at https://YOURDOMAIN.ladesk.com/docs/api/v3/#/ rather than on a public page. Rate limit is 180 requests per minute per API key on cloud accounts."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://www.liveagent.com/features/mcp-server",
+    "notes": "LiveAgent publishes its own MCP server feature page describing a working server with 33 tools (search/read tickets, tag, assign, transfer, resolve, reopen, knowledge base read and write, agents, departments, WhatsApp replies) that an MCP client can call now. It is not labelled beta or preview. Plan gating (Business and Enterprise only) is an access constraint, not a maturity label."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/liveagent"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "A developer can self-serve a 30-day, no-card cloud trial and the docs explicitly point that trial at API v3 testing and API key generation, and the public v1 reference covers the core help-desk objects with read and write. There is no permanent free tier: credentials disappear when the trial ends unless a paid plan is chosen, and connecting LiveAgent's own MCP server to external AI tools requires Business or Enterprise."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://support.liveagent.com/741982-API-key",
+      "quote": "API key is an identity of your LiveAgent (like your username and password) which you can use to build your own custom integration solutions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://support.liveagent.com/741982-API-key",
+      "quote": "Your API key has to be set in header of your requests: curl --location --request GET 'https://your.ladesk.com/api/v3/tickets' \\ --header 'apikey: 0865evv883j6auflvlt7zrwgqn32qo74' \\",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.liveagent.com/features/mcp-server",
+      "quote": "It uses an access token you generate in your own profile, or an OAuth 2.1 sign-in with a consent screen, so it always acts as one account you approved.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.liveagent.com/567924-Documentation",
+      "quote": "Consider registering a new free Trial account for testing purposes, before using API with your live account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.liveagent.com/trial/",
+      "quote": "If you haven't chosen a plan, the trial ends and nothing is charged. We never asked for a card.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.liveagent.com/066804-LiveAgent-API",
+      "quote": "STANDALONE INSTALLATIONS The following info and setting is possible to do ONLY on the standalone installations running on your own servers!",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.liveagent.com/pricing/",
+      "quote": "MCP (Model Context Protocol) is an open standard for connecting AI tools to other software. Every plan: your AI agents use LiveAgent’s built-in MCP tools. Business and Enterprise: connect LiveAgent’s MCP server to external AI tools such as Claude.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://support.liveagent.com/840770-Complete-API-reference",
+      "quote": "Conversations Delete conversation Retrieves all conversations Retrieves conversation info Retrieves all conversation messages Create new message in conversation Change status of the conversation",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://support.liveagent.com/911737-API-v3",
+      "quote": "You can find whole LiveAgent API documentation within your LiveAgent account: https://YOURDOMAIN.ladesk.com/docs/api/v3/#/",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://support.liveagent.com/066804-LiveAgent-API",
+      "quote": "The API rate limit is set right now to 180 requests per minute, counted for each API key separately.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.liveagent.com/features/mcp-server",
+      "quote": "LiveAgent's MCP server exposes tickets, ticket messages , knowledge base articles, agents, and departments as tools an MCP-compatible AI client can call directly — no custom integration required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.liveagent.com/features/mcp-server",
+      "quote": "LiveAgent’s MCP server gives a connected AI client 33 tools to work with, covering tickets, custom fields, the knowledge base, and more.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "https://www.liveagent.com/api/ and https://www.liveagent.com/api/v3/ would not load, and the full API v3 reference is account-hosted, so breadth for v3 is inferred from the public v1 reference plus v3 help articles rather than the v3 spec itself.",
+    "https://composio.dev/toolkits/liveagent would not render, so the Composio \"no\" rests on the catalog search rather than a quoted page.",
+    "The MCP feature page and the pricing comparison disagree in emphasis (the feature page markets the server generally; the plan table restricts connecting it to external tools to Business and Enterprise). I treated the pricing table as the plan constraint.",
+    "Composio in_catalog set to unknown because the memo gives no quoted catalog page."
+  ],
+  "id": "liveagent",
+  "name": "LiveAgent",
+  "website": "liveagent.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes show API-key authentication for API requests and an access token or OAuth 2.1 sign-in for the MCP server. API key is supported as the primary method for the documented REST integration. The claims about admin-created, permission-scoped keys and v1 query parameters are not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The docs recommend a free trial for API testing, and the trial page says no card is required and the trial ends without a plan. This supports self_serve_trial. The quotes do not establish a 30-day duration, explicitly show key generation during the trial, or establish that self-hosting requires a license."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference quote shows read and write conversation operations; the API-key example shows an HTTP endpoint. Nothing contradicts the estimated broad breadth. The quotes do not substantiate every object and feature listed in the notes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "LiveAgent's own page describes a server with tools that an MCP client can call directly, supporting official and generally_available. The quotes do not substantiate every tool listed in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial-based API access and a documented, useful API support buildable_with_caveats and trial_only. The rationale's specific 30-day duration and assertion that credentials disappear when the trial ends are not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:55:46+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 163211,
+    "output_tokens": 4608,
+    "cached_input_tokens": 99829,
+    "critic_tokens": 3674,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for LiveAgent",
+      "charged_usd": 0.0,
+      "log_id": "log_bnk3ispyxxSW"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "LiveAgent MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_58FW6Yn5IdoS"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "LiveAgent API documentation authentication API key REST reference site:support.liveagent.com OR site:liveagent.com",
+      "charged_usd": 0.004,
+      "log_id": "log_3tfbsDjYxHE0"
+    }
+  ]
+}

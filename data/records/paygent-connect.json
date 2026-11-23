@@ -1,0 +1,137 @@
+{
+  "one_liner": "Paygent Connect is described as NMI-powered, but its identity and relationship to NMI could not be verified.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [],
+    "primary": "unknown",
+    "notes": "No Paygent Connect authentication documentation was found."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "No credential-access terms were verified."
+  },
+  "api": {
+    "styles": [],
+    "breadth": "unknown",
+    "public_docs": false,
+    "docs_url": "",
+    "notes": "No Paygent Connect API documentation was verified. NMI's API documentation does not establish an API for this product."
+  },
+  "mcp": {
+    "status": "none_found",
+    "maturity": "not_applicable",
+    "url": "",
+    "notes": "No relevant Paygent Connect server was found; the identity of the MCP-enabled wallet at paygent.net could not be established as this product."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Paygent Connect credential-access terms and API documentation could not be verified. NMI's API description alone does not establish what Paygent Connect provides."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://www.nmi.com/developers/sdks-apis",
+      "quote": "The NMI Payment API is the simplest integration method for both web-based and non web-based payment applications.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The attempted Paygent and Paygent Connect domains did not yield a readable product page.",
+    "The accessible paygent.net site appears to describe a different product.",
+    "No readable source connected Paygent Connect to specific NMI API credentials or endpoints.",
+    "The NMI API quote concerns NMI's own API, not a verified Paygent Connect API."
+  ],
+  "id": "paygent-connect",
+  "name": "Paygent Connect",
+  "website": "paygent (NMI-powered)",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "auth is unknown",
+    "access is unknown",
+    "api is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:52:27+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 103931,
+    "output_tokens": 2643,
+    "cached_input_tokens": 93308,
+    "critic_tokens": 4868,
+    "composio_calls": 3,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Paygent Connect",
+      "charged_usd": 0.0,
+      "log_id": "log_VwjREYv_Ff2h"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Paygent Connect MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_4tn2W4rEQtvK"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "\"Paygent Connect\" NMI powered API developer documentation payment",
+      "charged_usd": 0.004,
+      "log_id": "log_32DvdqK2H3pX"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Paygent Connect NMI payment gateway API integration signup plans and developer documentation",
+      "charged_usd": 0.004,
+      "log_id": "log_iul_9HN948SY"
+    }
+  ]
+}

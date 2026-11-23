@@ -1,0 +1,215 @@
+{
+  "one_liner": "Cloud ecommerce helpdesk with a broad public REST API; the only self-serve account is a 7-day trial, and publishing an app for other merchants requires vendor review.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Private apps use an access token sent as HTTP Basic; public apps that act for other Gorgias accounts must use OAuth2. There is no separate static bearer scheme."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "Anyone can open a 7-day trial with no credit card, and the REST API is available on all Helpdesk plans, so a trial account yields API keys. There is no free plan. A lasting developer sandbox is not automatic: you register on the Developer Portal, create a trial, then email Gorgias to convert it to a Developer plan, and you need a draft app first. Distributing a public OAuth app also requires Gorgias review; private apps need no approval."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.gorgias.com/reference/introduction",
+    "notes": "The reference covers tickets, messages, customers, users, teams, tags, macros, rules, views, surveys, statistics, custom fields, integrations, widgets, jobs, files, and voice calls, with create, update, and delete operations, and it is readable without login."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://mcp.gorgias.com/mcp",
+    "notes": "Gorgias hosts a first-party remote MCP at https://mcp.gorgias.com/mcp, listed in Claude and ChatGPT connector directories. The vendor calls it open beta; reads are live and some writes are gated during the beta. It works on any Helpdesk plan at no extra cost. Unofficial servers (mcpmarket, Pipedream, Truto) also exist but are not the basis of this rating."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/gorgias"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "The public REST API is broad and documented, and API keys can be created on any Helpdesk plan including the self-serve 7-day trial, but there is no free plan and a non-expiring developer account requires emailing Gorgias. Acting for other merchants' accounts requires OAuth2 plus an App Store review."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.gorgias.com/reference/authentication",
+      "quote": "The Gorgias API supports two authentication methods: 🔐 Private app → API key 👥 Public app → OAuth2 Using OAuth2 is mandatory for public apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.gorgias.com/docs/access-tokens-api-keys",
+      "quote": "Since we're using HTTP Basic Authentication, the USERNAME:API_KEY pair has to be a base64 encoded string.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.gorgias.com/docs/oauth2-bearer-token",
+      "quote": "In OAuth2, the authentication is done using Bearer Access Tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.gorgias.com/signup",
+      "quote": "Get started for free 7-day trial | All features unlocked | No credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.gorgias.com/en-US/rest-api-208286",
+      "quote": "Requirements Available on all Helpdesk plans The account owner and admins can access the API credentials and create API keys",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.gorgias.com/docs/1-register-on-developer-portal",
+      "quote": "Once you register, feel free to create a trial account and reach out to [email protected] to transform it into a developer account. ... Currently all new Sandbox accounts are Demo accounts by default.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.gorgias.com/docs",
+      "quote": "These apps should be used if you plan to access only your own Gorgias account data. You don't need to follow any special process to create a private app. ... These apps are published in our App Store ... You need to follow a specific process which includes a review from the Gorgias team.",
+      "source_type": "official_docs",
+      "check": "not_found"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.gorgias.com/reference/introduction",
+      "quote": "The Gorgias API is structured with REST in mind. Our API has predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta",
+      "quote": "Gorgias MCP is in open beta today, a first-party server that plugs your workspace into Claude, ChatGPT, Cursor, and any MCP-compatible tool. ... Reads are fully live. Some writes (Macro edits, AI Agent config) are gated during the beta and roll out over the coming months.",
+      "source_type": "official_site",
+      "check": "not_found"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+      "quote": "Gorgias MCP works with any MCP-compatible AI client. The setup process varies by client, but the connection URL is the same: https://mcp.gorgias.com/mcp",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/gorgias",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Gorgias MCP or direct API to automate ticket replies, update order statuses, assign conversations, and tag customers through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page (https://www.gorgias.com/pricing) is rendered by JavaScript; even a full extract returned only navigation chrome, so plan names, prices, and any \"no free plan\" statement never appeared as text. The trial length and \"all features unlocked\" come from the signup page, and API availability on every Helpdesk plan comes from the help article. The billing help article confirms subscriptions are usage-based and charged, but it does not mention the trial, so the absence of a permanent free tier is inferred rather than directly quoted.",
+    "The developer-portal page obfuscates the contact address as \"[email protected]\", so the quote contains that placeholder rather than the literal address.",
+    "The REST API requirements line is rendered as a short requirements block rather than a full sentence; it is the most direct statement on the page tying the API to every Helpdesk plan."
+  ],
+  "id": "gorgias",
+  "name": "Gorgias",
+  "website": "gorgias.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "gorgias",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/gorgias",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document API keys for private apps and mandatory OAuth2 for public apps, supporting OAuth2 as primary. They do not establish the note's claim that there is no separate static bearer scheme."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred: a self-serve 7-day trial is offered, the API is available on all Helpdesk plans, and account owners or admins can create API keys. The quotes do not establish the claims about no free plan, developer-plan conversion, or app review."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quoted public reference documents a REST-style HTTP API. The detailed object list and operations in the note are not shown; breadth is the researcher's estimate and is not contradicted."
+    },
+    {
+      "field": "mcp",
+      "result": "unsupported",
+      "note": "Vendor documentation gives a working MCP connection URL, supporting an official server. Nothing quoted labels it beta or pilot, so the claimed maturity is not established. The other details in the note are also unproven."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio page for the Gorgias toolkit."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Given the supported self-serve trial access and documented REST API, buildable_with_caveats with trial_only as the blocker follows. The rationale's claims about no free plan, emailing Gorgias, and App Store review are not established by the quotes."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "mcp: unsupported (Vendor documentation gives a working MCP connection URL, supporting an official server. Nothing quoted labels it beta or pilot, so the claimed maturity is not established. The other details in the note are also unproven.)"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:56:07+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 23,
+    "input_tokens": 400573,
+    "output_tokens": 9665,
+    "cached_input_tokens": 291489,
+    "critic_tokens": 10235,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Gorgias",
+      "charged_usd": 0.0,
+      "log_id": "log_Kr537UiYSMfB"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Gorgias MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_rSuPUvydiwRH"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "pricing plans free trial API included starter basic pro advanced cost monthly ticket limits FAQ",
+      "charged_usd": 0.0,
+      "log_id": ""
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Gorgias REST API key available on trial plan help center site:docs.gorgias.com",
+      "charged_usd": 0.004,
+      "log_id": "log_WzfS19eZOyZS"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "free trial plan prices free plan credit card FAQ what happens after the trial",
+      "charged_usd": 0.0,
+      "log_id": ""
+    }
+  ]
+}

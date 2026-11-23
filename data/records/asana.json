@@ -1,0 +1,207 @@
+{
+  "one_liner": "Asana is buildable now as an agent toolkit using a free account and its documented REST API.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is recommended for apps supporting multiple users. Personal access tokens are also documented; Enterprise service-account tokens require a super admin."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free Asana account can be used to test the API. The optional developer sandbox requires a request, and App Directory publication has a separate review process."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.asana.com/reference",
+    "notes": "The public reference documents operations across core work-management objects."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.asana.com/v2/mcp",
+    "notes": "Asana documents an available hosted V2 server. The separate V1 server is deprecated."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/asana"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Asana documents free-account API testing and token-based authentication, with a public REST reference covering work-management objects. The requested sandbox and App Directory review are not prerequisites to testing the API."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.asana.com/docs/authentication",
+      "quote": "You will likely want to use OAuth if your app needs to support multiple users signing in to use the app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.asana.com/docs/authentication",
+      "quote": "A personal access token (PAT) is the quickest and simplest way to authenticate in the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.asana.com/docs/authentication",
+      "quote": "Service Accounts are an Enterprise tier feature and can only be created by Asana super admins (see more about admin roles at Asana ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.asana.com/docs/overview",
+      "quote": "You can test in any of your existing workspaces, create a free account, or request a developer sandbox .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.asana.com/docs/quick-start",
+      "quote": "The quickest method to do so is by using a personal access token (PAT), which you can think of as your unique password for accessing the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.asana.com/docs/developer-sandbox",
+      "quote": "To see the feature differences between the Asana plans, please visit our pricing page . ➡ To request a developer sandbox, please complete and submit this form .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.asana.com/docs/overview",
+      "quote": "Set your distribution to “any workspace”, then follow the instructions on the Developer Console > Submit for Review page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.asana.com/reference",
+      "quote": "This reference is generated from our OpenAPI Specification , and contains a comprehensive reference for objects, schemas, and endpoints available in the API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.asana.com/docs/quick-start",
+      "quote": "The Asana API is a RESTful interface with predictable resource-oriented URLs, accepts JSON or form-encoded requests, returns JSON, and uses standard HTTP features (verbs, response codes, etc.)",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.asana.com/docs/faq",
+      "quote": "These same operations that you performed on a task through the API can be applied to many other objects in your Asana instance as well (e.g., projects , portfolios , etc.).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+      "quote": "Asana offers a Model Context Protocol (MCP) server that allows AI assistants and other applications to access the Asana Work Graph.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+      "quote": "The Asana MCP V2 server is available at: https://mcp.asana.com/v2/mcp . This server requires authentication with your Asana account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/asana",
+      "quote": "Use your own Asana app when you want users to see your app's name on the consent screen and control the credentials yourself.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No material documentation wall encountered. The optional sandbox’s approval and provisioning should not be confused with the free-account route to API credentials."
+  ],
+  "id": "asana",
+  "name": "Asana",
+  "website": "developers.asana.com",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "asana",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/asana",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth is documented for apps with multiple users, and a personal access token is documented as the simplest API credential, which fairly counts as bearer_token. Primary oauth2 matches the multi-user recommendation; the enterprise service-account restriction is also quoted."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free account is an explicit way to test the API, with a PAT as the quickest credential, so self_serve_free is proven. The sandbox form and App Directory review are quoted as separate, optional steps."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The API is explicitly RESTful, JSON-based, and publicly documented at the cited reference. A comprehensive endpoint reference plus operations on tasks, projects, and portfolios supports broad breadth and does not contradict it."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Asana itself offers a hosted MCP server and states the V2 URL is available, supporting official and generally_available. No quote shows that a separate V1 server is deprecated."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on a Composio toolkit page for Asana and discusses using an Asana app, so catalog listing is shown."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented, broad public REST API meet buildable_now with main_blocker none. Sandbox requests and App Directory review are not required to test the API."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:05+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 103174,
+    "output_tokens": 3546,
+    "cached_input_tokens": 72297,
+    "critic_tokens": 3334,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Asana",
+      "charged_usd": 0.0,
+      "log_id": "log_83bhmwEEpf3h"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Asana MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_KnLBFBTvjhx6"
+    }
+  ]
+}

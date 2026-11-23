@@ -1,0 +1,209 @@
+{
+  "one_liner": "Firecrawl provides a public HTTP API, free self-serve credentials, and an official MCP server, with different capabilities across cloud and self-hosted deployments.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "none"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is documented for apps connecting users’ accounts; API keys support a team’s own calls. A few REST endpoints require no credential."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The self-serve free path uses a Firecrawl Cloud API key. Self-hosting is another path, but requires operating the stack and additional configuration for some capabilities."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.firecrawl.dev/api-reference/v2-introduction",
+    "notes": "The public reference covers web-data operations including crawling and monitoring."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.firecrawl.dev/mcp-server",
+    "notes": "Firecrawl documents a hosted MCP server and publishes server code."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/firecrawl"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can sign up for a free API key, and the public REST reference documents web-data operations including crawling and monitoring. OAuth is documented for apps that connect users’ Firecrawl accounts."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "Your app gets an fco_ access token that works on the REST API in place of an API key, plus an fcr_ refresh token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "API key Create a key in the dashboard and send it on every request as Authorization: Bearer fc-YOUR-API-KEY .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "A few REST endpoints also work with no credential at all, so you can try Firecrawl before you have a key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "Sign up for a free API key to use every endpoint with higher limits.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.firecrawl.dev/contributing/open-source-or-cloud",
+      "quote": "Both paths expose Firecrawl’s core APIs; the difference is who configures, secures, and runs the supporting services.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.firecrawl.dev/contributing/open-source-or-cloud",
+      "quote": "Core scraping works in the default stack; LLM-backed formats, advanced scraping services, and specialized extraction paths need additional configuration.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.firecrawl.dev/api-reference/v2-introduction",
+      "quote": "The Firecrawl API gives you programmatic access to web data. All endpoints share a common base URL, authentication scheme, and response format described on this page.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.firecrawl.dev/api-reference/v2-introduction",
+      "quote": "Monitor Schedule recurring checks and get notified when content changes. Crawl Crawl entire websites and get content from all pages.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.firecrawl.dev/mcp-server",
+      "quote": "Set up Firecrawl MCP with keyless access, account sign-in, or an API key.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "quote": "A Model Context Protocol (MCP) server that brings Firecrawl , the context API for AI agents, to MCP-compatible clients: search, scrape, and interact with the live web and get back clean Markdown or structured data.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/firecrawl",
+      "quote": "Firecrawl automates web crawling and data extraction, enabling organizations to gather content, index sites, and gain insights from online sources at scale",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "Sign up for a free API key to use every endpoint with higher limits.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.firecrawl.dev/authentication",
+      "quote": "To let users connect their own Firecrawl account to your app instead, use OAuth for apps .",
+      "source_type": "official_docs",
+      "check": "not_found"
+    }
+  ],
+  "problems": [
+    "The separate OAuth-for-apps page could not be read at the URL attempted, so the OAuth finding relies on the readable authentication overview.",
+    "The Composio toolkit description appears without a final period on the page."
+  ],
+  "id": "firecrawl",
+  "name": "Firecrawl",
+  "website": "firecrawl.dev",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "firecrawl",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/firecrawl",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show an app access token plus refresh token used in place of an API key (oauth2), a dashboard API key sent as Authorization: Bearer (fairly api_key), and some REST endpoints with no credential. Nothing recommends a different method for third-party apps."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "\"Sign up for a free API key\" proves self_serve_free with no payment, trial, or approval. The open-source-or-cloud quotes support both deployments and that self-hosting needs extra configuration for some capabilities."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public reference describes endpoints, a shared base URL, auth, and response format, and auth quotes call it a REST API. Crawl and monitor examples do not contradict breadth broad."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor docs say to set up Firecrawl MCP and the firecrawl GitHub repo publishes the server. Setup language shows it is usable now; nothing labels it beta, pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on a Composio toolkit page for Firecrawl, so in_catalog yes is shown."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "self_serve_free credentials plus a documented public REST API of useful breadth yield buildable_now with main_blocker none."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:48:52+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 132491,
+    "output_tokens": 3427,
+    "cached_input_tokens": 97126,
+    "critic_tokens": 3244,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Firecrawl",
+      "charged_usd": 0.0,
+      "log_id": "log_1RP3MqdzeU4P"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Firecrawl MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_9Yu4yk99pame"
+    }
+  ]
+}

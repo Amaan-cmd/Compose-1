@@ -1,0 +1,166 @@
+{
+  "one_liner": "Cloud web-scraping and automation platform (Actors) with a free API token, a broad public REST API, and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "bearer_token",
+      "api_key"
+    ],
+    "primary": "bearer_token",
+    "notes": "No OAuth for third-party API integrations. The credential is a personal API token created in Apify Console, sent as Authorization: Bearer <token> (recommended) or as a token query parameter (api_key). Some public Actors and resources can be read without a token; private resources and named IDs require one. MCP-server OAuth is client authorization for the hosted MCP endpoint, not the platform API method."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Anyone can sign up with no credit card on the Free plan ($0, $5 of prepaid usage). Tokens are created by the account holder in Console under Settings > API & Integrations, with no vendor review. Optional x402 agentic payments can mint a temporary spend-capped token without an account. Deployment is cloud only (Apify Console and api.apify.com); Crawlee is a separate open-source library, not the platform."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.apify.com/api/v2",
+    "notes": "The reference covers Actors, versions, builds, runs, tasks, datasets, key-value stores, request queues, schedules, webhooks, and account usage, with create, read, update, and delete. Official clients exist for JavaScript, Python, and other languages, but the HTTP API is the primary interface."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.apify.com/mcp",
+    "notes": "Apify documents and hosts the server at mcp.apify.com (Streamable HTTP, OAuth or Bearer) and publishes the local npm package @apify/actors-mcp-server (stdio). Presented as usable now, not beta or an announcement. Discovery tools work without an account; running Actors requires a token."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/apify"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "A developer can register a free account with no credit card, create an API token, and call a documented REST API that reads and writes Actors, runs, storage, schedules, and webhooks. The official MCP server is already an agent-facing surface on top of the same token."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.apify.com/api/v2",
+      "quote": "You can create an API token on the Integrations page in the Apify Console. The Console shows the token only once, right after you create or rotate it, so copy it and store it somewhere safe.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.apify.com/api/v2",
+      "quote": "Bearer token provided in the Authorization header (e.g., Authorization: Bearer your_token —recommended).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://apify.com/pricing",
+      "quote": "Free $0 $5 to spend in Apify Store or on your own Actors $0.2 per compute unit Community support No Apify Store discount Start for free No credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.apify.com/integrations/api",
+      "quote": "You manage your tokens on the API & Integrations page in Apify Console.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.apify.com/integrations/api",
+      "quote": "All aspects of the Apify platform can be controlled via a REST API, which is described in detail in the API Reference.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.apify.com/mcp",
+      "quote": "The Apify's MCP server ( mcp.apify.com ) allows AI applications and agents to interact with the Apify platform using Model Context Protocol (MCP).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/apify",
+      "quote": "Apify is a platform for building, deploying, and managing web scraping and automation tools, known as Actors.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page renders plan columns as running text, so the free-plan sentence is a flattened row rather than a labeled FAQ statement, but it does state the Free plan price, included credit, and \"No credit card required\" together.",
+    "OAuth appears in the API reference only as Actor OAuth connections (Actors connecting out to other services) and on the MCP server, not as an API auth scheme for integrators."
+  ],
+  "id": "apify",
+  "name": "Apify",
+  "website": "docs.apify.com",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "apify",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/apify",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes establish an API token and explicitly recommend sending it as a Bearer token. No separate quote establishes the listed api_key method or the note's claim that OAuth is unavailable."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show a free, no-credit-card plan and that users can create and manage API tokens in Console. They do not establish the notes about x402, vendor review, or cloud-only deployment."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation calls it a REST API and says it controls all aspects of the platform. The specific object and operation list in the notes is not established by these quotes."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Apify's documentation identifies its MCP server at mcp.apify.com as allowing agents to interact with the platform, with no quoted beta or launch restriction. The local package and authentication details in the notes are not established."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on Composio's Apify toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free API tokens and a documented, broadly capable REST API support buildable_now with no main blocker. The rationale's specific list of writable resources and its claim that MCP uses the same token go beyond the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:32+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 5,
+    "input_tokens": 46687,
+    "output_tokens": 3116,
+    "cached_input_tokens": 12891,
+    "critic_tokens": 3476,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Apify",
+      "charged_usd": 0.0,
+      "log_id": "log_yFfIL2LaNJAi"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Apify MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_4eHKg0bL6JL2"
+    }
+  ]
+}

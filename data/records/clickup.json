@@ -1,0 +1,187 @@
+{
+  "one_liner": "ClickUp is a cloud project-management product with a broad public REST API (personal tokens and OAuth) usable on its free plan, plus an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Docs document a personal API token for individual use and OAuth 2.0 authorization-code for apps acting for other users, which is the recommended path for a third-party integration. Personal tokens are sent as the Authorization header value (not a \"Bearer \" prefix); OAuth access tokens are sent as Bearer."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Cloud only. A Free Forever plan ($0, no credit card) is a real free plan, not a trial. The public API is available on all plans, including Free Forever, whose tokens are rate-limited to 100 requests/minute; some endpoints (user and guest management) are Enterprise-only, and only Workspace owners or admins can create OAuth apps. No vendor review is documented for creating an OAuth app."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.clickup.com/reference",
+    "notes": "Public v2 and v3 reference covers read and write for tasks, lists, folders, spaces, comments, docs, chat, goals, custom fields, views, time tracking, and webhooks. Base path is https://api.clickup.com/api/v2."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.clickup.com/mcp",
+    "notes": "ClickUp hosts the server at https://mcp.clickup.com/mcp and documents setup for Claude, Cursor, ChatGPT, VS Code, and others. Auth is OAuth only (not personal API keys). Available on all plans with low daily caps without the Everything AI add-on (Free Forever 100 calls/24h). The vendor page does not call it beta or preview; third-party blogs do, so maturity is taken from the vendor docs. Community servers also exist (for example taazkareem/clickup-mcp-server). Deletion tools are intentionally omitted."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/clickup"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Anyone can start a Free Forever ClickUp workspace with no credit card, generate a personal API token or an OAuth app, and call a documented public REST API that covers most core project objects for reading and writing. Constraints are rate limits and a few Enterprise-only endpoints, not access to credentials."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.clickup.com/docs/authentication",
+      "quote": "For personal use, authenticate with your personal API token. For apps or integrations that other people use, use the OAuth flow, allowing users to authorize Workspaces for your app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.clickup.com/docs/authentication",
+      "quote": "This token is used in the Authorization: Bearer {access_token} header for all API requests made on behalf of the user.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://clickup.com/pricing",
+      "quote": "Is the Free Forever Plan really free? For sure! This is so much more than a trial.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.clickup.com/docs/apis-available-by-plan",
+      "quote": "Our Public API is available on all ClickUp Plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.clickup.com/docs/rate-limits",
+      "quote": "The ClickUp API applies rate limits per token. These limits apply to both personal and OAuth tokens and vary by Workspace Plan of the Workspace hosting the token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.clickup.com/reference",
+      "quote": "These are the routes for authing the API and going through the OAuth flow.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://clickup.com/api",
+      "quote": "Build integrations and apps with our Public API.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+      "quote": "ClickUp's MCP Server is available on all plans.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1",
+      "quote": "Learn how to setup your AI assistant with ClickUp's MCP server.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/clickup",
+      "quote": "ClickUp unifies tasks, docs, goals, and chat in a single platform, allowing teams to plan, organize, and collaborate across projects with customizable workflows.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Pricing feature tables lose their columns in text extraction, so plan-to-API proof comes from the developer docs (API on all plans, FreeForever rate-limit row) plus the pricing FAQ stating Free Forever is not a trial.",
+    "Third-party writeups call the official MCP server a public beta; ClickUp's own MCP docs do not use that label, so maturity follows the vendor page."
+  ],
+  "id": "clickup",
+  "name": "ClickUp",
+  "website": "clickup.com/api",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "clickup",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/clickup",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The docs recommend OAuth for integrations used by others and document personal API tokens. The quotes do not establish the claimed authorization-code flow or how personal tokens are formatted in the header."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The Free Forever plan is not a trial, and the public API is available on all plans. The quotes do not establish the claimed credit-card requirement, exact rate limit, Enterprise-only endpoints, or OAuth-app creation rules."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public API and routes in its reference support an endpoint-based API; nothing quoted contradicts the estimated broad breadth. The specific objects, versions, read/write operations, and base URL in the notes are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "ClickUp's own developer docs describe its MCP server as available on all plans and provide setup guidance. The quotes do not establish the specific server URL, authentication rules, usage caps, or omitted tools."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "A Composio toolkit page at /toolkits/clickup contains a description of ClickUp."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free-plan API access and a documented endpoint-based public API support buildable_now with no access blocker. The rationale's claims about no credit card, creating an OAuth app, and particular API coverage go beyond the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:59:20+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 8,
+    "input_tokens": 102541,
+    "output_tokens": 3823,
+    "cached_input_tokens": 66079,
+    "critic_tokens": 3673,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for ClickUp",
+      "charged_usd": 0.0,
+      "log_id": "log_MD_7lEauuav8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "ClickUp MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_-WLY_869n7Ju"
+    }
+  ]
+}

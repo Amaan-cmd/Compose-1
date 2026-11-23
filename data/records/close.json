@@ -1,0 +1,254 @@
+{
+  "one_liner": "Close is a hosted sales CRM with a broad REST API and a vendor-operated MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth 2.0 is recommended for user-facing integrations. API keys use HTTP Basic authentication."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "A 14-day trial is the self-serve path to testing the hosted API; there is no permanent free plan. Publishing an OAuth app for other Close customers requires review. The trial-to-API link is stated most directly by a third-party guide."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.close.com/api/overview",
+    "notes": "The public reference covers core CRM data with read and write operations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developer.close.com/mcp",
+    "notes": "Close documents a usable remote MCP server and recommends OAuth 2.0. The supplied MCP search returned no Close-specific result."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/close"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "A developer can test the documented, broad API through a 14-day trial, but the no-payment path is time-limited. Making an OAuth app available to other Close customers requires review."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://developer.close.com/",
+      "quote": "Push leads, contacts, activities, and custom data into Close from your website or other systems via the REST API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.close.com/api/overview",
+      "quote": "All API requests require authentication. Two methods are supported: API Keys — Best for scripts, internal tools, and server-side integrations. Use HTTP Basic Auth with your API key as the username and an empty password. OAuth 2.0 — Best for user-facing integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.close.com/integrations",
+      "quote": "OAuth 2.0 — Lets each user authorize your app to act on their behalf. Strongly recommended for user-facing integrations that multiple users will authenticate to.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.apideck.com/apis/crm/close/overview",
+      "quote": "Test with a free trial account, which runs 14 days and needs no credit card; Close documents no separate sandbox.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.close.com/api/overview/api-key-authentication",
+      "quote": "API keys can be created and managed in your Close account under Settings → Developer → API Keys.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://close.com/pricing/",
+      "quote": "Close doesn’t have a free plan, but you can try it free for 14 days with no credit card.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.close.com/integrations/publish",
+      "quote": "Click Make Public and submit for review. We’ll review your app and reply by email.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.apideck.com/apis/crm/close/overview",
+      "quote": "Close runs one production host, https://api.close.com/api/v1, for every account.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.close.com/api/overview",
+      "quote": "Close uses industry-standard REST conventions with predictable URL structures, standard HTTP methods, and JSON request/response bodies.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.close.com/api/resources/leads",
+      "quote": "They represent a company or organization and can contain contacts, tasks, opportunities, and activities.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.close.com/integrations",
+      "quote": "Build your integration — Use the API Reference to read and write Close data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.close.com/mcp",
+      "quote": "The MCP server URL is https://mcp.close.com/mcp and has ‘HTTP Streamable’ and ‘OAuth 2.0 Dynamic Client Registration (DCR)’ support.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.close.com/mcp",
+      "quote": "We recommend accessing the MCP server via OAuth 2.0 using a supported MCP client (e.g. Claude, ChatGPT, Cursor, etc).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/close",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Close MCP or direct API to manage leads, automate follow-ups, send emails, and track sales activities through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.apideck.com/apis/crm/close/overview",
+      "quote": "Test with a free trial account, which runs 14 days and needs no credit card; Close documents no separate sandbox.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.close.com/integrations/create-an-oauth-app",
+      "quote": "If you want other Close customers to authorize it, you’ll need to request to make it public and optionally get listed.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Close’s pricing page describes the trial and API separately, rather than explicitly saying in one sentence that trial accounts receive API credentials. The direct trial-API evidence therefore comes from Apideck.",
+    "No login wall prevented reading the relevant developer documentation."
+  ],
+  "id": "close",
+  "name": "Close",
+  "website": "close.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "close",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/close",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Docs state two methods: API keys via HTTP Basic Auth (key as username, empty password) and OAuth 2.0, which is explicitly best/strongly recommended for user-facing integrations acting for users."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No free plan; a 14-day no-card trial is the self-serve path, and API keys are created in account settings. The trial-to-API sentence is on a third-party page. Public OAuth apps need review, which is a distribution caveat, not a harder path to credentials."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Public docs describe a REST API with JSON and standard HTTP methods, and read/write of leads, contacts, activities, tasks, opportunities, and custom data. Nothing contradicts breadth broad."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Close's own developer page gives a usable server URL (https://mcp.close.com/mcp) and recommends OAuth clients. No quote calls it beta, pilot, or unlaunched. The MCP-search remark in the notes is not in these quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page lists Close for agents via Close MCP or the direct API."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial-only credentials plus a documented, non-narrow public REST API is buildable_with_caveats with main_blocker trial_only. OAuth review is an extra distribution constraint, not a different blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:45:26+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 14,
+    "input_tokens": 451510,
+    "output_tokens": 4660,
+    "cached_input_tokens": 377592,
+    "critic_tokens": 3383,
+    "composio_calls": 5,
+    "composio_usd": 0.02
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Close",
+      "charged_usd": 0.0,
+      "log_id": "log_3lq8ZmPJS6Jv"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Close MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Yi01Sl1Z0uLn"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:close.com OR site:help.close.com OR site:developer.close.com \"trial\" \"API keys\" Close 14 day",
+      "charged_usd": 0.004,
+      "log_id": "log_Bov7lpjUrmd2"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "\"Close\" \"trial\" \"API access\" API key CRM",
+      "charged_usd": 0.004,
+      "log_id": "log_veeqQzhNE65P"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:help.close.com \"trial\" \"API key\"",
+      "charged_usd": 0.004,
+      "log_id": "log_mJqXYSZLNLzt"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Close CRM API access free trial API keys available during trial close.com",
+      "charged_usd": 0.004,
+      "log_id": "log_Mtj0V5BRAs3U"
+    }
+  ]
+}

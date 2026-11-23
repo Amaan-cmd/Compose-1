@@ -1,0 +1,200 @@
+{
+  "one_liner": "DataForSEO is a cloud API for collecting search results, researching keywords and competitors, analyzing backlinks, and running on-page SEO audits. It offers an official MCP server and is listed in Composio.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "basic"
+    ],
+    "primary": "basic",
+    "notes": "Direct REST requests use HTTP Basic authentication with the API login and generated API password from the dashboard, not the account password. OAuth documented for some MCP clients is separate from REST authentication."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free account provides API credentials without payment or approval. The free sandbox returns sample responses, and new accounts receive $1 in trial credit to test paid API functionality. Continued paid usage is metered, with a $50 minimum top-up. The locally runnable MCP server connects to the cloud API; it does not self-host DataForSEO."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.dataforseo.com/v3/",
+    "notes": "The public reference covers SERPs, keyword and competitor research, backlinks, on-page crawling, and other datasets. Write operations primarily start or manage collection jobs rather than edit source data. SERP Live returns results in one request; Standard separates task submission from retrieval and supports polling or callbacks."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.dataforseo.com/v3/mcp",
+    "notes": "DataForSEO documents a hosted HTTP endpoint and local NPX and Docker options. The vendor setup page provides connection instructions and does not label the server beta or preview."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/dataforseo"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Developers can get credentials with a free account and build against a broad, publicly documented REST API. The sandbox and trial credit allow testing before funding an account for metered use."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://docs.dataforseo.com/v3/",
+      "quote": "Welcome to DataForSEO API! This is the starting point on your journey towards building powerful SEO software, data analysis pipelines, and robust no-code automations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.dataforseo.com/v3/auth/",
+      "quote": "Basic authentication is the only way to access DataForSEO API; credentials should always be passed in the header of the request.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.dataforseo.com/v3/auth/",
+      "quote": "Create a free account with DataForSEO, then go to the API Access tab in the account dashboard to find your API login and password, which you’ll need to authenticate and use the DataForSEO APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://dataforseo.com/pricing",
+      "quote": "You can also test API integration for free using the DataForSEO Sandbox. The Sandbox provides sample responses for testing, while trial credit lets you test paid API functionality.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://dataforseo.com/pricing",
+      "quote": "The minimum account top-up is $50. This amount is added to your account balance and used to pay for API requests you make.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.dataforseo.com/v3/",
+      "quote": "DataForSEO API is using the REST technology for interchanging data between your application and our service.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.dataforseo.com/v3/serp/overview/",
+      "quote": "If you don’t need to receive data in real-time, you can use the Standard method of data retrieval. This method requires making separate POST and GET requests, but it’s more affordable.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.dataforseo.com/v3/on_page/overview/",
+      "quote": "Sending a website for crawling is done through a POST request to the OnPage Task Post endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://dataforseo.com/model-context-protocol",
+      "quote": "Point your MCP-compatible client to the official DataForSEO remote endpoint: https://mcp.dataforseo.com/v3/mcp",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/dataforseo",
+      "quote": "Instant is available on the latest version. Check each tool for support and pricing.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.dataforseo.com/v3/auth/",
+      "quote": "Create a free account with DataForSEO, then go to the API Access tab in the account dashboard to find your API login and password, which you’ll need to authenticate and use the DataForSEO APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://dataforseo.com/pricing",
+      "quote": "The Sandbox provides sample responses for testing, while trial credit lets you test paid API functionality.",
+      "source_type": "official_site",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "A candidate GitHub repository URL did not load; the official vendor setup page was sufficient to verify MCP availability.",
+    "No authenticated API, MCP, or Composio calls were run, so endpoint-by-endpoint coverage and runtime behavior were not independently tested."
+  ],
+  "id": "dataforseo",
+  "name": "DataForSEO",
+  "website": "docs.dataforseo.com",
+  "category": "Data, SEO and Scraping",
+  "batch": 6,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "dataforseo",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/dataforseo",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The docs explicitly say Basic authentication is the only way to access the API. The quotes do not establish the notes about a generated password or MCP-client OAuth."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free account provides API credentials for using the APIs, supporting self_serve_free. The quotes support sandbox testing, trial credit, and a $50 minimum top-up, but not the claimed $1 credit amount or local MCP deployment details."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public docs explicitly identify REST and describe POST and GET requests. Nothing quoted contradicts broad breadth, though several datasets and workflow details in the notes are not evidenced."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor identifies an official remote endpoint and instructs clients to connect to it, supporting a usable official server. The local NPX and Docker options in the notes are not evidenced."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is on Composio's app-specific toolkit page at /toolkits/dataforseo. The quote itself is generic, but the cited page identifies the toolkit."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free self-serve API credentials and a documented REST API support buildable_now with no listed blocker. The rationale's testing claim is supported, apart from any specific trial-credit amount."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:58:27+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 11,
+    "input_tokens": 188647,
+    "output_tokens": 4845,
+    "cached_input_tokens": 125853,
+    "critic_tokens": 3629,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for DataForSEO",
+      "charged_usd": 0.0,
+      "log_id": "log_L-h_PLGQKglN"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "DataForSEO MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_2_Hh5v67sH2x"
+    }
+  ]
+}

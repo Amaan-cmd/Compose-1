@@ -1,0 +1,171 @@
+{
+  "one_liner": "Harvest has a broad, publicly documented REST API and an official, usable MCP server. The unresolved question for a new developer is whether Harvest’s free plan or trial permits creation of API credentials.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "The docs describe OAuth2 for integrations used by other users and personal access tokens for API access."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Harvest says its free version is available to anyone, and its API documentation says a Personal Access Token can be created in the Developers section of Harvest ID. The quotes do not restrict token creation to paid accounts."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://help.getharvest.com/api-v2/",
+    "notes": "The public documentation describes time tracking, expenses, projects, and more."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+    "notes": "The memo says Harvest publishes connection instructions for `https://api.harvestapp.com/mcp` and does not label the MCP connection beta or preview."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/harvest"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Credentials are self-serve and free, and the documented API is broad enough to be useful."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "quote": "If you are interested in building integrations that other users can use, you will need to register an OAuth2 Application, also known as an OAuth2 Client.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "quote": "The API can be accessed by creating a Personal Access Token from the Developers section of Harvest ID.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.getharvest.com/hc/en-us/articles/26145254105613-Is-there-a-free-version-of-Harvest",
+      "quote": "Harvest does have a free version, and it is available for anyone to use, though it does have some limitations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+      "quote": "The API can be accessed by creating a Personal Access Token from the Developers section of Harvest ID.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://help.getharvest.com/api-v2/introduction/overview/general/",
+      "quote": "The Harvest V2 API is a REST API that allows you to interact with your Harvest account programmatically. You can track time, log expenses, create projects, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+      "quote": "The Harvest MCP is the connection that gives an MCP-compatible assistant — such as Claude — controlled access to your Harvest account, so it can carry out time tracking tasks on your behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/harvest",
+      "quote": "Harvest is a time-tracking and invoicing tool designed for teams and freelancers, helping them log billable hours, manage projects, and streamline payments.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The Harvest ID developers page could not be read directly. The accessible pricing and API pages did not explicitly tie token creation to the free plan or trial."
+  ],
+  "id": "harvest",
+  "name": "Harvest",
+  "website": "harvestapp.com (help.getharvest.com/api-v2)",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "harvest",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/harvest",
+  "access_basis": "inferred",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is required for integrations other users can use, and a Personal Access Token is documented for API access; primary oauth2 matches the third-party-integration guidance. PAT is fairly classed as bearer_token."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred, not explicit: a free version is available to anyone, and an account holder creates a Personal Access Token in Harvest ID. Nothing quoted ties credentials to payment, a trial, approval, or sales. The free plan's unspecified limitations are not shown to exclude the API."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public docs call it a REST API and describe creating/tracking time, expenses, projects, and more. That does not contradict breadth broad; public_docs is shown by the readable help pages."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Harvest's own support page describes the Harvest MCP as a working connection that lets an assistant act on an account. That supports official and generally_available; the quote does not call it beta, preview, or unlaunched. The specific mcp host URL is not in the quote."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on a Composio toolkit page for Harvest (docs.composio.dev/toolkits/harvest)."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "self_serve_free credentials plus a documented REST API of useful breadth meet buildable_now with main_blocker none."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:51:43+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 10,
+    "input_tokens": 133926,
+    "output_tokens": 3883,
+    "cached_input_tokens": 82900,
+    "critic_tokens": 6141,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Harvest",
+      "charged_usd": 0.0,
+      "log_id": "log__u2UvIj8fN1j"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Harvest MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_10yOW35BSdoK"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:support.getharvest.com OR site:help.getharvest.com \"API\" \"free plan\" \"Harvest\" access tokens",
+      "charged_usd": 0.004,
+      "log_id": "log_MxBVmaluXka5"
+    }
+  ]
+}

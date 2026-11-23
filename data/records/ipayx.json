@@ -1,0 +1,211 @@
+{
+  "one_liner": "iPayX Protocol is a hosted fintech service that audits foreign-exchange transactions against mid-market rates to estimate bank or broker markups without moving money.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "bearer_token",
+      "none"
+    ],
+    "primary": "unknown",
+    "notes": "The REST reference documents a Supabase JWT or an iPayX API key in the Bearer header, with anonymous access for rate lookup and ROI calculation. The MCP manifest specifies an API key for full reports. No recommended REST credential was identified for integrations acting on a user's behalf."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Public hosted MCP tools can be tried without signup. The vendor README documents three free single-transaction audits per IP per calendar month, but anonymous access does not provide credentials. The MCP manifest points to https://www.ipayx.ai/developers for an API key, but whether developers can obtain one for free, on a trial, or only with payment or approval was not verified. No self-hosted deployment of the app was documented."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "narrow",
+    "public_docs": true,
+    "docs_url": "https://www.ipayx.ai/.well-known/openapi.json",
+    "notes": "The public OpenAPI 3.1 reference lists three POST operations: /fx-audit-engine for forensic FX audits, /fetch-spot-rate for historical mid-market rates at a specified minute, and /roi-calculator for estimating savings from switching FX providers. The operations were not tested."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.ipayx.ai/mcp",
+    "notes": "The vendor-hosted Streamable HTTP endpoint was reachable, reported version 1.4.0, and listed four tools: live rate lookup, single-transaction audit, source comparison, and full forensic reporting. Not every tool was tested, and vendor sources disagree on whether full reports require a key."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "The official MCP server supports a no-signup prototype for a narrow FX-audit workflow, and the REST API is publicly documented. How a new developer obtains credentials for authenticated calls remains unverified."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://www.ipayx.ai/.well-known/openapi.json",
+      "quote": "Twelve Data primary, Open Exchange Rates fallback. Hybrid auth: anonymous = 10 req/min + 100/day; authenticated = 30 req/min.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://www.ipayx.ai/.well-known/mcp.json",
+      "quote": "full_forensic_fx_report requires a Bearer API key from https://www.ipayx.ai/developers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.ipayx.ai/.well-known/mcp.json",
+      "quote": "check_fx_mid_market_rate, audit_fx_transaction and compare_fx_sources are public (rate-limited per IP). full_forensic_fx_report requires a Bearer API key from https://www.ipayx.ai/developers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://github.com/iPAYX-Technologies/mcp-fx-audit",
+      "quote": "Expose hidden bank FX fees in 30 seconds. No signup required.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.ipayx.ai/.well-known/mcp.json",
+      "quote": "Generate a full forensic FX audit with detailed breakdown, partner routing, and a shareable Proof-Link. Requires a Bearer API key from https://www.ipayx.ai/developers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.ipayx.ai/.well-known/openapi.json",
+      "quote": "Returns a 1-10 forensic score, hidden spread vs mid-market in basis points, total overpayment in CAD, and the recommended switching partner.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.ipayx.ai/.well-known/openapi.json",
+      "quote": "Returns the mid-market rate for a currency pair at a specific date+time.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.ipayx.ai/.well-known/openapi.json",
+      "quote": "Returns 1-, 3-, and 5-year savings per provider and identifies the best option.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/iPAYX-Technologies/mcp-fx-audit",
+      "quote": "Read-only: the server never moves money and never executes transfers.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/iPAYX-Technologies/mcp-fx-audit",
+      "quote": "A Model Context Protocol server for foreign exchange forensic auditing. Any AI agent (Claude, ChatGPT, Perplexity, Cursor, Copilot) can check live mid-market rates, audit FX transactions against the mid-market rate in real time, and generate a full forensic report.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The developer, pricing, and human-readable API docs pages did not yield usable credential or plan details. The extracted developer page returned a generic product overview.",
+    "The vendor's https://ipayx.ai/llms.txt says no key is required for the full report, while the MCP manifest at https://www.ipayx.ai/.well-known/mcp.json and the official repository at https://github.com/iPAYX-Technologies/mcp-fx-audit say it requires a Bearer API key. Full-report authentication was not tested.",
+    "The supplied Composio lookup found no matching toolkit, and the expected page at https://docs.composio.dev/toolkits/ipayx was not found. The memo provides no quoted catalog evidence."
+  ],
+  "id": "ipayx",
+  "name": "iPayX",
+  "website": "ipayx.ai/docs",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "unsupported",
+      "note": "The quotes describe three results, but show no HTTP endpoint, method, or JSON request to establish the claimed REST style. They do not contradict the narrow breadth estimate."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor-named GitHub source describes an MCP server as currently usable. The claimed hosted endpoint, version, four-tool inventory, and testing results are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "api: unsupported (The quotes describe three results, but show no HTTP endpoint, method, or JSON request to establish the claimed REST style. They do not contradict the narrow breadth estimate.)",
+    "auth is unknown",
+    "access is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T21:00:28+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 16,
+    "input_tokens": 128748,
+    "output_tokens": 8964,
+    "cached_input_tokens": 72892,
+    "critic_tokens": 10936,
+    "composio_calls": 4,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for iPayX",
+      "charged_usd": 0.0,
+      "log_id": "log_csL4PzF0jqkT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "iPayX MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_nSh0Q2Ky751f"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "iPayX official API documentation REST endpoints authentication API key account signup sandbox pricing and MCP server",
+      "charged_usd": 0.0,
+      "log_id": "log_anEB7EpA2zfd"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "\"iPayX\" \"ipayx.ai\" FX API developer documentation authentication pricing MCP iPayX Protocol",
+      "charged_usd": 0.004,
+      "log_id": "log_dX8t_GLGb7x0"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "API key create free free tier API access paid plan pricing account iPayX developers",
+      "charged_usd": 0.004,
+      "log_id": "log_GxsoYYzBjfBA"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "one_liner": "Supabase offers documented management and data APIs and an official MCP server.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "bearer_token",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth2 is for third-party integrations acting on users' behalf. The memo says personal access tokens authenticate Management API requests and project API keys authenticate data requests."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The most accessible path is a free hosted project with project API keys available in its Dashboard. Self-hosting is another route, but it does not include the Management API. The free-credentials finding relies on the documented availability of free projects and separate key-retrieval documentation."
+  },
+  "api": {
+    "styles": [
+      "rest",
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://supabase.com/docs/reference/api/introduction",
+    "notes": "The public Management API covers organizations and projects; project data APIs support database CRUD."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://supabase.com/features/mcp-server",
+    "notes": "Supabase documents a hosted MCP connection and available tools. The memo reports that the feature page labels the server General Availability."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/supabase"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free hosted projects provide a path to project API keys, and OAuth2 is documented for third-party Management API integrations. The APIs cover project management and database CRUD, though the Management API is unavailable when self-hosting."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://supabase.com/docs/reference/api/introduction",
+      "quote": "OAuth2: OAuth2 allows your application to generate tokens on behalf of a Supabase user, providing secure and limited access to their account without requiring their credentials. Use this if you're building a third-party app that needs to create or manage Supabase projects on behalf of your users.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+      "quote": "An API key authenticates an application component to give it access to Supabase services. An application component might be a web page, a mobile app, or a server.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://supabase.com/docs/guides/platform/billing-faq",
+      "quote": "You are entitled to two active free projects.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+      "quote": "It shows the URL and publishable key for the framework you select, ready to paste into .env .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://supabase.com/docs/guides/self-hosting",
+      "quote": "Some features of the managed platform aren't available when self-hosting: branching, advanced metrics beyond logs, managed backups and PITR, analytics and vector buckets , ETL, and the Management API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://supabase.com/docs/reference/api/introduction",
+      "quote": "Manage your Supabase organizations and projects programmatically.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://supabase.com/docs/guides/api",
+      "quote": "It exposes everything you need from a CRUD API at the URL https://<project_ref>.supabase.co/rest/v1/ .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://supabase.com/docs/guides/graphql",
+      "quote": "The Supabase GraphQL API is automatically reflected from your database's schema using pg_graphql .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://supabase.com/features/mcp-server",
+      "quote": "Connect your AI tools using the official Supabase Model Context Protocol (MCP) server.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://supabase.com/docs/guides/ai-tools/mcp",
+      "quote": "Once connected, your AI assistants can interact with and query your Supabase projects on your behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/supabase",
+      "quote": "Supabase is an open-source backend-as-a-service providing a Postgres database, authentication, storage, and real-time subscription APIs for building modern applications",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+      "quote": "This guide steps through building a Supabase Integration using OAuth2 and the management API, allowing you to manage users' organizations and projects on their behalf.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://supabase.com/docs/guides/api/quickstart",
+      "quote": "This creates a corresponding API route /rest/v1/leaderboard which can accept GET , POST , PATCH , and DELETE requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "I did not find a single complete sentence explicitly tying API-key creation to the Free plan. The access finding relies on the documented availability of free projects plus the documented way to retrieve a project's keys.",
+    "The MCP feature page's General Availability designation appears as a label, not a complete sentence; the quoted sentences establish that the official server is usable."
+  ],
+  "id": "supabase",
+  "name": "Supabase",
+  "website": "supabase.com/docs",
+  "category": "Developer, Infra and Data platforms",
+  "batch": 7,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "supabase",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/supabase",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is explicitly recommended for third-party apps managing projects on users' behalf, and API keys are documented for application components, so primary oauth2 is proven. No quote mentions bearer tokens or personal access tokens; that extra listed method is unevidenced but does not overturn the field."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Two active free projects plus publishable keys shown ready to use prove a free hosted path to credentials with no quoted payment, trial, or approval. The self-hosting quote supports deployment_model both and correctly limits the Management API to the managed platform; it does not say self-hosting itself requires payment."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Documented /rest/v1/ routes accepting GET, POST, PATCH, and DELETE, plus a reflected GraphQL API, prove rest and graphql. Org/project management and database CRUD are not described as read-only, so breadth broad is not contradicted. The cited pages are publicly quoted, supporting public_docs and the docs URL."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Supabase's own pages call it the official MCP server and describe connecting and using it now, which supports official and generally_available. No quote uses the words General Availability, but nothing calls it beta, a pilot, or unlaunched."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit docs page describes a Supabase toolkit, so in_catalog yes is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free projects yield API keys and the documented REST/GraphQL and management APIs are broad enough to use, so buildable_now with main_blocker none follows. The self-hosting Management API gap is a caveat in the rationale, not a blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:50:00+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 333585,
+    "output_tokens": 4950,
+    "cached_input_tokens": 260418,
+    "critic_tokens": 3443,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Supabase",
+      "charged_usd": 0.0,
+      "log_id": "log_c0zTy2wk8ab5"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Supabase MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_01BgWsXdHflr"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:supabase.com \"free plan\" \"API keys\" OR \"API access\" Supabase",
+      "charged_usd": 0.004,
+      "log_id": "log_lHFTce9VLjpg"
+    }
+  ]
+}

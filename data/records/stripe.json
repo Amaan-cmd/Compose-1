@@ -1,0 +1,188 @@
+{
+  "one_liner": "Stripe is a cloud payments and billing platform with a broad public REST API, self-serve sandbox credentials, and an official hosted MCP server in public preview.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "basic",
+      "oauth2"
+    ],
+    "primary": "oauth2",
+    "notes": "Use OAuth 2.0 when a third-party app needs users to authorize access to their Stripe accounts. For an integration operating on its own account, use a restricted API key. HTTP Basic is a way to send the API key, not a separate username-and-password credential. Sending the same key in a Bearer header does not make it a separate credential type."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A new Stripe account can use a hosted sandbox immediately, with separate test API keys and no real money movement. Accepting real payments requires setting up the live account. Sandbox access does not establish that every Stripe product or live capability is available."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.stripe.com/api",
+    "notes": "The public reference covers reads and writes for customers, payments, refunds, invoices, subscriptions, and other core resources. Customer operations include create, update, retrieve, list, search, and delete."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "beta_or_pilot",
+    "url": "https://mcp.stripe.com",
+    "notes": "Stripe labels its hosted server Public preview. It supports OAuth for interactive clients and permission-scoped agent API keys for persistent access. Some writes, such as creating a refund, can require confirmation in the Stripe Dashboard, separate from the MCP client’s own tool approval."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/stripe"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Self-serve sandbox keys and a broad, public REST API are enough to build and test a useful toolkit now. The official MCP server’s preview status does not block a direct API integration."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://stripe.com/docs/api",
+      "quote": "The Stripe API authenticates requests using HTTP Basic Auth . Provide your API key as the basic auth username value.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.stripe.com/stripe-apps/api-authentication",
+      "quote": "Use industry standard OAuth 2.0 to generate access tokens to interact with the Stripe API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.stripe.com/get-started/account",
+      "quote": "Immediately after you create a Stripe account, you can use a sandbox to simulate transactions and test Stripe features without moving any money. To accept real payments, you must set up your account .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.stripe.com/keys",
+      "quote": "Use the API keys page in the Dashboard to create, reveal, expire and rotate keys for the account or sandbox you’re viewing.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://stripe.com/docs/api",
+      "quote": "Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.stripe.com/api/customers",
+      "quote": "This object represents a customer of your business. Use it to create recurring charges , save payment and contact information, and track payments that belong to the same customer.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.stripe.com/mcp",
+      "quote": "The Stripe Model Context Protocol (MCP) server provides tools that AI agents can use to interact with the Stripe API and search the Stripe knowledge base, including documentation and support articles.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.stripe.com/mcp",
+      "quote": "Before an agent completes certain actions on your behalf, Stripe can require you to review and approve the request in the Dashboard.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/stripe",
+      "quote": "Use your own Stripe Connect OAuth app when you want users to see your platform's name on the consent screen and control the credentials yourself.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://stripe.com/docs/api",
+      "quote": "You can use the Stripe API in sandboxes without affecting your live data or interacting with banking networks. The API key that you use to authenticate the request determines whether the request runs in live mode or in a sandbox.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio search returned only stripe_mcp and missed the native Stripe toolkit; the public toolkit page resolved the discrepancy.",
+    "This was a documentation review: no credentials were created and no authenticated API or MCP calls were made."
+  ],
+  "id": "stripe",
+  "name": "Stripe",
+  "website": "stripe.com/docs/api",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "stripe",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/stripe",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document API-key authentication via HTTP Basic and OAuth 2.0. The OAuth and consent-screen quotes support its use for third-party access. The claimed recommendation to use restricted keys for own-account integrations is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A developer can create an account, immediately use an API sandbox, and manage its API keys. The quotes do not show a payment, trial, or approval requirement."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public documentation describes an HTTP API with request bodies, JSON responses, and HTTP verbs. The specific list of customer operations in the notes is not established by the quotes; breadth is not contradicted."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Stripe's documentation identifies a Stripe MCP server that provides tools. Nothing quoted contradicts beta_or_pilot, but the quotes do not establish the claimed Public preview label, hosted URL, or authentication details."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote comes from Composio's Stripe toolkit page and discusses using a Stripe Connect OAuth app."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Immediate sandbox API access with keys, together with a documented HTTP API, supports buildable_now with no main blocker. The MCP preview claim is not needed for that verdict."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:59:42+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 6,
+    "input_tokens": 91689,
+    "output_tokens": 3968,
+    "cached_input_tokens": 51468,
+    "critic_tokens": 3400,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Stripe",
+      "charged_usd": 0.0,
+      "log_id": "log_deIHwMxcu1ih"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Stripe MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_orMJnrAGwGWx"
+    }
+  ]
+}

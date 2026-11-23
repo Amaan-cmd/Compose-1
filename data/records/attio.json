@@ -1,0 +1,230 @@
+{
+  "one_liner": "Attio is a CRM for managing contacts, relationships, and workflows.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is preferred for apps serving multiple workspaces; workspace API keys and HTTP Basic authentication are also supported."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "API keys are available on all plans, including Free, but require workspace-admin permissions to create. An unpublished app can be installed in up to 25 workspaces; publication requires Attio review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.attio.com/rest-api/overview",
+    "notes": "The public JSON-over-HTTPS API supports reading and writing workspace information, with realtime events available through webhooks."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://docs.attio.com/mcp/overview",
+    "notes": "Attio hosts an MCP server for access to Attio workspaces."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/attio"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "The Free plan and all-plan API-key availability establish a path to credentials, while Attio documents a public REST API for reading and writing workspace information. Public app publication requires review, but an unpublished app can be installed in up to 25 workspaces."
+  },
+  "evidence": [
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/attio",
+      "quote": "Attio is a customizable CRM and workspace for managing your team's relationships and workflows.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.attio.com/rest-api/guides/authentication",
+      "quote": "You should prefer the OAuth 2.0 flow if building an app for multiple workspaces. If you are building an app for a single workspace, you can manually generate an API key to make requests on behalf of that workspace only.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.attio.com/rest-api/guides/authentication",
+      "quote": "We also support HTTP Basic Authentication, where the username is the token and the password is left blank.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://attio.com/help/apps/other-apps/generating-an-api-key",
+      "quote": "Available on all plans. Admins can create and manage API keys.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://attio.com/pricing",
+      "quote": "The Free plan costs nothing for up to three users.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.attio.com/share/private-invites",
+      "quote": "An unpublished app can be installed in up to 25 workspaces.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.attio.com/share/the-publication-lifecycle",
+      "quote": "Publishing requires a review from the Attio team, which can take up to 1 week.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.attio.com/rest-api/overview",
+      "quote": "Attio provides a public REST API which exchanges JSON over HTTPS.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.attio.com/docs/overview",
+      "quote": "This allows developers to build apps that read and write information to and from Attio workspaces. You can also subscribe to events in realtime using webhooks.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.attio.com/mcp/overview",
+      "quote": "Attio MCP is Attio’s hosted MCP server that gives AI tools secure access to your Attio workspace.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/attio",
+      "quote": "Attio MCP server for AI agents and assistants",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://attio.com/pricing",
+      "quote": "The Free plan costs nothing for up to three users.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://attio.com/help/apps/other-apps/generating-an-api-key",
+      "quote": "Available on all plans. Admins can create and manage API keys.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.attio.com/docs/overview",
+      "quote": "This allows developers to build apps that read and write information to and from Attio workspaces.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.attio.com/share/private-invites",
+      "quote": "An unpublished app can be installed in up to 25 workspaces.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.attio.com/share/the-publication-lifecycle",
+      "quote": "Publishing requires a review from the Attio team, which can take up to 1 week.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No access or documentation wall encountered.",
+    "API-key creation requires workspace-admin permissions, and unrestricted public app distribution requires review."
+  ],
+  "id": "attio",
+  "name": "Attio",
+  "website": "attio.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "attio",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/attio",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth 2.0, API keys, and HTTP Basic, and recommend OAuth for apps serving multiple workspaces."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "API keys are available on all plans, including the Free plan. Admins create the keys; review is required for publication, not for initial use."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes identify a public REST API and support the claimed reading, writing, and webhook capabilities."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Attio describes the server as its hosted MCP server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote appears on Composio's Attio toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free-plan API keys and a documented public REST API support building now with no credential or API blocker. Publication review limits distribution, but unpublished apps can be installed without that review."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:18+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 13,
+    "input_tokens": 185139,
+    "output_tokens": 7288,
+    "cached_input_tokens": 121823,
+    "critic_tokens": 0,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Attio",
+      "charged_usd": 0.0,
+      "log_id": "log_LQMzLiG2KlXp"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Attio MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_s2OzGdQyP2cl"
+    }
+  ]
+}

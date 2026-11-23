@@ -1,0 +1,209 @@
+{
+  "one_liner": "Consensus is a hosted research service with a self-serve REST API and an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "oauth2",
+      "none"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is documented for MCP connections, not REST API requests. The REST API uses an API key, and MCP search can be tried without signing in."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A free account can use the hosted API, with 30 calls per month."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "moderate",
+    "public_docs": true,
+    "docs_url": "https://docs.consensus.app/api-get-started",
+    "notes": "The documentation covers research search and paper retrieval; OAuth for REST requests is not established."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://github.com/Consensus-NLP/consensus-mcp",
+    "notes": "Consensus publishes a hosted remote server; search works without an account, while thread tools require sign-in or an API key."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/consensus"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Every plan includes API access, with 30 calls per month on Free. The documented REST API supports scholarly article search and paper retrieval, though plan limits affect features."
+  },
+  "evidence": [
+    {
+      "field": "mcp",
+      "url": "https://github.com/Consensus-NLP/consensus-mcp",
+      "quote": "It's a hosted remote server, so there's nothing to install.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "A 401 means the key is missing or wrong.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.consensus.app/consensus-mcp",
+      "quote": "Use an API key for clients without OAuth, headless agents, and server-side automations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.consensus.app/consensus-mcp",
+      "quote": "If your client supports OAuth, authentication is handled automatically.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.consensus.app/mcp-plans-and-access",
+      "quote": "No account is needed to get started. Connect directly and try it out, then sign in for more results per search.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "Every plan includes API access, and the Free plan includes 30 calls a month.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "Create a free account or sign in at consensus.app. The dashboard in the next step only opens when you’re signed in.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "The Consensus API lets you search 400+ million scholarly articles, including 350 million peer-reviewed research papers, over a single REST endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "To read a whole open-access paper, pass its paper_id to GET /v1/papers/full_text for its complete text as Markdown.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/Consensus-NLP/consensus-mcp",
+      "quote": "The official Consensus MCP server gives Claude, ChatGPT, Cursor, VS Code, Microsoft 365 Copilot, Perplexity and any other MCP client semantic search over 400M+ scholarly articles, including 350M peer-reviewed papers and all of PubMed.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/consensus",
+      "quote": "Consensus provides evidence-based search across scientific research papers.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.consensus.app/api-get-started",
+      "quote": "Every plan includes API access, and the Free plan includes 30 calls a month.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.consensus.app/api-plans-and-access",
+      "quote": "The API is self-serve on every Consensus plan. Your plan sets how many calls you get each month, how many papers each request can return, and which features you can use.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The supplied Composio catalog search missed a toolkit present at its direct documentation URL.",
+    "OAuth is documented for MCP connections, not REST API requests; an OAuth-only REST integration is not established by these sources."
+  ],
+  "id": "consensus",
+  "name": "Consensus",
+  "website": "consensus.app (OAuth requested)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "consensus",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/consensus",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show an API key (401 for a missing/wrong key; key for clients without OAuth), OAuth handled automatically when the client supports it, and MCP use with no account. OAuth is only quoted for MCP, and the key is the fallback for headless/server-side clients, so oauth2 as the preferred user-delegated method is not contradicted."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A free account is created by signing up, every plan including Free includes API access (30 calls a month), and the API is described as self-serve on every plan."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Docs explicitly call it a REST API and show search plus GET /v1/papers/full_text on a publicly quoted page. Breadth moderate is an estimate and is not contradicted, though the quotes only establish those read operations. OAuth for REST requests is not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The GitHub page calls it the official Consensus MCP server and a hosted remote server with nothing to install, so official and generally available are proven. The note's claim that thread tools require sign-in or an API key is not in the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit docs page for Consensus describes the product, so the catalog listing is proven."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials plus a documented REST API for search and paper retrieval meet buildable_now with no main blocker. The free-plan call limit and feature limits are constraints but not a trial, payment, approval, or partnership gate."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:54:30+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 12,
+    "input_tokens": 126570,
+    "output_tokens": 7230,
+    "cached_input_tokens": 77077,
+    "critic_tokens": 6619,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Consensus",
+      "charged_usd": 0.0,
+      "log_id": "log_OjQO3N6_WCMr"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Consensus MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_3EccE3JYUuMN"
+    }
+  ]
+}

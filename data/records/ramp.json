@@ -1,0 +1,229 @@
+{
+  "one_liner": "Ramp has a broad, publicly documented REST API and a hosted MCP server. Developers can obtain sandbox credentials, but publishing an integration for other businesses requires Ramp approval.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth is used for apps authorized by other Ramp businesses or users. Ramp also documents an AI-usage API key. HTTP Basic is used when obtaining an OAuth token, not as the integration’s API credential."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Ramp describes rapidly provisioned sandbox access and sandbox-specific OAuth2 credentials. The quoted instructions do not explicitly confirm that the sandbox is free. Publishing for other businesses requires a partner application and production-access approval."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.ramp.com/developer-api/v1/introduction",
+    "notes": "Publicly readable guides document calls involving transactions, cards, and users, as well as creating and paying bills."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+    "notes": "Ramp documents an account-connected MCP server. Custom clients and gateways need their exact redirect URI allowlisted."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/ramp"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "partner_gate",
+    "rationale": "Sandbox-specific OAuth2 credentials and documented API write operations support development. Publishing an app for other Ramp businesses requires a partner application and production-access approval."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+      "quote": "Use this flow when other Ramp businesses or users grant your app access, such as apps listed on ramp.com/integrations.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.ramp.com/llms-guides/ai-usage.txt",
+      "quote": "Your customer has a Ramp production account and permission to manage AI spend settings so they can generate a Ramp AI usage API key scoped to `ai_usage:write`.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "Request access using the sandbox access form. Your sandbox should be ready in about one minute.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "You will need to create a separate developer app in the sandbox environment to obtain sandbox-specific OAuth2 credentials (Client ID and Client Secret).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "Publishing an app for other Ramp businesses takes two approvals: a partner application, which gives you access to a Developer console, and a production access application for your app, which you submit from the Developer console.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "After Ramp approves your production access application, onboard production customers through OAuth.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ramp.com/llms-guides/getting-started.txt",
+      "quote": "With your access token, you can now call the Ramp API. Let's retrieve your transactions using the [GET /transactions](</developer-api/v1/api/transactions#get-developer-v1-transactions>) endpoint.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "Ramp’s Developer API allows teams to programmatically access Ramp data and build automations or integrations tailored to their workflows. It provides secure, scoped access to objects like transactions, cards, users, and more.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ramp.com/llms-guides/bill-payments.txt",
+      "quote": "Create approved bills via the API, attach documents, choose a payment method, and pay vendors end-to-end — without forcing your AP team to leave your stack.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+      "quote": "Ramp MCP connects AI tools such as Claude, ChatGPT, and Cursor to your Ramp account. Each connection acts as the signed-in user, with that user's Ramp permissions.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://agents.ramp.com/docs/guides/connecting",
+      "quote": "Custom clients and gateways need their exact redirect URI allowlisted before authorization can complete:",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/ramp",
+      "quote": "Ramp has no Composio-managed app, so you register your own OAuth app in Ramp and use its credentials in the auth config.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "You will need to create a separate developer app in the sandbox environment to obtain sandbox-specific OAuth2 credentials (Client ID and Client Secret).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.ramp.com/llms-guides/bill-payments.txt",
+      "quote": "Create approved bills via the API, attach documents, choose a payment method, and pay vendors end-to-end — without forcing your AP team to leave your stack.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://support.ramp.com/accessing-the-developer-api",
+      "quote": "Publishing an app for other Ramp businesses takes two approvals: a partner application, which gives you access to a Developer console, and a production access application for your app, which you submit from the Developer console.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The sandbox-access guide’s machine-readable page did not load; Ramp’s help-center article supplied the sandbox procedure instead.",
+    "Ramp’s documentation establishes rapid sandbox provisioning but does not explicitly state “free” in the quoted sandbox instructions. The self_serve_free classification should be revisited if explicit confirmation of zero-cost sandbox access is required.",
+    "The main API docs URL returned a JavaScript shell to the page fetcher; Ramp’s publicly readable plain-text guides supplied the API evidence instead."
+  ],
+  "id": "ramp",
+  "name": "Ramp",
+  "website": "docs.ramp.com",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "ramp",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/ramp",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "OAuth2 is named via sandbox Client ID/Secret for apps other Ramp businesses authorize, so primary oauth2 is supported. The only api_key quote is a customer-generated AI-usage key scoped to ai_usage:write, not a general integration key; that still counts as an api_key method. No quote shows HTTP Basic."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Inferred self_serve_free: a sandbox access form is ready in about one minute and the developer then creates sandbox OAuth2 credentials, with no quoted payment, trial, or sandbox approval. Production publishing is separately gated by a partner application and Ramp production-access approval; freeness itself is not stated explicitly."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "Documented HTTP calls (GET /transactions plus creating and paying bills) support rest and read/write use. Cards, users, transactions, and bill payment do not contradict breadth broad. Cited pages are public; the exact introduction URL is not quoted, though developer-api/v1 paths are."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Ramp's own docs describe Ramp MCP connecting Claude, ChatGPT, and Cursor to a signed-in Ramp account, which supports official and usable now. Nothing labels it beta, pilot, or unlaunched. Redirect-URI allowlisting is an extra client constraint, not a maturity contradiction."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is on docs.composio.dev/toolkits/ramp and tells you to put Ramp OAuth credentials in the auth config, so a Ramp toolkit is listed. 'No Composio-managed app' means you supply your own OAuth client, not that the toolkit is absent."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Sandbox OAuth2 credentials plus a documented read/write HTTP API make it buildable, while publishing for other Ramp businesses needs a partner application and production-access approval, so buildable_with_caveats with main_blocker partner_gate follows."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:54:27+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 19,
+    "input_tokens": 355721,
+    "output_tokens": 8429,
+    "cached_input_tokens": 289969,
+    "critic_tokens": 10945,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Ramp",
+      "charged_usd": 0.0,
+      "log_id": "log_fHijutrb_tS-"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Ramp MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_6jdA94wI5x9q"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:docs.ramp.com OR site:support.ramp.com Ramp developer API free plan API access sandbox request approval free",
+      "charged_usd": 0.004,
+      "log_id": "log_pAP8UP_MqCmy"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "one_liner": "Devin is Cognition’s AI software engineer: it can write, run, and test code and can be controlled through a REST API or an official MCP server.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "bearer_token"
+    ],
+    "primary": "api_key",
+    "notes": "Devin recommends service-user API keys for production and shared integrations. Personal access tokens act as the users who created them and inherit their permissions. Both credential types are sent in the Authorization: Bearer header. The public API docs reviewed did not document an OAuth2 flow."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "Teams and standard non-enterprise organizations can provision a service user in Settings → Devin API. Teams is a self-serve paid plan, but the memo did not establish whether Free, a trial, or a lower-priced individual plan provides working API credentials. Free public-repository access through DeepWiki MCP does not grant access to the Devin platform API."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://docs.devin.ai/api-reference/overview",
+    "notes": "The public v3 reference covers read and write operations for sessions, knowledge notes, secrets, schedules, and automations. Enterprise scope adds cross-organization administration, analytics, and audit logs. Use v3 for new integrations and avoid the deprecated playbook endpoints."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.devin.ai/mcp",
+    "notes": "Cognition hosts the Devin MCP server over Streamable HTTP. It exposes session controls, repository documentation and Q&A, knowledge, and schedules. It uses a cog_ bearer credential. Personal access tokens and enterprise service-user keys require X-Org-Id; organization-scoped service-user keys resolve the organization automatically. The legacy /sse transport is deprecated, not /mcp. DeepWiki MCP is a separate, free, unauthenticated service for public-repository documentation."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": ""
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Devin has a broad, publicly documented REST API, an official hosted MCP server, and a documented credential path for Teams and standard organizations. The most accessible plan that grants working API credentials remains unverified."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://docs.devin.ai/api-reference/personal-access-tokens.md",
+      "quote": "For production integrations, CI/CD pipelines, and shared automation, use [service user API keys](https://docs.devin.ai/api-reference/authentication.md#service-users-recommended-for-automation) instead. Service users provide better audit trails, centralized key management, and RBAC controls.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://docs.devin.ai/api-reference/personal-access-tokens.md",
+      "quote": "Unlike service user API keys (which authenticate as a non-human service user), a PAT authenticates as **you** — the human user who created the token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://docs.devin.ai/api-reference/getting-started/teams-quickstart.md",
+      "quote": "This guide walks you through setting up API access for **teams and standard organizations** (non-enterprise). You'll create a service user, get your credentials, and make your first API call in minutes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.devin.ai/api-reference/overview",
+      "quote": "The Devin API enables you to integrate Devin into your applications, automate workflows, and build powerful tools. Use service users with role-based access control for secure, auditable API access.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://docs.devin.ai/api-reference/getting-started/migration-guide.md",
+      "quote": "The `/playbooks` endpoints are deprecated in every API version. Playbooks are moving to [Skills](https://docs.devin.ai/product-guides/skills.md).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.devin.ai/work-with-devin/devin-mcp.md",
+      "quote": "The Devin MCP server is an authenticated service that provides access to both public and private repositories, plus full platform management capabilities.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://docs.devin.ai/work-with-devin/deepwiki-mcp.md",
+      "quote": "The DeepWiki MCP server is a free, remote, no-authentication-required service that provides access to public repositories.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The public pricing comparison lost its plan-column indicators in text extraction, and the billing docs did not explicitly say which lower tiers can generate API credentials.",
+    "The supplied Composio catalog search returned no Devin match, but the expected toolkit URL, https://docs.composio.dev/toolkits/devin, did not resolve to a readable listing, and the memo supplied no quoted catalog evidence."
+  ],
+  "id": "devin",
+  "name": "Devin",
+  "website": "docs.devin.ai (MCP)",
+  "category": "AI, Research and Media-native",
+  "batch": 10,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes recommend service-user API keys for production integrations and identify personal access tokens as a separate credential. They do not establish the claimed Authorization header format."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish an integration API and a versioned endpoint path, supporting REST; nothing contradicts the estimated breadth. The specific coverage and v3 recommendation in the notes are not evidenced."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Vendor documentation describes the Devin MCP server as an existing service, supporting official and generally available. Its claimed URL, transport, credentials, and specific capabilities beyond repository access and platform management are not established by the quotes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access is unknown"
+  ],
+  "attempts": 1,
+  "researched_at": "2026-11-23T21:02:18+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 25,
+    "input_tokens": 545162,
+    "output_tokens": 6761,
+    "cached_input_tokens": 413683,
+    "critic_tokens": 7229,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Devin",
+      "charged_usd": 0.0,
+      "log_id": "log_jXUNn_7CRo7g"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Devin MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_d70O8lwoRmho"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Devin API access which plan Free Pro Teams \"Devin API\" site:docs.devin.ai OR site:devin.ai",
+      "charged_usd": 0.004,
+      "log_id": "log_2EJH8m13XJCs"
+    }
+  ]
+}

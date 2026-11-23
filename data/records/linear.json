@@ -1,0 +1,214 @@
+{
+  "one_liner": "Linear is a cloud-hosted productivity and project management app for tracking issues and planning work across projects, cycles, and initiatives.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "Linear recommends OAuth 2.0 for integrations other people will use. Personal API keys are simpler for individual scripts and can be restricted by permission and team. The Bearer header carries an OAuth access token; it is not a separate authentication method."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "A developer can create a Free workspace and generate a personal API key without approval: all Free workspace users are admins, and admins can always create keys. The pricing matrix lists API, webhook, and MCP access on Free. Free workspaces are capped at two teams and 250 issues. No self-hosted edition was found."
+  },
+  "api": {
+    "styles": [
+      "graphql"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://linear.app/developers/graphql",
+    "notes": "The API supports reads and writes across core workspace objects. The schema can be explored without logging in, and webhooks support event-driven integrations."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.linear.app/mcp",
+    "notes": "Linear hosts and manages the remote MCP server, which can find, create, and update issues, projects, and comments. The primary transport is Streamable HTTP. A dedicated read-only endpoint is available at https://mcp.linear.app/mcp/readonly. The beta label applies to Claude auto-connect, not the server."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/linear"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free workspace users can create personal API keys without approval, and the publicly documented GraphQL API supports reads and writes across core objects. Linear’s hosted MCP server is also available for common agent workflows."
+  },
+  "evidence": [
+    {
+      "field": "api",
+      "url": "https://linear.app/docs/api-and-webhooks",
+      "quote": "Linear’s GraphQL API and webhooks lets you extend Linear’s functionality beyond what we provide out of the box.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://linear.app/security",
+      "quote": "Choose to store your data in the European Union or the United States when creating a Linear workspace.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://linear.app/developers/graphql",
+      "quote": "The Linear API supports personal API keys and OAuth2 authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://linear.app/developers/graphql",
+      "quote": "If you’re building an application for others to use, we recommend you use OAuth2 authentication.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://linear.app/docs/api-and-webhooks",
+      "quote": "You can also limit an API key’s access to specific teams in your workspace.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://linear.app/docs/members-roles",
+      "quote": "Please note that on Free plans, all users are Admins.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://linear.app/docs/api-and-webhooks",
+      "quote": "Admins can choose whether or not Members can create their own API keys from Settings > Administration > API > Member API keys. This setting will not apply to Admins who can always create API keys.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://linear.app/developers/rate-limiting",
+      "quote": "Requests authenticated using an API key or an OAuth app receive rate limits based on the workspace’s plan.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://linear.app/developers/graphql",
+      "quote": "Linear’s public API is built using GraphQL. It’s the same API we use internally for developing our applications.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://linear.app/docs/api-and-webhooks",
+      "quote": "In addition to querying, Linear has full support for mutating all entities.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://linear.app/developers/graphql",
+      "quote": "Our GraphQL API is explorable and queryable via Apollo Studio , no download or log in required.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://linear.app/docs/mcp",
+      "quote": "Linear’s MCP server follows the authenticated remote MCP spec , so the server is centrally hosted and managed. The Linear MCP server has tools available for finding, creating, and updating objects in Linear like issues, projects, and comments — with more functionality on the way, and feedback on its functionality is welcomed.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/linear",
+      "quote": "Each user creates a personal API key in Linear under Settings > Security & access > Personal API keys and pastes it when connecting.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The pricing page’s pricing matrix flattens into table text, so the Free credential finding relies on the explicit Free-plan role rule and the admin key-creation rule together.",
+    "This was a documentation review; credentials were not provisioned and live calls were not tested."
+  ],
+  "id": "linear",
+  "name": "Linear",
+  "website": "developers.linear.app",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "linear",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/linear",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document personal API keys and OAuth2, and recommend OAuth2 for applications used by others. Team restrictions on keys are supported; the additional permissions claim is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show that a workspace can be created, Free-plan users are admins, and admins can always create API keys. They do not establish the claimed Free-plan limits or the absence of a self-hosted edition."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The quotes establish a public GraphQL API, support for queries and mutations across all entities, and exploration without logging in."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Linear describes its centrally hosted server and tools available now. The quotes do not establish the claimed transport, read-only endpoint, or explanation of the beta label."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on a Composio toolkit page for Linear and describes connecting it."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Free-plan API keys and a publicly documented GraphQL API supporting queries and mutations support buildable_now with no stated blocker. The hosted MCP server is also evidenced."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:59:15+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 97834,
+    "output_tokens": 3805,
+    "cached_input_tokens": 57860,
+    "critic_tokens": 3332,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Linear",
+      "charged_usd": 0.0,
+      "log_id": "log_-rSXBiH0HZ-_"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Linear MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_2efr5a-HCtFT"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Linear \"free plan\" \"API access\" \"API keys\" OR \"webhooks\" Linear included free plan FAQ site:linear.app",
+      "charged_usd": 0.004,
+      "log_id": "log_bZFec4ZuYAlA"
+    }
+  ]
+}

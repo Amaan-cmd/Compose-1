@@ -1,0 +1,627 @@
+{
+  "seed": 20261124,
+  "sample": [
+    "salesforce",
+    "pipedrive",
+    "zendesk",
+    "freshdesk",
+    "whatsapp-business",
+    "vonage",
+    "linkedin-ads",
+    "pinterest",
+    "ecwid",
+    "gumroad",
+    "mrscraper",
+    "clay",
+    "github",
+    "vercel",
+    "smartsheet",
+    "harvest",
+    "stripe",
+    "binance",
+    "reducto",
+    "mermaid-cli"
+  ],
+  "items": [
+    {
+      "id": "1.1",
+      "app": "Salesforce",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "1.2",
+      "app": "Salesforce",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "1.3",
+      "app": "Salesforce",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "1.4",
+      "app": "Salesforce",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "1.5",
+      "app": "Salesforce",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "2.1",
+      "app": "Pipedrive",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "2.2",
+      "app": "Pipedrive",
+      "field": "access_level",
+      "agent_value": "self_serve_trial"
+    },
+    {
+      "id": "2.3",
+      "app": "Pipedrive",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "2.4",
+      "app": "Pipedrive",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "2.5",
+      "app": "Pipedrive",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "3.1",
+      "app": "Zendesk",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "3.2",
+      "app": "Zendesk",
+      "field": "access_level",
+      "agent_value": "self_serve_trial"
+    },
+    {
+      "id": "3.3",
+      "app": "Zendesk",
+      "field": "mcp_status",
+      "agent_value": "community"
+    },
+    {
+      "id": "3.4",
+      "app": "Zendesk",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "3.5",
+      "app": "Zendesk",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "4.1",
+      "app": "Freshdesk",
+      "field": "primary_auth",
+      "agent_value": "api_key"
+    },
+    {
+      "id": "4.2",
+      "app": "Freshdesk",
+      "field": "access_level",
+      "agent_value": "self_serve_trial"
+    },
+    {
+      "id": "4.3",
+      "app": "Freshdesk",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "4.4",
+      "app": "Freshdesk",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "4.5",
+      "app": "Freshdesk",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "5.1",
+      "app": "WhatsApp Business",
+      "field": "primary_auth",
+      "agent_value": "bearer_token"
+    },
+    {
+      "id": "5.2",
+      "app": "WhatsApp Business",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "5.3",
+      "app": "WhatsApp Business",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "5.4",
+      "app": "WhatsApp Business",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "5.5",
+      "app": "WhatsApp Business",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "6.1",
+      "app": "Vonage",
+      "field": "primary_auth",
+      "agent_value": "bearer_token"
+    },
+    {
+      "id": "6.2",
+      "app": "Vonage",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "6.3",
+      "app": "Vonage",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "6.4",
+      "app": "Vonage",
+      "field": "in_composio_catalog",
+      "agent_value": false
+    },
+    {
+      "id": "6.5",
+      "app": "Vonage",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "7.1",
+      "app": "LinkedIn Ads",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "7.2",
+      "app": "LinkedIn Ads",
+      "field": "access_level",
+      "agent_value": "admin_approval"
+    },
+    {
+      "id": "7.3",
+      "app": "LinkedIn Ads",
+      "field": "mcp_status",
+      "agent_value": "community"
+    },
+    {
+      "id": "7.4",
+      "app": "LinkedIn Ads",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "7.5",
+      "app": "LinkedIn Ads",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "8.1",
+      "app": "Pinterest",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "8.2",
+      "app": "Pinterest",
+      "field": "access_level",
+      "agent_value": "admin_approval"
+    },
+    {
+      "id": "8.3",
+      "app": "Pinterest",
+      "field": "mcp_status",
+      "agent_value": "community"
+    },
+    {
+      "id": "8.4",
+      "app": "Pinterest",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "8.5",
+      "app": "Pinterest",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "9.1",
+      "app": "Ecwid",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "9.2",
+      "app": "Ecwid",
+      "field": "access_level",
+      "agent_value": "admin_approval"
+    },
+    {
+      "id": "9.3",
+      "app": "Ecwid",
+      "field": "mcp_status",
+      "agent_value": "community"
+    },
+    {
+      "id": "9.4",
+      "app": "Ecwid",
+      "field": "in_composio_catalog",
+      "agent_value": false
+    },
+    {
+      "id": "9.5",
+      "app": "Ecwid",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    },
+    {
+      "id": "10.1",
+      "app": "Gumroad",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "10.2",
+      "app": "Gumroad",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "10.3",
+      "app": "Gumroad",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "10.4",
+      "app": "Gumroad",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "10.5",
+      "app": "Gumroad",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "11.1",
+      "app": "MrScraper",
+      "field": "primary_auth",
+      "agent_value": "api_key"
+    },
+    {
+      "id": "11.2",
+      "app": "MrScraper",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "11.3",
+      "app": "MrScraper",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "11.4",
+      "app": "MrScraper",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "11.5",
+      "app": "MrScraper",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "12.1",
+      "app": "Clay",
+      "field": "primary_auth",
+      "agent_value": "api_key"
+    },
+    {
+      "id": "12.2",
+      "app": "Clay",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "12.3",
+      "app": "Clay",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "12.4",
+      "app": "Clay",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "12.5",
+      "app": "Clay",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "13.1",
+      "app": "GitHub",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "13.2",
+      "app": "GitHub",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "13.3",
+      "app": "GitHub",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "13.4",
+      "app": "GitHub",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "13.5",
+      "app": "GitHub",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "14.1",
+      "app": "Vercel",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "14.2",
+      "app": "Vercel",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "14.3",
+      "app": "Vercel",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "14.4",
+      "app": "Vercel",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "14.5",
+      "app": "Vercel",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "15.1",
+      "app": "Smartsheet",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "15.2",
+      "app": "Smartsheet",
+      "field": "access_level",
+      "agent_value": "unknown"
+    },
+    {
+      "id": "15.3",
+      "app": "Smartsheet",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "15.4",
+      "app": "Smartsheet",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "15.5",
+      "app": "Smartsheet",
+      "field": "verdict",
+      "agent_value": "unknown"
+    },
+    {
+      "id": "16.1",
+      "app": "Harvest",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "16.2",
+      "app": "Harvest",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "16.3",
+      "app": "Harvest",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "16.4",
+      "app": "Harvest",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "16.5",
+      "app": "Harvest",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "17.1",
+      "app": "Stripe",
+      "field": "primary_auth",
+      "agent_value": "oauth2"
+    },
+    {
+      "id": "17.2",
+      "app": "Stripe",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "17.3",
+      "app": "Stripe",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "17.4",
+      "app": "Stripe",
+      "field": "in_composio_catalog",
+      "agent_value": true
+    },
+    {
+      "id": "17.5",
+      "app": "Stripe",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "18.1",
+      "app": "Binance",
+      "field": "primary_auth",
+      "agent_value": "api_key"
+    },
+    {
+      "id": "18.2",
+      "app": "Binance",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "18.3",
+      "app": "Binance",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "18.4",
+      "app": "Binance",
+      "field": "in_composio_catalog",
+      "agent_value": false
+    },
+    {
+      "id": "18.5",
+      "app": "Binance",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "19.1",
+      "app": "Reducto",
+      "field": "primary_auth",
+      "agent_value": "api_key"
+    },
+    {
+      "id": "19.2",
+      "app": "Reducto",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "19.3",
+      "app": "Reducto",
+      "field": "mcp_status",
+      "agent_value": "official"
+    },
+    {
+      "id": "19.4",
+      "app": "Reducto",
+      "field": "in_composio_catalog",
+      "agent_value": false
+    },
+    {
+      "id": "19.5",
+      "app": "Reducto",
+      "field": "verdict",
+      "agent_value": "buildable_now"
+    },
+    {
+      "id": "20.1",
+      "app": "Mermaid CLI",
+      "field": "primary_auth",
+      "agent_value": "none"
+    },
+    {
+      "id": "20.2",
+      "app": "Mermaid CLI",
+      "field": "access_level",
+      "agent_value": "self_serve_free"
+    },
+    {
+      "id": "20.3",
+      "app": "Mermaid CLI",
+      "field": "mcp_status",
+      "agent_value": "community"
+    },
+    {
+      "id": "20.4",
+      "app": "Mermaid CLI",
+      "field": "in_composio_catalog",
+      "agent_value": false
+    },
+    {
+      "id": "20.5",
+      "app": "Mermaid CLI",
+      "field": "verdict",
+      "agent_value": "buildable_with_caveats"
+    }
+  ]
+}

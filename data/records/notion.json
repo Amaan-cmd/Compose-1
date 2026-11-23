@@ -1,0 +1,228 @@
+{
+  "one_liner": "Notion offers developer credentials, a documented read/write API, and a hosted MCP server.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Public connections use OAuth 2.0; internal connections use a static API token. Personal access tokens provide another bearer-token path."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "Free-workspace owners can create connections and copy their API tokens. A public connection can be used without Marketplace listing, but listing requires a security review."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.notion.com/reference/intro",
+    "notes": "The public documentation describes HTTPS requests and creating, updating, and retrieving page content, as well as managing data sources."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.notion.com/mcp",
+    "notes": "Notion describes its MCP server as hosted and actively maintained."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/notion"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Free-workspace owners can create connections and obtain API tokens, and the public API documentation describes read/write operations. Marketplace review is required for listing a public connection, not for using one."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.notion.com/guides/connections-and-tokens/public-integrations",
+      "quote": "Unlike internal connections, which are scoped to a single workspace with a static token, public connections follow the OAuth 2.0 protocol: each user who authorizes the connection receives their own access token, scoped to their workspace.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.notion.com/guides/connections-and-tokens/internal-connections",
+      "quote": "Internal connections use a static credential called an internal connection API token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.notion.com/reference/authentication",
+      "quote": "The Notion API accepts bearer tokens in this header. Bearer tokens are provided when you create an internal connection, create a personal access token, or complete the OAuth flow for a public connection.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+      "quote": "On Free and Plus plans, only workspace owners can create connections. On Business and Enterprise plans, workspace owners can also let members, or members in certain groups, create them.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+      "quote": "Click the ••• next to the internal connection to copy its API token. You'll need this token for any API-based automations or workflows your team creates, or to link your workspace to some partner platforms.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.notion.com/guides/connections-and-tokens/public-integrations",
+      "quote": "Public connections must undergo a Notion security review before being listed on the Marketplace. You can create and use a public connection without listing it.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.notion.com/reference/intro",
+      "quote": "Send requests over HTTPS to https://api.notion.com.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.notion.com/",
+      "quote": "Now that you’ve made your first request, explore what else you can build.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.notion.com/",
+      "quote": "Create, update, and retrieve page content",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.notion.com/",
+      "quote": "Manage data sources, properties, entries, and schemas.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+      "quote": "Notion MCP (https://mcp.notion.com/mcp) is our hosted, actively maintained server. It supports OAuth authorization and MCP tokens, and requires no infrastructure setup.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/notion",
+      "quote": "Notion centralizes notes, docs, wikis, and tasks in a unified workspace, letting teams build custom workflows for collaboration and knowledge management.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+      "quote": "On Free and Plus plans, only workspace owners can create connections. On Business and Enterprise plans, workspace owners can also let members, or members in certain groups, create them.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+      "quote": "Click the ••• next to the internal connection to copy its API token. You'll need this token for any API-based automations or workflows your team creates, or to link your workspace to some partner platforms.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.notion.com/guides/connections-and-tokens/public-integrations",
+      "quote": "Public connections must undergo a Notion security review before being listed on the Marketplace. You can create and use a public connection without listing it.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The memo states that the deployment model is cloud, but supplies no quoted evidence establishing that Notion is available only as a hosted service."
+  ],
+  "id": "notion",
+  "name": "Notion",
+  "website": "developers.notion.com",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "notion",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/notion",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show public connections use OAuth 2.0, internal connections use a static API token, and bearer tokens also come from personal access tokens. OAuth is the user-authorization path, so primary oauth2 is supported."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "Free-plan workspace owners can create connections and copy API tokens. Marketplace security review applies only to listing; a public connection can be created and used without it."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "HTTPS requests to api.notion.com plus create/update/retrieve and data-source management support rest and do not contradict broad breadth. The cited reference is publicly readable."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Notion calls https://mcp.notion.com/mcp its hosted, actively maintained server, supporting official and generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quote is on the Composio Notion toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Self-serve free credentials and a documented read/write API support buildable_now with no main blocker; Marketplace review is not required to use a connection."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:51:00+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 13,
+    "input_tokens": 185045,
+    "output_tokens": 7637,
+    "cached_input_tokens": 117549,
+    "critic_tokens": 6756,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Notion",
+      "charged_usd": 0.0,
+      "log_id": "log_MzLG0myaJh1B"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Notion MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_KtWPBbUMiHy9"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:developers.notion.com \"Free\" \"Notion API\" \"token\" \"workspace owners\" OR site:notion.com/help \"free plan\" \"API\" connections",
+      "charged_usd": 0.004,
+      "log_id": "log_ut1Mt1AQ10Ea"
+    }
+  ]
+}

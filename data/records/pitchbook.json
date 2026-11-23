@@ -1,0 +1,194 @@
+{
+  "one_liner": "PitchBook is a hosted private-capital data vendor whose REST API is a separately contracted Direct Data product: useful and broad, but reachable only by asking PitchBook's Direct Data team for a contract, not by self-serve signup.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "api_key",
+      "bearer_token"
+    ],
+    "primary": "api_key",
+    "notes": "The official API help page says the Direct Data team establishes the connection through an API key or authentication token. No OAuth for the public API is documented. SSO is the sign-in method for the platform and the Premium Connector, not for the REST API itself, so it is not counted as an integration auth method."
+  },
+  "access": {
+    "level": "partner_or_sales",
+    "notes": "The API is a separate offering that requires a standalone contract and a request to the Direct Data team; it is not included in a platform seat. A free trial of the PitchBook platform exists only if PitchBook approves a form submission, and the pricing page describes Direct Data as a premium add-on whose cost comes from talking to a representative. Nothing shows that a trial license yields API credentials."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://pitchbook.com/help/PitchBook-api",
+    "notes": "PitchBook documents a RESTful API at a single base URL covering companies, deals, financing, stock, and AI-powered VC exit data, with an endpoints overview. The full endpoint catalog is not reproduced on the public help page (it points to a separate document), but the documented surface is clearly more than a handful of read endpoints, and Composio's catalog mirrors a large read API across companies, deals, funds, investors, people, and service providers."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://pitchbook.com/help/getting-started-with-pitchbook-premium-connector",
+    "notes": "PitchBook's own help center describes the Premium Connector as built on MCP server technology and usable today with Claude, ChatGPT, Copilot, and others. Access is restricted to licensed users (seat-based, unlimited, or trial) with SSO, and only through approved AI partner platforms — it is not an open server anyone can install. Third-party directories (mcp.so, explainx, apigene) list the same remote endpoint but are not the source of this finding. A separate PitchBook press release covers Lumonic's MCP server, which is a different product and was not used as evidence."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/pitchbook"
+  },
+  "verdict": {
+    "status": "blocked",
+    "main_blocker": "partner_gate",
+    "rationale": "PitchBook publishes a broad REST API, but the vendor states it is a separate offering that requires a standalone contract and a request to the Direct Data team before any API key or token is issued. There is no self-serve, free, or trial path to API credentials."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "Our team will work with you to understand the insights and data you’re looking for and help you establish the API connection through an API key or authentication token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "Our API is a separate offering from the PitchBook Platform that requires a standalone contract agreement.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "To start your API connection, you will need to send a request directly to our Direct Data team through this link.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pitchbook.com/pricing",
+      "quote": "Another primary consideration is whether you’re interested in additional premium offerings, such as Direct Data or CRM Integration.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "The PitchBook API is a RESTful implementation that most HTTP clients can easily access in your chosen language or via a web browser.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "The API solution offers a variety of relational endpoints, including financing details, deal stock information, as well as AI-powered VC exit predictor data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pitchbook.com/help/PitchBook-api",
+      "quote": "Every call will use the same base URL: https://api.pitchbook.com",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://pitchbook.com/help/getting-started-with-pitchbook-premium-connector",
+      "quote": "AI partners connect securely to PitchBook’s Premium Connector (built on MCP server technology) directly through the partner’s site.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://pitchbook.com/help/getting-started-with-pitchbook-premium-connector",
+      "quote": "To connect and use PitchBook Premium, you will need to have a seat-based, unlimited, or trial PitchBook license and Single Sign-On (SSO) credentials.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/pitchbook",
+      "quote": "PitchBook provides private-market data on companies, deals, funds, investors, people, and service providers through its contracted REST API.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "developer.pitchbook.com and the Salesforce help article linked from mcp.so (help.pitchbook.com) would not load. The public help pages on pitchbook.com covered the same ground.",
+    "The detailed endpoint reference is a separate \"API Endpoints Overview\" document that is not reproduced on the help page, so breadth is inferred from the help page's description plus Composio's tool list rather than from a full public OpenAPI spec.",
+    "Whether an approved platform trial ever includes the API is not stated; the API page treats the API as a standalone contract distinct from the platform."
+  ],
+  "id": "pitchbook",
+  "name": "PitchBook",
+  "website": "pitchbook.com (research API)",
+  "category": "Finance and Fintech",
+  "batch": 9,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "pitchbook",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/pitchbook",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quote establishes API-key authentication and does not point to a different recommended method. It mentions an authentication token but does not independently establish that it is a bearer token. The claims about OAuth and SSO are not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "A standalone contract and a request to the Direct Data team support partner_or_sales. The claimed conditions of a platform trial are not shown."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public help page explicitly describes a RESTful API and multiple endpoints; nothing quoted contradicts the broad breadth estimate. Claims about the full endpoint catalog and Composio mirroring it are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "PitchBook's help page describes its Premium Connector as built on MCP server technology and says licensed users can connect and use it. The named AI platforms and further access restrictions in the notes are not shown."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote appears on Composio's PitchBook toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "The documented REST API requires a standalone contract and a request to PitchBook's team, supporting blocked with partner_gate as the main blocker."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T21:00:35+00:00",
+  "model": "grok-4.7",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 9,
+    "input_tokens": 159948,
+    "output_tokens": 3726,
+    "cached_input_tokens": 96267,
+    "critic_tokens": 3420,
+    "composio_calls": 2,
+    "composio_usd": 0.008
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for PitchBook",
+      "charged_usd": 0.0,
+      "log_id": "log_It-g_cvPfs8G"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "PitchBook MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_IdBHBD-5r3-S"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "PitchBook API documentation authentication API key OR OAuth site:pitchbook.com OR developer portal",
+      "charged_usd": 0.004,
+      "log_id": "log_NZXDtO98XDf5"
+    }
+  ]
+}

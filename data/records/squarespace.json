@@ -1,0 +1,204 @@
+{
+  "one_liner": "Squarespace offers a publicly documented Commerce REST API, self-service OAuth credentials for development, and an official remote MCP server. Taking an OAuth app out of Demo Mode requires review.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth 2.0 is documented for third-party integrations; API keys are also supported."
+  },
+  "access": {
+    "level": "unknown",
+    "notes": "OAuth client IDs and secrets are available immediately for development and testing, but the evidence does not establish whether a developer without a paid subscription can use them against a working Commerce API. Taking an integration live requires review. The documented merchant-site API-key path identifies Commerce Advanced."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.squarespace.com/commerce-apis/overview",
+    "notes": "The documented Commerce API covers read and write operations across core resources."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://developers.squarespace.com/mcp/overview",
+    "notes": "The remote server is usable now. Commerce tools currently work only in Claude and ChatGPT."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/squarespace"
+  },
+  "verdict": {
+    "status": "unknown",
+    "main_blocker": "other",
+    "rationale": "Squarespace documents a Commerce REST API and immediate OAuth credential generation for development, but the evidence does not establish whether a noncustomer can obtain working API access without payment. Taking an integration live also requires review."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "quote": "Then, depending on your development needs, authenticate requests by using an API key or OAuth access token.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developers.squarespace.com/commerce-apis/oauth",
+      "quote": "Squarespace uses OAuth 2.0 to authorize third-party applications to integrate with Squarespace and consume Squarespace APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.squarespace.com/changes/self-service-oauth-credential-management",
+      "quote": "Generate OAuth client IDs and secrets immediately for development and testing.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.squarespace.com/changes/self-service-oauth-credential-management",
+      "quote": "When you are ready to take your integration live, simply request a review directly from the app details page in your dashboard.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+      "quote": "With Squarespace's Commerce Advanced plan, you can develop a custom application for a Squarespace merchant site.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.squarespace.com/commerce-apis/overview",
+      "quote": "All Commerce APIs are built on HTTPS and designed with REST principles in mind. Every endpoint uses HTTPS features such as authentication, standard verbs, and standard response status codes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.squarespace.com/commerce-apis/overview",
+      "quote": "With Squarespace Commerce APIs, you can build applications to manage the commerce features of a Squarespace merchant site.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://www.squarespace.com/pricing",
+      "quote": "All Squarespace plans include our fully-managed cloud hosting, ensuring your website remains available at all times.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.squarespace.com/mcp/overview",
+      "quote": "The Squarespace MCP server is a remote server. There's nothing to install.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developers.squarespace.com/mcp/connect-a-client",
+      "quote": "The Commerce tools are currently only available in Claude and ChatGPT.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "The developer-app dashboard could not be read directly.",
+    "No retrieved sentence ties free or trial access to working Commerce API credentials; the pricing page’s website-trial statement does not do so.",
+    "Developer documentation names Commerce Advanced for API keys, while a Help Center article lists additional eligible plans.",
+    "The self-service OAuth announcement appears under “Upcoming Changes,” making its rollout timing worth checking.",
+    "The Composio toolkit URL could not be read."
+  ],
+  "id": "squarespace",
+  "name": "Squarespace",
+  "website": "developers.squarespace.com",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show both an API key and an OAuth access token, and state that OAuth 2.0 authorizes third-party applications, so oauth2 as primary is supported."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The overview quote documents an HTTPS API using REST principles, standard verbs, and status codes. Breadth broad is not contradicted by the commerce-management quote, and the cited docs were readable."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The vendor's developers site describes a remote Squarespace MCP server with nothing to install, and no quote calls it beta, pilot, or unlaunched. The Claude/ChatGPT limit does not contradict generally_available."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "No verdict was given."
+    }
+  ],
+  "needs_human_review": true,
+  "review_reasons": [
+    "access is unknown"
+  ],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:48:47+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 21,
+    "input_tokens": 331234,
+    "output_tokens": 9090,
+    "cached_input_tokens": 239295,
+    "critic_tokens": 9332,
+    "composio_calls": 4,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Squarespace",
+      "charged_usd": 0.0,
+      "log_id": "log_LsnDHqaDqZA7"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Squarespace MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_bwUsRBhAb8LS"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Does Composio list a Squarespace toolkit or is the toolkit page missing?",
+      "charged_usd": 0.004,
+      "log_id": "log_DoVlN96IimgE"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:support.squarespace.com \"API keys\" \"trial\" OR \"Commerce Advanced\" OR \"free\" Squarespace developer OAuth developer apps",
+      "charged_usd": 0.004,
+      "log_id": "log_xHuCMQNZi3k2"
+    }
+  ]
+}

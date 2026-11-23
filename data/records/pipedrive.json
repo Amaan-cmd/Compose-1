@@ -1,0 +1,258 @@
+{
+  "one_liner": "Pipedrive is a sales CRM with a broad, publicly documented API and a vendor-hosted MCP connection.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "primary": "oauth2",
+    "notes": "OAuth 2.0 is recommended for public apps; API-token integration is for private apps only."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "A no-credit-card, 14-day trial provides full access, and an API token can be obtained from the web app. Developers can request a sandbox, but its price and approval requirements are not established. Public Marketplace apps require approval; private apps do not."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developers.pipedrive.com/docs/api/v1",
+    "notes": "Pipedrive says its API and extension points cover the majority of core product functionality."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "unknown",
+    "url": "https://www.pipedrive.com/en/features/mcp-server",
+    "notes": "Built and maintained by Pipedrive."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/pipedrive"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "other",
+    "rationale": "A developer can obtain an API token during a 14-day trial and use the documented REST API. A developer sandbox is offered, but its price and approval requirements are not established, so the evidenced credential path is trial-limited."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://pipedrive.readme.io/docs/about-the-marketplace",
+      "quote": "You can create an app using either OAuth 2.0 (mandatory for all apps) or API token integration (private apps only).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://pipedrive.readme.io/docs/marketplace-oauth-api",
+      "quote": "The recommended authorization protocol for all public apps available in the Pipedrive Marketplace is the industry-standard OAuth 2.0 protocol.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.pipedrive.com/en/pricing",
+      "quote": "Free 14-day trial. Full access. No credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+      "quote": "You can get the API token manually from the Pipedrive web app by going to account name (on the top right) > Company settings > Personal preferences > API or by clicking here (in case you have multiple companies open at the same time, this link will redirect you to the API token of the last opened company).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+      "quote": "Fill in the form here to get access to your developer sandbox account!",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app",
+      "quote": "The app has to go through Pipedrive’s app approval process",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app",
+      "quote": "The app doesn’t have to go through the app approval process",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://pipedrive.readme.io/docs/getting-started",
+      "quote": "Pipedrive is a global CRM with headquarters in the USA and operations in the USA and EU, featuring an intuitive RESTful API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.pipedrive.com/docs/api/v1",
+      "quote": "This reference helps you implement the RESTful Pipedrive API.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developers.pipedrive.com/docs/api/v1",
+      "quote": "Pipedrive's API and extension points cover the majority of our core product's functionality.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://www.pipedrive.com/en/features/mcp-server",
+      "quote": "An official, reliable and fully supported connection built and maintained by Pipedrive.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/pipedrive",
+      "quote": "Pipedrive MCP server for AI agents and assistants",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.pipedrive.com/en/pricing",
+      "quote": "Free 14-day trial. Full access. No credit card required.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developers.pipedrive.com/docs/api/v1",
+      "quote": "The API token can be obtained manually from the Pipedrive app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+      "quote": "Fill in the form here to get access to your developer sandbox account!",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Sandbox pricing and provisioning requirements are not explicit on the cited signup or documentation pages.",
+    "Account signup and credential issuance were not tested."
+  ],
+  "id": "pipedrive",
+  "name": "Pipedrive",
+  "website": "pipedrive.com",
+  "category": "CRM and Sales",
+  "batch": 1,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "pipedrive",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/pipedrive",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes document OAuth 2.0 and API-token integration, and explicitly recommend OAuth 2.0 for public Marketplace apps."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The no-credit-card, full-access 14-day trial and the in-app API-token instructions support a self-serve trial credential path. The quotes do not identify which type of app needs approval, so the note's public-versus-private approval distinction is not established."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The publicly cited API reference identifies a RESTful API and says it covers the majority of core functionality; nothing contradicts the broad-breadth estimate."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "Pipedrive describes the connection as official and built and maintained by Pipedrive."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The quote is from a Composio Pipedrive toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial-based self-serve credentials and a documented, broad REST API support buildable_with_caveats. The trial limit is a notable constraint; because there is no trial-specific main_blocker value, other is appropriate."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:17+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 26,
+    "input_tokens": 594356,
+    "output_tokens": 8282,
+    "cached_input_tokens": 462658,
+    "critic_tokens": 0,
+    "composio_calls": 7,
+    "composio_usd": 0.028
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Pipedrive",
+      "charged_usd": 0.0,
+      "log_id": "log_gAf4qtQPtJ1b"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Pipedrive MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_zJTDCWCZuD-D"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:pipedrive.readme.io/docs authentication api token OAuth marketplace apps sandbox account developer sandbox request approval Pipedrive",
+      "charged_usd": 0.004,
+      "log_id": "log_LjBFf0vKsNil"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:pipedrive.com OR site:pipedrive.readme.io \"sandbox\" \"free\" \"developer\" Pipedrive account",
+      "charged_usd": 0.004,
+      "log_id": "log_mv2bmkY1zYHc"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:pipedrive.com OR site:pipedrive.readme.io developer sandbox account free request approval API credentials developer sandbox free Pipedrive",
+      "charged_usd": 0.004,
+      "log_id": "log_atL21vTcMCY1"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Pipedrive \"developer sandbox\" \"free\" \"API\" account approval request",
+      "charged_usd": 0.004,
+      "log_id": "log_zJKLJD2OgwB6"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:pipedrive.com \"developer sandbox\" \"free\" Pipedrive app development",
+      "charged_usd": 0.004,
+      "log_id": "log_DlH8cZeb1d_2"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "site:support.pipedrive.com \"API token\" \"trial\" Pipedrive account",
+      "charged_usd": 0.004,
+      "log_id": "log_fUQ1scH4I17S"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "one_liner": "Salesforce Commerce Cloud has broad, publicly documented B2C APIs and an official installable MCP server, but access to a developer-controlled instance is gated.",
+  "deployment_model": "unknown",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "basic",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "OCAPI documents an OAuth authorization-code grant for Business Manager users, HTTP Basic authentication for registered customers, and JWT bearer tokens."
+  },
+  "access": {
+    "level": "partner_or_sales",
+    "notes": "A developer-controlled on-demand sandbox requires purchased credits and contact with a Salesforce account executive. The API quick start offers a shared demo, but using an instance of one's own requires separate setup."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.salesforce.com/docs/commerce/commerce-api/references",
+    "notes": "OCAPI documents CRUD access to system resources; SCAPI documents administrative APIs."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "notes": "The installable developer-toolkit server is distinct from the hosted MCP Shopper Service, which is a pilot requiring contact with a Salesforce account executive."
+  },
+  "composio": {
+    "in_catalog": "unknown",
+    "url": "https://composio.dev/toolkits/salesforce"
+  },
+  "verdict": {
+    "status": "blocked",
+    "main_blocker": "partner_gate",
+    "rationale": "The APIs are documented, but using a developer-controlled on-demand sandbox requires purchased credits and contact with a Salesforce account executive. The shared demo does not establish access to one's own instance."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/oauth.html",
+      "quote": "Additionally the OAuth 2.0 Authorization Code Grant can be used for this scenario.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/jwt.html",
+      "quote": "For a registered customer, you must also include the customer login and password in the HTTP Basic Authentication scheme.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/jwt.html",
+      "quote": "Your application must include the JWT in the Authentication:Bearer header of subsequent requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-get-started-sandboxes.html",
+      "quote": "To use on-demand sandboxes, you must purchase sandbox credits. Contact your Account Executive for more information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/api-and-sdk-demo.html",
+      "quote": "To use the API and SDK with your own B2C Commerce instances, you must complete these setup tasks for yourself.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/get-started-with-ocapi.html",
+      "quote": "The Open Commerce API (OCAPI) enables you to access resources using HTTP requests and HTTP responses.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/get-started-with-ocapi.html",
+      "quote": "Data API: gives create/read/update/delete access to system resources.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html",
+      "quote": "With an access token from Account Manager (and the correct scopes), access any of the SCAPI Admin APIs, including: Assignments , Catalogs , Customers , Inventory Availability , Orders , Products , and 8 more .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+      "quote": "The B2C MCP server connects your AI assistant to Salesforce B2C Commerce tools, documentation, and workflow skills. Build and debug storefronts, deploy code, and manage your sites through requests in your assistant.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html",
+      "quote": "The pilot program for the B2C Commerce MCP Shopper Service, however, is centered around the shopper experience.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/agentic-mcp-shopper-tools-quick-start.html",
+      "quote": "To participate in the pilot program: Onboard to SLAS and use the B2C Commerce API (SCAPI). Contact your Salesforce account executive.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/salesforce",
+      "quote": "Salesforce is a leading CRM platform that helps businesses manage sales, service, and marketing.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-get-started-sandboxes.html",
+      "quote": "To use on-demand sandboxes, you must purchase sandbox credits. Contact your Account Executive for more information.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/api-and-sdk-demo.html",
+      "quote": "To use the API and SDK with your own B2C Commerce instances, you must complete these setup tasks for yourself.",
+      "source_type": "official_docs",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "Composio’s candidate Commerce Cloud URLs could not be read in the previous attempt, so catalog status remains unknown.",
+    "The shared demo does not establish access to a developer-controlled instance.",
+    "The installable developer MCP server and hosted pilot shopper MCP service have different maturity.",
+    "The memo states that deployment is cloud-only but provides no quoted evidence for that field."
+  ],
+  "id": "salesforce-commerce-cloud",
+  "name": "Salesforce Commerce Cloud",
+  "website": "developer.salesforce.com/docs/commerce",
+  "category": "Ecommerce",
+  "batch": 5,
+  "in_composio_catalog": false,
+  "composio_toolkit_slug": "",
+  "composio_catalog_source": "none",
+  "composio_toolkit_url": "",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show an OAuth 2.0 authorization-code grant, HTTP Basic for a registered customer's login and password, and a JWT sent as a Bearer credential. OAuth is offered and nothing names a different recommended method, so primary oauth2 holds. The note's 'Business Manager users' wording is not in the quotes."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "On-demand sandboxes require purchased credits and contact with an account executive, which is a sales path rather than self-serve payment, so partner_or_sales is proven. The quote that own instances need separate setup does not show a freer path. The note's 'shared demo' is not stated in the quotes."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "OCAPI is a public HTTP API with create/read/update/delete on system resources, and SCAPI Admin covers many core objects (catalogs, customers, orders, products, and more). That supports rest, broad, and public_docs; the quotes do not contradict breadth. The claimed docs URL itself is not one of the quoted pages."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The salesforcecommercecloud.github.io page describes a usable B2C MCP server (vendor-published, present tense, not labelled preview). The pilot and account-executive quotes apply to the separate MCP Shopper Service, so they do not contradict generally_available for the toolkit server."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "No claim was made, so there is nothing to check."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Documented APIs plus partner_or_sales access (sandbox credits only through an account executive) yield blocked with main_blocker partner_gate. The rationale's shared-demo sentence is not in the quotes, but the status and blocker still follow."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:48:11+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 15,
+    "input_tokens": 234461,
+    "output_tokens": 9042,
+    "cached_input_tokens": 172672,
+    "critic_tokens": 7169,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Salesforce Commerce Cloud",
+      "charged_usd": 0.0,
+      "log_id": "log_z_gq2VC_BOBa"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Salesforce Commerce Cloud MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_Jsd0byL5h6KJ"
+    }
+  ]
+}

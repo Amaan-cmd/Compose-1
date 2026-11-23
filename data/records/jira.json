@@ -1,0 +1,244 @@
+{
+  "one_liner": "Jira is Atlassian’s issue-tracking and agile project management app. Jira Cloud is ready for agent toolkit development, with a free developer site, a public REST API, and an official MCP server.",
+  "deployment_model": "both",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "basic",
+      "bearer_token"
+    ],
+    "primary": "oauth2",
+    "notes": "Atlassian recommends OAuth 2.0 authorization code grants (3LO) for external integrations acting on a user’s behalf. Basic authentication uses an Atlassian account email and API token for simple scripts and manual calls. The bearer_token classification covers JWT authentication for legacy Connect apps, not a separate API-key scheme."
+  },
+  "access": {
+    "level": "self_serve_free",
+    "notes": "The free path is an Atlassian Cloud developer site. Developers can authenticate with an Atlassian account and API token or register a 3LO integration in the developer console. This does not establish API entitlements on the ordinary Jira Free plan. Self-hosted Jira Data Center requires a separate installation and license; a fully functional 30-day trial is available."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+    "notes": "The Jira Cloud REST v3 API covers issue reads and writes, JQL search, comments, attachments, project and workflow data, and webhooks. Calls require the relevant Jira permissions."
+  },
+  "mcp": {
+    "status": "official",
+    "maturity": "generally_available",
+    "url": "https://mcp.atlassian.com/v2/mcp",
+    "notes": "Atlassian’s hosted v2 MCP server can search Jira and create or update work items. OAuth 2.1 is the standard connection path, with optional API-token authentication. The hosted server is for Atlassian Cloud, not Data Center."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://docs.composio.dev/toolkits/jira"
+  },
+  "verdict": {
+    "status": "buildable_now",
+    "main_blocker": "none",
+    "rationale": "Jira Cloud offers a free, self-serve developer site and a public REST API that supports searching, creating, and updating work items. OAuth 2.0 3LO is the documented path for third-party integrations acting on a user’s behalf."
+  },
+  "evidence": [
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/jira",
+      "quote": "A tool for bug tracking, issue tracking, and agile project management.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+      "quote": "For integrations that are not Forge or Connect apps, use OAuth 2.0 authorization code grants (3LO) for security (3LO scopes are shown as for operations OAuth scopes required ).",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+      "quote": "For Connect apps, authentication (JWT-based) is built into the Connect libraries.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+      "quote": "This page shows you how REST clients can authenticate themselves using basic authentication with an Atlassian account email address and API token .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+      "quote": "We recommend using it for simple scripts and manual calls to the REST APIs.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/getting-started/",
+      "quote": "The Cloud Developer Bundle provides a free Atlassian cloud development site for building and testing apps.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.atlassian.com/platform/forge/build-a-hello-world-app-in-jira/",
+      "quote": "You need an Atlassian site where you can install and test your app.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.atlassian.com/platform/forge/build-a-hello-world-app-in-jira/",
+      "quote": "Alternatively, create a traditional Atlassian cloud developer site: Go to http://go.atlassian.com/cloud-dev and create a site using the email address associated with your Atlassian account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+      "quote": "In most cases, the first step in using the Jira REST API is to authenticate a user account with your Jira site.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+      "quote": "You generate an API token for your Atlassian account and use it to authenticate anywhere where you would have used a password.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://www.atlassian.com/software/jira/download",
+      "quote": "Trials are fully functional. Create a new trial license to get started with Jira Data Center.",
+      "source_type": "official_site",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+      "quote": "The Jira REST API enables you to interact with Jira programmatically. Use this API to build apps , script interactions with Jira, or develop any other type of integration.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+      "quote": "The calling user must have the required permissions for an operation to use it.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/atlassian/atlassian-mcp-server",
+      "quote": "The official Atlassian MCP Server is a cloud-based bridge between your Atlassian Cloud site and compatible external tools.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+      "quote": "Atlassian recently released v2 of Atlassian MCP server, introducing more tools and products which you can now interact with from your agents.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+      "quote": "Atlassian MCP is powered by secure OAuth 2.1 authorization , which ensures all actions respect users' existing access controls and permissions. Authentication via API token is also available as optional.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://docs.composio.dev/toolkits/jira",
+      "quote": "Use your own Atlassian OAuth 2.0 (3LO) app when you want the consent screen to show your app name and to control which scopes it can grant.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+      "quote": "O​​Auth 2.0 (3LO) allows external applications and services to access Atlassian product APIs on a user's behalf. OAuth 2.0 (3LO) apps are created and managed in the developer console .",
+      "source_type": "official_docs",
+      "check": "not_found"
+    }
+  ],
+  "problems": [
+    "The Jira pricing page could not be read directly. The free-access finding relies on Atlassian’s developer-site and authentication documentation; API entitlements on the ordinary Jira Free plan were not independently verified.",
+    "No live credential creation or API calls were performed."
+  ],
+  "id": "jira",
+  "name": "Jira",
+  "website": "developer.atlassian.com",
+  "category": "Productivity and Project Management",
+  "batch": 8,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "jira",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/jira",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "The quotes recommend OAuth 2.0 3LO for integrations outside Forge and Connect, and document basic authentication and JWT-based Connect authentication. The exact bearer-token transport for Connect JWTs is not shown."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quotes show a free Cloud developer site that a developer can create, plus API-token authentication for a Jira site. They also show a Data Center trial, but not its 30-day duration or the ordinary Jira Free plan’s API entitlements."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "The public Jira REST API is documented. No quote contradicts the estimated broad coverage, though the specific objects and operations listed in the notes are not shown."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The quotes identify an official, cloud-based Atlassian MCP server and say v2 has been released and is usable. They do not establish the claimed endpoint URL or the specific Jira actions in the notes."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The confirmed quotes appear on Composio’s Jira toolkit page."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "A free, self-serve Cloud developer site, documented REST API, and recommended OAuth 2.0 3LO path support buildable_now with no main blocker. The rationale’s specific searching, creating, and updating operations are not established by the quotes."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 1,
+  "researched_at": "2026-11-23T20:59:17+00:00",
+  "model": "gpt-6.2-sol",
+  "critic_model": "gpt-6-sol",
+  "usage": {
+    "llm_calls": 7,
+    "input_tokens": 178995,
+    "output_tokens": 4790,
+    "cached_input_tokens": 113377,
+    "critic_tokens": 3769,
+    "composio_calls": 1,
+    "composio_usd": 0.004
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Jira",
+      "charged_usd": 0.0,
+      "log_id": "log_KNjd7-DwKZy8"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Jira MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_CyJKjsUq0zUE"
+    }
+  ]
+}

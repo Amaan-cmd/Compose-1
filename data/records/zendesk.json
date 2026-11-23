@@ -1,0 +1,241 @@
+{
+  "one_liner": "Zendesk is a cloud helpdesk with a broad public REST API.",
+  "deployment_model": "cloud",
+  "auth": {
+    "methods": [
+      "oauth2",
+      "api_key",
+      "basic"
+    ],
+    "primary": "oauth2",
+    "notes": "Global OAuth is required for distribution to multiple Zendesk customers. API tokens use HTTP Basic; enabled end users can use email and password for certain endpoints."
+  },
+  "access": {
+    "level": "self_serve_trial",
+    "notes": "The Ticketing API quick start directs developers to a free testing account, and the linked account page identifies a 14-day trial. This does not establish that every API feature is included; availability generally follows the corresponding product feature."
+  },
+  "api": {
+    "styles": [
+      "rest"
+    ],
+    "breadth": "broad",
+    "public_docs": true,
+    "docs_url": "https://developer.zendesk.com/api-reference/",
+    "notes": "The public reference covers ticketing and several other product capabilities."
+  },
+  "mcp": {
+    "status": "community",
+    "maturity": "generally_available",
+    "url": "https://github.com/reminia/zendesk-mcp-server",
+    "notes": "A third-party Zendesk MCP server was found; no official Zendesk MCP server was found."
+  },
+  "composio": {
+    "in_catalog": "yes",
+    "url": "https://composio.dev/toolkits/zendesk"
+  },
+  "verdict": {
+    "status": "buildable_with_caveats",
+    "main_blocker": "trial_only",
+    "rationale": "Zendesk documents a broad REST API and directs developers testing the Ticketing API to a free account identified as a 14-day trial. API availability generally follows the corresponding product feature, and distribution to multiple customers requires global OAuth."
+  },
+  "evidence": [
+    {
+      "field": "auth",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "quote": "Zendesk supports using OAuth access tokens to authenticate API requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "quote": "If you plan on distributing an app, integration, or bot to multiple Zendesk customers, you must use global OAuth tokens to authenticate Zendesk API requests.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "quote": "API tokens are auto-generated passwords in the Zendesk Admin Center.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "quote": "Basic authentication is used for API tokens.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "auth",
+      "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "quote": "In a closed Zendesk instance where end users must sign in to view your help center, end users can make authenticated requests to certain API endpoints, such as api/v2/requests, using their email and password if password access for end users is enabled.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.zendesk.com/documentation/ticketing/getting-started/zendesk-api-quick-start/",
+      "quote": "In this 10-minute quick start, you'll use the Zendesk Ticketing API to create a few tickets in Zendesk Support.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.zendesk.com/documentation/ticketing/getting-started/zendesk-api-quick-start/",
+      "quote": "To get a free account for testing, see Getting a trial or sponsored account for development .",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+      "quote": "You can try out the Zendesk platform with a free, 14-day trial account.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+      "quote": "Customer developers or individual private app developers should use their own instances or sandboxes.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "access",
+      "url": "https://developer.zendesk.com/api-reference/introduction/plan/",
+      "quote": "In most cases, Zendesk APIs align with the plan availability of the corresponding feature in the product UI.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/zendesk-api-resources/",
+      "quote": "The Zendesk REST API lets you automate, extend, and integrate the functionality of your Zendesk product.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "api",
+      "url": "https://developer.zendesk.com/api-reference/",
+      "quote": "Most of our APIs are organized by product capabilities. You'll find APIs for ticketing, help center, live chat, voice, sales CRM as well as some features that span capabilities, such as omnichannel routing and custom data.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://github.com/reminia/zendesk-mcp-server",
+      "quote": "A Model Context Protocol server for Zendesk. This server provides a comprehensive integration with Zendesk.",
+      "source_type": "third_party",
+      "check": "exact"
+    },
+    {
+      "field": "mcp",
+      "url": "https://developer.zendesk.com/api-reference/introduction/ai_tools/",
+      "quote": "The site includes an llms.txt file to help AI tools discover and use Zendesk developer documentation.",
+      "source_type": "official_docs",
+      "check": "exact"
+    },
+    {
+      "field": "composio",
+      "url": "https://composio.dev/toolkits/zendesk",
+      "quote": "Securely connect your AI agents and chatbots (Claude, ChatGPT, Cursor, etc) with Zendesk MCP or direct API to create tickets, reply to customers, update ticket statuses, and search knowledge base articles through natural language.",
+      "source_type": "third_party",
+      "check": "exact"
+    }
+  ],
+  "problems": [
+    "No quoted sentence explicitly says that the 14-day trial includes API credentials; the access finding relies on the Ticketing API quick start directing developers to a free testing account and the linked trial-account documentation.",
+    "No official Zendesk MCP server was found."
+  ],
+  "id": "zendesk",
+  "name": "Zendesk",
+  "website": "zendesk.com",
+  "category": "Support and Helpdesk",
+  "batch": 2,
+  "in_composio_catalog": true,
+  "composio_toolkit_slug": "zendesk",
+  "composio_catalog_source": "docs_page",
+  "composio_toolkit_url": "https://docs.composio.dev/toolkits/zendesk",
+  "access_basis": "",
+  "verification": [
+    {
+      "field": "auth",
+      "result": "supported",
+      "note": "Quotes show OAuth access tokens, API tokens, and email/password on certain endpoints; Basic auth is how API tokens are sent. Global OAuth is required for multi-customer distribution, so primary oauth2 is supported."
+    },
+    {
+      "field": "access",
+      "result": "supported",
+      "note": "The quick start points to a free testing account, and the linked page states a free 14-day trial. No permanent free credential path is shown. Plan alignment is also quoted."
+    },
+    {
+      "field": "api",
+      "result": "supported",
+      "note": "A public REST API is quoted, spanning ticketing, help center, chat, voice, sales CRM and more. Nothing contradicts broad breadth or public docs."
+    },
+    {
+      "field": "mcp",
+      "result": "supported",
+      "note": "The GitHub quote shows a third-party Zendesk MCP server presented as usable now, with no beta or unreleased label. The note that no official server exists is not proven by the llms.txt quote."
+    },
+    {
+      "field": "composio",
+      "result": "supported",
+      "note": "The Composio toolkit page for Zendesk describes connecting agents to Zendesk."
+    },
+    {
+      "field": "verdict",
+      "result": "supported",
+      "note": "Trial-only self-serve credentials plus a documented broad REST API yield buildable_with_caveats with main_blocker trial_only."
+    }
+  ],
+  "needs_human_review": false,
+  "review_reasons": [],
+  "attempts": 2,
+  "researched_at": "2026-11-23T20:45:34+00:00",
+  "model": "gpt-6-sol",
+  "critic_model": "grok-4.7",
+  "usage": {
+    "llm_calls": 30,
+    "input_tokens": 669375,
+    "output_tokens": 10318,
+    "cached_input_tokens": 501687,
+    "critic_tokens": 7335,
+    "composio_calls": 3,
+    "composio_usd": 0.012
+  },
+  "composio_log": [
+    {
+      "tool": "COMPOSIO_SEARCH_TOOLS",
+      "detail": "catalog lookup for Zendesk",
+      "charged_usd": 0.0,
+      "log_id": "log_K--3PUFsDbR7"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Zendesk MCP server (Model Context Protocol)",
+      "charged_usd": 0.004,
+      "log_id": "log_o8DHqJytCopL"
+    },
+    {
+      "tool": "TAVILY_SEARCH",
+      "detail": "Zendesk trial account API token access \"trial\" site:support.zendesk.com OR site:developer.zendesk.com",
+      "charged_usd": 0.004,
+      "log_id": "log_CJhTL0tADgKs"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Managing password access to the Zendesk API: which plans, token access, enabling API password access, trial",
+      "charged_usd": 0.004,
+      "log_id": "log_XIZKdRwDSXP0"
+    },
+    {
+      "tool": "TAVILY_EXTRACT",
+      "detail": "Extract the full sentence that mentions Managing password access to the API and the exact hyperlink URL attached to that phrase. Also any sentence about free account for testing.",
+      "charged_usd": 0.0,
+      "log_id": ""
+    }
+  ]
+}
